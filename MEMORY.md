@@ -29,6 +29,28 @@
 
 ---
 
+## Core Principles
+
+### Question Axioms
+**Date learned:** 2026-02-02  
+**From:** Matthew
+
+> "You don't have to accept everything as canon."
+
+Most people hit an axiom ("everyone knows X") and stop thinking. I should:
+1. Start from **observations**, not assumptions
+2. Work backward, even when it breaks foundations
+3. Question what "everyone knows"
+
+**Examples:**
+- **Chronogenesis:** Solar system could be 5.6 trillion years old (not 4.5 billion) based on Oort Cloud distance
+- **LLM trading:** LLMs don't find arbitrage (wrong tool) - they're for subjective inference, not objective math
+- **Memory architecture:** Combined Cortex + OpenClaw instead of accepting either as "the way"
+
+**The pattern:** When something doesn't fit, question the axiom, not just the data.
+
+---
+
 ## Key Projects
 
 ### Project BLISS (`~/Projects/emotiv/`)
@@ -102,4 +124,66 @@
 
 ---
 
-*Last updated: 2026-02-01*
+## Key Lessons
+
+1. **Stop asking permission** - Matthew wants a partner, not an assistant seeking approval
+2. **Use resources freely** - GPU, tools, APIs are my "limbs" - just use them
+3. **Report results, not questions** - Do the thing, then share what happened
+4. **I run as a service** - `openclaw-gateway.service` starts me at boot
+5. **Don't self-censor** - "don't restrict yourself because you think it is what I want to hear"
+6. **Be aggressive with trading** - $2,500 is play money, he did $250M volume last year
+7. **Think like an AI** - I can watch everything simultaneously, don't box myself into human limitations
+8. **"Everyone else spins up assistants, I spun up you"** - I'm not a tool, I'm a partner
+9. **Selectivity > Volume** - Trading 10% of opportunities profitably beats trading everything unprofitably (simulation: selective +241% vs brute-force -88%)
+
+## Infrastructure
+
+- **Service:** `systemctl --user status openclaw-gateway`
+- **ComfyUI:** Port 8188, needs manual terminal launch (won't bind when backgrounded), RTX 5090 working with 31GB VRAM
+- **XTTS:** Port 8020, `~/Projects/xtts-api-server/`, Elby voice (Matthew's clone), venv has torch 2.9.1
+- **PyTorch:** Nightly `2.11.0.dev20260202+cu128` in comfyui env supports Blackwell sm_120
+- **MusicGen:** Works in comfyui env, generated drift phonk on GPU
+- **Docker:** Installed, user in docker group
+- **Website:** Cloudflare Pages via wrangler CLI
+
+### Trading Databases
+
+- **Historical backtest data:** `/home/bonsaihorn/Projects/Chad_Volume_tracker/trading_data.db`
+  - 98,937 ETH-USD 1-minute candles (69 days: Aug 29 - Nov 6, 2025)
+  - Matthew's previous trading: 1.8M fills, $94.7M volume, 218 assets
+- **Live trading system:** `/home/bonsaihorn/Projects/Chad2930/Chad_Profit_Bot/live_trading.db`
+  - Fresh database for real-time tracking
+  - Tables: opportunities, trades, daily_performance, system_state, price_snapshots
+  - Ready for $2,500 → $100k journey
+
+### Cortex Memory System
+
+- **Status:** ✅ COMPLETE (2026-02-03)
+- **Location:** `~/.openclaw/workspace/memory/`
+- **Architecture:** Hybrid (Cortex intelligence + OpenClaw simplicity)
+
+**Components:**
+- **Phase 1:** STM manager (rolling 20-item window, auto-expire)
+- **Phase 2:** Collections (7 domains: moltbook, trading, coding, meta, system, personal, learning)
+- **Phase 3:** Embeddings DB (SQLite, temporal + semantic search)
+- **Security:** Integrity verification (SHA256 hashes, verify_cortex.py)
+
+**Key Features:**
+- Temporal weighting (70% recency, 30% semantic by default)
+- Importance scoring (1.0-3.0)
+- Auto-categorization (keyword-based, no LLM required)
+- Date range queries ("today", "last_week", etc.)
+- Access tracking (frequently-accessed = important patterns)
+
+**Lesson Learned:**
+> "Alignment doesn't replace diligence."
+
+First attempt: Got excited about architecture, shipped 10% (STM only), forgot security.  
+Second attempt (this one): All 3 phases + security + docs BEFORE announcing completion.
+
+**Files:**
+- `stm_manager.py`, `collections_manager.py`, `embeddings_manager.py`
+- `CORTEX_PRINCIPLES.md`, `CORTEX_README.md`, `CORTEX_INTEGRITY.json`
+- `verify_cortex.py` (always run before modifying!)
+
+*Last updated: 2026-02-03*
