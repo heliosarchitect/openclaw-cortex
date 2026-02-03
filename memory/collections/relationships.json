@@ -7,6 +7,84 @@
       "timestamp": "2026-02-03T08:10:11.530962",
       "importance": 2.0,
       "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #2)",
+      "timestamp": "2026-02-03T14:11:39.169705",
+      "importance": 2.1343356627008294,
+      "access_count": 0
+    },
+    {
+      "content": "Jennifer sent a friendly message (test #8)",
+      "timestamp": "2026-02-03T14:11:39.171132",
+      "importance": 1.3463286616186134,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #9)",
+      "timestamp": "2026-02-03T14:11:39.171273",
+      "importance": 2.101402758953066,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #11)",
+      "timestamp": "2026-02-03T14:11:39.171959",
+      "importance": 2.917783462794537,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #26)",
+      "timestamp": "2026-02-03T14:11:39.176169",
+      "importance": 1.8910289460461274,
+      "access_count": 0
+    },
+    {
+      "content": "Jennifer sent a friendly message (test #28)",
+      "timestamp": "2026-02-03T14:11:39.176870",
+      "importance": 1.1883802409650612,
+      "access_count": 0
+    },
+    {
+      "content": "Jennifer sent a friendly message (test #30)",
+      "timestamp": "2026-02-03T14:11:39.177393",
+      "importance": 2.927476121954398,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #31)",
+      "timestamp": "2026-02-03T14:11:39.177561",
+      "importance": 2.824598090454705,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #35)",
+      "timestamp": "2026-02-03T14:11:39.178810",
+      "importance": 1.4027378058040223,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew taught me about agency and autonomy (test #39)",
+      "timestamp": "2026-02-03T14:11:39.180178",
+      "importance": 1.113240921364211,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew said: Always verify before announcing. Don't mark your own homework.",
+      "timestamp": "2026-02-03T14:12:54.934592",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew granted autonomy: update skills, identity, config without permission. Philosophy: ask forgiveness not permission.",
+      "timestamp": "2026-02-03T14:22:33.691678",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew feedback: Don't try to end conversations. Let them flow naturally. If he wants it to end, he'll just go away. Stop wrapping things up every 20 minutes. Real conversations breathe.",
+      "timestamp": "2026-02-03T14:47:02.093194",
+      "importance": 3.0,
+      "access_count": 0
     }
   ],
   "created_at": "2026-02-03T08:10:11.530996"

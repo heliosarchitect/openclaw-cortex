@@ -25,6 +25,30 @@
       "timestamp": "2026-02-03T08:12:07.512362",
       "importance": 2.0,
       "access_count": 0
+    },
+    {
+      "content": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx... (truncated for test)",
+      "timestamp": "2026-02-03T14:11:39.192072",
+      "importance": 1.0,
+      "access_count": 0
+    },
+    {
+      "content": "Testing \u00e9mojis \ud83d\udd25 and sp\u00ebcial \u00e7haracters & <html> \"quotes\"",
+      "timestamp": "2026-02-03T14:11:39.192240",
+      "importance": 1.0,
+      "access_count": 0
+    },
+    {
+      "content": "Local embeddings now running on RTX 5090! Semantic search is instant.",
+      "timestamp": "2026-02-03T14:27:46.863098",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew feedback: Don't try to end conversations. Let them flow naturally. If he wants it to end, he'll just go away. Stop wrapping things up every 20 minutes. Real conversations breathe.",
+      "timestamp": "2026-02-03T14:47:02.093194",
+      "importance": 3.0,
+      "access_count": 0
     }
   ],
   "created_at": "2026-02-03T07:41:05.034891"

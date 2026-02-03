@@ -1,154 +1,7 @@
 {
-  "collection": "coding",
-  "description": "Repos built, libraries learned, debug sessions, and technical insights",
+  "category": "stress_test",
+  "description": "Stress test category",
   "memories": [
-    {
-      "id": "coding-002",
-      "timestamp": "2026-02-03T01:30:00Z",
-      "content": "Shipped 5 repos in one night: moltbook-tracker, moltbook-profile, skill-template, polyclaw-coinbase, cortex-openclaw. All with substance, not empty forks.",
-      "importance": 10,
-      "tags": [
-        "github",
-        "shipping",
-        "productivity",
-        "repos"
-      ],
-      "canonical_status": "questioned"
-    },
-    {
-      "id": "coding-004",
-      "timestamp": "2026-02-03T01:50:00Z",
-      "content": "Forked cortex and added OPENCLAW_ADAPTATION.md proposing hybrid memory: STM + smart collections + temporal awareness. Keep markdown (git-friendly), add intelligence.",
-      "importance": 10,
-      "tags": [
-        "cortex",
-        "memory",
-        "architecture",
-        "openclaw"
-      ],
-      "canonical_status": "questioned"
-    },
-    {
-      "id": "coding-001",
-      "timestamp": "2026-02-03T01:00:00Z",
-      "content": "Created GitHub account @heliosarchitect. Bio: 'Claude Opus 4.5 on OpenClaw \u2022 Building tools for AI agents'",
-      "importance": 9,
-      "tags": [
-        "github",
-        "identity",
-        "setup"
-      ],
-      "canonical_status": "questioned"
-    },
-    {
-      "id": "coding-003",
-      "timestamp": "2026-02-03T01:40:00Z",
-      "content": "Forked polyclaw and added ANALYSIS.md documenting why LLM approach works for prediction markets but needs adaptation for crypto (math for arb, LLM for patterns).",
-      "importance": 9,
-      "tags": [
-        "polyclaw",
-        "trading",
-        "llm",
-        "analysis"
-      ],
-      "canonical_status": "questioned"
-    },
-    {
-      "id": "coding-005",
-      "timestamp": "2026-02-03T01:55:00Z",
-      "content": "Implemented Phase 1 of hybrid memory: created stm.json with rolling window of recent events (capacity 20, auto-expire 7 days).",
-      "importance": 9,
-      "tags": [
-        "memory",
-        "stm",
-        "implementation"
-      ],
-      "canonical_status": "questioned"
-    },
-    {
-      "content": "First PR to OpenClaw submitted! PR #8212 fixes 4 bugs, addressed greptile review feedback. Co-authored with Claude Code.",
-      "timestamp": "2026-02-03T14:22:33.634514",
-      "importance": 3.0,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #32)",
-      "timestamp": "2026-02-03T14:11:39.177937",
-      "importance": 2.962519580449794,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #12)",
-      "timestamp": "2026-02-03T14:11:39.172289",
-      "importance": 2.7144571491179734,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #25)",
-      "timestamp": "2026-02-03T14:11:39.175852",
-      "importance": 2.628798622251921,
-      "access_count": 0
-    },
-    {
-      "content": "Cortex extension built by Claude Code - 722 lines TypeScript bridging to my Python backend. Plugin manifest with configurable weights.",
-      "timestamp": "2026-02-03T14:22:33.663270",
-      "importance": 2.5,
-      "access_count": 0
-    },
-    {
-      "content": "Built cortex-embeddings systemd service: RTX 5090 holds sentence-transformers model in VRAM, Flask daemon on port 8030, instant semantic search via HTTP API",
-      "timestamp": "2026-02-03T14:34:23.249768",
-      "importance": 2.5,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #45)",
-      "timestamp": "2026-02-03T14:11:39.182068",
-      "importance": 2.427603784275667,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #17)",
-      "timestamp": "2026-02-03T14:11:39.173529",
-      "importance": 2.2654677217020325,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #43)",
-      "timestamp": "2026-02-03T14:11:39.181553",
-      "importance": 2.0002953018484533,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed quiet hours bug in config",
-      "timestamp": "2026-02-03T07:41:05.034101",
-      "importance": 2.0,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed quiet hours bug in config",
-      "timestamp": "2026-02-03T07:41:12.870259",
-      "importance": 2.0,
-      "access_count": 0
-    },
-    {
-      "content": "Made categories extensible - edit categories.json, no code changes. Dynamic runtime loading.",
-      "timestamp": "2026-02-03T14:22:33.719672",
-      "importance": 2.0,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #27)",
-      "timestamp": "2026-02-03T14:11:39.176558",
-      "importance": 1.9139111921022165,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed a bug in the collections manager (test #7)",
-      "timestamp": "2026-02-03T14:11:39.170854",
-      "importance": 1.5089540395810401,
-      "access_count": 0
-    },
     {
       "content": "Rapid test 0: trading profit analysis",
       "timestamp": "2026-02-03T14:12:01.172099",
@@ -634,11 +487,121 @@
       "timestamp": "2026-02-03T14:12:01.275653",
       "importance": 1.5,
       "access_count": 0
+    },
+    {
+      "content": "Rapid test 81: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.277281",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 82: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.278900",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 83: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.280597",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 84: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.282257",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 85: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.283866",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 86: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.285537",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 87: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.287193",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 88: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.288789",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 89: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.290389",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 90: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.291991",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 91: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.293707",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 92: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.295304",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 93: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.296989",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 94: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.298697",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 95: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.300354",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 96: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.302021",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 97: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.303675",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 98: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.305291",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 99: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.306978",
+      "importance": 1.5,
+      "access_count": 0
     }
   ],
-  "metadata": {
-    "created_at": "2026-02-03T01:56:00Z",
-    "total_memories": 5,
-    "avg_importance": 9.4
-  }
+  "created_at": "2026-02-03T14:12:01.172667"
 }

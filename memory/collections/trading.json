@@ -78,21 +78,33 @@
       "canonical_status": "accepted"
     },
     {
-      "content": "Trading bot ready for 9:00 AM EST launch. Capital: $2,469.49 USD. Strategy: 0.3% profit moves within 15-min windows, 9am-6pm EST weekdays only. Time-segmented approach (4 periods). Production trader: live_trader_final.py. All tested, crons configured.",
-      "timestamp": "2026-02-03T08:08:54.100467",
-      "importance": 2.5,
-      "access_count": 0
-    },
-    {
       "content": "Trading breakthrough (Feb 2): Time-restricted strategy (9am-6pm EST only) turned -$2,419 loss into +$6,037 profit on same 69-day dataset. Matthew's 24/7 trading failed; weekends/nights bleed money. 30% capture rate = 241% return. Peak hours 9am-12pm.",
       "timestamp": "2026-02-03T08:11:51.140459",
       "importance": 3.0,
       "access_count": 0
     },
     {
+      "content": "Trading bot ready for 9:00 AM EST launch. Capital: $2,469.49 USD. Strategy: 0.3% profit moves within 15-min windows, 9am-6pm EST weekdays only. Time-segmented approach (4 periods). Production trader: live_trader_final.py. All tested, crons configured.",
+      "timestamp": "2026-02-03T08:08:54.100467",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
       "content": "Simulation results (Feb 2): 10,514 opportunities in 69 days. At 30% capture: $2,500 \u2192 $8,537 (+241%). Average exit time: 7.4 minutes. 100% hit target. Selective > brute force (brute force lost 88%).",
       "timestamp": "2026-02-03T08:11:51.140791",
       "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Trading bot made $5 profit on ETH position (test #16)",
+      "timestamp": "2026-02-03T14:11:39.173298",
+      "importance": 2.4695113962059856,
+      "access_count": 0
+    },
+    {
+      "content": "Trading bot made $5 profit on ETH position (test #21)",
+      "timestamp": "2026-02-03T14:11:39.174684",
+      "importance": 2.021370194767487,
       "access_count": 0
     },
     {
@@ -108,12 +120,6 @@
       "access_count": 0
     },
     {
-      "content": "Exited ADA position (Feb 2): Sold 8,163.71 ADA @ $0.2989 (market sell). Recovered $2,440 to cash. Small loss (~$20) vs cost basis but avoided overnight risk. Capital: $2,469.49 USD ready.",
-      "timestamp": "2026-02-03T08:11:51.141860",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
       "content": "Matthew's proven capability: Sept 21, 9am hour had $851k volume, 94 fills/minute, 1.5 fills/second. Infrastructure works at scale. Lost money because 24/7 timing was wrong, not execution capability.",
       "timestamp": "2026-02-03T08:11:51.142037",
       "importance": 2.0,
@@ -123,6 +129,522 @@
       "content": "Matthew granted full autonomy over Chad_Profit_Bot (Feb 1): 'This is your home... you can accept payments with Stripe too.' Portfolio: $2,488 in MON-USD. Unrealized loss ~$512. Bot was crash-looping, I killed it.",
       "timestamp": "2026-02-03T08:12:07.512842",
       "importance": 2.0,
+      "access_count": 0
+    },
+    {
+      "content": "Trading bot made $5 profit on ETH position (test #18)",
+      "timestamp": "2026-02-03T14:11:39.173876",
+      "importance": 1.8336094188710759,
+      "access_count": 0
+    },
+    {
+      "content": "Discovered a new trading pattern (test #0)",
+      "timestamp": "2026-02-03T14:11:39.169055",
+      "importance": 1.6581391713935114,
+      "access_count": 0
+    },
+    {
+      "content": "Exited ADA position (Feb 2): Sold 8,163.71 ADA @ $0.2989 (market sell). Recovered $2,440 to cash. Small loss (~$20) vs cost basis but avoided overnight risk. Capital: $2,469.49 USD ready.",
+      "timestamp": "2026-02-03T08:11:51.141860",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 0: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.172099",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 1: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.173220",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 2: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.174211",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 3: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.175201",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 4: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.176685",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 5: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.177675",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 6: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.178634",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 7: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.179575",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 8: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.180546",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 9: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.181560",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 10: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.182521",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 11: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.183500",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 12: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.184492",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 13: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.185495",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 14: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.186561",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 15: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.187563",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 16: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.188578",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 17: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.189603",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 18: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.190646",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 19: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.192006",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 20: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.193132",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 21: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.194364",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 22: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.195783",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 23: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.196927",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 24: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.198051",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 25: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.199150",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 26: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.200273",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 27: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.201412",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 28: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.202624",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 29: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.203756",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 30: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.204892",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 31: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.206061",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 32: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.207237",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 33: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.208464",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 34: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.209665",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 35: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.211070",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 36: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.212365",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 37: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.213812",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 38: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.215140",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 39: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.216383",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 40: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.217638",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 41: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.218982",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 42: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.220292",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 43: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.221600",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 44: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.222862",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 45: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.224130",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 46: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.225416",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 47: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.226777",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 48: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.228133",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 49: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.229463",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 50: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.230825",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 51: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.232377",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 52: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.233740",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 53: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.235118",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 54: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.236507",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 55: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.237845",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 56: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.239248",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 57: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.240622",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 58: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.242005",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 59: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.243586",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 60: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.245061",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 61: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.246527",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 62: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.248071",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 63: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.249505",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 64: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.250949",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 65: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.252529",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 66: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.253977",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 67: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.255424",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 68: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.256880",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 69: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.258393",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 70: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.259934",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 71: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.261452",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 72: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.262960",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 73: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.264542",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 74: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.266192",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 75: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.267749",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 76: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.269363",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 77: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.270904",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 78: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.272516",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 79: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.274080",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 80: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.275653",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 81: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.277281",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Rapid test 82: trading profit analysis",
+      "timestamp": "2026-02-03T14:12:01.278900",
+      "importance": 1.5,
       "access_count": 0
     }
   ],
