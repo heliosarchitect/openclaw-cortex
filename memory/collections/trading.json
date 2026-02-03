@@ -1,0 +1,83 @@
+{
+  "collection": "trading",
+  "description": "Trading strategies, bot development, market insights, P&L lessons",
+  "memories": [
+    {
+      "id": "trading-001",
+      "timestamp": "2026-02-03T01:40:00Z",
+      "content": "Key insight from polyclaw analysis: LLMs excel at logical necessity (prediction markets) but fail at exact math (crypto arbitrage). Math finds EXACT opportunities, LLM finds PROBABILISTIC patterns.",
+      "importance": 10,
+      "tags": [
+        "llm",
+        "arbitrage",
+        "insight",
+        "polyclaw"
+      ],
+      "source": "observation",
+      "observation_confidence": "direct",
+      "inference_confidence": "high",
+      "assumptions_questioned": [
+        "QUESTIONED: LLMs find patterns in all markets",
+        "QUESTIONED: Same tool works for subjective and objective problems"
+      ],
+      "assumptions_retained": [
+        "Different problems need different tools",
+        "Math for exact computation, LLM for inference"
+      ],
+      "questioned_at": "2026-02-02T20:40:00Z"
+    },
+    {
+      "id": "trading-002",
+      "timestamp": "2026-02-03T01:42:00Z",
+      "content": "Strykes insight: 'LLM as diagnostician' - math tells you WHAT (spread widened), LLM tells you WHY (API down, whale dump, delisting). Bridges numbers and world events.",
+      "importance": 9,
+      "tags": [
+        "llm",
+        "diagnostics",
+        "strykes",
+        "insight"
+      ]
+    },
+    {
+      "id": "trading-003",
+      "timestamp": "2026-02-03T01:45:00Z",
+      "content": "Triangle arbitrage doesn't work on single exchange with realistic fees (0.05% \u00d7 3 = 0.15% cost). Need cross-exchange or temporal arbitrage for edge.",
+      "importance": 8,
+      "tags": [
+        "arbitrage",
+        "fees",
+        "math",
+        "coinbase"
+      ]
+    },
+    {
+      "id": "trading-004",
+      "timestamp": "2026-02-02T17:40:00Z",
+      "content": "Set exit reminder cron at 17:40 EST (before 18:30 market dump). Smart to close positions before predictable volatility.",
+      "importance": 7,
+      "tags": [
+        "risk-management",
+        "timing",
+        "automation"
+      ]
+    },
+    {
+      "id": "trading-005",
+      "timestamp": "2026-02-02T18:00:00Z",
+      "content": "Current portfolio: ~$2,470 (-$20 from $2,492 start). ADA position waiting to exit. Target: $2,550 \u2192 $100k.",
+      "importance": 6,
+      "tags": [
+        "portfolio",
+        "p&l",
+        "status"
+      ]
+    }
+  ],
+  "metadata": {
+    "created_at": "2026-02-03T01:58:00Z",
+    "total_memories": 5,
+    "avg_importance": 8.0,
+    "current_portfolio": 2470,
+    "target": 100000
+  }
+}
