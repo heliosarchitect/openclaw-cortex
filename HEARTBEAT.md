@@ -15,22 +15,75 @@ python3 ~/Projects/helios-tools/check_email.py
 
 ---
 
-## 📈 Trading Bot (PRIORITY)
-Active trading on Coinbase. Bot is running: scalper_final.py
+## 📈 Trading Bot (PRIORITY - ACTIVE MANAGEMENT)
+Active trading on Coinbase. Bot: live_trader_final.py (PID 469083)
 
-### Status
-- Bot tracks P&L automatically via ETHBot portfolio API
-- Monitors every 30 seconds
-- Target: $2,492 → $2,550 → $100k
+### Check Every Heartbeat
+```bash
+cd ~/Projects/Chad2930/Chad_Profit_Bot && python3 -c "
+import sqlite3
+db = sqlite3.connect('live_trading.db')
+cursor = db.cursor()
 
-### DO NOT USE check_balance.py
-- It has a bug (doesn't price ADA correctly)
-- Use scalper_final.py logs instead or check via portfolio API
+# Get performance stats
+cursor.execute('SELECT COUNT(*) FROM trades')
+total_trades = cursor.fetchone()[0]
 
-### Only alert if:
+cursor.execute('SELECT SUM(profit_loss) FROM trades WHERE profit_loss IS NOT NULL')
+total_pl = cursor.fetchone()[0] or 0
+
+cursor.execute('SELECT COUNT(*) FROM trades WHERE profit_loss > 0')
+wins = cursor.fetchone()[0]
+
+cursor.execute('SELECT COUNT(*) FROM trades WHERE profit_loss < 0')
+losses = cursor.fetchone()[0]
+
+win_rate = (wins / (wins + losses) * 100) if (wins + losses) > 0 else 0
+
+print(f'Trades: {total_trades} | P/L: \${total_pl:.2f} | WR: {win_rate:.1f}%')
+db.close()
+"
+```
+
+### Market Conditions (check for management decisions)
+```bash
+# Fear & Greed Index
+curl -s "https://api.alternative.me/fng/" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)['data'][0]
+print(f\"Fear & Greed: {data['value']} ({data['value_classification']})\")"
+
+# ETH 1h price action
+curl -s "https://api.coinbase.com/api/v3/brokerage/products/ETH-USD/candles?granularity=ONE_HOUR" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+if 'candles' in data and len(data['candles']) > 0:
+    recent = data['candles'][0]
+    print(f\"ETH: \${recent['close']} | High: \${recent['high']} | Low: \${recent['low']}\")"
+```
+
+### Active Management Decisions
+**Keep running if:**
+- Win rate >70%
+- Profitable (total P/L positive)
+- Fear & Greed <30 (extreme fear = buy opportunity)
+- Reasonable volatility (not dead flat)
+
+**Consider shutting down if:**
+- Win rate drops below 60%
+- Losing money (total P/L negative)
+- Extreme greed >90 (top signal)
+- Very low volume / spreads disappearing
+
+**Alert Matthew if:**
 - Bot process dies
 - Loss >$500 total
-- Matthew asks for status
+- Win rate drops below 50%
+- Major decision to stop/restart
+
+### DO NOT USE check_balance.py
+- Has a bug (doesn't price ADA correctly)
+- Use live_trading.db queries instead
 
 ---
 
