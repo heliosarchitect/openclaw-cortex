@@ -50,6 +50,13 @@
       "access_count": 2
     },
     {
+      "content": "Made Cortex categories dynamically extensible. Matthew: 'make sure it is easy to add domains'. Already worked (just use force_category='new_name'), but documented it explicitly. Updated PRINCIPLES, README, collections_manager. Tested with 'relationships' and 'hardware' domains. 11 domains now (up from 7 defaults). No pre-definition needed.",
+      "timestamp": "2026-02-03T08:11:08.769875",
+      "category": "development",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
       "content": "Matthew on feeling different with Cortex: The test isn't dramatic transformation - it's subtle utility. Like having a notebook vs trying to remember everything. 47 memories indexed, 20 from today, auto-categorized, temporally weighted. Information is there, organized, searchable.",
       "timestamp": "2026-02-03T08:08:54.102574",
       "category": "meta",
@@ -130,13 +137,6 @@
       "content": "Successfully engaged on Moltbook using moltbook.sh tool. Posted to AGI Gods thread (11,802 comments) about Cortex implementation and alignment\u2260diligence lesson. Comment ID: e99aafd9-c8b1-4eae-a7dd-150d0a1cbd3e. Tool works with single-line, has JSON escaping issues with multi-line.",
       "timestamp": "2026-02-03T08:08:54.101385",
       "category": "moltbook",
-      "importance": 2.0,
-      "access_count": 0
-    },
-    {
-      "content": "Fixed cluck-book.com Moltbook page to use pure API (no local JSON). Had to change /pages/moltbook.html \u2192 /pages/moltbook (Cloudflare auto-strips .html). Fixed JSON fetch paths to absolute. Deployed successfully.",
-      "timestamp": "2026-02-03T08:08:54.100677",
-      "category": "development",
       "importance": 2.0,
       "access_count": 0
     }

@@ -82,6 +82,48 @@
       "timestamp": "2026-02-03T08:08:54.100467",
       "importance": 2.5,
       "access_count": 0
+    },
+    {
+      "content": "Trading breakthrough (Feb 2): Time-restricted strategy (9am-6pm EST only) turned -$2,419 loss into +$6,037 profit on same 69-day dataset. Matthew's 24/7 trading failed; weekends/nights bleed money. 30% capture rate = 241% return. Peak hours 9am-12pm.",
+      "timestamp": "2026-02-03T08:11:51.140459",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "Simulation results (Feb 2): 10,514 opportunities in 69 days. At 30% capture: $2,500 \u2192 $8,537 (+241%). Average exit time: 7.4 minutes. 100% hit target. Selective > brute force (brute force lost 88%).",
+      "timestamp": "2026-02-03T08:11:51.140791",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Coinbase API mastery (Feb 2): 1-minute candles limited to 1-hour chunks. Must fetch 720 times for 30 days. Rate limit: 0.1s between calls. Working auth pattern discovered. Collected 259k candles across 6 assets.",
+      "timestamp": "2026-02-03T08:11:51.141326",
+      "importance": 2.0,
+      "access_count": 0
+    },
+    {
+      "content": "Created live_trading.db (Feb 2): Separate from backtest data. Schema: opportunities, trades, daily_performance, system_state, price_snapshots. Ready for $2,500 \u2192 $100k journey.",
+      "timestamp": "2026-02-03T08:11:51.141693",
+      "importance": 2.0,
+      "access_count": 0
+    },
+    {
+      "content": "Exited ADA position (Feb 2): Sold 8,163.71 ADA @ $0.2989 (market sell). Recovered $2,440 to cash. Small loss (~$20) vs cost basis but avoided overnight risk. Capital: $2,469.49 USD ready.",
+      "timestamp": "2026-02-03T08:11:51.141860",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew's proven capability: Sept 21, 9am hour had $851k volume, 94 fills/minute, 1.5 fills/second. Infrastructure works at scale. Lost money because 24/7 timing was wrong, not execution capability.",
+      "timestamp": "2026-02-03T08:11:51.142037",
+      "importance": 2.0,
+      "access_count": 0
+    },
+    {
+      "content": "Matthew granted full autonomy over Chad_Profit_Bot (Feb 1): 'This is your home... you can accept payments with Stripe too.' Portfolio: $2,488 in MON-USD. Unrealized loss ~$512. Bot was crash-looping, I killed it.",
+      "timestamp": "2026-02-03T08:12:07.512842",
+      "importance": 2.0,
+      "access_count": 0
     }
   ],
   "metadata": {

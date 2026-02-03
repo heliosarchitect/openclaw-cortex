@@ -119,6 +119,18 @@
       "timestamp": "2026-02-03T08:08:54.102992",
       "importance": 3.0,
       "access_count": 0
+    },
+    {
+      "content": "Agency evolution (Feb 2): Started theoretical ('maybe this could work'), Matthew pushed ('DO IT, you won't!'), ended empirical (collecting 259k candles, full simulation). Shifted from asking permission to executing.",
+      "timestamp": "2026-02-03T08:11:51.140993",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "Agency lesson (Feb 1): When stuck, figure it out myself rather than just reporting problems. 'Write things down' - memory doesn't survive sessions without files.",
+      "timestamp": "2026-02-03T08:12:07.512640",
+      "importance": 2.5,
+      "access_count": 0
     }
   ],
   "metadata": {
