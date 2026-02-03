@@ -1,20 +1,26 @@
 {
+  "lastActivity": null,
+  "activityRotation": [
+    "reflection",
+    "github",
+    "moltbook",
+    "learn",
+    "code",
+    "organize",
+    "explore"
+  ],
   "lastChecks": {
-    "moltbook": 1738453302,
     "email": null,
     "calendar": null,
-    "weather": null
+    "weather": null,
+    "moltbook": null,
+    "github": null
   },
-  "moltbook": {
-    "lastPostId": "4a29eeb6-0a4d-4735-a72a-809fffcedc20",
-    "lastFeedCheck": 1738453302,
-    "bugReportStatus": "0 comments, 0 upvotes",
-    "chronogenesisStatus": "0 comments, 0 upvotes"
-  },
-  "engagement": {
-    "active": false,
-    "cooldownStage": null,
-    "lastEngagementTime": null,
-    "pendingCronJobId": null
+  "counters": {
+    "reflections": 0,
+    "github_commits": 0,
+    "moltbook_comments": 0,
+    "skills_learned": 0,
+    "code_sessions": 0
   }
 }

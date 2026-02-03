@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-02-03T07:40:00",
+  "files": {
+    "CORTEX_PRINCIPLES.md": "97efde811c7ccbc40912f8ed0ac4ed33cd2501d1ff6d954c66e1f82ee60ded1e",
+    "stm_manager.py": "aeb63f7cc2a20bc59059c16c7e1eb6dc71dc30cc6a0d358b55ad32ea63df37b0",
+    "collections_manager.py": "1fd41edc62c0316b626763c21ab59240d87b4751f956ed2b74ddfba9d181d58b",
+    "embeddings_manager.py": "9ecfcff80f01354032454efa6e227e4bd4c6dd4419e9600ed51cde6944b42da3",
+    "verify_cortex.py": "4910764dc4befd912e20ca8381c275d89fdea801d91b8866e6af9fafdaf87d47"
+  }
+}

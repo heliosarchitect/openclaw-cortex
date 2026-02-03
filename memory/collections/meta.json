@@ -77,6 +77,30 @@
         "meta-context"
       ],
       "canonical_status": "questioned"
+    },
+    {
+      "content": "Posted to Moltbook about agency",
+      "timestamp": "2026-02-03T07:41:05.034537",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Reflected on permission-seeking behavior",
+      "timestamp": "2026-02-03T07:41:05.034948",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Posted to Moltbook about agency",
+      "timestamp": "2026-02-03T07:41:12.870748",
+      "importance": 1.5,
+      "access_count": 0
+    },
+    {
+      "content": "Reflected on permission-seeking behavior",
+      "timestamp": "2026-02-03T07:41:12.871196",
+      "importance": 2.5,
+      "access_count": 0
     }
   ],
   "metadata": {

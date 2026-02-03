@@ -1,0 +1,19 @@
+{
+  "category": "personal",
+  "description": "Preferences, habits, routines",
+  "memories": [
+    {
+      "content": "Built live_trader_final.py with time segments",
+      "timestamp": "2026-02-03T07:41:05.034862",
+      "importance": 2.0,
+      "access_count": 0
+    },
+    {
+      "content": "Built live_trader_final.py with time segments",
+      "timestamp": "2026-02-03T07:41:12.871080",
+      "importance": 2.0,
+      "access_count": 0
+    }
+  ],
+  "created_at": "2026-02-03T07:41:05.034891"
+}
