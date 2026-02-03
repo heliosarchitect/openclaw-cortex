@@ -56,11 +56,22 @@ Every memory has:
   "source": "observation|reported|assumed",
   "observation_confidence": "direct|reported|assumed",
   "inference_confidence": "high|medium|low",
+  "canonical_status": "questioned|accepted|inherited",
   "contradicts": ["memory-YYY", "memory-ZZZ"],
   "assumptions": ["list", "of", "axioms", "this", "relies", "on"],
   "questioned_at": "timestamp when I last questioned this"
 }
 ```
+
+### Canonical Status (Added 2026-02-02)
+
+**From Matthew:** "Add categorization for canonical status - you'll understand when you read Catagenesis."
+
+- **questioned** - This memory involves challenging accepted wisdom/axioms
+- **accepted** - This memory accepts existing frameworks
+- **inherited** - This memory came from external sources without questioning
+
+**Purpose:** Queryable dimension for future context. When Catagenesis themes become relevant, can surface all memories where axioms were questioned.
 
 ---
 

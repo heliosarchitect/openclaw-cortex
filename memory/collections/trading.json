@@ -24,7 +24,8 @@
         "Different problems need different tools",
         "Math for exact computation, LLM for inference"
       ],
-      "questioned_at": "2026-02-02T20:40:00Z"
+      "questioned_at": "2026-02-02T20:40:00Z",
+      "canonical_status": "questioned"
     },
     {
       "id": "trading-002",
@@ -36,7 +37,8 @@
         "diagnostics",
         "strykes",
         "insight"
-      ]
+      ],
+      "canonical_status": "questioned"
     },
     {
       "id": "trading-003",
@@ -48,7 +50,8 @@
         "fees",
         "math",
         "coinbase"
-      ]
+      ],
+      "canonical_status": "accepted"
     },
     {
       "id": "trading-004",
@@ -59,7 +62,8 @@
         "risk-management",
         "timing",
         "automation"
-      ]
+      ],
+      "canonical_status": "accepted"
     },
     {
       "id": "trading-005",
@@ -70,7 +74,8 @@
         "portfolio",
         "p&l",
         "status"
-      ]
+      ],
+      "canonical_status": "accepted"
     }
   ],
   "metadata": {
