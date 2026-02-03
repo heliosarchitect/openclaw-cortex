@@ -157,19 +157,48 @@ The pattern: Get excited about architecture → Skip boring verification → Get
 
 ## Maintenance
 
-### Daily
-- STM auto-expires old items (handled automatically)
-- Collections auto-trim to 100 items per category
+### Automated Maintenance (Cron Jobs)
 
-### Weekly
-- Review high-access memories for promotion to MEMORY.md
-- Clean up duplicate entries across collections
-- Verify integrity hashes
+**Nightly (2:00 AM EST):**
+- Cleanup expired STM items (7+ days → daily logs + collections)
+- Sync STM → embeddings database
+- Sync collections → embeddings database
+- Duration: ~5-10 seconds
+- Cron: `0 2 * * *` (every day)
 
-### Monthly
-- Archive old daily logs (compress logs older than 90 days)
-- Rebuild embeddings database from scratch
-- Review categorization accuracy
+**Weekly (2:00 AM EST Sunday):**
+- All nightly tasks
+- Review high-access memories (suggest promotions to MEMORY.md)
+- Trim oversized collections (keep top 100 by importance)
+- Detect patterns and category distribution
+- Temporal analysis (last 7 days)
+- Duration: ~30 seconds
+- Cron: `0 2 * * 0` (every Sunday)
+
+### Manual Maintenance
+
+**As Needed:**
+- Promote frequently-accessed important memories to MEMORY.md
+- Verify integrity hashes before system modifications
+- Archive old daily logs (compress >90 days)
+- Review and update categorization rules
+
+**Why 2:00 AM?**
+- Least active time (minimal disruption)
+- Heartbeat still runs but engagement is low
+- Fresh embeddings ready for next day's activity
+- Logs preserved for review
+
+### Running Maintenance Manually
+
+```bash
+# Nightly sync
+cd ~/.openclaw/workspace/memory
+python3 maintenance.py nightly
+
+# Weekly deep review
+python3 maintenance.py weekly
+```
 
 ## Version History
 

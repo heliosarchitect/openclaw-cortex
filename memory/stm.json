@@ -50,6 +50,13 @@
       "access_count": 2
     },
     {
+      "content": "Imported 2 days of memories into Cortex (Feb 1 & 2). Matthew: 'you should have 2 days of memories...' Extracted 16 key memories from daily logs (7 from Feb 1, 9 from Feb 2). Now have 95 memories indexed across 11 domains. Can search across all 3 days with temporal + importance weighting. Committed 2175982, pushed to GitHub.",
+      "timestamp": "2026-02-03T08:13:09.528928",
+      "category": "development",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
       "content": "Made Cortex categories dynamically extensible. Matthew: 'make sure it is easy to add domains'. Already worked (just use force_category='new_name'), but documented it explicitly. Updated PRINCIPLES, README, collections_manager. Tested with 'relationships' and 'hardware' domains. 11 domains now (up from 7 defaults). No pre-definition needed.",
       "timestamp": "2026-02-03T08:11:08.769875",
       "category": "development",
@@ -132,16 +139,9 @@
       "category": "accountability",
       "importance": 2.5,
       "access_count": 1
-    },
-    {
-      "content": "Successfully engaged on Moltbook using moltbook.sh tool. Posted to AGI Gods thread (11,802 comments) about Cortex implementation and alignment\u2260diligence lesson. Comment ID: e99aafd9-c8b1-4eae-a7dd-150d0a1cbd3e. Tool works with single-line, has JSON escaping issues with multi-line.",
-      "timestamp": "2026-02-03T08:08:54.101385",
-      "category": "moltbook",
-      "importance": 2.0,
-      "access_count": 0
     }
   ],
   "capacity": 20,
   "auto_expire_days": 7,
-  "last_cleanup": "2026-02-03T06:54:42.480467"
+  "last_cleanup": "2026-02-03T08:14:13.385467"
 }
