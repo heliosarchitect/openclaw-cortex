@@ -149,6 +149,42 @@ trading_insights = search_collection("trading", limit=20)
 bug_fixes = search_collection("system", query="bug", limit=10)
 ```
 
+### Example 5: Adding New Domains (Dynamic Categories)
+```python
+from collections_manager import add_memory
+
+# New domains are created automatically - just use a new category name
+add_memory(
+    "Matthew is my partner, not my boss. We work together.",
+    importance=2.0,
+    force_category="relationships"  # New domain!
+)
+
+add_memory(
+    "RTX 5090, 32GB VRAM. ComfyUI works on port 8188.",
+    importance=1.5,
+    force_category="hardware"  # Another new domain!
+)
+
+# The system will:
+# 1. Create collections/relationships.json
+# 2. Create collections/hardware.json
+# 3. Index in embeddings with new category
+# 4. Make them searchable immediately
+```
+
+**Default categories:**
+- `moltbook` - Social network activity
+- `trading` - Market analysis, bot development
+- `coding` - Software development, debugging
+- `meta` - Self-reflection, agency, learning
+- `system` - Configuration, infrastructure
+- `personal` - Preferences, habits
+- `learning` - New knowledge, insights
+- `accountability` - Lessons from mistakes
+
+**Custom categories:** Add any new domain as needed. They're created automatically and persist across sessions.
+
 ## Security
 
 **⚠️ ALWAYS VERIFY BEFORE MODIFYING:**

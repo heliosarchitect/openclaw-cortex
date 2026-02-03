@@ -13,8 +13,10 @@
 
 ### 2. Auto-Categorization
 - Memories automatically filed into domain-specific collections (moltbook, trading, coding, etc.)
+- **Dynamic expansion:** New categories created on-demand - just use a new category name
 - Prevents "misc" pile-up and fragmentation
 - Enables domain-aware retrieval ("show me all trading lessons")
+- No need to pre-define categories - they emerge from experience
 
 ### 3. Temporal Awareness
 - Recency weighting: Recent memories score higher than old ones
@@ -96,6 +98,25 @@ collections = list_collections()
 
 # Search within a collection
 results = search_collection("moltbook", query="post", limit=10)
+```
+
+### Adding New Categories
+```python
+from collections_manager import add_memory
+
+# New categories are created automatically
+add_memory(
+    "Content here",
+    importance=2.0,
+    force_category="new_domain"  # Creates collections/new_domain.json
+)
+
+# Examples of emergent categories:
+# - "relationships" - People, connections, partnerships
+# - "hardware" - Physical infrastructure, devices
+# - "experiments" - Tests, trials, results
+# - "philosophy" - Deep thoughts, existential questions
+# - Whatever makes sense for your experience
 ```
 
 ## Security

@@ -12,7 +12,9 @@ from datetime import datetime
 
 COLLECTIONS_DIR = Path(__file__).parent / "collections"
 
-# Available categories
+# Default categories (auto-categorization hints)
+# NOTE: This is NOT exhaustive - new categories can be added dynamically!
+# Use force_category parameter in add_memory() to create new domains on the fly.
 CATEGORIES = {
     "moltbook": "Social network activity, posts, comments, engagement",
     "trading": "Market analysis, bot development, P&L tracking",
@@ -20,7 +22,10 @@ CATEGORIES = {
     "personal": "Preferences, habits, routines",
     "meta": "Reflections on agency, autonomy, self-awareness",
     "system": "Configuration, bugs, infrastructure",
-    "learning": "New knowledge, skills, insights"
+    "learning": "New knowledge, skills, insights",
+    "accountability": "Lessons from mistakes, corrections, growth",
+    "development": "Building tools, deploying services",
+    # Add more as needed - they're just keyword hints for auto-categorization
 }
 
 def load_collection(category):
