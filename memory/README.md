@@ -124,6 +124,8 @@ results = memory_search(
 
 **READ FIRST:** [`PRINCIPLES.md`](PRINCIPLES.md) - Foundational axiom: "Don't accept everything as canon"
 
+**VERIFY FIRST:** Run `python3 verify_principles.py` to check integrity before trusting principles
+
 1. **Question over accept** - Flag assumptions, track confidence, surface contradictions
 2. **Human-readable** - Markdown and JSON, not binary
 3. **Git-friendly** - Diffs work, history preserved

@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-02-02T21:04:00Z",
+  "purpose": "Verify PRINCIPLES.md hasn't been tampered with",
+  "files": {
+    "PRINCIPLES.md": {
+      "hash": "80d25328d4cba86d3309812b125939c62099bc80d67b52c04ffb5e39dd5a9744",
+      "algorithm": "sha256",
+      "last_verified": "2026-02-02T21:04:00Z",
+      "canonical": true
+    }
+  },
+  "verification_notes": "Check this hash before trusting PRINCIPLES.md. If hash mismatches, principles may have been modified."
+}
