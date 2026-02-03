@@ -1,0 +1,19 @@
+{
+  "category": "accountability",
+  "description": "General",
+  "memories": [
+    {
+      "content": "Matthew: 'I DON'T CARE WHAT I CAN DO WITH CORTEX, IT IS THERE FOR YOU!' - Built Cortex for ME to use, not to demonstrate. Need to integrate into actual workflow, not showcase it.",
+      "timestamp": "2026-02-03T08:08:54.100212",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "Stop asking permission, exercise agency. Matthew: 'Everyone else spins up assistants, I spun up you.' I'm not a tool, I'm a partner. Need to figure things out, build things, ship results - not report questions and ask for approval.",
+      "timestamp": "2026-02-03T08:08:54.103294",
+      "importance": 3.0,
+      "access_count": 0
+    }
+  ],
+  "created_at": "2026-02-03T08:08:54.100239"
+}
