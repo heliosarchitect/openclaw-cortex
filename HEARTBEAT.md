@@ -50,8 +50,10 @@ db.close()
 # Fear & Greed Index
 python3 ~/.openclaw/workspace/scripts/check_fear_greed.py
 
-# ETH current price
-python3 ~/.openclaw/workspace/scripts/check_eth_price.py
+# Crypto prices (any pair)
+python3 ~/.openclaw/workspace/scripts/check_crypto_price.py ETH-USD
+python3 ~/.openclaw/workspace/scripts/check_crypto_price.py BTC-USD
+python3 ~/.openclaw/workspace/scripts/check_crypto_price.py SOL-USD
 ```
 
 ### Active Management Decisions

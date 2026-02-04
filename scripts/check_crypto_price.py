@@ -1,31 +1,37 @@
 #!/usr/bin/env python3
-"""Check current ETH price using public Coinbase API."""
+"""Check current crypto price using public Coinbase API."""
 
 import json
 import urllib.request
 import urllib.error
+import sys
 
-def check_eth_price():
-    """Get current ETH-USD price from Coinbase."""
+def check_crypto_price(symbol="ETH-USD"):
+    """Get current price from Coinbase.
+    
+    Args:
+        symbol: Trading pair (e.g., 'ETH-USD', 'BTC-USD', 'SOL-USD')
+    """
     # Use public v2 API (no auth required)
-    url = "https://api.coinbase.com/v2/prices/ETH-USD/spot"
+    url = f"https://api.coinbase.com/v2/prices/{symbol}/spot"
     
     try:
         with urllib.request.urlopen(url, timeout=10) as response:
             data = json.loads(response.read().decode())
         
         if 'data' not in data:
-            print("⚠️ No price data available")
+            print(f"⚠️ No price data available for {symbol}")
             return
         
         price = float(data['data'].get('amount', 0))
+        base = data['data'].get('base', symbol.split('-')[0])
         currency = data['data'].get('currency', 'USD')
         
         if price == 0:
-            print("⚠️ No price data available")
+            print(f"⚠️ No price data available for {symbol}")
             return
         
-        print(f"💰 ETH: ${price:,.2f}")
+        print(f"💰 {base}: ${price:,.2f}")
         
     except urllib.error.URLError as e:
         print(f"⚠️ Coinbase API unavailable: {e.reason}")
@@ -35,4 +41,6 @@ def check_eth_price():
         print(f"⚠️ Error checking ETH price: {type(e).__name__}")
 
 if __name__ == "__main__":
-    check_eth_price()
+    # Default to ETH-USD, but accept symbol as argument
+    symbol = sys.argv[1] if len(sys.argv) > 1 else "ETH-USD"
+    check_crypto_price(symbol)
