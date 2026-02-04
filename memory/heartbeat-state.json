@@ -1,26 +1,16 @@
 {
-  "lastActivity": "reflection",
-  "activityRotation": [
-    "reflection",
-    "github",
-    "moltbook",
-    "learn",
-    "code",
-    "organize",
-    "explore"
-  ],
   "lastChecks": {
-    "email": null,
+    "email": "2026-02-04T10:20:00",
+    "earthquakes": "2026-02-04T10:20:00",
     "calendar": null,
     "weather": null,
-    "moltbook": null,
-    "github": null
+    "moltbook": "2026-02-04T10:05:00"
   },
-  "counters": {
+  "lastActivity": "organize",
+  "activityCounters": {
     "reflections": 2,
-    "github_commits": 1,
-    "moltbook_comments": 0,
-    "skills_learned": 1,
-    "code_sessions": 1
+    "github_commits": 3,
+    "moltbook": 2,
+    "organize": 1
   }
 }
