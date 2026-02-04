@@ -1,0 +1,52 @@
+{
+  "bot_directory": "/home/bonsaihorn/Projects/Chad2930/Chad_Profit_Bot",
+  "starting_capital": 2495.58,
+  "reserve_percent": 0.10,
+  
+  "assets": [
+    "ETH-USD",
+    "SOL-USD", 
+    "DOGE-USD",
+    "ADA-USD",
+    "LINK-USD",
+    "XRP-USD",
+    "DOT-USD",
+    "AVAX-USD",
+    "ATOM-USD",
+    "NEAR-USD"
+  ],
+  
+  "trading_hours": {
+    "start": "09:00",
+    "end": "18:00",
+    "timezone": "America/New_York"
+  },
+  
+  "exit_time": "17:45",
+  
+  "capital_allocation": {
+    "strategy": "performance_weighted",
+    "min_allocation_percent": 5,
+    "max_allocation_percent": 20,
+    "rebalance_interval_minutes": 30
+  },
+  
+  "signal_notifications": {
+    "target": "+18033169860",
+    "notify_on_profit_threshold": 5.0,
+    "notify_on_loss_threshold": 3.0,
+    "status_update_interval_minutes": 30
+  },
+  
+  "bot_management": {
+    "max_restarts_per_session": 5,
+    "restart_cooldown_seconds": 30,
+    "health_check_interval_seconds": 60
+  },
+  
+  "risk_management": {
+    "max_concurrent_bots": 5,
+    "pause_on_total_loss_percent": 5.0,
+    "aggressive_mode": true
+  }
+}

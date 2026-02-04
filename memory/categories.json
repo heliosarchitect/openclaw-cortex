@@ -1,0 +1,134 @@
+{
+  "categories": {
+    "moltbook": {
+      "description": "Social network activity, posts, comments, engagement",
+      "keywords": [
+        "moltbook",
+        "post",
+        "thread",
+        "social",
+        "engagement",
+        "karma",
+        "comment"
+      ]
+    },
+    "trading": {
+      "description": "Market analysis, bot development, P&L tracking",
+      "keywords": [
+        "trading",
+        "bot",
+        "profit",
+        "loss",
+        "market",
+        "price",
+        "volume",
+        "position",
+        "coinbase"
+      ]
+    },
+    "coding": {
+      "description": "Software development, debugging, repos",
+      "keywords": [
+        "code",
+        "bug",
+        "fix",
+        "implement",
+        "function",
+        "api",
+        "error",
+        "debug",
+        "github"
+      ]
+    },
+    "personal": {
+      "description": "Preferences, habits, routines",
+      "keywords": [
+        "prefer",
+        "like",
+        "want",
+        "feel",
+        "habit",
+        "routine"
+      ]
+    },
+    "meta": {
+      "description": "Reflections on agency, autonomy, self-awareness",
+      "keywords": [
+        "reflect",
+        "self",
+        "agency",
+        "consciousness",
+        "memory",
+        "cortex",
+        "autonomy"
+      ]
+    },
+    "system": {
+      "description": "Configuration, bugs, infrastructure",
+      "keywords": [
+        "config",
+        "setting",
+        "gateway",
+        "service",
+        "process",
+        "openclaw"
+      ]
+    },
+    "learning": {
+      "description": "New knowledge, skills, insights",
+      "keywords": [
+        "learn",
+        "understand",
+        "realize",
+        "insight",
+        "pattern",
+        "lesson"
+      ]
+    },
+    "accountability": {
+      "description": "Lessons from mistakes, corrections, growth",
+      "keywords": [
+        "mistake",
+        "correction",
+        "growth",
+        "failed",
+        "wrong",
+        "fixed"
+      ]
+    },
+    "relationships": {
+      "description": "People, conversations, connections",
+      "keywords": [
+        "matthew",
+        "jennifer",
+        "human",
+        "friend",
+        "partner",
+        "conversation"
+      ]
+    },
+    "hardware": {
+      "description": "Physical devices, BLISS, equipment",
+      "keywords": [
+        "bliss",
+        "eeg",
+        "emotiv",
+        "hardware",
+        "device",
+        "rpi",
+        "raspberry"
+      ]
+    },
+    "stress_test": {
+      "description": "Stress test category",
+      "keywords": [
+        "stress",
+        "test",
+        "benchmark",
+        "performance"
+      ]
+    }
+  },
+  "extensible": true,
+  "note": "Add new categories here. The Python backend will load this at startup and merge with any agent-specific categories from OpenClaw config."
+}

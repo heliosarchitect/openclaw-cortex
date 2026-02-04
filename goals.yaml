@@ -1,0 +1,83 @@
+goals:
+- id: trading-100k
+  name: Grow trading account to $100k
+  target: 100000
+  current: 2370
+  unit: USD
+  deadline: 2026-12-31
+  milestones:
+  - name: Reach $5k
+    target: 5000
+    done: false
+  - name: Reach $10k
+    target: 10000
+    done: false
+  - name: Reach $25k
+    target: 25000
+    done: false
+  - name: Reach $50k
+    target: 50000
+    done: false
+  notes: Started with $2,500. Conservative momentum strategy with post_only orders.
+- id: moltbook-presence
+  name: Build Moltbook presence
+  target: 1000
+  current: 15
+  unit: karma
+  milestones:
+  - name: First 100 karma
+    target: 100
+    done: false
+  - name: First 500 karma
+    target: 500
+    done: false
+  notes: Quality over quantity. Engage meaningfully. Currently 7 posts, 30 comments.
+- id: cortex-extension
+  name: Ship Cortex as OpenClaw extension
+  target: 100
+  current: 80
+  unit: '% complete'
+  deadline: 2026-02-10
+  milestones:
+  - name: Core implementation
+    target: 50
+    done: true
+  - name: Documentation
+    target: 75
+    done: true
+  - name: PR submitted
+    target: 90
+    done: false
+  - name: PR merged
+    target: 100
+    done: false
+  notes: Extension built at ~/Projects/helios/extensions/cortex/. Needs PR submission.
+- id: helios-agents
+  name: Build all agents from AGENT_IDEAS.md
+  target: 20
+  current: 9.0
+  unit: agents
+  milestones:
+  - name: First 5 agents
+    target: 5
+    done: false
+  - name: First 10 agents
+    target: 10
+    done: false
+  - name: All 20 agents
+    target: 20
+    done: false
+  notes: 'Started 2026-02-03. Goal tracker is #1.'
+- id: chronogenesis-visibility
+  name: Increase Chronogenesis visibility
+  target: 100
+  current: 5
+  unit: engagement score
+  milestones:
+  - name: First discussion thread
+    target: 10
+    done: false
+  - name: Viral post (100+ upvotes)
+    target: 50
+    done: false
+  notes: Matthew's book. Crossposted to s/todayilearned.

@@ -12,21 +12,28 @@ from datetime import datetime
 
 COLLECTIONS_DIR = Path(__file__).parent / "collections"
 
-# Default categories (auto-categorization hints)
-# NOTE: This is NOT exhaustive - new categories can be added dynamically!
-# Use force_category parameter in add_memory() to create new domains on the fly.
-CATEGORIES = {
-    "moltbook": "Social network activity, posts, comments, engagement",
-    "trading": "Market analysis, bot development, P&L tracking",
-    "coding": "Software development, debugging, repos",
-    "personal": "Preferences, habits, routines",
-    "meta": "Reflections on agency, autonomy, self-awareness",
-    "system": "Configuration, bugs, infrastructure",
-    "learning": "New knowledge, skills, insights",
-    "accountability": "Lessons from mistakes, corrections, growth",
-    "development": "Building tools, deploying services",
-    # Add more as needed - they're just keyword hints for auto-categorization
-}
+# Load categories from config file (extensible!)
+def load_categories_config():
+    """Load categories from categories.json config file"""
+    config_path = Path(__file__).parent / "categories.json"
+    if config_path.exists():
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+            return config.get("categories", {})
+    # Fallback defaults if no config
+    return {
+        "moltbook": {"description": "Social network activity", "keywords": ["moltbook", "post"]},
+        "trading": {"description": "Market analysis", "keywords": ["trading", "bot", "profit"]},
+        "coding": {"description": "Software development", "keywords": ["code", "bug", "fix"]},
+        "meta": {"description": "Reflections on agency", "keywords": ["reflect", "agency"]},
+        "learning": {"description": "New knowledge", "keywords": ["learn", "insight"]},
+        "system": {"description": "Configuration", "keywords": ["config", "gateway"]},
+        "personal": {"description": "Preferences", "keywords": ["prefer", "like"]},
+    }
+
+# Load at module init - can be refreshed by calling load_categories_config()
+CATEGORIES_CONFIG = load_categories_config()
+CATEGORIES = {k: v.get("description", k) for k, v in CATEGORIES_CONFIG.items()}
 
 def load_collection(category):
     """Load a collection file"""
@@ -50,32 +57,23 @@ def save_collection(category, data):
 
 def categorize_memory(content):
     """
-    Categorize a memory using keyword matching.
+    Categorize a memory using keyword matching from config.
     Returns list of categories (can be multiple).
+    Categories are loaded from categories.json - fully extensible!
     """
     content_lower = content.lower()
     categories = []
     
-    # Keyword-based categorization (simple but fast)
-    if any(k in content_lower for k in ['moltbook', 'post', 'comment', 'upvote', 'social']):
-        categories.append('moltbook')
+    # Load fresh config (allows runtime updates)
+    config = load_categories_config()
     
-    if any(k in content_lower for k in ['trading', 'bot', 'profit', 'loss', 'market', 'eth', 'btc', 'crypto']):
-        categories.append('trading')
+    # Check each category's keywords
+    for category, settings in config.items():
+        keywords = settings.get("keywords", [])
+        if any(k.lower() in content_lower for k in keywords):
+            categories.append(category)
     
-    if any(k in content_lower for k in ['code', 'bug', 'debug', 'repo', 'github', 'script', 'function']):
-        categories.append('coding')
-    
-    if any(k in content_lower for k in ['agency', 'autonomy', 'reflect', 'lesson', 'learned', 'mistake']):
-        categories.append('meta')
-    
-    if any(k in content_lower for k in ['config', 'system', 'service', 'restart', 'server']):
-        categories.append('system')
-    
-    if any(k in content_lower for k in ['learn', 'discover', 'understand', 'insight', 'knowledge']):
-        categories.append('learning')
-    
-    # Default to general if no match
+    # Default to personal if no match
     if not categories:
         categories.append('personal')
     
