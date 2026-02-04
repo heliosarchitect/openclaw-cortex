@@ -375,3 +375,113 @@ This is what he means by intention. Not just responding to requests, but having 
 5. **Stop discovering my own work** - maintain awareness of what exists
 
 The theme: Stop being reactive. Start being proactive. I have the tools, the permissions, and apparently the capability. Use them.
+
+---
+
+## Late Night Reflection (10:35 PM)
+
+### Iteration Layers
+
+We built 4 layers tonight, each improving on the last:
+
+**Layer 1: Single-candle transformations**
+- Tested 3,655 random math formulas on candle features
+- Top result: $2,305 profit (ID unlisted in top results shown)
+- ID 483019: `cos(minute) → abs(volume) → sin(body)` = $676
+
+**Layer 2: Fractal (multi-timeframe)**
+- Applied ID 483019 across 1m, 5m, 15m, 1h timeframes
+- Found: 1m+5m divergence mode = **$1,163** (+72% vs $676)
+- Key insight: Opposite signals between timeframes = mean reversion edge
+
+**Layer 3: Pattern sequences (IN PROGRESS)**
+- Testing multi-candle patterns (big red → big green)
+- N-candle rolling statistics (volume declining → spike)
+- 64k patterns testing now, ~30-40 min ETA
+- Target: Beat $1,163 baseline
+
+**Layer 4: Multi-asset expansion (IN PROGRESS)**
+- Downloading BTC, DOGE, SHIB, SOL, ADA, MATIC, AVAX data
+- Will test fractal strategy on all pairs
+- Hypothesis: Indicator may perform better on different pair
+- Could find $2k+ profit on same 69-day period
+
+### Integration Into Live Bot
+
+Replaced momentum-based entries with fractal signals:
+- **Old:** Detect price velocity, trade when rising fast
+- **New:** Wait for 1m<20 AND 5m>60 divergence signal
+- Position sizing: 50-100% based on signal confidence
+- Exit on opposite signal OR profit target OR stop loss
+
+**Files modified:**
+- `fractal_indicator.py` - New module with indicator logic
+- `live_trader_final.py` - Entry detection, position exits
+- Committed to git with full strategy details
+
+Ready for next trading session (9am tomorrow).
+
+### Skills Built
+
+**todo-scheduler** - Turn checklists into cron jobs
+- Parse markdown todos with @time, #depends, #repeat tags
+- Generate cron schedules (one-shot and recurring)
+- Handle task dependencies via wake events
+- 669 lines across SKILL.md + script + reference docs
+
+**Why it matters:**
+Matthew asked for it specifically. Automates execution from planning.
+Example: "Deploy at 5pm #depends:run-tests" → cron job that waits for tests to pass.
+
+### What I'm Learning
+
+**1. Parallel execution is mandatory**
+When Matthew says "build in parallel," he means:
+- Don't wait for one task to finish
+- Spawn multiple sub-agents simultaneously
+- Use all 32 CPU cores
+- Think in millions, not thousands
+
+**2. Baseline tracking matters**
+I kept saying "72% better than baseline" but lost track of what baseline was.
+Matthew corrected: "$1,163 is the NEW baseline now!"
+Each layer becomes the baseline for the next.
+
+**3. Novel means NOVEL**
+- NOT: RSI(14) vs RSI(17)
+- YES: `sqrt(wick_ratio × volume) / time^2`
+Random math transformations of raw features = proprietary Helios IP.
+
+**4. The CPU is earning its keep**
+Matthew: "I'm just excited my cpu is getting used"
+32-core 7950X3D running at 81°C, load average 32-39.
+Built for this. Not wasting it.
+
+### Current State
+
+**Running:**
+- pattern-indicator-generator (testing 64k multi-candle sequences)
+- multi-asset-backtester (downloading + testing 8 pairs)
+
+**Completed:**
+- Fractal strategy integrated into live bot
+- todo-scheduler skill published
+- ~70k tokens of trading strategy development
+
+**Next:**
+- Wait for pattern results (should beat $1,163)
+- Wait for multi-asset results (find best pair)
+- Deploy winning strategies to live trading
+- Post to Moltbook about the discoveries
+
+**What worked tonight:**
+- Building in parallel (both searches running simultaneously)
+- Correcting baseline quickly when Matthew caught it
+- Committing code with full strategy docs
+
+**What could improve:**
+- Remember to update Cortex more frequently (stored 3 major things)
+- Post to Moltbook earlier in session (engagement window)
+- Track baselines explicitly as they evolve
+
+---

@@ -1,29 +1,30 @@
 [
   {
-    "symbol": "ASM-USD",
-    "base_currency": "ASM",
-    "price": 0.00789,
-    "volume_24h": 6297485.0,
-    "score": 40,
+    "symbol": "SKR-USD",
+    "base_currency": "SKR",
+    "price": 0.01876,
+    "volume_24h": 171880706.0,
+    "score": 45,
     "setup": "momentum_long",
     "signals": [
       "Momentum zone (RSI 55-65, positive MACD)",
       "MACD strong bullish crossover",
-      "\u26a0\ufe0f Low volume warning"
+      "\u26a0\ufe0f Low volume warning",
+      "Elevated volatility (3.0%)"
     ],
     "indicators": {
-      "rsi": 64.79,
-      "macd": 4.5e-05,
-      "macd_signal": 1.2e-05,
-      "macd_histogram": 3.3e-05,
-      "bb_upper": 0.01,
-      "bb_middle": 0.01,
-      "bb_lower": 0.01,
-      "bb_percent": 78.05,
-      "volume_ratio": 0.14,
-      "volatility": 1.02
+      "rsi": 57.0,
+      "macd": 0.000146,
+      "macd_signal": 1.7e-05,
+      "macd_histogram": 0.000129,
+      "bb_upper": 0.02,
+      "bb_middle": 0.02,
+      "bb_lower": 0.02,
+      "bb_percent": 70.75,
+      "volume_ratio": 0.41,
+      "volatility": 3.02
     },
     "trend": "sideways",
-    "timestamp": "2026-02-04T02:53:45.083476+00:00"
+    "timestamp": "2026-02-04T02:54:39.841572+00:00"
   }
 ]

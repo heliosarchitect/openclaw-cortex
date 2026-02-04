@@ -1,0 +1,16 @@
+[22:30:35] ================================================================================
+[22:30:35] MULTI-ASSET HELIOS INDICATOR BACKTESTER
+[22:30:35] ================================================================================
+[22:30:35] 
+📊 Phase 1: Initialize Database
+[22:30:35] 
+📥 Phase 2: Download 30 days of 1-minute candles
+[22:30:35] Downloading BTC-USD...
+[22:31:54]   ✅ BTC-USD: 43199 candles
+[22:31:55] Downloading ETH-USD...
+[22:33:15]   ✅ ETH-USD: 43199 candles
+[22:33:16] Downloading DOGE-USD...
+[22:34:36]   ✅ DOGE-USD: 42756 candles
+[22:34:37] Downloading SHIB-USD...
+[22:35:57]   ✅ SHIB-USD: 28785 candles
+[22:35:58] Downloading SOL-USD...
