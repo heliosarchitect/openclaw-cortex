@@ -25,9 +25,10 @@ def log(msg):
     sys.stdout.flush()
 
 def check_active_searches():
-    """Check if any sub-agents are still running"""
+    """Check if any searches are still running"""
+    # Check for running Python processes doing pattern searches
     result = subprocess.run(
-        ["openclaw", "sessions", "list", "--json"],
+        ["ps", "aux"],
         capture_output=True,
         text=True
     )
@@ -35,13 +36,14 @@ def check_active_searches():
     if result.returncode != 0:
         return []
     
-    try:
-        data = json.loads(result.stdout)
-        subagents = [s for s in data.get('sessions', []) if 'subagent' in s.get('key', '')]
-        active = [s for s in subagents if s.get('updatedAt', 0) > (datetime.now().timestamp() - 600) * 1000]
-        return active
-    except:
-        return []
+    # Look for pattern search processes
+    active = []
+    for line in result.stdout.split('\n'):
+        if 'python' in line.lower() and any(x in line for x in ['pattern_search', 'million_scale', 'backtest']):
+            if 'grep' not in line:
+                active.append({'label': 'pattern-search', 'pid': line.split()[1]})
+    
+    return active
 
 def analyze_pattern_results():
     """Analyze latest pattern search results"""
@@ -108,6 +110,8 @@ Output to: iteration_{datetime.now().strftime('%Y%m%d_%H%M%S')}_results.csv
 
 def main():
     """Main iteration engine loop"""
+    global BASELINE_PROFIT
+    
     log("🔄 Strategy Iteration Engine starting...")
     
     # Check if searches are still running
@@ -145,7 +149,6 @@ def main():
         log(f"   But still below ${TARGET_PROFIT:.0f} target, continuing iteration...")
         
         # Update baseline
-        global BASELINE_PROFIT
         BASELINE_PROFIT = results['profit']
         
         # Spawn next iteration

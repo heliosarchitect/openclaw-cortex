@@ -203,12 +203,19 @@ def test_pattern_batch(args):
     # Load data
     conn = sqlite3.connect(db_path)
     df = pd.read_sql_query("""
-        SELECT timestamp, open, high, low, close, volume,
-               body, upper_wick, lower_wick, wick_ratio, body_pct, range
+        SELECT timestamp, open, high, low, close, volume
         FROM candles 
         ORDER BY timestamp
     """, conn)
     conn.close()
+    
+    # Calculate derived features
+    df['body'] = abs(df['close'] - df['open'])
+    df['upper_wick'] = df['high'] - df[['open', 'close']].max(axis=1)
+    df['lower_wick'] = df[['open', 'close']].min(axis=1) - df['low']
+    df['range'] = df['high'] - df['low']
+    df['wick_ratio'] = (df['upper_wick'] + df['lower_wick']) / (df['body'] + 1e-9)
+    df['body_pct'] = df['body'] / (df['range'] + 1e-9)
     
     results = []
     
