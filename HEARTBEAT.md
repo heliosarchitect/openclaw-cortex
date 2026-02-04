@@ -50,10 +50,14 @@ db.close()
 # Fear & Greed Index
 python3 ~/.openclaw/workspace/scripts/check_fear_greed.py
 
-# Crypto prices (any pair)
+# Quick overview - top 10 bot pairs
+python3 ~/.openclaw/workspace/scripts/check_all_pairs.py
+
+# All 50 bot pairs
+python3 ~/.openclaw/workspace/scripts/check_all_pairs.py 50
+
+# Single pair
 python3 ~/.openclaw/workspace/scripts/check_crypto_price.py ETH-USD
-python3 ~/.openclaw/workspace/scripts/check_crypto_price.py BTC-USD
-python3 ~/.openclaw/workspace/scripts/check_crypto_price.py SOL-USD
 ```
 
 ### Active Management Decisions
