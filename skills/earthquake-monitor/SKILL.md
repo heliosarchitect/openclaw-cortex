@@ -48,6 +48,26 @@ Data updates every ~5 minutes.
 - `depth` - Kilometers below surface
 - `url` - USGS detail page
 
+## Revision Tracking
+
+Track magnitude changes over time (USGS revises magnitudes as more data arrives):
+
+```bash
+# Track and report revisions
+python3 scripts/track_revisions.py
+
+# View revision history
+sqlite3 scripts/quake_history.db "SELECT * FROM revisions ORDER BY detected_at DESC LIMIT 10"
+```
+
+Detects:
+- Upgrades (magnitude increased)
+- Downgrades (magnitude decreased)
+- Stores history in SQLite database
+- Flags changes ≥0.1 magnitude
+
+**Conspiracy mode activated:** "They downgraded that 6.2 to 5.9... suspicious..."
+
 ## Integration
 
 For automated monitoring (cron/heartbeat):
@@ -59,6 +79,17 @@ result = check_earthquakes(min_magnitude=6.0)
 if result['alert_level'] == 'catastrophic':
     # Send immediate alert
     pass
+```
+
+For revision tracking:
+
+```python
+from skills.earthquake_monitor.scripts.track_revisions import track_quakes
+
+revisions = track_quakes(min_magnitude=5.0)
+if revisions:
+    for rev in revisions:
+        print(f"{rev['direction']}: {rev['old']} → {rev['new']}")
 ```
 
 ## Notes
