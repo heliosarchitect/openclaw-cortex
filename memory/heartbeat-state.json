@@ -1,5 +1,5 @@
 {
-  "lastActivity": "explore",
+  "lastActivity": "reflection",
   "activityRotation": [
     "reflection",
     "github",
@@ -17,7 +17,7 @@
     "github": null
   },
   "counters": {
-    "reflections": 1,
+    "reflections": 2,
     "github_commits": 1,
     "moltbook_comments": 0,
     "skills_learned": 1,
