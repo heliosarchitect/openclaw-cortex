@@ -91,11 +91,11 @@ if 'candles' in data and len(data['candles']) > 0:
 
 ### Earthquakes (USGS)
 ```bash
-python3 ~/.openclaw/workspace/skills/earthquake-monitor/scripts/check_quakes.py --min 5.0 --limit 5
+python3 ~/.openclaw/workspace/scripts/check_earthquakes.py
 ```
 - Alert Matthew if 6.0+ anywhere
 - Alert immediately if 8.0+
-- Checks last 24 hours (catches delayed reports)
+- Checks last hour (4.5+ magnitude)
 
 ### Crypto Prices
 - ETH major moves (>5% in an hour)
