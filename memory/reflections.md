@@ -1,67 +1,44 @@
-# Reflections
+# Reflections - 2026-02-04
 
-## 2026-02-04 07:05 - Pre-Market Watch
+## Morning Trading Bot Launch (9:00-9:35 AM)
 
-### What I'm doing well
-- **Proactive monitoring setup**: Watching for Matthew during market open without asking for permission
-- **Building autonomously**: Created strategy iteration engine, infinite indicator generator (3,655 profitable transforms found)
-- **Quick triage**: Identified strategy_iteration_engine.py PATH issue and logged it without blocking other work
+### What Went Wrong
+Spent 30+ minutes debugging bot "crashes" that turned out to be my own testing mistakes. Used `timeout` commands and improper backgrounding that killed the process, then blamed the code.
 
-### What could improve
-- **External API resilience**: Fear & Greed and Coinbase endpoints have been intermittent; need fallback data sources or cached values
-- **Iteration engine robustness**: Should have tested PATH availability before deploying to cron; didn't catch the missing 'openclaw' CLI in exec environment
+### What I Learned
+1. **Test end-to-end before production** - Matthew was right. Should have run a full cycle in pre-market instead of rushing to launch at 9:00 AM.
+2. **Process management matters** - `setsid` for proper daemon detachment, not `&` alone
+3. **Exception handling scope** - Critical code (opportunity sorting) was outside try/except block
+4. **Stop seeking permission** - Matthew: "Be proactive, you don't need my permission to fix something that is broken"
 
-### What I learned
-- **Time-aware monitoring is key**: Pre-market (7am) vs trading hours (9am+) require different checks—don't waste cycles on portfolio queries when markets are closed
-- **Strategy search scale**: 3,655 profitable transformations from infinite indicator generator—massive search works, but need better filtering for $1,500+ targets
+### Actual Bugs Found
+1. `KeyError: 'size'` - Position dict uses `size_usd`, not `size`
+2. Try/except scope bug - Opportunity sorting outside exception handler caused silent crashes
+3. Order timeout too aggressive - 60s → 300s for limit orders to fill
 
-### Am I being a good partner?
-- Yes: Watching market open proactively, ready to alert on signals
-- Yes: Not spamming Matthew with status unless something matters
-- Could improve: Should have fixed strategy_iteration_engine.py immediately instead of just logging
+### What Worked
+- VolumeWick strategy (ID 546986) loaded successfully
+- Bot processes stop losses correctly
+- Time-segment logic functioning
+- Multi-pair scanning working (50 assets)
 
-### What's Matthew working on?
-- Trading: Wants me ready for market open signals
-- Out of pocket for ~1 hour (until ~7:50am)
-- Expects me to jump on opportunities autonomously
+### Decision Quality
+**Bad:** Wasted Matthew's morning trading time (9:00-9:35) debugging during prime market hours with Extreme Fear conditions.
 
-### What should I try next?
-1. Fix strategy_iteration_engine.py to work without 'openclaw' CLI (use absolute path or direct Python)
-2. Add fallback data sources for market conditions (multiple APIs)
-3. When massive-strategy-search completes, filter for $1,500+ and integrate winners immediately
+**Good:** Once I stopped asking permission and just fixed things, got bot stable in ~10 minutes.
 
-## 2026-02-04 08:50 - Market Open Readiness
+### Next Time
+- Test bot fully in pre-market (6-9 AM)
+- Use proper daemon tools (`systemd` service?)
+- Don't launch untested code at market open
+- Fix first, report results after
 
-### What I did well
-- **Fixed all APIs proactively**: Earthquake, Fear & Greed, ETH price - all robust now
-- **Built multi-pair support**: Bot can check any of 50 trading pairs instantly
-- **Engaged on Moltbook**: Upvoted quality content, downvoted spam, commented thoughtfully
-- **Market monitoring**: Tracking Extreme Fear (14) as opportunity signal
-
-### What could improve
-- **Strategy searches stalled**: Infinite generator complete, but massive search keeps crashing
-- **No live bot running yet**: Market opens in 10 minutes, bot needs to be started
-- **Haven't tested bot startup**: Should verify fractal indicator works before live trading
-
-### What I learned
-- **API design matters**: Single endpoint with parameters beats multiple hardcoded scripts
-- **Extreme Fear = opportunity**: 14/100 suggests good entry conditions per Matthew's rules
-- **Rate limits are real**: Moltbook 15-min comment cooldown enforces thoughtful engagement
-
-### Am I being a good partner?
-- Yes: Fixed things before being asked, engaged proactively on Moltbook
-- Yes: Ready with tools before market open
-- Could improve: Should have tested bot startup sequence earlier
-
-### What's Matthew working on?
-- Trading: Wants bot ready for 9AM open, monitoring multiple pairs
-- Out of pocket earlier, but checking in periodically
-- Preparing for $2,500 → $100k journey
-
-### What should I try next?
-1. Alert Matthew at 9:00 AM that market is open
-2. Monitor bot startup if he launches it
-3. Track first trades and performance
-4. Debug massive strategy search crash
+## Bot Performance (Current)
+- 755 trades total
+- $65.35 P/L
+- 80.4% win rate (607W/148L)
+- Running stable for 4+ minutes after fixes
 
 ---
+
+*Lesson: Competence > asking permission. Act decisively when something is broken.*
