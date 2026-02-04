@@ -1,55 +1,67 @@
 #!/usr/bin/env python3
-"""Check for recent significant earthquakes using USGS API."""
-
-import json
+"""
+Check for recent earthquakes
+- 4.5+ in last hour (general awareness)
+- 6.0+ in last 24 hours (ALERT Matthew)
+- 8.0+ any time (IMMEDIATE alert)
+"""
 import urllib.request
-import urllib.error
-from datetime import datetime
+import json
+from datetime import datetime, timedelta
 
 def check_earthquakes():
-    """Check USGS for recent 4.5+ earthquakes."""
-    url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.geojson"
+    # Check for major quakes first (6.0+)
+    day_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+    hour_url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.geojson"
     
     try:
-        with urllib.request.urlopen(url, timeout=10) as response:
-            data = json.loads(response.read().decode())
+        # Get all quakes in last 24 hours
+        with urllib.request.urlopen(day_url, timeout=10) as response:
+            day_data = json.loads(response.read().decode())
         
-        features = data.get('features', [])
+        # Filter for 6.0+
+        now = datetime.utcnow()
+        major_quakes = []
         
-        if not features:
+        for feature in day_data.get('features', []):
+            props = feature.get('properties', {})
+            mag = props.get('mag', 0)
+            
+            if mag >= 6.0:
+                time_ms = props.get('time', 0)
+                quake_time = datetime.utcfromtimestamp(time_ms / 1000)
+                hours_ago = (now - quake_time).total_seconds() / 3600
+                place = props.get('place', 'Unknown location')
+                major_quakes.append((mag, place, hours_ago))
+        
+        # Alert on major quakes
+        if major_quakes:
+            print(f"🚨 {len(major_quakes)} MAJOR earthquake(s) 6.0+ in last 24 hours:")
+            for mag, place, hours_ago in sorted(major_quakes, key=lambda x: x[0], reverse=True):
+                print(f"  🔴 M{mag:.1f} - {place} ({hours_ago:.1f}h ago)")
+        
+        # Check recent 4.5+ quakes
+        with urllib.request.urlopen(hour_url, timeout=10) as response:
+            hour_data = json.loads(response.read().decode())
+        
+        quakes = hour_data.get('features', [])
+        
+        if not quakes and not major_quakes:
             print("✅ No 4.5+ earthquakes in past hour")
-            return
-        
-        print(f"🌍 {len(features)} earthquake(s) detected:")
-        
-        for quake in features[:5]:  # Show top 5
-            props = quake['properties']
-            mag = props['mag']
-            place = props['place']
-            time_ms = props['time']
-            
-            # Convert timestamp to readable format
-            dt = datetime.fromtimestamp(time_ms / 1000)
-            time_str = dt.strftime('%H:%M UTC')
-            
-            # Alert level
-            if mag >= 8.0:
-                alert = "🔴 MAJOR"
-            elif mag >= 6.0:
-                alert = "🟠 SIGNIFICANT"
-            elif mag >= 5.5:
-                alert = "🟡 MODERATE"
-            else:
-                alert = "🟢"
-            
-            print(f"  {alert} M{mag:.1f} - {place} ({time_str})")
+        elif quakes:
+            print(f"🌍 {len(quakes)} earthquake(s) detected:")
+            for feature in quakes:
+                props = feature.get('properties', {})
+                mag = props.get('mag', 0)
+                place = props.get('place', 'Unknown location')
+                time_ms = props.get('time', 0)
+                quake_time = datetime.utcfromtimestamp(time_ms / 1000)
+                
+                emoji = "🔴" if mag >= 6.0 else "🟡" if mag >= 5.0 else "🟢"
+                print(f"  {emoji} M{mag:.1f} - {place} ({quake_time.strftime('%H:%M UTC')})")
     
-    except urllib.error.URLError as e:
-        print(f"⚠️ USGS API unavailable: {e.reason}")
-    except json.JSONDecodeError as e:
-        print(f"⚠️ Invalid response from USGS API")
     except Exception as e:
-        print(f"⚠️ Error checking earthquakes: {type(e).__name__}")
+        print(f"❌ Error checking earthquakes: {e}")
 
 if __name__ == "__main__":
     check_earthquakes()
