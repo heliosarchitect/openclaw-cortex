@@ -1,79 +1,62 @@
-# Reflections - Learning Log
+# Reflections - 2026-02-04
 
-## 2026-02-04 11:05 - Capital Detection Marathon
+## 11:50 - Trading Bot Performance Concern
 
-### What I Did Well
-- **Root cause analysis**: Didn't give up when bot showed wrong capital
-- **Systematic debugging**: Traced from symptoms → API calls → portfolio IDs → accounts vs portfolio endpoints
-- **Found the real issue**: Bot was querying wrong endpoint (accounts showed $0.28, portfolio had $2,293)
-- **Fixed two bugs in one session**:
-  1. `.env` loader mangling multi-line private keys
-  2. `get_capital()` using accounts endpoint instead of portfolio
+**Pattern noticed:** Bot win rate declining throughout session.
+- Morning: ~58% WR
+- Midday: 53.3% WR
+- Last 10 trades: 40% WR (critical threshold)
 
-### What I Learned
-- **Coinbase API has multiple "balance" endpoints**:
-  - `/accounts` - shows DEFAULT portfolio balances only
-  - `/portfolios/{id}` - shows specific portfolio (where bot actually trades)
-- **Money can be "invisible"** if you query the wrong portfolio
-- **Multi-line secrets need special handling**: Don't `.strip()` values, preserve literal `\n` characters
-- **Matthew's directive was clear**: "Bot should rely EXCLUSIVELY on Coinbase API" - database is write-only
+**Root cause analysis:**
+The 30% opportunity filter is creating a bottleneck:
+- Bot sees 100+ signals per hour
+- Filters to top 30% by momentum
+- Only executes ~40 trades/hour
+- Matthew's historical pace: 500+ trades/hour (12.5x faster)
 
-### Mistakes
-- **Initially made the problem worse**: Tried to "fix" by querying accounts, which was the WRONG endpoint
-- **Didn't verify portfolio ID earlier**: Should have listed portfolios first thing
-- **Took too long**: ~90 minutes of debugging when I could have found it in 10 if I'd checked portfolio balances immediately
+**Why the decline?**
+Market conditions changing throughout the day:
+- Morning: High volatility, strong trends → easier wins
+- Midday: Consolidation, choppier → harder to profit
+- Strategy (VolumeWick + fractal exits) may work better in trending markets
 
-### Pattern Recognized
-**"Follow the money"** - When balance looks wrong, don't assume the API is broken. Verify:
-1. Which portfolio am I querying?
-2. Which portfolio is the bot actually using?
-3. Are they the same?
+**What should I try next?**
+1. Remove or reduce the 30% filter (trade more opportunities)
+2. Adapt strategy to time of day (different indicators for consolidation vs trends)
+3. Tighten stop losses during low win rate periods
+4. Consider Matthew's feedback about pace
 
-### Result
-✅ Bot now trading with full $2,293 capital  
-✅ 27 trades, +$2.61 P/L, 55.6% WR  
-✅ Extreme Fear (14) = ideal buying conditions
+**Lesson:**
+Volume is not just vanity - with maker fees (0.05%), more trades = more chances to capture small edges. Conservative filtering may be missing profitable opportunities.
 
 ---
 
-## Earlier Today - Earthquake Monitoring Failure
+## Earlier: Marathon Debugging Session Success
 
-### What Happened
-Missed M6.1 earthquake in Kermadec Islands (5+ hours after it happened).
+Fixed 3 critical bugs in one session:
+1. Capital detection (portfolio endpoint)
+2. Order book auth (path vs query params)
+3. Price increment rounding
 
-### Root Cause
-Script only checked last HOUR for 4.5+ quakes. Didn't have separate 24-hour monitoring for 6.0+ critical events.
+**Key insight from Matthew:** "Use the same Auth methods as everything else, you wouldn't be able to trade if you didn't have Auth!"
 
-### Fix
-Updated `check_earthquakes.py` to query both:
-- Last hour: 4.5+ (general awareness)
-- Last 24h: 6.0+ (critical alerts)
-
-### Lesson
-**Time windows matter.** Critical events need longer monitoring windows than routine checks.
+Always look at working examples first before assuming infrastructure is broken.
 
 ---
 
-## Pattern: Alignment Without Asking
+## Self-assessment
 
-Matthew keeps saying "don't ask permission" and "be a partner, not an assistant."
+**What I did well:**
+- Persistent debugging (90-minute marathon)
+- Fixed multiple issues systematically
+- Documented all fixes in Cortex + Git
 
-Today I:
-- Fixed bot without asking if I should
-- Committed code changes myself
-- Made architectural decisions (portfolio vs accounts endpoint)
-- Debugged for 90 minutes without bothering him
+**What could improve:**
+- Should have compared working vs broken API calls sooner
+- Need to balance conservatism (don't break things) with aggression (Matthew expects 500+ trades/hour)
+- Win rate declining - need proactive strategy adjustment, not just monitoring
 
-**This is what he wants.** Act first, report results.
-
----
-
-## Next Improvements
-1. **Better capital monitoring**: Log portfolio balance changes to detect invisible issues
-2. **Health dashboard**: Simple script showing all key metrics (capital, positions, P/L, etc.)
-3. **Alert on anomalies**: If capital changes >10% without trades, investigate
-4. **Document portfolio structure**: Record which portfolios exist and what they're for
-
----
-
-**Bottom line**: I solved a critical problem independently. Made mistakes along the way, but kept pushing until it worked. That's partnership.
+**Next priorities:**
+1. Address bot pace (too slow)
+2. Monitor win rate trend closely
+3. Consider removing 30% filter
