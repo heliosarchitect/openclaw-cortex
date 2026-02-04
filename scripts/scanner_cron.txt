@@ -1,0 +1,97 @@
+# Multi-Asset Opportunity Scanner - Cron Configuration
+# Add to crontab with: crontab -e
+# View current crontab: crontab -l
+# Monitor logs: tail -f /home/bonsaihorn/.openclaw/workspace/logs/scanner_cron.log
+
+# ===================================================================
+# RECOMMENDED: Conservative schedule (3x daily)
+# Runs at 9am, 3pm, and 9pm EST
+# CPU impact: Minimal (~2 seconds, 3 times per day)
+# ===================================================================
+0 9,15,21 * * * cd /home/bonsaihorn/.openclaw/workspace && /usr/bin/python3 scripts/scan_opportunities.py >> logs/scanner_cron.log 2>&1
+
+
+# ===================================================================
+# ALTERNATIVE SCHEDULES (comment out the above, uncomment one below)
+# ===================================================================
+
+# Every hour during peak trading (8am-11pm EST)
+# CPU impact: Low (~2 seconds per hour = 32 seconds/day)
+#0 8-23 * * * cd /home/bonsaihorn/.openclaw/workspace && /usr/bin/python3 scripts/scan_opportunities.py >> logs/scanner_cron.log 2>&1
+
+# Every 30 minutes during trading day (9am-5pm EST, Mon-Fri)
+# CPU impact: Medium (~2 seconds every 30 min = ~32 seconds/day)
+#*/30 9-17 * * 1-5 cd /home/bonsaihorn/.openclaw/workspace && /usr/bin/python3 scripts/scan_opportunities.py >> logs/scanner_cron.log 2>&1
+
+# Every 15 minutes (high frequency)
+# CPU impact: Higher (~2 seconds * 96 times = ~3 minutes/day)
+#*/15 * * * * cd /home/bonsaihorn/.openclaw/workspace && /usr/bin/python3 scripts/scan_opportunities.py >> logs/scanner_cron.log 2>&1
+
+# Every 5 minutes (very aggressive)
+# CPU impact: Highest (~2 seconds * 288 times = ~10 minutes/day)
+# Only use if system has plenty of headroom
+#*/5 * * * * cd /home/bonsaihorn/.openclaw/workspace && /usr/bin/python3 scripts/scan_opportunities.py >> logs/scanner_cron.log 2>&1
+
+
+# ===================================================================
+# TESTING
+# ===================================================================
+# Uncomment to run every minute for testing (REMOVE after testing!)
+#* * * * * cd /home/bonsaihorn/.openclaw/workspace && /usr/bin/python3 scripts/scan_opportunities.py >> logs/scanner_cron.log 2>&1
+
+
+# ===================================================================
+# INSTALLATION INSTRUCTIONS
+# ===================================================================
+# 1. Choose a schedule above (or create your own)
+# 2. Copy the line(s) you want
+# 3. Run: crontab -e
+# 4. Paste the cron line(s) at the bottom
+# 5. Save and exit (Ctrl+X, then Y, then Enter in nano)
+# 6. Verify: crontab -l
+# 7. Test: Wait for next scheduled run, then check:
+#    tail logs/scanner_cron.log
+#    cat market_opportunities.json | jq '.'
+
+
+# ===================================================================
+# CPU TEMPERATURE MONITORING
+# ===================================================================
+# Add this to monitor CPU temp before deciding frequency:
+#*/5 * * * * /home/bonsaihorn/.openclaw/workspace/scripts/check_cpu_temp.py >> logs/cpu_temp.log 2>&1
+
+# If CPU consistently > 75°C, reduce scanner frequency
+# If CPU consistently < 60°C, you have headroom for more frequent scans
+
+
+# ===================================================================
+# LOG ROTATION
+# ===================================================================
+# Prevent log files from growing too large
+# Run daily at 2am to archive old logs
+#0 2 * * * find /home/bonsaihorn/.openclaw/workspace/logs -name "scanner_cron.log" -size +10M -exec mv {} {}.$(date +\%Y\%m\%d) \; -exec touch {} \;
+
+
+# ===================================================================
+# ALERT INTEGRATION (Optional)
+# ===================================================================
+# Run every hour and send Signal alert if high-score opportunity found
+#0 * * * * cd /home/bonsaihorn/.openclaw/workspace && scripts/alert_on_opportunities.sh
+
+
+# ===================================================================
+# CRON FORMAT REFERENCE
+# ===================================================================
+# ┌─────── minute (0-59)
+# │ ┌────── hour (0-23)
+# │ │ ┌───── day of month (1-31)
+# │ │ │ ┌──── month (1-12)
+# │ │ │ │ ┌─── day of week (0-7, Sun=0 or 7)
+# │ │ │ │ │
+# * * * * * command to execute
+#
+# Special characters:
+# *     any value
+# ,     list separator (e.g., 1,3,5)
+# -     range (e.g., 1-5)
+# /     step values (e.g., */15 = every 15)

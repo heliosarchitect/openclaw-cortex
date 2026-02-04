@@ -1,0 +1,29 @@
+[
+  {
+    "symbol": "ASM-USD",
+    "base_currency": "ASM",
+    "price": 0.00789,
+    "volume_24h": 6297485.0,
+    "score": 40,
+    "setup": "momentum_long",
+    "signals": [
+      "Momentum zone (RSI 55-65, positive MACD)",
+      "MACD strong bullish crossover",
+      "\u26a0\ufe0f Low volume warning"
+    ],
+    "indicators": {
+      "rsi": 64.79,
+      "macd": 4.5e-05,
+      "macd_signal": 1.2e-05,
+      "macd_histogram": 3.3e-05,
+      "bb_upper": 0.01,
+      "bb_middle": 0.01,
+      "bb_lower": 0.01,
+      "bb_percent": 78.05,
+      "volume_ratio": 0.14,
+      "volatility": 1.02
+    },
+    "trend": "sideways",
+    "timestamp": "2026-02-04T02:53:45.083476+00:00"
+  }
+]
