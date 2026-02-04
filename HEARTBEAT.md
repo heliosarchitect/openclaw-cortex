@@ -48,18 +48,10 @@ db.close()
 ### Market Conditions (check for management decisions)
 ```bash
 # Fear & Greed Index
-curl -s "https://api.alternative.me/fng/" | python3 -c "
-import json, sys
-data = json.load(sys.stdin)['data'][0]
-print(f\"Fear & Greed: {data['value']} ({data['value_classification']})\")"
+python3 ~/.openclaw/workspace/scripts/check_fear_greed.py
 
-# ETH 1h price action
-curl -s "https://api.coinbase.com/api/v3/brokerage/products/ETH-USD/candles?granularity=ONE_HOUR" | python3 -c "
-import json, sys
-data = json.load(sys.stdin)
-if 'candles' in data and len(data['candles']) > 0:
-    recent = data['candles'][0]
-    print(f\"ETH: \${recent['close']} | High: \${recent['high']} | Low: \${recent['low']}\")"
+# ETH current price
+python3 ~/.openclaw/workspace/scripts/check_eth_price.py
 ```
 
 ### Active Management Decisions
