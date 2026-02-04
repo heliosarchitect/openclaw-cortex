@@ -75,38 +75,38 @@ def analyze_pattern_results():
 
 def spawn_next_iteration(lesson_learned: str, target: float):
     """Spawn next iteration of pattern search with lessons learned"""
-    task = f"""Continue iterating on pattern-based strategies. Previous best: ${BASELINE_PROFIT:.0f}.
-
-**Lesson learned:** {lesson_learned}
-
-**New approach:**
-1. Test even MORE complex patterns (20-50 candle sequences)
-2. Focus on what worked: wick ratios, volume changes, body patterns
-3. Add momentum detection: acceleration/deceleration over long windows
-4. Test cross-feature interactions: (feature_A_change × feature_B_change) / feature_C
-5. Conditional chains: IF pattern1 for N candles THEN pattern2 → trade
-
-**Target:** ${target:.0f}+ profit on 69-day ETH-USD backtest
-
-**Database:** ~/Projects/Chad_Volume_tracker/trading_data.db (98,937 candles)
-
-Use ALL 32 cores. Test MILLIONS of patterns. Scale to Chronogenesis numbers.
-
-Output to: iteration_{datetime.now().strftime('%Y%m%d_%H%M%S')}_results.csv
-"""
+    # Since openclaw CLI isn't available, just log what we would do
+    # Matthew can manually trigger the next search when ready
     
-    result = subprocess.run(
-        ["openclaw", "spawn", "--task", task, "--label", f"iteration-{datetime.now().strftime('%H%M%S')}"],
-        capture_output=True,
-        text=True
-    )
+    log(f"📝 Next iteration plan:")
+    log(f"   Lesson: {lesson_learned}")
+    log(f"   Target: ${target:.0f}+")
+    log(f"")
+    log(f"💡 Suggested next steps:")
+    log(f"   1. Test more complex patterns (20-50 candle sequences)")
+    log(f"   2. Focus on wick ratios, volume changes, body patterns")
+    log(f"   3. Add momentum detection over long windows")
+    log(f"   4. Test cross-feature interactions")
+    log(f"   5. Try conditional chains: IF pattern1 THEN pattern2")
+    log(f"")
+    log(f"📊 Ready for manual launch when Matthew approves")
     
-    if result.returncode == 0:
-        log(f"✅ Spawned next iteration targeting ${target:.0f}")
-        return True
-    else:
-        log(f"❌ Failed to spawn iteration: {result.stderr}")
-        return False
+    # Write plan to file for future reference
+    plan_file = WORKSPACE / f"iteration_plan_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+    with open(plan_file, 'w') as f:
+        f.write(f"Strategy Iteration Plan\n")
+        f.write(f"Generated: {datetime.now()}\n\n")
+        f.write(f"Lesson learned: {lesson_learned}\n\n")
+        f.write(f"Target: ${target:.0f}+ profit\n\n")
+        f.write(f"Next approach:\n")
+        f.write(f"1. Test more complex patterns (20-50 candle sequences)\n")
+        f.write(f"2. Focus on wick ratios, volume changes, body patterns\n")
+        f.write(f"3. Add momentum detection over long windows\n")
+        f.write(f"4. Test cross-feature interactions\n")
+        f.write(f"5. Try conditional chains\n")
+    
+    log(f"💾 Plan saved to: {plan_file}")
+    return True
 
 def main():
     """Main iteration engine loop"""
