@@ -91,10 +91,11 @@ if 'candles' in data and len(data['candles']) > 0:
 
 ### Earthquakes (USGS)
 ```bash
-curl -s "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.geojson" | python3 -c "import sys,json; d=json.load(sys.stdin); print(f'{len(d[\"features\"])} quakes 4.5+ in last hour') if d['features'] else print('All quiet')"
+python3 ~/.openclaw/workspace/skills/earthquake-monitor/scripts/check_quakes.py --min 5.0 --limit 5
 ```
 - Alert Matthew if 6.0+ anywhere
 - Alert immediately if 8.0+
+- Checks last 24 hours (catches delayed reports)
 
 ### Crypto Prices
 - ETH major moves (>5% in an hour)
