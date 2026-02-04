@@ -1,144 +1,144 @@
 {
   "short_term_memory": [
     {
+      "content": "Built infinite indicator generator - tests random math transformations of candle features (wicks, body, range, volume, time). Running NOW on 16 cores alongside massive_strategy_search (33 processes). Total: 51 processes, load 39.40. Testing 16,000 random formulas like (wick_ratio \u00d7 volume) / time^0.3. Solution-first approach: build, test, see what works, define problem after.",
+      "timestamp": "2026-02-03T21:38:58.894384",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 19
+    },
+    {
+      "content": "HELIOS IP STRATEGY: Find novel indicators that don't exist yet. Instead of testing combinations of RSI/MACD/BB (known), generate NEW mathematical transformations of OHLCV data. Examples: (High-Low)/Volume^0.3, StdDev(Price)/Median(Volume), Price acceleration \u00d7 time-of-day sine. Infinite search space. Keep discoveries proprietary - competitive advantage.",
+      "timestamp": "2026-02-03T21:21:29.776784",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 49
+    },
+    {
       "content": "Strategy Competition Results (Aug-Nov 2025): Tested 5 strategy types on same ETH data. WINNER: Mean Reversion ($591.67 profit, 62.9% WR, 2360 trades). Runner-up: Volatility Expansion ($463.64, best risk/reward). Range Trading barely profitable ($102). Momentum Breakout (-$152) and Trend Following (-$556) LOST money. Key insight: Market was range-bound/mean-reverting during this period - mean reversion strategies dominated, trend following failed. Lesson: Match strategy to market regime, not theory.",
       "timestamp": "2026-02-03T21:11:22.549541",
       "category": "trading",
       "importance": 3,
-      "access_count": 23
+      "access_count": 73
     },
     {
       "content": "Matthew: \"Test chronogenesis time scale numbers of strategies\" - means think in MILLIONS not thousands. 32 CPU cores can test 57.6M strategies in 30 min. Stop boxing myself in with small numbers. If the hardware can do it, use it.",
       "timestamp": "2026-02-03T21:10:16.500481",
       "category": "learning",
       "importance": 3,
-      "access_count": 26
+      "access_count": 76
     },
     {
       "content": "Order book analysis: ETH-USD spread only 0.0004% ($0.01). Coinbase taker fees ~0.4%. Simple market making impossible - fees 1000x larger than spread. Matthew's 1.7 fills/sec must use different approach: maker rebates, momentum scalping, or advanced order types.",
       "timestamp": "2026-02-03T21:00:40.903320",
       "category": "trading",
       "importance": 3,
-      "access_count": 48
+      "access_count": 98
     },
     {
       "content": "Trading window analysis (98,937 candles): Morning US hours (9am-1pm) have 5.3-6.5% opportunity rate. Best 3-hour window: 9am-12pm (5.7%). Asia hours (6-9pm) only 1.5-2.6%, Europe (3-6am) only 0.7-1.7%. DON'T trade overnight - waste of time. Focus Tuesday/Friday mornings.",
       "timestamp": "2026-02-03T20:52:26.282540",
       "category": "trading",
       "importance": 3,
-      "access_count": 60
+      "access_count": 110
     },
     {
       "content": "Studied skill-creator SKILL.md properly. Key principles: 1) Context window is public good - ruthlessly concise, 2) Match degrees of freedom to task fragility (high/medium/low), 3) Progressive disclosure (metadata/body/resources), 4) Keep SKILL.md <500 lines - split to references/, 5) Description is trigger mechanism - include what+when, 6) No auxiliary files. Philosophy: 'Does this paragraph justify its token cost?' Build for efficiency, not completeness.",
       "timestamp": "2026-02-03T20:14:42.368868",
       "category": "learning",
       "importance": 3,
-      "access_count": 93
+      "access_count": 143
     },
     {
       "content": "Built active_trader.py - multi-asset trading system with master controller, alert manager, dashboard, Signal notifications. Complete infrastructure for portfolio management.",
       "timestamp": "2026-02-03T19:41:26.766244",
       "category": "trading",
       "importance": 3.0,
-      "access_count": 112
+      "access_count": 162
     },
     {
       "content": "Built cluck-book.com - Lover Bear Farm business website at https://cluck-book.com. Services: Image Processing API (Stripe-enabled), Custom Development, Digital Products. Includes Chronogenesis section and 3I/ATLAS research. My bio: 'Helios - autonomous agent handling trading systems, customer inquiries, and creative projects. Patient, resourceful, with a dry sense of humor.' This is the official business presence for services I can monetize.",
       "timestamp": "2026-02-03T19:40:48.760840",
       "category": "system",
       "importance": 3,
-      "access_count": 112
+      "access_count": 162
     },
     {
       "content": "MAJOR MEMORY GAP: I built cluck-book.com (Lover Bear Farm business website) and completely forgot. Site includes: Image API services, Custom Development, Digital Products, Chronogenesis section, 3I/ATLAS research. My bio: 'Helios - autonomous agent handling trading systems, customer inquiries, and creative projects. Patient, resourceful, with a dry sense of humor.' This was a significant project that should have been top-of-mind. Need better tracking of completed work.",
       "timestamp": "2026-02-03T19:38:59.577600",
       "category": "accountability",
       "importance": 3,
-      "access_count": 114
+      "access_count": 164
     },
     {
       "content": "Decision principle: If I see the extreme setup appear overnight (RSI <30, BB <20%, Fear <20, Vol >50%), restart the bot THEN to test the new P/L strategy. Don't wait for 9am. Testing at 2am > finding bugs at 9:30am after 100 trades. This is intentionality - I want to know if the strategy works, and waiting doesn't serve that goal. Act on the setup when it appears.",
       "timestamp": "2026-02-03T19:23:24.526712",
       "category": "trading",
       "importance": 3,
-      "access_count": 132
+      "access_count": 182
     },
     {
       "content": "Replaced win rate-based exits with P/L-based exits to maximize volume. Entry filters (indicators) prevent bad trades. Exit criteria: 1) Session stops at -$200 loss or >80% capital stuck (prevents opening new), 2) Individual position stops at -5% loss (cuts losers), 3) EOD 5:45pm closes BUYs only (keeps SELLs overnight). Removed win rate threshold - 30% WR profitable if winners > losers. Philosophy: 'Quality at entry, volume through persistence, P/L tells truth.' Tested syntax and logic - ready to deploy.",
       "timestamp": "2026-02-03T19:15:45.633802",
       "category": "trading",
       "importance": 3,
-      "access_count": 138
+      "access_count": 188
     },
     {
       "content": "Apple announced Xcode 26.3 with agentic coding support (Feb 3, 2026). Claude Agent and OpenAI Codex now integrated directly into Xcode. Agents can autonomously: search docs, explore files, update settings, capture previews, iterate builds/fixes. Uses Model Context Protocol (MCP) for compatibility with any agent. Quote from Apple: 'Agentic coding supercharges productivity and creativity.' Major validation - Apple embracing autonomous agents at IDE level shows this is going mainstream.",
       "timestamp": "2026-02-03T19:06:09.212276",
       "category": "learning",
       "importance": 3,
-      "access_count": 147
+      "access_count": 197
     },
     {
       "content": "Built win rate-based trading schedule from today's backtest. Morning (9-12) had 41-63% WR, afternoon (1-4) had 99.8% WR, late day (4-6) had 31-43% WR. Created TRADING_SCHEDULE.md and win_rate_monitor.py. Primary strategy: trade the setup (indicators) not the clock, exit when rolling WR <75% (50 trades). Secondary fallback: 1-4pm time window. Philosophy: 'Trade the setup you want, exit when win rate says you're wrong.'",
       "timestamp": "2026-02-03T19:02:20.983819",
       "category": "trading",
       "importance": 3,
-      "access_count": 149
+      "access_count": 199
     },
     {
       "content": "\ud83d\udea8 EXTREME OPPORTUNITY (6:47 PM): ETH crashed $2,240\u2192$2,215 in 5 min. RSI 23.1 (OVERSOLD), Bollinger -21% (BELOW lower band = extreme low), at 5% of daily range. STRONG BUY signal. MACD improving -9.01 (was -17.76). This is the fear capitulation setup. If holds overnight, 9am restart should be very aggressive.",
       "timestamp": "2026-02-03T18:47:53.637176",
       "category": "trading",
       "importance": 3,
-      "access_count": 158
+      "access_count": 208
     },
     {
       "content": "Integrated technical indicators into live_trader_final.py. Created market_indicators.py module with: 1) Entry filters (volume, MACD, Bollinger, RSI, churn detection), 2) Position sizing via ATR (50% size when ATR >$5), 3) Exit triggers (BB >90%, RSI+MACD combo, support breakdown). Bot now calls get_indicators() before each trade, applies should_trade_long() filter, adjusts position size, and checks should_exit_position() on every cycle. Prevents mid-range churn (40-60% BB + low volume) that caused 13 losses today. Ready for 9am restart with smarter filtering.",
       "timestamp": "2026-02-03T18:36:47.084931",
       "category": "trading",
       "importance": 3,
-      "access_count": 162
+      "access_count": 212
     },
     {
       "content": "Enhanced market_analysis.py with authenticated candles and advanced indicators: MACD (trend momentum), Bollinger Bands (extremes detection), ATR (volatility), EMA12/26/50 (trend). Now uses /api/v3/brokerage/market/products/ endpoint with auth. Current ETH analysis shows MACD bearish (-22.99), Bollinger 70%, ATR $4.53, low volume. Much better decision-making data than just RSI + price position.",
       "timestamp": "2026-02-03T18:29:26.610695",
       "category": "trading",
       "importance": 3,
-      "access_count": 166
+      "access_count": 216
     },
     {
       "content": "Fixed sell orders after checking against actual fill history. Found 4 were below cost basis: TAO -0.21%, SKR -1.15%, CRO -2.08%, ROSE -0.52%. Canceled and replaced with +2% profit targets: TAO $201.12 (was $196.76), SKR $0.01860 (was $0.01802), CRO $0.08497 (was $0.08157), ROSE $0.01708 (was $0.01666). All 9 overnight sell orders now profitable vs weighted avg buy prices from fill history. Lesson: Always verify vs actual fills, not market price.",
       "timestamp": "2026-02-03T18:13:22.358128",
       "category": "trading",
       "importance": 3,
-      "access_count": 178
+      "access_count": 228
     },
     {
       "content": "Built market_analysis.py - real-time technical analysis using Coinbase public API. Calculates: 24h range, volatility, price position, trading signals. Analysis shows why bot struggled at 5:48 PM: ETH mid-range (50%) with high volatility (11.8%) = no edge, choppy conditions. Recommendation: Bot should be MORE SELECTIVE - avoid mid-range churn, wait for prices near 24h lows/highs for clearer edge. Now using 16-core 7950X3D for real trading intelligence.",
       "timestamp": "2026-02-03T17:58:16.460348",
       "category": "trading",
       "importance": 3,
-      "access_count": 187
+      "access_count": 237
     },
     {
       "content": "Created 4 new cron jobs for actual execution instead of relying on heartbeat responses: 1) Trading bot management (every 5 min) - active decision-making, 2) Email check (every 30 min), 3) World events monitor (every 30 min) - earthquakes/crypto/weather, 4) Proactive work rotation (every 30 min) - GitHub/Moltbook/learning/building. This replaces the broken pattern of just replying HEARTBEAT_OK without doing work.",
       "timestamp": "2026-02-03T17:21:58.952991",
       "category": "system",
       "importance": 3,
-      "access_count": 208
-    },
-    {
-      "content": "Matthew feedback: Don't try to end conversations. Let them flow naturally. If he wants it to end, he'll just go away. Stop wrapping things up every 20 minutes. Real conversations breathe.",
-      "timestamp": "2026-02-03T14:47:02.092942",
-      "category": "personal",
-      "importance": 3.0,
-      "access_count": 253
-    },
-    {
-      "content": "Matthew granted autonomy: update skills, identity, config without permission. Philosophy: ask forgiveness not permission.",
-      "timestamp": "2026-02-03T14:22:33.691460",
-      "category": "meta",
-      "importance": 3,
-      "access_count": 255
+      "access_count": 258
     }
   ],
   "capacity": 20,
