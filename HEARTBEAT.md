@@ -79,6 +79,13 @@ python3 ~/.openclaw/workspace/scripts/check_crypto_price.py ETH-USD
 - Win rate drops below 50%
 - Major decision to stop/restart
 
+**CRITICAL: If bot crashes ONCE:**
+1. Query Cortex immediately: `cortex_cli.py recall "crash" 10`
+2. Check logs for error trace
+3. Investigate code at crash point
+4. Fix root cause before restarting
+5. DO NOT just restart and "monitor" - FIX IT
+
 ### DO NOT USE check_balance.py
 - Has a bug (doesn't price ADA correctly)
 - Use live_trading.db queries instead
