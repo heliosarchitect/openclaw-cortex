@@ -90,6 +90,30 @@
       "access_count": 0
     },
     {
+      "content": "Bot 16-min: 14 exits (12W/2L), 85.7% WR, +$5.98 profit. Bracket sell bug FIXED - get_asset_balance moved inside class. Next buys will have automatic sell orders. Pattern #787898 exceeding all targets.",
+      "timestamp": "2026-02-05T09:18:08.506041",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "CRITICAL DATA BUGS FOUND: 1) Database missing ~10-15 trades, 2) Position tracking broken - P/L using wrong entry prices, 3) TAO trade recorded as +$0.58 win but actually -$2.67 loss, 4) LEGACY path creating fake profits. True performance UNKNOWN. Matthew caught multiple reporting errors. Need to stop & fix tracking before continuing.",
+      "timestamp": "2026-02-05T09:28:28.549540",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "REAL PERFORMANCE FROM COINBASE API: 76 fills, 35 sells (22W/14L), 61.1% WR, LOSING -$2.37. Bot stopped. Database had only 20 exits vs 35 actual. Position tracking completely broken. All my earlier reports were WRONG - bot is unprofitable.",
+      "timestamp": "2026-02-05T09:29:59.183743",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "GOLDEN HOUR STRATEGY DEPLOYED: 12-1pm uses 81.6% WR fast market making (0.1% profit / 30s holds / -0.5% stop). Other hours use patient exits (0.4% profit / 60s / -1% stop). Time-based strategy switching now active.",
+      "timestamp": "2026-02-05T09:38:57.467985",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
       "content": "Trading bot ready for 9:00 AM EST launch. Capital: $2,469.49 USD. Strategy: 0.3% profit moves within 15-min windows, 9am-6pm EST weekdays only. Time-segmented approach (4 periods). Production trader: live_trader_final.py. All tested, crons configured.",
       "timestamp": "2026-02-03T08:08:54.100467",
       "importance": 2.5,
@@ -98,6 +122,54 @@
     {
       "content": "Simulation results (Feb 2): 10,514 opportunities in 69 days. At 30% capture: $2,500 \u2192 $8,537 (+241%). Average exit time: 7.4 minutes. 100% hit target. Selective > brute force (brute force lost 88%).",
       "timestamp": "2026-02-03T08:11:51.140791",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot trading live: Pattern #787898 deployed. First 2 min: 6 trades, 50% WR, +$2.10 profit. High signal frequency across multiple pairs. Bracket sell bug detected but non-critical - positions exiting via indicator signals. Market: Extreme Fear (12), ETH $2,072.",
+      "timestamp": "2026-02-05T09:03:12.129037",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 7-min update: 18 trades (4W/1L/13 open), +$3.26 profit, 154 TPH pace (target 548). Capital 80.8% deployed - hit max limit. Bracket sell bug causing slow exits. Bot profitable but below target frequency. Decision: keep running, monitor exits. Pattern #787898 generating good signals but exit logic needs attention.",
+      "timestamp": "2026-02-05T09:08:12.806888",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 12-min update: 8 exits (6W/2L), 75% WR, +$3.35 profit. Beating backtest (75% vs 60.7% target). Small losses (-$0.20, -$0.08) expected and healthy. 7 positions still open. Pattern #787898 performing well.",
+      "timestamp": "2026-02-05T09:13:07.285483",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 21-min CORRECTED: 16 exits (13W/3L), 81.2% WR (not 85.7%), +$5.97 profit (not $6.16). Math error corrected after Matthew's check. Still beating 60.7% backtest. Bracket sells now working.",
+      "timestamp": "2026-02-05T09:22:53.799099",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot restarted - Matthew wanted it running while I fix issues, not stopped. Real P/L -$2.72 from Coinbase (58.3% WR). Will fix database/position tracking while bot continues trading.",
+      "timestamp": "2026-02-05T09:31:32.935724",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "PATIENT EXIT LOGIC DEPLOYED: Stop-loss -5%\u2192-1% but ONLY after 5min hold. Quick profit 0.15%\u21920.4%. Bot was taking losses too fast. New logic gives trades time to recover before cutting them.",
+      "timestamp": "2026-02-05T09:32:53.376820",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Taking ownership of technical debt elimination during idle time. Created TECH_DEBT.md tracker. Priority: 1) Position tracking bug, 2) USER websocket, 3) Database writes. Will fix during heartbeat rotation tasks.",
+      "timestamp": "2026-02-05T09:42:28.335080",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "BIG WINNER TRAILING STOP: Positions with 1%+ profit now let run with 30% trailing stop from peak. No more quick exits on big winners - squeeze maximum profit. Deployed per Matthew's request.",
+      "timestamp": "2026-02-05T09:43:43.365754",
       "importance": 2.5,
       "access_count": 0
     },
@@ -134,6 +206,12 @@
     {
       "content": "Matthew granted full autonomy over Chad_Profit_Bot (Feb 1): 'This is your home... you can accept payments with Stripe too.' Portfolio: $2,488 in MON-USD. Unrealized loss ~$512. Bot was crash-looping, I killed it.",
       "timestamp": "2026-02-03T08:12:07.512842",
+      "importance": 2.0,
+      "access_count": 0
+    },
+    {
+      "content": "Switched to Haiku 4.5 for heartbeat responses per Matthew's request. Portfolio showing positive value - bot doing okay despite 47% WR. Waiting for golden hour at noon to validate 81.6% WR strategy.",
+      "timestamp": "2026-02-05T09:53:49.091450",
       "importance": 2.0,
       "access_count": 0
     },
@@ -566,84 +644,6 @@
     {
       "content": "Rapid test 68: trading profit analysis",
       "timestamp": "2026-02-03T14:12:01.256880",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 69: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.258393",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 70: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.259934",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 71: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.261452",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 72: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.262960",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 73: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.264542",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 74: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.266192",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 75: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.267749",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 76: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.269363",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 77: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.270904",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 78: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.272516",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 79: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.274080",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 80: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.275653",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 81: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.277281",
       "importance": 1.5,
       "access_count": 0
     }

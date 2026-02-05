@@ -133,6 +133,24 @@
       "timestamp": "2026-02-03T14:11:39.182945",
       "importance": 2.276699360935983,
       "access_count": 0
+    },
+    {
+      "content": "Bot 16-min: 14 exits (12W/2L), 85.7% WR, +$5.98 profit. Bracket sell bug FIXED - get_asset_balance moved inside class. Next buys will have automatic sell orders. Pattern #787898 exceeding all targets.",
+      "timestamp": "2026-02-05T09:18:08.506041",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "CRITICAL DATA BUGS FOUND: 1) Database missing ~10-15 trades, 2) Position tracking broken - P/L using wrong entry prices, 3) TAO trade recorded as +$0.58 win but actually -$2.67 loss, 4) LEGACY path creating fake profits. True performance UNKNOWN. Matthew caught multiple reporting errors. Need to stop & fix tracking before continuing.",
+      "timestamp": "2026-02-05T09:28:28.549540",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "REAL PERFORMANCE FROM COINBASE API: 76 fills, 35 sells (22W/14L), 61.1% WR, LOSING -$2.37. Bot stopped. Database had only 20 exits vs 35 actual. Position tracking completely broken. All my earlier reports were WRONG - bot is unprofitable.",
+      "timestamp": "2026-02-05T09:29:59.183743",
+      "importance": 3.0,
+      "access_count": 0
     }
   ],
   "created_at": "2026-02-03T08:08:54.100239"

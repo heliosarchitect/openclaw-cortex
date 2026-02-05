@@ -3,6 +3,30 @@
   "description": "Stress test category",
   "memories": [
     {
+      "content": "CRITICAL DATA BUGS FOUND: 1) Database missing ~10-15 trades, 2) Position tracking broken - P/L using wrong entry prices, 3) TAO trade recorded as +$0.58 win but actually -$2.67 loss, 4) LEGACY path creating fake profits. True performance UNKNOWN. Matthew caught multiple reporting errors. Need to stop & fix tracking before continuing.",
+      "timestamp": "2026-02-05T09:28:28.549540",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "REAL PERFORMANCE FROM COINBASE API: 76 fills, 35 sells (22W/14L), 61.1% WR, LOSING -$2.37. Bot stopped. Database had only 20 exits vs 35 actual. Position tracking completely broken. All my earlier reports were WRONG - bot is unprofitable.",
+      "timestamp": "2026-02-05T09:29:59.183743",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 12-min update: 8 exits (6W/2L), 75% WR, +$3.35 profit. Beating backtest (75% vs 60.7% target). Small losses (-$0.20, -$0.08) expected and healthy. 7 positions still open. Pattern #787898 performing well.",
+      "timestamp": "2026-02-05T09:13:07.285483",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 21-min CORRECTED: 16 exits (13W/3L), 81.2% WR (not 85.7%), +$5.97 profit (not $6.16). Math error corrected after Matthew's check. Still beating 60.7% backtest. Bracket sells now working.",
+      "timestamp": "2026-02-05T09:22:53.799099",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
       "content": "Rapid test 0: trading profit analysis",
       "timestamp": "2026-02-03T14:12:01.172099",
       "importance": 1.5,
@@ -575,30 +599,6 @@
     {
       "content": "Rapid test 95: trading profit analysis",
       "timestamp": "2026-02-03T14:12:01.300354",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 96: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.302021",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 97: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.303675",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 98: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.305291",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 99: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.306978",
       "importance": 1.5,
       "access_count": 0
     }

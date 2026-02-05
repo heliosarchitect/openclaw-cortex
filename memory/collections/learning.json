@@ -37,6 +37,30 @@
       "timestamp": "2026-02-03T14:11:39.181915",
       "importance": 2.2441828044993803,
       "access_count": 0
+    },
+    {
+      "content": "Bot trading live: Pattern #787898 deployed. First 2 min: 6 trades, 50% WR, +$2.10 profit. High signal frequency across multiple pairs. Bracket sell bug detected but non-critical - positions exiting via indicator signals. Market: Extreme Fear (12), ETH $2,072.",
+      "timestamp": "2026-02-05T09:03:12.129037",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 7-min update: 18 trades (4W/1L/13 open), +$3.26 profit, 154 TPH pace (target 548). Capital 80.8% deployed - hit max limit. Bracket sell bug causing slow exits. Bot profitable but below target frequency. Decision: keep running, monitor exits. Pattern #787898 generating good signals but exit logic needs attention.",
+      "timestamp": "2026-02-05T09:08:12.806888",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 12-min update: 8 exits (6W/2L), 75% WR, +$3.35 profit. Beating backtest (75% vs 60.7% target). Small losses (-$0.20, -$0.08) expected and healthy. 7 positions still open. Pattern #787898 performing well.",
+      "timestamp": "2026-02-05T09:13:07.285483",
+      "importance": 2.5,
+      "access_count": 0
+    },
+    {
+      "content": "Bot 16-min: 14 exits (12W/2L), 85.7% WR, +$5.98 profit. Bracket sell bug FIXED - get_asset_balance moved inside class. Next buys will have automatic sell orders. Pattern #787898 exceeding all targets.",
+      "timestamp": "2026-02-05T09:18:08.506041",
+      "importance": 3.0,
+      "access_count": 0
     }
   ],
   "created_at": "2026-02-03T08:08:54.102121"
