@@ -26,6 +26,15 @@ curl -X POST http://localhost:8020/tts \
 
 ---
 
+## Signal Media Storage
+
+**Location:** `~/.openclaw/media/inbound/`
+**Format:** UUID filenames (e.g., `8a25ed80-1fc6-48eb-aa98-e1a6e156a620`)
+**Access:** All incoming Signal media (audio, images, documents) stored here for local access
+**Note:** Check this directory when processing Signal attachments - don't assume they're temporary
+
+---
+
 ## Network
 
 | Host | IP | Purpose |
