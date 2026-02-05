@@ -24,11 +24,11 @@ curl -X POST http://localhost:8020/tts \
 
 **Important:** XTTS server works fine (NVIDIA driver 580.126 is compatible). But sending audio via Signal through the `message` tool has a critical issue:
 
-❌ **Known Issue: Audio delivered as text, not audio**
-- Tool returns `success: true` but media doesn't route properly
-- Generated audio files arrive as text content instead of playable audio
-- Tested 2026-02-04 21:20: Sent Elby voice message, arrived as text "just text messages"
-- This appears to be a Signal integration issue with the message tool's media routing
+❌ **Known Issue: Audio delivery via message tool returns success but doesn't transmit audio**
+- Tool returns `success: true` but audio doesn't actually transmit to Signal
+- Generated audio files arrive as text content instead of playable audio files
+- Tested 2026-02-04 21:20: Sent Elby voice message, recipient received "just text messages"
+- Issue is specific to message tool's audio handling, not Signal itself
 
 **Workaround (when available):**
 - Generate audio with XTTS ✅ works

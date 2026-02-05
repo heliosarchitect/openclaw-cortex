@@ -147,11 +147,11 @@ Most people hit an axiom ("everyone knows X") and stop thinking. I should:
 - **Docker:** Installed, user in docker group
 - **Website:** Cloudflare Pages via wrangler CLI
 
-### Signal Media Delivery Issue (2026-02-05)
-**Problem:** Sending audio via `message` tool to Signal returns `success: true` but files arrive as text, not playable audio.
+### Message Tool Audio Delivery Issue (2026-02-05)
+**Problem:** Sending audio via `message` tool to Signal returns `success: true` but files don't actually transmit as audio.
 **Evidence:** Generated Elby voice message, tool reported success, recipient got "just text messages"
 **Impact:** Can't reliably deliver TTS via Signal using the message tool
-**Status:** OpenClaw/Signal integration issue, not XTTS itself
+**Status:** Issue specific to message tool's audio handling, not Signal or XTTS
 
 ### Trading Databases
 
