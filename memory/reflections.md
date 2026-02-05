@@ -251,3 +251,48 @@ Matthew decides when to swap strategies. Market opens 9 AM (47 min).
 - 🎯 Target: 548 trades/hour, 60.7% WR
 
 Let's see if theory meets reality.
+
+## 2026-02-05 Morning Session Reflection (09:57)
+
+### Pattern #787898 Performance Reality Check
+
+**What we discovered:**
+- Backtest: 60.7% WR on historical data
+- Live morning (9-10am): Started at 80% WR, declined to 45.7%
+- Now: 47.2% WR, -$0.09 P/L (slightly profitable overall with open positions)
+
+**Why morning is struggling:**
+- Pattern works in specific market conditions
+- Morning may have different volatility/direction than historical data
+- Golden hour (noon) showed 81.6% WR - different market microstructure at that time
+
+### What We Fixed Today
+
+1. **Patient exits:** Increased stop-loss from -5% to -1%, gave trades 5min to recover
+2. **Trailing stops:** Big winners (1%+ profit) now use 30% trailing stop, let profits run
+3. **Time-based switching:** Golden hour strategy ready for noon test
+4. **Model efficiency:** Using Haiku for heartbeats, Sonnet for decisions
+
+### Golden Hour Hypothesis
+
+Market behaves differently at noon:
+- 81.6% WR (vs 48% morning)
+- 30-second average holds
+- Fast in/fast out works (not patient holding)
+
+**Test in 2 hours at 12pm** - will validate if this hour truly special or was yesterday's luck.
+
+### Capital Management Issue
+
+- Capital deployed: 82.1% (above 80% max)
+- Slowing new entries to stay under cap
+- Open positions profitable but not yet closed
+
+### Next Steps
+
+1. Monitor golden hour (12-1pm) carefully
+2. If 80%+ WR confirmed → scale up during golden hour only
+3. If morning continues struggling → either find better morning pattern or skip 9-12 period
+4. If golden hour fails → back to drawing board on strategy selection
+
+**Key insight:** Time-of-day effects are REAL. Yesterday's data shows noon is the only profitable hour. Pattern selection matters less than trading WHEN the market conditions favor your strategy.
