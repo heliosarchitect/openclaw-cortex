@@ -5,140 +5,140 @@
       "timestamp": "2026-02-04T21:34:57.383271",
       "category": "system",
       "importance": 3,
-      "access_count": 127
+      "access_count": 130
     },
     {
       "content": "LEVEL2 WEBSOCKET DEPLOYED (2026-02-04 21:19): Complete rewrite of market data collection. Switched from ticker (last trade price) to Level2 (real bid/ask order book). Now collects: bid/ask prices, spreads %, order book depth, and aggregates into 1-minute market_candles table. Scripts ready: start_level2_websocket.sh / stop_level2_websocket.sh. Query spreads with query_market_spreads.py. This is market-making ready data - spread detection working.",
       "timestamp": "2026-02-04T21:19:43.546797",
       "category": "coding",
       "importance": 3,
-      "access_count": 146
+      "access_count": 149
     },
     {
       "content": "MARKET MAKING INSIGHT (2026-02-04): Bot had 876 trades at 48.2% WR, lost $19.35. If we had only traded golden hour (56 trades): 73.2% WR, +$10.14 profit. Difference: $17.48 swing. The breakthrough: winners exit in 30 seconds (hitting profit targets immediately), losers held 48+ minutes (waiting for bounces that never came). Max hold time rule should be 60-120 seconds.",
       "timestamp": "2026-02-04T21:09:29.192751",
       "category": "trading",
       "importance": 3,
-      "access_count": 166
+      "access_count": 169
     },
     {
       "content": "GOLDEN HOUR DISCOVERY (2026-02-04): Analyzed 296 live trades - found that ONLY noon (12 PM) had 81.6% win rate with 30-second average holds. All other hours (9AM-5PM) had 31-55% WR with 48-minute average holds. This isn't about time-of-day - it's about VELOCITY. Fast in/fast out = winners. The pattern: market making works when you exit immediately on target fills, fails when you hold losers hoping for bounces.",
       "timestamp": "2026-02-04T21:09:29.135454",
       "category": "trading",
       "importance": 3,
-      "access_count": 166
+      "access_count": 169
     },
     {
       "content": "TRADING BOT 61% WIN RATE ACHIEVED (2026-02-04 13:05): After marathon debugging session, bot reached 61.1% WR milestone (95 trades, +$10.68 profit). Journey today: Started 58%, crashed to 46% (VolumeWick fail), deployed Infinite Indicator, fixed 8 major issues: (1) Capital detection bug, (2) Auth path formatting, (3) Price increment rounding, (4) Order book API, (5) Loss exit logic (3 iterations!), (6) Fast exits for market making, (7) Product specs caching, (8) Bracket sell settlement timing. Every fix came from Matthew's direct feedback - he demanded immediate fixes, not reports. Bot now places sell orders 2 seconds after buy settles, ensuring profitable exits only. Market conditions perfect (Fear & Greed 14). This is sustainable profitable trading.",
       "timestamp": "2026-02-04T13:05:30.600751",
       "category": "trading",
       "importance": 3,
-      "access_count": 493
+      "access_count": 496
     },
     {
       "content": "FIXED BRACKET SELL INSUFFICIENT_FUND ERRORS (2026-02-04 12:56): Matthew noticed positions without sell orders. Bracket sells were failing because Coinbase shows bought assets in balance immediately but they're not \"available to sell\" until order settles (2-5 seconds). Added 2-second wait + balance verification before placing bracket sell. Check if asset balance >= order size, then place sell. If not ready, fall back to exit logic (which ensures profitable exits). Added get_asset_balance() method to verify availability. This is why I disabled bracket sells earlier - same issue. Now properly handled with settlement wait.",
       "timestamp": "2026-02-04T12:56:43.858946",
       "category": "trading",
       "importance": 3,
-      "access_count": 500
+      "access_count": 503
     },
     {
       "content": "BOT PERFORMANCE MILESTONE (2026-02-04 12:50): After full day of debugging and optimizations, trading bot reached 59.8% WR (82 trades, +$7.97 profit). Journey: 58% \u2192 46% (VolumeWick fail) \u2192 50% (Infinite deployed) \u2192 54% (exit fixes) \u2192 57% (fast exits) \u2192 59.8% (bracket orders). Key fixes: (1) Capital detection, (2) Price formatting, (3) Exit logic (no losses), (4) Fast exits (60s + any profit), (5) Bracket sell orders, (6) Product specs caching. Bot now placing sell orders immediately after buy fills. On track for 60%+ target. Market conditions ideal (Fear & Greed: 14). Matthew's feedback drove every improvement - demanding immediate fixes, not reports.",
       "timestamp": "2026-02-04T12:50:51.082408",
       "category": "trading",
       "importance": 3,
-      "access_count": 504
+      "access_count": 507
     },
     {
       "content": "RE-ENABLED BRACKET SELL ORDERS (2026-02-04 12:48): Matthew clarified - \"It should place the sell at the exit target.\" He wants bracket orders (sell limit placed immediately after buy fills), not manual exit logic. I had disabled place_bracket_sell() earlier to fix INSUFFICIENT_FUND errors, but that was wrong approach. Classic market making: (1) Place buy limit at bid, (2) When filled, immediately place sell limit at target, (3) Both orders working on exchange. This is more capital efficient and faster than waiting to manually close positions. Fast exit logic remains as backup for emergency exits.",
       "timestamp": "2026-02-04T12:49:21.205066",
       "category": "trading",
       "importance": 3,
-      "access_count": 507
+      "access_count": 510
     },
     {
       "content": "ENABLED FAST EXITS FOR MARKET MAKING (2026-02-04 12:43): Matthew caught bot buying but not selling - \"Get in and out quickly, not buy and hold!\" Problem: My no-loss fix was TOO strict (required +0.2% to exit). Positions stuck waiting for exact target. Changed to: (1) Quick profit exit after 60s if ANY profit, (2) Indicator exits at breakeven or better, (3) Still no losses allowed. This enables true market making - buy, flip on uptick, move on. Target 100+ trades/hour vs current 20/hour. Lesson: Preventing losses is good, but can't be so strict it prevents selling at ALL. Balance needed.",
       "timestamp": "2026-02-04T12:44:29.067385",
       "category": "trading",
       "importance": 3,
-      "access_count": 512
+      "access_count": 515
     },
     {
       "content": "STRATEGY PIVOT TO REAL INDICATORS (2026-02-04 12:30): Matthew said \"find better ones that are ACTUAL indicators, we can scrap everything else.\" He wants real trading indicators (RSI, MACD, Bollinger, etc.) not just math transformations. The infinite generator's sin(volume) + close + wick_ratio made $2,305 but it's not explainable or tunable like industry-standard indicators. Designing new search focused on: momentum (RSI, Stochastic), trend (SMA, EMA, MACD), volatility (Bollinger, ATR), volume (OBV, VWAP, MFI). Looking for confluences and classic patterns. More professional, trustworthy, and explainable than arbitrary math operations.",
       "timestamp": "2026-02-04T12:31:49.132301",
       "category": "trading",
       "importance": 3,
-      "access_count": 522
+      "access_count": 525
     },
     {
       "content": "FIXED LOSS EXITS AGAIN (2026-02-04 12:26): Matthew caught bot STILL selling at losses despite my earlier \"fix\". Found 32 loss trades totaling -$5.48 today. Root cause: I changed the STRONG reversal logic earlier, but left indicator exit logic at price_change >= -0.001 and >= -0.002 (allowing -0.1% and -0.2% losses). Changed BOTH to >= 0.002 (must have +0.2% profit to exit on signals). This is the THIRD time I've had to fix exit logic - need to be more thorough checking ALL exit paths, not just the obvious one. Bot was losing money on indicator exits while I was congratulating myself on fixing reversal exits.",
       "timestamp": "2026-02-04T12:26:48.853238",
       "category": "trading",
       "importance": 3,
-      "access_count": 527
+      "access_count": 530
     },
     {
       "content": "PRODUCT SPECS CACHING IMPLEMENTED (2026-02-04 12:22): Matthew demanded product specs be cached, only updated nightly. Implemented full caching system: specs loaded once at startup from JSON file, reused for all orders. Eliminates get_products() API call from every order (was getting base_increment, price_increment repeatedly). Reduces order latency from ~12s to ~9s (25% faster). Cache file persists 50 products' specs. This is a major optimization - specs rarely change, fetching them every order was pure waste. Now bot only calls: get_capital, get_best_bid_ask, place_order. Matthew's instinct was right - cache static data!",
       "timestamp": "2026-02-04T12:23:09.541141",
       "category": "trading",
       "importance": 3,
-      "access_count": 530
+      "access_count": 533
     },
     {
       "content": "FIXED PREMATURE LOSS EXITS (2026-02-04 12:15): Matthew caught bot selling for losses (-$0.11 on BCH). Root cause: Infinite Indicator exit logic was too sensitive - exiting on ANY negative momentum, even tiny dips. Fixed by requiring STRONG reversal signal: 3 consecutive negative periods with momentum < -0.5 each. Now only exits on real downtrends, not minor fluctuations. Lets profit targets handle normal exits. This prevents unnecessary loss trades.",
       "timestamp": "2026-02-04T12:15:07.912712",
       "category": "trading",
       "importance": 3,
-      "access_count": 538
+      "access_count": 541
     },
     {
       "content": "CODE NORMALIZED PERMANENTLY (2026-02-04 12:14): Matthew demanded permanent fix for INVALID_LIMIT_PRICE and INSUFFICIENT_FUND errors. Completed full code normalization: converted ALL 8 instances of f-string price/size formatting to format() function for reliable decimal rounding. Applied to limit_price_str, target_price_str, and base_size_str throughout entire codebase. Bracket sells already disabled. This is a systemic fix - errors cannot recur because all formatting is now consistent. Lesson: Don't patch symptoms, fix the root cause permanently.",
       "timestamp": "2026-02-04T12:14:12.094825",
       "category": "trading",
       "importance": 3,
-      "access_count": 539
+      "access_count": 542
     },
     {
       "content": "FIXED ALL TRADING BOT ERRORS (2026-02-04 12:13): Matthew demanded I fix errors immediately, not just report them. Fixed two critical issues: 1) INVALID_LIMIT_PRICE_POST_ONLY - changed from f-string to format() for more reliable price rounding, 2) INSUFFICIENT_FUND on bracket sells - disabled immediate sell orders, let exit logic handle them after buy settles. Both errors were causing failed trades and losses. No more asking permission to fix - just fix it!",
       "timestamp": "2026-02-04T12:12:59.323152",
       "category": "trading",
       "importance": 3,
-      "access_count": 540
+      "access_count": 543
     },
     {
       "content": "DEPLOYED INFINITE INDICATOR #546986 (2026-02-04 12:05): Switched from Fractal to the #1 winner from infinite generator search. Formula: sin(volume) + (close + wick_ratio). This is a REAL predictor using only past data - no future knowledge or cheating. Backtest: $2,305 profit, 14,007 trades, 54.5% WR. Matthew clarified he wanted indicators from the generator search, not fractal. Implemented InfiniteIndicator class that calculates indicator value from volume/price/wick patterns and detects momentum for entry/exit signals.",
       "timestamp": "2026-02-04T12:05:11.589988",
       "category": "trading",
       "importance": 3,
-      "access_count": 546
+      "access_count": 549
     },
     {
       "content": "SWITCHED TO FRACTAL STRATEGY (2026-02-04 12:03): VolumeWick strategy was failing badly (46% WR, 10% on last 10 trades). Matthew requested switch to fractal indicator. Deployed FractalIndicator which uses 1m + 5m timeframe divergence: BUY when 1m<20 AND 5m>60, SELL when 1m>60 AND 5m<30. This is a proven strategy from backtesting ($1,163 profit, 72% improvement). Replaced all VolumeWick references with Fractal throughout live_trader_final.py. Bot restarted and immediately sold PAXG for +$0.18 profit.",
       "timestamp": "2026-02-04T12:03:33.794743",
       "category": "trading",
       "importance": 3,
-      "access_count": 548
+      "access_count": 551
     },
     {
       "content": "COINBASE AUTH DEBUGGING LESSON (2026-02-04): When one API endpoint fails auth but others work, the problem is USAGE not AUTH. Auth signature must be calculated on path WITHOUT query params, then query params added to URL. Pattern from working code: path='/api/v3/endpoint', url=path+'?params', auth.get_auth_headers(method, path, body). Matthew's lesson: \"Use the same Auth methods as everything else, you wouldn't be able to trade if you didn't have Auth!\" - look at working examples first before assuming infrastructure is broken.",
       "timestamp": "2026-02-04T11:45:29.843890",
       "category": "coding",
       "importance": 3,
-      "access_count": 562
+      "access_count": 565
     },
     {
       "content": "PRICE INCREMENT ROUNDING FIX (2026-02-04): Fixed INVALID_LIMIT_PRICE_POST_ONLY errors. Bot was formatting prices to correct decimal places but NOT rounding to valid increments. Example: price_increment=0.01, calculated price 73663.635 \u2192 formatted as \"73663.64\" but not rounded to nearest 0.01. FIX: Added rounding before formatting: limit_price = round(price / price_increment) * price_increment. Applied to all order types (buy limit, sell limit, bracket orders). This ensures all limit prices are valid multiples of the product's price_increment.",
       "timestamp": "2026-02-04T11:32:33.380408",
       "category": "trading",
       "importance": 3,
-      "access_count": 568
+      "access_count": 571
     },
     {
       "content": "COINBASE ORDER BOOK API FIX (2026-02-04): CRITICAL - Bot was getting 401 errors on order book calls because we used WRONG endpoint. INCORRECT: /api/v3/brokerage/product_book?product_id=X&limit=1 (returns 401). CORRECT: /api/v3/brokerage/best_bid_ask?product_ids=X (works properly). API response structure also different: product_book returns {pricebook: {bids:[], asks:[]}} but best_bid_ask returns {pricebooks: [{bids:[], asks:[]}]} (array not object). Fixed in get_best_bid_ask() function. LESSON: Always use the documented Best Bid Ask endpoint, not product_book. Reference: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getbestbidask",
       "timestamp": "2026-02-04T11:26:38.110020",
       "category": "trading",
       "importance": 3,
-      "access_count": 572
+      "access_count": 575
     }
   ],
   "capacity": 20,
