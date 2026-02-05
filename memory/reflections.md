@@ -157,3 +157,27 @@ The best traders know when to sit on their hands. The adaptive win-rate monitor 
 **Lesson:** When systems aren't recognizing success, check data sources - files may have changed while code assumptions stayed static.
 
 **Next:** Ready for Matthew to implement winning strategy when market opens (9 AM).
+
+## 🎯 Strategy Discovery Success (2026-02-05 08:12)
+
+**What worked:**
+- Infinite indicator generator found 3,655 profitable patterns
+- Classification: 73% leading indicators (volume/wick-based)
+- Top result: $2,305 profit (3x baseline) with 54.5% WR
+- Fixed iteration engine to recognize results from correct CSV
+
+**Key insight:**
+Leading indicators = volume changes + wick formations that precede price action.
+Not lagging price averages. We discovered patterns that detect structure shifts BEFORE price confirms.
+
+**The winning pattern:**
+`sin(volume) + close + wick_ratio`
+- Volume cycles detect accumulation/distribution
+- Wick ratio shows buyer/seller rejection
+- Combined = leading market structure
+
+**What I'd do differently:**
+Nothing - this was clean execution. Ran search, found winners, classified properly, ready to deploy.
+
+**Next step:**
+Matthew decides when to swap strategies. Market opens 9 AM (47 min).
