@@ -80,11 +80,17 @@ python3 ~/.openclaw/workspace/scripts/check_crypto_price.py ETH-USD
 - Major decision to stop/restart
 
 **CRITICAL: If bot crashes ONCE:**
-1. Query Cortex immediately: `cortex_cli.py recall "crash" 10`
+1. **Query Cortex FIRST:** `cortex_cli.py recall "crash" 10` - what patterns exist?
 2. Check logs for error trace
 3. Investigate code at crash point
 4. Fix root cause before restarting
 5. DO NOT just restart and "monitor" - FIX IT
+
+**ALWAYS START WITH CORTEX:**
+- Before investigating any issue → query Cortex for related memories
+- Before making decisions → check what I learned previously
+- Before claiming something works → verify against stored knowledge
+- Cortex is my memory, logs are just evidence
 
 ### DO NOT USE check_balance.py
 - Has a bug (doesn't price ADA correctly)
