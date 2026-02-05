@@ -24,19 +24,19 @@ curl -X POST http://localhost:8020/tts \
 
 **Important:** XTTS server works fine (NVIDIA driver 580.126 is compatible). But sending audio via Signal through the `message` tool has a critical issue:
 
-❌ **Known Issue: Audio delivery via message tool returns success but doesn't transmit audio**
-- Tool returns `success: true` but audio doesn't actually transmit to Signal
-- Generated audio files arrive as text content instead of playable audio files
-- Tested 2026-02-04 21:43: Tried multiple formats (file path, data:// URL) - none work via message tool
-- Signal-cli attachment format: `data:audio/wav; filename=elby.wav; base64,<DATA>` or file path
-- Issue is specific to message tool's attachment handling for audio
+✅ **FIXED (2026-02-04 22:07): Audio delivery via message tool**
+- Added data: URI (RFC 2397) support to OpenClaw's media loader
+- Modified `/home/bonsaihorn/Projects/helios/src/web/media.ts`
+- Now handles: `data:audio/wav;filename=elby.wav;base64,<DATA>`
+- Committed to helios repo (commit 6f27756c3)
 
-**Workaround (when available):**
-- Generate audio with XTTS ✅ works
-- Use `signal-cli send -a /path/to/file` directly ✅ works
-- Manual upload to Signal ✅ works
-- Use message tool for text only ✅ works
-- Don't rely on message tool for audio delivery ❌ broken
+**Audio flow (now working):**
+1. Generate audio with XTTS ✅
+2. Encode as data: URL with base64 ✅
+3. Send via message tool to Signal ✅
+4. Deliver as actual playable audio files ✅
+
+**Note:** OpenClaw gateway restart required for changes to take effect. Restart disabled in config; use `systemctl --user restart openclaw-gateway` if needed.
 
 ---
 
