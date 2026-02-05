@@ -233,3 +233,27 @@ Monitor bot at 14:46 (30 min from restart). If it survives past that mark, the f
 **What actually works:** Bot restarted at 15:17, immediately closed 2 profitable positions (+$1.41 total). It's polling-based and stable.
 
 **Action:** Stop chasing phantom websocket crashes. Focus on strategy search completion and actual performance metrics.
+
+## Volume Strategy Deployment Challenges (2026-02-05 15:48)
+
+**Goal:** Deploy $12,939 backtest strategy (1487 TPH) by market close.
+
+**The cascade of bugs:**
+
+1. **Missing attribute (15:34):** volume_history not initialized in __init__
+2. **Wrong data source (15:38):** Using 24h rolling volume instead of 1-minute candle volume
+3. **Edit didn't apply (15:43):** Modified wrong get_price() function (there were multiple)
+4. **Finally working (15:46):** Volume data capturing correctly
+
+**Pattern:** Each fix revealed the next issue. Like peeling an onion of bugs.
+
+**What worked:**
+- Cortex-first workflow (queried memory before investigating)
+- Added debug logging to see actual API responses
+- Verified fixes with test calls before deploying
+
+**Lesson:** When deployment fails silently (no errors, just no activity), add logging at every step. Don't assume code changes applied - verify with grep.
+
+**Time cost:** 18 minutes of trading time lost to deployment bugs. With 21 minutes left until close, bot barely has time to demonstrate strategy.
+
+**Next time:** Test volume capture in isolation BEFORE deploying to live bot.
