@@ -1,0 +1,380 @@
+[
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 2
+    },
+    "total_pnl": -799.4411154278357,
+    "total_trades": 8046,
+    "win_rate": 0.22371364653243847,
+    "wins": 18,
+    "losses": 8028,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1700.5588845721643
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 4
+    },
+    "total_pnl": -799.4411154278357,
+    "total_trades": 8046,
+    "win_rate": 0.22371364653243847,
+    "wins": 18,
+    "losses": 8028,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1700.5588845721643
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 6
+    },
+    "total_pnl": -799.4411154278357,
+    "total_trades": 8046,
+    "win_rate": 0.22371364653243847,
+    "wins": 18,
+    "losses": 8028,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1700.5588845721643
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 2
+    },
+    "total_pnl": -799.4411154278357,
+    "total_trades": 8046,
+    "win_rate": 0.22371364653243847,
+    "wins": 18,
+    "losses": 8028,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1700.5588845721643
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 4
+    },
+    "total_pnl": -799.4411154278357,
+    "total_trades": 8046,
+    "win_rate": 0.22371364653243847,
+    "wins": 18,
+    "losses": 8028,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1700.5588845721643
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 6
+    },
+    "total_pnl": -799.4411154278357,
+    "total_trades": 8046,
+    "win_rate": 0.22371364653243847,
+    "wins": 18,
+    "losses": 8028,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1700.5588845721643
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 2
+    },
+    "total_pnl": -833.7490034745883,
+    "total_trades": 8046,
+    "win_rate": 0.06214267959234402,
+    "wins": 5,
+    "losses": 8041,
+    "avg_hold_seconds": 103.44519015659955,
+    "final_capital": 1666.2509965254117
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 4
+    },
+    "total_pnl": -833.7490034745883,
+    "total_trades": 8046,
+    "win_rate": 0.06214267959234402,
+    "wins": 5,
+    "losses": 8041,
+    "avg_hold_seconds": 103.44519015659955,
+    "final_capital": 1666.2509965254117
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.1,
+      "max_positions": 6
+    },
+    "total_pnl": -833.7490034745883,
+    "total_trades": 8046,
+    "win_rate": 0.06214267959234402,
+    "wins": 5,
+    "losses": 8041,
+    "avg_hold_seconds": 103.44519015659955,
+    "final_capital": 1666.2509965254117
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 2
+    },
+    "total_pnl": -963.7936851077682,
+    "total_trades": 9676,
+    "win_rate": 0.40305911533691613,
+    "wins": 39,
+    "losses": 9637,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1536.2063148922318
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 4
+    },
+    "total_pnl": -963.7936851077682,
+    "total_trades": 9676,
+    "win_rate": 0.40305911533691613,
+    "wins": 39,
+    "losses": 9637,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1536.2063148922318
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 6
+    },
+    "total_pnl": -963.7936851077682,
+    "total_trades": 9676,
+    "win_rate": 0.40305911533691613,
+    "wins": 39,
+    "losses": 9637,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1536.2063148922318
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 2
+    },
+    "total_pnl": -963.7936851077682,
+    "total_trades": 9676,
+    "win_rate": 0.40305911533691613,
+    "wins": 39,
+    "losses": 9637,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1536.2063148922318
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 4
+    },
+    "total_pnl": -963.7936851077682,
+    "total_trades": 9676,
+    "win_rate": 0.40305911533691613,
+    "wins": 39,
+    "losses": 9637,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1536.2063148922318
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 6
+    },
+    "total_pnl": -963.7936851077682,
+    "total_trades": 9676,
+    "win_rate": 0.40305911533691613,
+    "wins": 39,
+    "losses": 9637,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1536.2063148922318
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 2
+    },
+    "total_pnl": -986.4584881445928,
+    "total_trades": 9885,
+    "win_rate": 0.4451188669701568,
+    "wins": 44,
+    "losses": 9841,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1513.5415118554072
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 4
+    },
+    "total_pnl": -986.4584881445928,
+    "total_trades": 9885,
+    "win_rate": 0.4451188669701568,
+    "wins": 44,
+    "losses": 9841,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1513.5415118554072
+  },
+  {
+    "params": {
+      "max_hold_seconds": 30,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 6
+    },
+    "total_pnl": -986.4584881445928,
+    "total_trades": 9885,
+    "win_rate": 0.4451188669701568,
+    "wins": 44,
+    "losses": 9841,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1513.5415118554072
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 2
+    },
+    "total_pnl": -986.4584881445928,
+    "total_trades": 9885,
+    "win_rate": 0.4451188669701568,
+    "wins": 44,
+    "losses": 9841,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1513.5415118554072
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 4
+    },
+    "total_pnl": -986.4584881445928,
+    "total_trades": 9885,
+    "win_rate": 0.4451188669701568,
+    "wins": 44,
+    "losses": 9841,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1513.5415118554072
+  },
+  {
+    "params": {
+      "max_hold_seconds": 60,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 6
+    },
+    "total_pnl": -986.4584881445928,
+    "total_trades": 9885,
+    "win_rate": 0.4451188669701568,
+    "wins": 44,
+    "losses": 9841,
+    "avg_hold_seconds": 60.0,
+    "final_capital": 1513.5415118554072
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 2
+    },
+    "total_pnl": -1003.9746019721483,
+    "total_trades": 9676,
+    "win_rate": 0.20669698222405952,
+    "wins": 20,
+    "losses": 9656,
+    "avg_hold_seconds": 104.69615543613064,
+    "final_capital": 1496.0253980278517
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 4
+    },
+    "total_pnl": -1003.9746019721483,
+    "total_trades": 9676,
+    "win_rate": 0.20669698222405952,
+    "wins": 20,
+    "losses": 9656,
+    "avg_hold_seconds": 104.69615543613064,
+    "final_capital": 1496.0253980278517
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.2,
+      "max_positions": 6
+    },
+    "total_pnl": -1003.9746019721483,
+    "total_trades": 9676,
+    "win_rate": 0.20669698222405952,
+    "wins": 20,
+    "losses": 9656,
+    "avg_hold_seconds": 104.69615543613064,
+    "final_capital": 1496.0253980278517
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 2
+    },
+    "total_pnl": -1028.0372554362666,
+    "total_trades": 9885,
+    "win_rate": 0.2225594334850784,
+    "wins": 22,
+    "losses": 9863,
+    "avg_hold_seconds": 104.89226100151745,
+    "final_capital": 1471.9627445637334
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 4
+    },
+    "total_pnl": -1028.0372554362666,
+    "total_trades": 9885,
+    "win_rate": 0.2225594334850784,
+    "wins": 22,
+    "losses": 9863,
+    "avg_hold_seconds": 104.89226100151745,
+    "final_capital": 1471.9627445637334
+  },
+  {
+    "params": {
+      "max_hold_seconds": 120,
+      "spread_threshold_pct": 0.3,
+      "max_positions": 6
+    },
+    "total_pnl": -1028.0372554362666,
+    "total_trades": 9885,
+    "win_rate": 0.2225594334850784,
+    "wins": 22,
+    "losses": 9863,
+    "avg_hold_seconds": 104.89226100151745,
+    "final_capital": 1471.9627445637334
+  }
+]

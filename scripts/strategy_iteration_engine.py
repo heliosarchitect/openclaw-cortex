@@ -46,32 +46,53 @@ def check_active_searches():
     return active
 
 def analyze_pattern_results():
-    """Analyze latest pattern search results"""
+    """Analyze latest pattern search results from ALL result files"""
+    all_results = []
+    
+    # Check pattern_based_strategies.csv
     csv_file = RESULTS_DIR / "pattern_based_strategies.csv"
+    if csv_file.exists():
+        try:
+            import pandas as pd
+            df = pd.read_csv(csv_file)
+            if len(df) > 0:
+                top = df.iloc[0]
+                all_results.append({
+                    'profit': float(top['total_profit']),
+                    'trades': int(top['num_trades']),
+                    'win_rate': float(top['win_rate']),
+                    'pattern': top['description'],
+                    'source': 'pattern_based_strategies'
+                })
+        except Exception as e:
+            log(f"Error reading pattern_based_strategies.csv: {e}")
     
-    if not csv_file.exists():
+    # Check infinite_indicator_results.csv
+    infinite_file = RESULTS_DIR / "infinite_indicator_results.csv"
+    if infinite_file.exists():
+        try:
+            import pandas as pd
+            df = pd.read_csv(infinite_file)
+            if len(df) > 0:
+                # Sort by profit descending
+                df = df.sort_values('total_profit', ascending=False)
+                top = df.iloc[0]
+                all_results.append({
+                    'profit': float(top['total_profit']),
+                    'trades': int(top['num_trades']),
+                    'win_rate': float(top['win_rate']),
+                    'pattern': str(top.get('transformation_json', 'infinite indicator transformation')),
+                    'source': 'infinite_indicator'
+                })
+        except Exception as e:
+            log(f"Error reading infinite_indicator_results.csv: {e}")
+    
+    if not all_results:
         return None
     
-    try:
-        import pandas as pd
-        df = pd.read_csv(csv_file)
-        
-        if len(df) == 0:
-            return None
-        
-        # Get top result
-        top = df.iloc[0]
-        
-        return {
-            'profit': float(top['total_profit']),
-            'trades': int(top['num_trades']),
-            'win_rate': float(top['win_rate']),
-            'pattern': top['description'],
-            'pattern_id': top['pattern_id']
-        }
-    except Exception as e:
-        log(f"Error analyzing results: {e}")
-        return None
+    # Return the best result (highest profit)
+    best = max(all_results, key=lambda x: x['profit'])
+    return best
 
 def spawn_next_iteration(lesson_learned: str, target: float):
     """Spawn next iteration of pattern search with lessons learned"""

@@ -139,3 +139,21 @@ The best traders know when to sit on their hands. The adaptive win-rate monitor 
 - Implement the winning strategy rules (60s max hold, spread filtering)
 
 ---
+
+## 🔧 Iteration Engine Bug Fix (2026-02-05 07:43)
+
+**Problem:** Strategy iteration engine was stuck reading old $777 result, not recognizing the massive $2305 breakthrough from infinite indicator generator.
+
+**Root cause:** Engine only checked `pattern_based_strategies.csv`, but new results were in `infinite_indicator_results.csv`.
+
+**Fix:** Updated `analyze_pattern_results()` to check BOTH CSV files and return the best result.
+
+**Result:** ✅ Engine now correctly identifies $2305.52 winning strategy
+- Pattern: `sin(volume) + close + wick_ratio`
+- 14,007 trades, 54.5% WR
+- 3.0x better than $777 baseline
+- 1.5x better than $1500 target
+
+**Lesson:** When systems aren't recognizing success, check data sources - files may have changed while code assumptions stayed static.
+
+**Next:** Ready for Matthew to implement winning strategy when market opens (9 AM).
