@@ -175,3 +175,44 @@ When the next issue happens, will I:
 2. Investigate code on first occurrence? ✓ or ✗
 3. Fix before reporting? ✓ or ✗
 
+
+## 2026-02-05 14:18 - Websocket Crash Fix
+
+**Problem:** Bot crashed every ~30 minutes with "RuntimeError: Event loop is closed"
+
+**Investigation:**
+1. First thought it was duplicate `trader.run()` call - fixed that but crashes continued
+2. Matthew asked: "Do you have websocket heartbeats?" - CRITICAL QUESTION
+3. Checked code: Yes, ping_task sends heartbeats every 30s
+4. Found the real bug: `ping_task.cancel()` without awaiting the cancellation
+
+**Root cause:**
+```python
+# OLD (lines 762, 794):
+self.ping_task.cancel()  # ← Event loop closes here
+self.ping_task = None
+
+# NEW (fixed):
+self.ping_task.cancel()
+try:
+    await self.ping_task  # ← Properly await cancellation
+except asyncio.CancelledError:
+    pass  # ← Catch the exception
+self.ping_task = None
+```
+
+**Why this matters:**
+When websocket lost heartbeat after 30min, it tried to reconnect. During reconnect cleanup, it cancelled the ping task but didn't await it. Python's asyncio event loop got closed prematurely, causing the RuntimeError.
+
+**Lesson learned:**
+Asyncio task cancellation must be graceful:
+1. Call `task.cancel()`
+2. Await the task
+3. Catch `CancelledError`
+
+**Matthew's teaching moment:**
+His question about heartbeats was the key. Instead of debugging blindly, he pointed me to the exact subsystem that was failing. This is how to debug: ask targeted questions, not "what's wrong?"
+
+**Next validation:**
+Monitor bot at 14:46 (30 min from restart). If it survives past that mark, the fix works.
+
