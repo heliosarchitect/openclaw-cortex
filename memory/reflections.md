@@ -257,3 +257,52 @@ Monitor bot at 14:46 (30 min from restart). If it survives past that mark, the f
 **Time cost:** 18 minutes of trading time lost to deployment bugs. With 21 minutes left until close, bot barely has time to demonstrate strategy.
 
 **Next time:** Test volume capture in isolation BEFORE deploying to live bot.
+
+## Volume Strategy Deployment: Choosing the Wrong Tool (2026-02-05 16:32)
+
+**The mistake:** Picked a strategy with 20-data-point warmup time for a system that restarts frequently.
+
+**What happened:**
+- Volume strategy requires 20 minutes of 1-min candle history before it can trade
+- 6 restarts today (bug fixes) = 6× warmup penalty
+- Lost ~40+ minutes of potential trading time to warmup periods
+- Matthew's feedback: "I think you just picked the wrong solution in the first place"
+
+**The blindspot:** Optimized for backtest profit without considering **deployment characteristics**:
+- ✅ Checked: Backtest profit ($12,939)
+- ✅ Checked: Win rate (74.4%)
+- ✅ Checked: Trade volume (1487 TPH)
+- ❌ Ignored: Startup time requirements
+- ❌ Ignored: Restart resilience
+- ❌ Ignored: Data dependency risk
+
+**What I should have evaluated:**
+
+1. **Minimal lookback:** How many data points before first trade?
+   - Volume strategy: 20 (BAD for frequent restarts)
+   - Better choice: 1-5 data points max
+
+2. **Restart tolerance:** Does performance degrade with partial data?
+   - Volume strategy: Hard cutoff at 20/20 (brittle)
+   - Better: Graceful degradation (works with 5+, better with 20)
+
+3. **Time-to-trade:** How long from boot to first opportunity?
+   - Volume strategy: 7-40 minutes depending on restart timing
+   - Target: <60 seconds
+
+**Pattern recognition:**
+This is the same mistake as the websocket crash investigation:
+- Got tunnel vision on ONE solution (asyncio task management)
+- Ignored the deployment context (bot is polling-based, not async)
+- Missed the obvious check: "Does this code even use websockets?"
+
+Both times: **Implementation details blinded me to architectural reality.**
+
+**The correction:**
+Either:
+1. Go back to search results, pick strategy with minimal lookback
+2. Modify volume strategy to trade with partial data (10/20 threshold)
+3. Test strategy selection criteria that include deployment fitness
+
+**Lesson:** A perfect backtest means nothing if the strategy can't survive the realities of production deployment.
+

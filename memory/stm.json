@@ -1,144 +1,144 @@
 {
   "short_term_memory": [
     {
+      "content": "Created comprehensive issue summary document (16:35). Identified 4 core problems: (1) volume strategy has wrong design for frequent restarts, (2) 8 cascading deployment bugs, (3) zero closed trades despite 493 fills, (4) 99.5% capital utilization. Matthew requested this summary to understand what's wrong with the bot.",
+      "timestamp": "2026-02-05T16:35:31.737292",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 11
+    },
+    {
+      "content": "FIXED INIT ORDER BUG (16:34): load_volume_history() called before self.conn initialized. Moved load call to AFTER conn = sqlite3.connect(). Bot restarting now. This was the 8th deployment issue today.",
+      "timestamp": "2026-02-05T16:34:33.021738",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 12
+    },
+    {
+      "content": "BOT CRASH #7 (2026-02-05 16:33): PID 2291617 died after 33 minutes uptime (started 16:00). Restarted at 16:00, crashed ~16:33. Need to check logs for cause. This is the 7th crash today despite all previous \"fixes\".",
+      "timestamp": "2026-02-05T16:33:39.128479",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 12
+    },
+    {
+      "content": "Proactive work 16:32 - Reflection: Wrote analysis of volume strategy deployment mistake. Key insight: optimized for backtest metrics without considering deployment characteristics (startup time, restart resilience, data dependencies). Same pattern as websocket crash investigation - tunnel vision on solution without checking architectural reality.",
+      "timestamp": "2026-02-05T16:33:11.872027",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 13
+    },
+    {
+      "content": "FOUND THE PROBLEM (16:06): Bot running since 16:00, volume history building correctly and saving to file. BUT zero volume signals since restart. Assets stuck at 10-15/20, none reaching 20/20 threshold yet. Bot won't trade until 20 data points collected. Matthew frustrated - bot not trading despite running for 6 minutes.",
+      "timestamp": "2026-02-05T16:06:42.469223",
+      "category": "trading",
+      "importance": 3,
+      "access_count": 35
+    },
+    {
       "content": "ADDED VOLUME HISTORY PERSISTENCE (15:59): Save to volume_history.json every 10 updates, load on startup. Basic feature that should have been there from the start. Bot restarted, will load previous volume data if file exists.",
       "timestamp": "2026-02-05T16:00:22.108272",
       "category": "trading",
       "importance": 3,
-      "access_count": 3
+      "access_count": 41
     },
     {
       "content": "FIXED ALL signal_data references (15:54): Found second reference on line 597. Removed all old Infinite Indicator code. Bot restarted (5th time today). Volume history building from scratch again. 2+ hours until close, should start trading once history reaches 20/20 in ~40 seconds.",
       "timestamp": "2026-02-05T15:54:58.474583",
       "category": "trading",
       "importance": 3,
-      "access_count": 10
+      "access_count": 48
     },
     {
       "content": "FIXED signal_data BUG (15:53): Volume signals firing but code referenced undefined signal_data variable from old Infinite Indicator. Removed the log line. Bot restarted, should start trading NOW.",
       "timestamp": "2026-02-05T15:54:08.004059",
       "category": "trading",
       "importance": 3,
-      "access_count": 10
+      "access_count": 48
     },
     {
       "content": "TIME CALCULATION ERROR CORRECTED (15:50): I was saying 12 minutes until 6pm close. Matthew corrected: 18:00 = 6pm. Actual time remaining: 2 hours 10 minutes. Bot has plenty of time to build volume history (needs 10 more seconds) and trade. Major mistake in time awareness.",
       "timestamp": "2026-02-05T15:51:05.856774",
       "category": "trading",
       "importance": 3,
-      "access_count": 12
+      "access_count": 50
     },
     {
       "content": "FIXED get_price() AGAIN (15:43): Previous edit didn't apply properly - get_price() was still using old code without volume fetching. Now correctly fetches 1-minute candle volume from '/api/v3/brokerage/market/products/{product}/candles?granularity=ONE_MINUTE'. Bot restarted, should build volume history now.",
       "timestamp": "2026-02-05T15:44:15.031864",
       "category": "trading",
       "importance": 3,
-      "access_count": 18
+      "access_count": 56
     },
     {
       "content": "FIXED VOLUME DATA BUG (15:38): Strategy was using 24h rolling volume (barely changes) instead of 1-minute candle volume (what backtest used). Changed get_price() to fetch ONE_MINUTE candles for actual volume data. Bot restarted, should start trading now.",
       "timestamp": "2026-02-05T15:39:05.182737",
       "category": "trading",
       "importance": 3,
-      "access_count": 22
+      "access_count": 60
     },
     {
       "content": "FIXED volume_history bug (15:34): Bot was crashing on strategy check because volume_history attribute wasn't initialized in __init__. Added self.volume_history = defaultdict(lambda: deque(maxlen=300)). Bot restarted, volume strategy now working.",
       "timestamp": "2026-02-05T15:34:11.743980",
       "category": "trading",
       "importance": 3,
-      "access_count": 27
+      "access_count": 65
     },
     {
       "content": "Volume strategy deployment successful (15:29). Bot restarted with new entry logic: volume > 0.6733x 20-period average. Syntax valid, running stable (PID 2271222). 7 existing positions loaded. 31 minutes of trading time remaining until 6pm close.",
       "timestamp": "2026-02-05T15:29:50.330947",
       "category": "trading",
       "importance": 3,
-      "access_count": 31
+      "access_count": 69
     },
     {
       "content": "DEPLOYED TOP STRATEGY (15:27): Implemented volume-based market maker from search results. Entry signal: current volume > 0.6733x 20-period average (from seed 655). Backtest showed $12,939 profit, 1487 TPH, 74.4% WR. Bot restarted with new strategy for final 33 minutes of trading day.",
       "timestamp": "2026-02-05T15:28:17.303059",
       "category": "trading",
       "importance": 3,
-      "access_count": 31
+      "access_count": 69
     },
     {
       "content": "FIXED strategy search (15:23): Old search was running 1M strategies (too slow, hours with no output). Killed it. Created fast_market_maker_search.py: 10K strategies, completes in minutes, outputs results immediately. Running now.",
       "timestamp": "2026-02-05T15:23:12.244485",
       "category": "trading",
       "importance": 3,
-      "access_count": 35
+      "access_count": 73
     },
     {
       "content": "CRITICAL REALIZATION (15:17): live_trader_final.py does NOT use websockets - it's polling-based. The 30-min crash pattern isn't from this bot. Need to check if there's ANOTHER trading process running with websockets (event_driven_trader.py, profit_aware_bot.py, etc.) that's crashing and confusing me.",
       "timestamp": "2026-02-05T15:17:40.809053",
       "category": "trading",
       "importance": 3,
-      "access_count": 40
+      "access_count": 78
     },
     {
       "content": "BOT CRASH #7 (2026-02-05 15:16): Crashed EXACTLY at 30-min mark again. Asyncio graceful cancellation fix completely failed. Pattern is consistent: every 30 minutes without exception. Need to investigate event loop creation/closure in reconnection paths, not just task cancellation. The 30-min timing suggests Coinbase websocket protocol timeout.",
       "timestamp": "2026-02-05T15:16:54.230587",
       "category": "trading",
       "importance": 3,
-      "access_count": 40
+      "access_count": 78
     },
     {
       "content": "BOT CRASH #6 (2026-02-05 14:46): Websocket asyncio fix FAILED. Bot died exactly at 30-min mark again. The graceful task cancellation fix didn't solve the root cause. Event loop still closing. Need deeper investigation - there's another path triggering loop closure.",
       "timestamp": "2026-02-05T14:46:41.831354",
       "category": "trading",
       "importance": 3,
-      "access_count": 62
+      "access_count": 100
     },
     {
       "content": "FIXED WEBSOCKET CRASH BUG (2026-02-05 14:16): Made asyncio task cancellation graceful. ping_task and monitor_task now awaited after cancel() with CancelledError caught. This prevents event loop closure during websocket reconnects. Bot restarted (PID 2224178). Should eliminate 30-min crash pattern.",
       "timestamp": "2026-02-05T14:16:50.247776",
       "category": "trading",
       "importance": 3,
-      "access_count": 90
+      "access_count": 128
     },
     {
       "content": "BOT CRASH #5 (2026-02-05 ~14:08): Same \"RuntimeError: Event loop is closed\" error AFTER fixing duplicate run(). Fix didn't work or there's another event loop closure happening. Bot was running 33 min (13:35-14:08). Restarted immediately. Need to investigate websocket/asyncio deeper.",
       "timestamp": "2026-02-05T14:10:07.436248",
       "category": "trading",
       "importance": 3,
-      "access_count": 97
-    },
-    {
-      "content": "WORKFLOW CHANGE (2026-02-05): Matthew: \"cortex should be your first stop always!\" Not logs, not code, not docs - CORTEX FIRST. Query for patterns/context before investigating anything. Memory comes before evidence. Updated HEARTBEAT.md with mandatory Cortex-first protocol.",
-      "timestamp": "2026-02-05T13:41:18.504641",
-      "category": "coding",
-      "importance": 3,
-      "access_count": 120
-    },
-    {
-      "content": "NEW RULE (2026-02-05): ONE crash = immediate investigation. Matthew corrected me: \"one crash should lead to troubleshooting and fixing!\" Not wait for patterns. Not monitor. First crash = debug + fix. Updated HEARTBEAT.md with mandatory crash response protocol.",
-      "timestamp": "2026-02-05T13:39:16.086866",
-      "category": "coding",
-      "importance": 3,
-      "access_count": 123
-    },
-    {
-      "content": "FIXED 30-MIN CRASH BUG (2026-02-05 13:35): Found duplicate trader.run() call at line 1199. Bot was running twice - first run completes/closes event loop after ~30min, second run crashes with \"RuntimeError: Event loop is closed\". Removed duplicate line. Bot restarted PID 2196683. This should eliminate the recurring crash pattern.",
-      "timestamp": "2026-02-05T13:35:30.295861",
-      "category": "trading",
-      "importance": 3,
-      "access_count": 131
-    },
-    {
-      "content": "BOT CRASH #4 (2026-02-05 13:33): RuntimeError - Event loop is closed. Bot died after 30 min uptime (PID 2175963). Restarted immediately without waiting for Matthew. This is the same crash pattern - dies around 30 min mark.",
-      "timestamp": "2026-02-05T13:34:25.304165",
-      "category": "trading",
-      "importance": 3,
-      "access_count": 132
-    },
-    {
-      "content": "FIXED DATABASE BUG (2026-02-05 12:57): Position tracking broken because UPDATE looked for status='OPEN' but BUY orders have status='FILLED'. Changed WHERE clause to status IN ('OPEN', 'FILLED'). This is why 945 FILLED trades weren't closing - they never matched the UPDATE. Bot restarted with fix.",
-      "timestamp": "2026-02-05T12:56:29.549630",
-      "category": "trading",
-      "importance": 3,
-      "access_count": 164
+      "access_count": 135
     }
   ],
   "capacity": 20,
