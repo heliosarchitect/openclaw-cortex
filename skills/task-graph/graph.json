@@ -1,0 +1,123 @@
+{
+  "edges": [
+    {
+      "attrs": {},
+      "dst": "qwen32",
+      "rel": "serves",
+      "src": "oai_local",
+      "updated": 1770233622
+    },
+    {
+      "attrs": {},
+      "dst": "qwen7",
+      "rel": "will-serve",
+      "src": "oai_local",
+      "updated": 1770233622
+    },
+    {
+      "attrs": {},
+      "dst": "trader_db",
+      "rel": "uses",
+      "src": "trader_bot",
+      "updated": 1770233622
+    },
+    {
+      "attrs": {},
+      "dst": "coinbase_best_bid_ask",
+      "rel": "depends-on",
+      "src": "trader_bot",
+      "updated": 1770233622
+    },
+    {
+      "attrs": {},
+      "dst": "oai_local",
+      "rel": "exposes",
+      "src": "oobabooga",
+      "updated": 1770233622
+    }
+  ],
+  "nodes": {
+    "coinbase_best_bid_ask": {
+      "attrs": {
+        "status": "ok",
+        "url": "https://api.coinbase.com/api/v3/brokerage/best_bid_ask"
+      },
+      "type": "endpoint",
+      "updated": 1770233622
+    },
+    "comfyui_env": {
+      "attrs": {
+        "cu": "128",
+        "name": "comfyui",
+        "note": "xformers_mismatch",
+        "torch": "2.11.0.dev"
+      },
+      "type": "env",
+      "updated": 1770233622
+    },
+    "oai_local": {
+      "attrs": {
+        "kind": "openai",
+        "status": "up",
+        "url": "http://localhost:5000"
+      },
+      "type": "endpoint",
+      "updated": 1770233622
+    },
+    "oobabooga": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/text-generation-webui",
+        "port": "5000",
+        "status": "up"
+      },
+      "type": "service",
+      "updated": 1770233622
+    },
+    "qwen32": {
+      "attrs": {
+        "family": "qwen2.5",
+        "quant": "q4_k_m",
+        "size": "32b",
+        "status": "downloading"
+      },
+      "type": "model",
+      "updated": 1770233622
+    },
+    "qwen7": {
+      "attrs": {
+        "family": "qwen2.5",
+        "quant": "q4_k_m",
+        "size": "7b",
+        "status": "downloading"
+      },
+      "type": "model",
+      "updated": 1770233622
+    },
+    "textgen_env": {
+      "attrs": {
+        "name": "textgen",
+        "torch": "2.8.0+cu128",
+        "vllm": "0.15.0"
+      },
+      "type": "env",
+      "updated": 1770233622
+    },
+    "trader_bot": {
+      "attrs": {
+        "repo": "Chad_Profit_Bot",
+        "script": "live_trader_final.py",
+        "status": "running",
+        "wr_target": "60"
+      },
+      "type": "service",
+      "updated": 1770233622
+    },
+    "trader_db": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/Chad2930/Chad_Profit_Bot/live_trading.db"
+      },
+      "type": "db",
+      "updated": 1770233622
+    }
+  }
+}
