@@ -27,12 +27,14 @@ curl -X POST http://localhost:8020/tts \
 ❌ **Known Issue: Audio delivery via message tool returns success but doesn't transmit audio**
 - Tool returns `success: true` but audio doesn't actually transmit to Signal
 - Generated audio files arrive as text content instead of playable audio files
-- Tested 2026-02-04 21:20: Sent Elby voice message, recipient received "just text messages"
-- Issue is specific to message tool's audio handling, not Signal itself
+- Tested 2026-02-04 21:43: Tried multiple formats (file path, data:// URL) - none work via message tool
+- Signal-cli attachment format: `data:audio/wav; filename=elby.wav; base64,<DATA>` or file path
+- Issue is specific to message tool's attachment handling for audio
 
 **Workaround (when available):**
 - Generate audio with XTTS ✅ works
-- Upload file manually to Signal ✅ works
+- Use `signal-cli send -a /path/to/file` directly ✅ works
+- Manual upload to Signal ✅ works
 - Use message tool for text only ✅ works
 - Don't rely on message tool for audio delivery ❌ broken
 
