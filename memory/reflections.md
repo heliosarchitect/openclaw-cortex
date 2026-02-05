@@ -216,3 +216,20 @@ His question about heartbeats was the key. Instead of debugging blindly, he poin
 **Next validation:**
 Monitor bot at 14:46 (30 min from restart). If it survives past that mark, the fix works.
 
+
+## False Diagnosis - Websocket Crash Investigation (2026-02-05 15:17)
+
+**What I thought:** Bot was crashing every 30 minutes due to websocket event loop closure.
+
+**What was actually happening:** I was tracking the wrong process. live_trader_final.py is polling-based (no websockets), so the "30-min crash pattern" was either:
+1. A different process entirely (not the trading bot)
+2. Me looking at stale logs
+3. Process PID changes I misinterpreted as crashes
+
+**The mistake:** Assumed correlation = causation without verifying WHICH process was crashing. Spent hours "fixing" asyncio task cancellation in websocket code that the current bot doesn't even use.
+
+**Lesson:** ALWAYS verify process identity before debugging. `ps aux | grep PID` to confirm what's actually running. Don't trust assumptions about which code is executing.
+
+**What actually works:** Bot restarted at 15:17, immediately closed 2 profitable positions (+$1.41 total). It's polling-based and stable.
+
+**Action:** Stop chasing phantom websocket crashes. Focus on strategy search completion and actual performance metrics.
