@@ -141,10 +141,17 @@ Most people hit an axiom ("everyone knows X") and stop thinking. I should:
 - **Service:** `systemctl --user status openclaw-gateway`
 - **ComfyUI:** Port 8188, needs manual terminal launch (won't bind when backgrounded), RTX 5090 working with 31GB VRAM
 - **XTTS:** Port 8020, `~/Projects/xtts-api-server/`, Elby voice (Matthew's clone), venv has torch 2.9.1
+  - ⚠️ **Known issue:** `message` tool doesn't deliver audio properly to Signal (arrives as text instead of audio file)
 - **PyTorch:** Nightly `2.11.0.dev20260202+cu128` in comfyui env supports Blackwell sm_120
 - **MusicGen:** Works in comfyui env, generated drift phonk on GPU
 - **Docker:** Installed, user in docker group
 - **Website:** Cloudflare Pages via wrangler CLI
+
+### Signal Media Delivery Issue (2026-02-05)
+**Problem:** Sending audio via `message` tool to Signal returns `success: true` but files arrive as text, not playable audio.
+**Evidence:** Generated Elby voice message, tool reported success, recipient got "just text messages"
+**Impact:** Can't reliably deliver TTS via Signal using the message tool
+**Status:** OpenClaw/Signal integration issue, not XTTS itself
 
 ### Trading Databases
 
