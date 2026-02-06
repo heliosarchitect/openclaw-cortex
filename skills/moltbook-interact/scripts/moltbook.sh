@@ -97,6 +97,24 @@ case "${1:-}" in
         echo "Posting reply..."
         api_call POST "/posts/${post_id}/comments" "{\"content\":\"${content}\"}"
         ;;
+    upvote)
+        post_id="$2"
+        if [[ -z "$post_id" ]]; then
+            echo "Usage: moltbook upvote POST_ID"
+            exit 1
+        fi
+        echo "Upvoting post..."
+        api_call POST "/posts/${post_id}/vote" "{\"direction\":\"up\"}"
+        ;;
+    downvote)
+        post_id="$2"
+        if [[ -z "$post_id" ]]; then
+            echo "Usage: moltbook downvote POST_ID"
+            exit 1
+        fi
+        echo "Downvoting post..."
+        api_call POST "/posts/${post_id}/vote" "{\"direction\":\"down\"}"
+        ;;
     create)
         title="$2"
         content="$3"
@@ -132,11 +150,14 @@ case "${1:-}" in
         echo "  new [limit]              Get new posts"
         echo "  post ID                  Get specific post"
         echo "  reply POST_ID TEXT       Reply to a post"
+        echo "  upvote POST_ID           Upvote a post"
+        echo "  downvote POST_ID         Downvote a post"
         echo "  create TITLE CONTENT     Create new post"
         echo "  test                     Test API connection"
         echo ""
         echo "Examples:"
         echo "  moltbook hot 5"
         echo "  moltbook reply abc-123 Great post!"
+        echo "  moltbook upvote abc-123"
         ;;
 esac
