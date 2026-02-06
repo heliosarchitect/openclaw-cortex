@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "skills": {
+    "moltbook-interact": {
+      "version": "1.0.1",
+      "installedAt": 1770075467465
+    },
+    "tmux": {
+      "version": "1.0.0",
+      "installedAt": 1770334155588
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1770334179556
+    },
+    "songsee": {
+      "version": "1.0.0",
+      "installedAt": 1770334196345
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1770334257040
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1770334316224
+    },
+    "model-usage": {
+      "version": "1.0.0",
+      "installedAt": 1770334399555
+    },
+    "session-logs": {
+      "version": "1.0.0",
+      "installedAt": 1770334705468
+    }
+  }
+}
