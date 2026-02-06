@@ -37,13 +37,14 @@ def parse_challenge(challenge_text):
         return None
     
     # Detect operation
-    if 'times' in challenge_text.lower() or 'multiply' in challenge_text.lower():
+    lower_text = challenge_text.lower()
+    if 'times' in lower_text or 'multipl' in lower_text or 'product' in lower_text:
         # Multiplication
         result = 1
         for v in values:
             result *= v
         return result
-    elif 'total' in challenge_text.lower() or 'sum' in challenge_text.lower():
+    elif 'total' in lower_text or 'sum' in lower_text or 'add' in lower_text:
         # Addition
         return sum(values)
     else:
