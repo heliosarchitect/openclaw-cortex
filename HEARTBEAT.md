@@ -220,6 +220,15 @@ Don't just execute - think about *how* I'm executing.
 
 ---
 
+## 📊 AMSC Trading Report (Every 15 Minutes)
+
+Run: `python3 ~/.openclaw/workspace/scripts/amsc_report.py`
+
+Report to Matthew:
+- Last 15 min: trades, P/L, dollar volume
+- Total: cumulative since start
+- 30-day: rolling 30-day window
+
 ## 🔄 Every 30 Minutes - Active Work Rotation
 
 Pick ONE task from this list each heartbeat (cycle through them):
