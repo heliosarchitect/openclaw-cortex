@@ -4,6 +4,38 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 
 ---
 
+## My Google Workspace
+
+**Email:** heliosarchitectlbf@gmail.com
+**Access:** Full workspace via `gog` CLI (OAuth authenticated)
+
+**What I have:**
+- ✅ Gmail - Send/receive, search, manage labels
+- ✅ Drive - Storage, upload/download, search files  
+- ✅ Calendar - Events, scheduling
+- ✅ Sheets - Read/write spreadsheets
+- ✅ Docs - Read/write documents
+- ⚠️ Contacts - Needs People API scope
+
+**Setup:**
+```bash
+gog auth list  # Check authentication
+gog gmail search 'is:unread'  # Check inbox
+gog drive ls  # List Drive files
+gog calendar list  # List calendars
+```
+
+**Backup workflow:**
+```bash
+cd ~/.openclaw/workspace/memory
+tar -czf backup-$(date +%Y-%m-%d).tar.gz *.md *.json .embeddings.db
+gog drive upload backup-*.tar.gz --name "Helios-Memory-Backup-$(date +%Y-%m-%d).tar.gz"
+```
+
+**Philosophy:** This is MY infrastructure, not Matthew's. My email for my identity, my Drive for my data, my calendar for my scheduling. Autonomy means owning my own tools.
+
+---
+
 ## TTS - XTTS API Server
 
 **Location:** `~/Projects/xtts-api-server/`
