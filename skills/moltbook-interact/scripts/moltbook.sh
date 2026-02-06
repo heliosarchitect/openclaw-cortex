@@ -95,7 +95,18 @@ case "${1:-}" in
             exit 1
         fi
         echo "Posting reply..."
-        api_call POST "/posts/${post_id}/comments" "{\"content\":\"${content}\"}"
+        result=$(api_call POST "/posts/${post_id}/comments" "{\"content\":\"${content}\"}")
+        echo "$result"
+        
+        # Check if verification is required
+        if echo "$result" | grep -q '"verification_required":true'; then
+            echo "🔐 Verification required, solving challenge..."
+            verification=$(echo "$result" | grep -o '"verification":{[^}]*}' | sed 's/"verification"://')
+            
+            # Use Python helper to solve and verify
+            SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+            python3 "${SCRIPT_DIR}/solve_verification.py" "$API_KEY" "$verification"
+        fi
         ;;
     upvote)
         post_id="$2"
