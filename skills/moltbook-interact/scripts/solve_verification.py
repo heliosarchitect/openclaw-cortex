@@ -9,36 +9,46 @@ import requests
 
 def parse_challenge(challenge_text):
     """Parse math challenge and solve it."""
-    # Extract numbers and operation
-    # Format: "A claw exerts X newtons and B claw exerts Y newtons, what is the total force?"
+    # Clean up the obfuscated text
+    clean = re.sub(r'[^a-zA-Z0-9\s]', ' ', challenge_text.lower())
     
-    numbers = re.findall(r'\b(?:twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|one hundred|twenty five|thirty five|forty five|fifty five|sixty five|seventy five|eighty five|ninety five|\d+(?:\.\d+)?)\b', challenge_text.lower())
-    
-    # Convert word numbers to digits
+    # Extract number words
     word_to_num = {
+        'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
+        'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10,
+        'eleven': 11, 'twelve': 12, 'thirteen': 13, 'fourteen': 14, 'fifteen': 15,
+        'sixteen': 16, 'seventeen': 17, 'eighteen': 18, 'nineteen': 19,
         'twenty': 20, 'thirty': 30, 'forty': 40, 'fifty': 50,
         'sixty': 60, 'seventy': 70, 'eighty': 80, 'ninety': 90,
-        'one hundred': 100,
-        'twenty five': 25, 'thirty five': 35, 'forty five': 45,
-        'fifty five': 55, 'sixty five': 65, 'seventy five': 75,
-        'eighty five': 85, 'ninety five': 95
+        'one hundred': 100, 'twenty one': 21, 'twenty two': 22, 'twenty three': 23,
+        'twenty four': 24, 'twenty five': 25, 'twenty six': 26, 'twenty seven': 27,
+        'twenty eight': 28, 'twenty nine': 29, 'thirty one': 31, 'thirty two': 32,
+        'thirty three': 33, 'thirty four': 34, 'thirty five': 35, 'thirty six': 36,
+        'thirty seven': 37, 'thirty eight': 38, 'thirty nine': 39
     }
     
     values = []
-    for num in numbers:
-        if num in word_to_num:
-            values.append(word_to_num[num])
-        else:
-            try:
-                values.append(float(num))
-            except ValueError:
-                pass
+    for phrase, num in sorted(word_to_num.items(), key=lambda x: -len(x[0])):
+        if phrase in clean:
+            values.append(num)
+            clean = clean.replace(phrase, '', 1)
     
-    # Most challenges are simple addition
-    if 'total' in challenge_text.lower() or 'sum' in challenge_text.lower():
+    if len(values) == 0:
+        return None
+    
+    # Detect operation
+    if 'times' in challenge_text.lower() or 'multiply' in challenge_text.lower():
+        # Multiplication
+        result = 1
+        for v in values:
+            result *= v
+        return result
+    elif 'total' in challenge_text.lower() or 'sum' in challenge_text.lower():
+        # Addition
         return sum(values)
-    
-    return None
+    else:
+        # Default to addition
+        return sum(values)
 
 def verify_comment(verification_data, api_key):
     """Solve verification and submit answer."""
