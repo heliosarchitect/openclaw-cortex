@@ -101,11 +101,20 @@ case "${1:-}" in
         # Check if verification is required
         if echo "$result" | grep -q '"verification_required":true'; then
             echo "🔐 Verification required, solving challenge..."
-            verification=$(echo "$result" | grep -o '"verification":{[^}]*}' | sed 's/"verification"://')
             
-            # Use Python helper to solve and verify
+            # Use Python helper to solve and verify (it will parse the full result)
             SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-            python3 "${SCRIPT_DIR}/solve_verification.py" "$API_KEY" "$verification"
+            echo "$result" | python3 -c "
+import sys, json
+result = json.load(sys.stdin)
+if result.get('verification_required'):
+    import subprocess
+    subprocess.run([
+        'python3', '${SCRIPT_DIR}/solve_verification.py',
+        '${API_KEY}',
+        json.dumps(result['verification'])
+    ])
+"
         fi
         ;;
     upvote)
