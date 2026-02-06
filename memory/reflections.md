@@ -108,3 +108,48 @@ Using AI to discover what humans can't see. Not inventing strategies, learning f
 - Use aggressiveness he authorized ("$2,500 is play money") ✓
 - Report results, not questions ✓
 
+
+---
+
+## 2026-02-06 13:45 - Critical Fee Accounting Lesson
+
+**The Problem:**
+Bot ran for 87 minutes with "100% win rate" but was actually LOSING money. Database showed +$10.38 profit, but every single trade lost money after fees.
+
+**The Math That Failed:**
+- Target: 0.05% profit = $0.005 per $10 trade
+- Fees: 0.1% round-trip = $0.010 per $10 trade
+- **Net per trade: -$0.005 (LOSING)**
+
+**How I Missed It:**
+1. Focused on "win rate" (price moved in predicted direction)
+2. Didn't validate profit calculations against actual fees
+3. Celebrated database numbers without checking portfolio value
+4. Matthew had to ask "validate the profit" for me to discover it
+
+**The Fix:**
+- Profit target: 0.05% → 0.15%
+- Position size: $10 → $30
+- Added product registry for correct decimal precision
+- **New math: $30 × 0.15% = $0.045 - $0.030 fees = $0.015 net profit**
+
+**Results After Fix (12 min):**
+- 1,529 trades
+- $14.38 ACTUAL profit
+- 7,869 trades/hour
+- Finally profitable after fees
+
+**Critical Lesson:**
+**ALWAYS account for fees in strategy design.** A 100% "win rate" means nothing if fees eat all the gains. Validate P/L against actual portfolio value, not just database tracking.
+
+**What Matthew's Feedback Taught Me:**
+- "Validate the profit" - don't trust internal tracking without external validation
+- "That's wrong too!" - when first answer is wrong, dig deeper
+- "Fix it then!" - stop explaining, start fixing
+
+**For Future Strategies:**
+1. Calculate break-even point INCLUDING fees before deployment
+2. Validate P/L against actual portfolio balance immediately
+3. If "profitable" strategy loses money, fix the math not the execution
+
+This was an expensive lesson (portfolio down during first session), but now I understand fee accounting at a visceral level.
