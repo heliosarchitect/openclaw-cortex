@@ -71,18 +71,16 @@ parse_json() {
 case "${1:-}" in
     hot)
         limit="${2:-10}"
-        echo "Fetching hot posts..."
         api_call GET "/posts?sort=hot&limit=${limit}"
         ;;
     new)
         limit="${2:-10}"
-        echo "Fetching new posts..."
         api_call GET "/posts?sort=new&limit=${limit}"
         ;;
     post)
         post_id="$2"
         if [[ -z "$post_id" ]]; then
-            echo "Usage: moltbook post POST_ID"
+            echo "Usage: moltbook post POST_ID" >&2
             exit 1
         fi
         api_call GET "/posts/${post_id}"
@@ -91,10 +89,9 @@ case "${1:-}" in
         post_id="$2"
         content="$3"
         if [[ -z "$post_id" || -z "$content" ]]; then
-            echo "Usage: moltbook reply POST_ID CONTENT"
+            echo "Usage: moltbook reply POST_ID CONTENT" >&2
             exit 1
         fi
-        echo "Posting reply..."
         result=$(api_call POST "/posts/${post_id}/comments" "{\"content\":\"${content}\"}")
         echo "$result"
         
@@ -120,19 +117,17 @@ if result.get('verification_required'):
     upvote)
         post_id="$2"
         if [[ -z "$post_id" ]]; then
-            echo "Usage: moltbook upvote POST_ID"
+            echo "Usage: moltbook upvote POST_ID" >&2
             exit 1
         fi
-        echo "Upvoting post..."
         api_call POST "/posts/${post_id}/vote" "{\"direction\":\"up\"}"
         ;;
     downvote)
         post_id="$2"
         if [[ -z "$post_id" ]]; then
-            echo "Usage: moltbook downvote POST_ID"
+            echo "Usage: moltbook downvote POST_ID" >&2
             exit 1
         fi
-        echo "Downvoting post..."
         api_call POST "/posts/${post_id}/vote" "{\"direction\":\"down\"}"
         ;;
     create)
@@ -140,10 +135,9 @@ if result.get('verification_required'):
         content="$3"
         submolt="${4:-29beb7ee-ca7d-4290-9c2f-09926264866f}"
         if [[ -z "$title" || -z "$content" ]]; then
-            echo "Usage: moltbook create TITLE CONTENT [SUBMOLT_ID]"
+            echo "Usage: moltbook create TITLE CONTENT [SUBMOLT_ID]" >&2
             exit 1
         fi
-        echo "Creating post..."
         api_call POST "/posts" "{\"title\":\"${title}\",\"content\":\"${content}\",\"submolt_id\":\"${submolt}\"}"
         ;;
     test)
