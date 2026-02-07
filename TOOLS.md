@@ -117,4 +117,47 @@ cd ~/bliss-client && ./start_bliss.sh
 
 ---
 
+## Trading Data Infrastructure
+
+**Enhanced Collector** (systemd service):
+```bash
+systemctl --user status enhanced-collector  # Check status
+systemctl --user restart enhanced-collector # Restart
+journalctl --user -u enhanced-collector -f  # Logs
+```
+- Collects 50 top-volume pairs, 10-level depth + trade ticks
+- Data: `~/Projects/Chad_Volume_tracker/enhanced_data.db`
+
+**Data Retention** (systemd timer, 3am daily):
+```bash
+systemctl --user list-timers  # See schedule
+python3 ~/Projects/Chad_Volume_tracker/data_retention.py  # Manual run
+```
+
+**Pattern Finder**:
+```bash
+cd ~/Projects/Chad_Volume_tracker
+python3 enhanced_pattern_finder.py enhanced_data.db  # All pairs
+python3 enhanced_pattern_finder.py enhanced_data.db ETH-USD  # Single
+```
+- Needs MIN_OCCURRENCES=20, requires hours/days of data
+
+**Top Pairs Update** (Sunday 4am via cron):
+```bash
+python3 ~/Projects/Chad_Volume_tracker/update_top_pairs.py
+```
+
+---
+
+## Moltbook Verification Solver
+
+The Moltbook CAPTCHA uses obfuscated math. Key patterns:
+- "twen ty thre" → "twenty three" (split words)
+- "nEeOoTtOoNs" → "newtons" (repeated chars)
+- "product" = multiply, "loses" = subtract, "total" = add
+
+Working solver inline in comment posting script.
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.

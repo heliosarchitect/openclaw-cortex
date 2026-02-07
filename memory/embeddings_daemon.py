@@ -11,7 +11,7 @@ import json
 import sqlite3
 import numpy as np
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import Flask, request, jsonify
 from sentence_transformers import SentenceTransformer
 
@@ -63,73 +63,115 @@ def embed():
 
 @app.route('/store', methods=['POST'])
 def store():
-    """Store a memory with embedding"""
+    """Store a memory with embedding
+
+    PHASE 3: Multi-category support
+    - categories: list of category strings (stored as JSON in category field)
+    - category: single category (deprecated, for backward compat)
+    """
     init_db()
     data = request.json
     content = data.get('content', '')
-    category = data.get('category')
     importance = data.get('importance', 1.0)
     timestamp = data.get('timestamp', datetime.now().isoformat())
-    
+
+    # PHASE 3: Handle both categories array and single category
+    categories = data.get('categories')
+    category = data.get('category')
+    if categories is not None:
+        # Store categories as JSON array in the category field
+        cats = categories if isinstance(categories, list) else [categories]
+        category_value = json.dumps(cats)
+    elif category is not None:
+        # Single category - wrap in array for consistency
+        category_value = json.dumps([category])
+    else:
+        category_value = json.dumps(["general"])
+
     embedding = model.encode([content], convert_to_numpy=True)[0]
     memory_id = str(hash(content + timestamp))
-    
+
     conn = sqlite3.connect(DB_PATH)
     conn.execute("""
         INSERT OR REPLACE INTO embeddings (id, content, category, importance, timestamp, embedding)
         VALUES (?, ?, ?, ?, ?, ?)
-    """, (memory_id, content, category, importance, timestamp, embedding.tobytes()))
+    """, (memory_id, content, category_value, importance, timestamp, embedding.tobytes()))
     conn.commit()
     conn.close()
-    
+
     return jsonify({"id": memory_id, "stored": True})
+
+def parse_categories(cat_value):
+    """Parse category field which may be JSON array or single string
+
+    PHASE 3: Multi-category support
+    """
+    if cat_value is None:
+        return ["general"]
+    try:
+        # Try parsing as JSON array first
+        cats = json.loads(cat_value)
+        if isinstance(cats, list):
+            return cats
+        return [str(cats)]
+    except (json.JSONDecodeError, TypeError):
+        # Fall back to single category string
+        return [cat_value] if cat_value else ["general"]
+
 
 @app.route('/search', methods=['POST'])
 def search():
-    """Semantic search"""
+    """Semantic search
+
+    PHASE 3: Multi-category support in results
+    """
     init_db()
     data = request.json
     query = data.get('query', '')
     limit = data.get('limit', 5)
     temporal_weight = data.get('temporal_weight', 0.3)
-    
+
     query_embedding = model.encode([query], convert_to_numpy=True)[0]
-    
+
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT id, content, category, importance, timestamp, embedding FROM embeddings")
-    
+
     results = []
     now = datetime.now()
-    
+
     for row in cursor.fetchall():
-        id_, content, cat, importance, timestamp, emb_bytes = row
+        id_, content, cat_raw, importance, timestamp, emb_bytes = row
         embedding = np.frombuffer(emb_bytes, dtype=np.float32)
-        
+
         semantic_score = cosine_similarity(query_embedding, embedding)
-        
+
         try:
             ts = datetime.fromisoformat(timestamp.replace('Z', '+00:00').replace('+00:00', ''))
             days_old = (now - ts).total_seconds() / 86400
             temporal_score = float(np.exp(-days_old / 7))
         except:
             temporal_score = 0.5
-        
+
         importance_weight = 0.2
         semantic_weight = 1.0 - temporal_weight - importance_weight
-        final_score = (semantic_score * semantic_weight + 
-                      temporal_score * temporal_weight + 
+        final_score = (semantic_score * semantic_weight +
+                      temporal_score * temporal_weight +
                       (importance / 3.0) * importance_weight)
-        
+
+        # PHASE 3: Parse categories
+        categories = parse_categories(cat_raw)
+
         results.append({
             'id': id_,
             'content': content,
-            'category': cat,
+            'categories': categories,  # PHASE 3: Multi-category
+            'category': categories[0] if categories else "general",  # Backward compat
             'importance': importance,
             'score': final_score,
             'semantic': semantic_score
         })
-    
+
     conn.close()
     results.sort(key=lambda x: x['score'], reverse=True)
     return jsonify({"results": results[:limit]})
@@ -145,6 +187,86 @@ def stats():
     by_cat = dict(cursor.fetchall())
     conn.close()
     return jsonify({"total": total, "by_category": by_cat, "model": MODEL_NAME})
+
+@app.route('/dump', methods=['GET'])
+def dump():
+    """Dump all memories for RAM cache warmup (Phase 1 memory expansion)
+
+    PHASE 3: Multi-category support in results
+    """
+    init_db()
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, content, category, importance, timestamp, embedding FROM embeddings")
+
+    memories = []
+    for row in cursor.fetchall():
+        id_, content, cat_raw, importance, timestamp, emb_bytes = row
+        # Convert embedding to list for JSON serialization
+        embedding = np.frombuffer(emb_bytes, dtype=np.float32).tolist()
+        # PHASE 3: Parse categories
+        categories = parse_categories(cat_raw)
+        memories.append({
+            'id': id_,
+            'content': content,
+            'categories': categories,  # PHASE 3: Multi-category
+            'category': categories[0] if categories else "general",  # Backward compat
+            'importance': importance,
+            'timestamp': timestamp,
+            'embedding': embedding,
+            'access_count': 0,  # Will be updated from cortex
+            'source': 'embeddings_db'
+        })
+
+    conn.close()
+    print(f"📤 Dumping {len(memories)} memories for RAM cache warmup")
+    return jsonify({"memories": memories})
+
+
+@app.route('/delta', methods=['GET'])
+def delta():
+    """PHASE 2: Delta sync - return only memories changed since a timestamp
+
+    PHASE 3: Multi-category support in results
+    """
+    init_db()
+    since = request.args.get('since')
+    if not since:
+        # Default to last 24 hours
+        since = (datetime.now() - timedelta(hours=24)).isoformat()
+
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    # Query memories updated/created since the timestamp
+    cursor.execute("""
+        SELECT id, content, category, importance, timestamp, embedding
+        FROM embeddings
+        WHERE timestamp >= ?
+        ORDER BY timestamp DESC
+    """, (since,))
+
+    memories = []
+    for row in cursor.fetchall():
+        id_, content, cat_raw, importance, timestamp, emb_bytes = row
+        embedding = np.frombuffer(emb_bytes, dtype=np.float32).tolist()
+        # PHASE 3: Parse categories
+        categories = parse_categories(cat_raw)
+        memories.append({
+            'id': id_,
+            'content': content,
+            'categories': categories,  # PHASE 3: Multi-category
+            'category': categories[0] if categories else "general",  # Backward compat
+            'importance': importance,
+            'timestamp': timestamp,
+            'embedding': embedding,
+            'access_count': 0,
+            'source': 'embeddings_db'
+        })
+
+    conn.close()
+    print(f"📤 Delta sync: {len(memories)} memories since {since}")
+    return jsonify({"memories": memories, "since": since})
 
 if __name__ == "__main__":
     init_db()

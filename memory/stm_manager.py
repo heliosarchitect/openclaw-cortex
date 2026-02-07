@@ -37,21 +37,35 @@ def save_stm(stm):
     with open(STM_PATH, 'w') as f:
         json.dump(stm, f, indent=2)
 
-def add_to_stm(content, category=None, importance=1.0):
-    """Add item to short-term memory"""
+def add_to_stm(content, category=None, categories=None, importance=1.0):
+    """Add item to short-term memory
+
+    PHASE 3: Multi-category support
+    - categories: list of category strings (preferred)
+    - category: single category string (deprecated, for backward compat)
+    """
     stm = load_stm()
-    
+
+    # Normalize categories: prefer categories list, fall back to single category
+    if categories is not None:
+        cats = categories if isinstance(categories, list) else [categories]
+    elif category is not None:
+        cats = [category] if isinstance(category, str) else category
+    else:
+        cats = ["general"]
+
     item = {
         "content": content,
         "timestamp": datetime.now().isoformat(),
-        "category": category or "general",
+        "categories": cats,  # PHASE 3: Multi-category
+        "category": cats[0] if cats else "general",  # Backward compat
         "importance": importance,
         "access_count": 0
     }
-    
+
     # Add to beginning (most recent first)
     stm["short_term_memory"].insert(0, item)
-    
+
     # Trim if over capacity
     if len(stm["short_term_memory"]) > stm["capacity"]:
         # Keep high-importance items, expire low-importance
@@ -60,23 +74,42 @@ def add_to_stm(content, category=None, importance=1.0):
             key=lambda x: x["importance"],
             reverse=True
         )[:stm["capacity"]]
-    
+
     save_stm(stm)
     return item
 
-def get_recent(limit=10, category=None):
-    """Get recent items from STM"""
+def get_recent(limit=10, category=None, categories=None):
+    """Get recent items from STM
+
+    PHASE 3: Multi-category filtering support
+    - categories: list of categories to filter by (any match)
+    - category: single category (deprecated)
+    """
     stm = load_stm()
     items = stm["short_term_memory"]
-    
-    if category:
-        items = [i for i in items if i.get("category") == category]
-    
+
+    # Determine filter categories
+    filter_cats = None
+    if categories is not None:
+        filter_cats = categories if isinstance(categories, list) else [categories]
+    elif category is not None:
+        filter_cats = [category]
+
+    if filter_cats:
+        def matches(item):
+            # Get item's categories (handle both old and new format)
+            item_cats = item.get("categories", [item.get("category", "general")])
+            if isinstance(item_cats, str):
+                item_cats = [item_cats]
+            # Check if any item category matches any filter category
+            return any(ic in filter_cats for ic in item_cats)
+        items = [i for i in items if matches(i)]
+
     # Update access counts
     for item in items[:limit]:
         item["access_count"] += 1
     save_stm(stm)
-    
+
     return items[:limit]
 
 def cleanup_expired():

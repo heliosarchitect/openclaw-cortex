@@ -127,6 +127,24 @@
         "benchmark",
         "performance"
       ]
+    },
+    "shtf": {
+      "description": "Preparedness, resilience, and disaster scenarios - EMP protection, vehicle hardening, off-grid systems, survival skills",
+      "keywords": [
+        "shtf",
+        "emp",
+        "prepper",
+        "preparedness",
+        "survival",
+        "off-grid",
+        "faraday",
+        "diesel",
+        "hardening",
+        "resilience",
+        "disaster",
+        "blackout",
+        "grid-down"
+      ]
     }
   },
   "extensible": true,
