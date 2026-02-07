@@ -32,6 +32,18 @@
     "session-logs": {
       "version": "1.0.0",
       "installedAt": 1770334705468
+    },
+    "desktop-control": {
+      "version": "1.0.0",
+      "installedAt": 1770437105906
+    },
+    "clawnance": {
+      "version": "1.0.0",
+      "installedAt": 1770437120854
+    },
+    "agent-council": {
+      "version": "1.0.0",
+      "installedAt": 1770437136100
     }
   }
 }

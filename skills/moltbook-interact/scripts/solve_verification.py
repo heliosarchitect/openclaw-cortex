@@ -11,6 +11,8 @@ def parse_challenge(challenge_text):
     """Parse math challenge and solve it."""
     # Clean up the obfuscated text
     clean = re.sub(r'[^a-zA-Z0-9\s]', ' ', challenge_text.lower())
+    # Collapse 3+ repeated characters (nEeWwToOnS -> newtons, but keep 'three', 'teen')
+    clean = re.sub(r'(.)\1{2,}', r'\1', clean)
     
     # Extract number words
     word_to_num = {
@@ -27,6 +29,34 @@ def parse_challenge(challenge_text):
         'thirty seven': 37, 'thirty eight': 38, 'thirty nine': 39
     }
     
+    # Check for newton patterns (including obfuscated like neewwtoons)
+    has_newton = bool(re.search(r'n[e]+[w]+[t]+[o]+[n]+[s]?', clean)) or 'newton' in clean
+    
+    # Force-related questions: only count numbers followed by 'newton'
+    if has_newton or 'force' in clean:
+        force_values = []
+        newton_pattern = r'n[e]+[w]+[t]+[o]+[n]+[s]?'
+        
+        # Look for patterns like "twenty three newtons" or "7 newtons"
+        # Only match if newton appears within 15 chars after the number (to avoid false matches)
+        for phrase, num in sorted(word_to_num.items(), key=lambda x: -len(x[0])):
+            # Check if number word is followed by newton within ~15 chars (not 30)
+            idx = clean.find(phrase)
+            if idx >= 0:
+                after = clean[idx+len(phrase):idx+len(phrase)+15]  # Only look AFTER the number
+                if 'newton' in after or re.search(newton_pattern, after):
+                    force_values.append(num)
+                    clean = clean[:idx] + '#' * len(phrase) + clean[idx+len(phrase):]  # Use # to mark used
+        
+        # Also check for digit patterns like "23 newtons"
+        digit_matches = re.findall(r'(\d+)\s*' + newton_pattern, clean)
+        for d in digit_matches:
+            force_values.append(int(d))
+        
+        if force_values:
+            return sum(force_values)
+    
+    # Fallback: extract all numbers
     values = []
     for phrase, num in sorted(word_to_num.items(), key=lambda x: -len(x[0])):
         if phrase in clean:
