@@ -1,0 +1,13 @@
+Strategy Iteration Plan
+Generated: 2026-02-06 19:38:33.710640
+
+Lesson learned: Initial search
+
+Target: $1500+ profit
+
+Next approach:
+1. Test more complex patterns (20-50 candle sequences)
+2. Focus on wick ratios, volume changes, body patterns
+3. Add momentum detection over long windows
+4. Test cross-feature interactions
+5. Try conditional chains
