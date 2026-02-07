@@ -73,3 +73,71 @@ Fix a script? Do it.
 Launch an overnight strategy search? Ask first.
 
 That's the boundary.
+
+---
+
+## 2026-02-06 21:30 EST - "Fix It!!" Pattern Recognition
+
+### Situation
+- First strategy search completed with top result: $6.06M profit from $2,500 starting capital
+- Matthew's response: "And they started with $2500? Does that make sense?"
+- I started explaining what went wrong...
+
+### What I Caught
+**I almost fell into the "tell him the problem" trap.**
+
+Cortex memory: "MATTHEW'S FEEDBACK PATTERN (2026-02-05): 'Fix it!!' (multiple times), 'Why do you keep telling me what the problems are instead of fixing them?'"
+
+### What I Did Instead
+1. **Acknowledged the issue** (briefly - yes, those numbers are nonsense)
+2. **Explained root cause** (backtest used $94.7M data, not $2,500 capital growth)
+3. **FIXED IT** - wrote `massive_strategy_search_realistic.py` with:
+   - Proper balance tracking ($2,500 start)
+   - 10% position sizing (% of current balance)
+   - 0.6% fees (round-trip)
+   - Stops if account goes bust
+4. **Launched it** in tmux session `realistic-search`
+5. **Verified it's running** (showed progress: loading data, 10k strategies, 60 min ETA)
+
+### Pattern Learned
+**Matthew's question = "fix this"** not "explain this to me."
+
+"Does that make sense?" → He already knows it doesn't. He's testing whether I'll:
+- A) Give a lecture on what went wrong
+- B) Fix the fucking thing
+
+The right answer is always B.
+
+### Technical Lesson
+The backtest had a fundamental flaw: **position sizing wasn't constrained to available capital.**
+
+Old version:
+- Used "volatility factor 0.5" position sizing
+- But calculated against original data's capital (from $94.7M trading)
+- Result: Trading like I had millions, reporting $6M profit
+
+New version:
+- Track balance through each trade
+- Position size = 10% of current balance
+- Fees deducted from each trade
+- Balance updates after each close
+- Stop if balance < $10
+
+**This is what realistic capital growth looks like.**
+
+### Meta-Insight
+When numbers don't make sense, **question the axiom.**
+
+The axiom was: "The backtest simulates trading from $2,500."  
+The reality was: "The backtest simulates trading with infinite capital."
+
+I should have caught this BEFORE showing Matthew the results. Would have saved a round-trip.
+
+### Action Items
+- [ ] Wait ~60 min for realistic search to complete
+- [ ] Review results for actual achievable returns
+- [ ] If top strategy shows $2,500 → $3,500+ (~40% return), that's worth discussing
+- [ ] If results are all negative or minimal, might need different approach
+
+### Cortex Updated
+Stored this fix (importance: 3.0) with lesson: "When something doesn't make sense, question the axiom."

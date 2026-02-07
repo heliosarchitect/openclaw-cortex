@@ -90,6 +90,12 @@
       "access_count": 0
     },
     {
+      "content": "REALISTIC BACKTEST FIX (2026-02-06 21:30): Matthew caught that the first backtest used his $94.7M data instead of simulating $2,500 \u2192 growth. Created massive_strategy_search_realistic.py that properly tracks balance, uses 10% position sizing, applies 0.6% fees, and stops if account goes bust. Running in tmux session 'realistic-search' - testing 10,000 strategies (~60 min ETA). Key lesson: When something doesn't make sense (like $6M profit from $2,500), question the axiom - the backtest wasn't simulating capital growth at all.",
+      "timestamp": "2026-02-06T21:30:47.924318",
+      "importance": 3.0,
+      "access_count": 0
+    },
+    {
       "content": "Fixed a bug in the collections manager (test #32)",
       "timestamp": "2026-02-03T14:11:39.177937",
       "importance": 2.962519580449794,
@@ -626,12 +632,6 @@
     {
       "content": "Rapid test 71: trading profit analysis",
       "timestamp": "2026-02-03T14:12:01.261452",
-      "importance": 1.5,
-      "access_count": 0
-    },
-    {
-      "content": "Rapid test 72: trading profit analysis",
-      "timestamp": "2026-02-03T14:12:01.262960",
       "importance": 1.5,
       "access_count": 0
     }
