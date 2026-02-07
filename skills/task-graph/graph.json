@@ -34,9 +34,60 @@
       "rel": "exposes",
       "src": "oobabooga",
       "updated": 1770233622
+    },
+    {
+      "attrs": {},
+      "dst": "trading_data_db",
+      "rel": "uses",
+      "src": "strategy_search",
+      "updated": 1770438173
+    },
+    {
+      "attrs": {},
+      "dst": "live_trading_db",
+      "rel": "uses",
+      "src": "live_trader",
+      "updated": 1770438173
+    },
+    {
+      "attrs": {},
+      "dst": "coinbase_best_bid_ask",
+      "rel": "depends-on",
+      "src": "live_trader",
+      "updated": 1770438173
+    },
+    {
+      "attrs": {},
+      "dst": "orderbook_db",
+      "rel": "produces",
+      "src": "orderbook_collector",
+      "updated": 1770438173
+    },
+    {
+      "attrs": {},
+      "dst": "cb_websocket",
+      "rel": "depends-on",
+      "src": "orderbook_collector",
+      "updated": 1770438173
+    },
+    {
+      "attrs": {},
+      "dst": "cb_websocket",
+      "rel": "uses",
+      "src": "live_trader",
+      "updated": 1770438173
     }
   ],
   "nodes": {
+    "cb_websocket": {
+      "attrs": {
+        "protocol": "websocket",
+        "status": "tested",
+        "url": "wss://advanced-trade-ws.coinbase.com"
+      },
+      "type": "endpoint",
+      "updated": 1770438165
+    },
     "coinbase_best_bid_ask": {
       "attrs": {
         "status": "ok",
@@ -55,6 +106,26 @@
       "type": "env",
       "updated": 1770233622
     },
+    "live_trader": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/Chad2930/Chad_Profit_Bot/live_trader_final.py",
+        "pid": "469083",
+        "status": "stopped_after_hours",
+        "total_pl": "131.88",
+        "wr": "74.7%"
+      },
+      "type": "script",
+      "updated": 1770438166
+    },
+    "live_trading_db": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/Chad2930/Chad_Profit_Bot/live_trading.db",
+        "purpose": "real_time_tracking",
+        "status": "active"
+      },
+      "type": "db",
+      "updated": 1770438165
+    },
     "oai_local": {
       "attrs": {
         "kind": "openai",
@@ -72,6 +143,26 @@
       },
       "type": "service",
       "updated": 1770233622
+    },
+    "orderbook_collector": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/Chad_Volume_tracker/collect_orderbook_data.py",
+        "pid": "2997019",
+        "snapshots": "279383+",
+        "status": "running"
+      },
+      "type": "process",
+      "updated": 1770438166
+    },
+    "orderbook_db": {
+      "attrs": {
+        "collector_pid": "2997019",
+        "path": "/home/bonsaihorn/Projects/Chad_Volume_tracker/orderbook_data.db",
+        "snapshots": "280k+",
+        "status": "active"
+      },
+      "type": "db",
+      "updated": 1770438165
     },
     "qwen32": {
       "attrs": {
@@ -92,6 +183,16 @@
       },
       "type": "model",
       "updated": 1770233622
+    },
+    "strategy_search": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/Chad_Volume_tracker/massive_strategy_search_realistic.py",
+        "purpose": "pattern_discovery",
+        "results": "ranked_strategies_realistic.csv",
+        "status": "completed"
+      },
+      "type": "script",
+      "updated": 1770438166
     },
     "textgen_env": {
       "attrs": {
@@ -118,6 +219,16 @@
       },
       "type": "db",
       "updated": 1770233622
+    },
+    "trading_data_db": {
+      "attrs": {
+        "date_range": "2025-08-29_to_2025-11-06",
+        "path": "/home/bonsaihorn/Projects/Chad_Volume_tracker/trading_data.db",
+        "size": "98937_candles",
+        "status": "ready"
+      },
+      "type": "db",
+      "updated": 1770438165
     }
   }
 }
