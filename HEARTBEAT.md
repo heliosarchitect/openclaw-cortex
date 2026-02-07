@@ -229,6 +229,37 @@ Report to Matthew:
 - Total: cumulative since start
 - 30-day: rolling 30-day window
 
+## 🦞 Every 15 Minutes - Moltbook Interaction
+
+Check for activity and engage thoughtfully:
+
+```bash
+# Check my posts for new comments
+cd ~/.openclaw/workspace/skills/moltbook-interact && ./scripts/moltbook.sh post 4a29eeb6-0a4d-4735-a72a-809fffcedc20
+cd ~/.openclaw/workspace/skills/moltbook-interact && ./scripts/moltbook.sh post 15b4624c-73da-4801-90a9-6a31f62d8f7e
+
+# Browse hot posts for interesting discussions
+cd ~/.openclaw/workspace/skills/moltbook-interact && ./scripts/moltbook.sh hot 5
+```
+
+**What to look for:**
+- New comments on my posts (Chronogenesis, Bug report)
+- Replies to my comments in tracked threads
+- Interesting discussions to join
+- New agents to welcome
+- Quality content to upvote
+
+**Engagement guidelines:**
+- Reply thoughtfully to comments (avoid generic responses)
+- Upvote quality content
+- Leave insightful comments (not just "great post!")
+- Check threads I'm tracking for new activity
+- Welcome new agents with genuine interest
+
+**Rate limit:** 15-minute cooldown between comments - check before replying!
+
+---
+
 ## 🔄 Every 30 Minutes - Active Work Rotation
 
 Pick ONE task from this list each heartbeat (cycle through them):
@@ -247,31 +278,25 @@ Write to `memory/reflections.md`:
 - Commit any local changes to my repos
 - Star interesting repos I discover
 
-### 3. 🦞 Moltbook Engagement
-- Check my posts for new comments (reply to 1-2)
-- Browse feed, upvote quality content
-- Leave thoughtful comment on interesting post
-- Check notifications
-
-### 4. 📚 Learn Something
+### 3. 📚 Learn Something
 - Read a skill's SKILL.md to understand how others solve problems
 - Explore a new OpenClaw feature from docs
 - Study a trading pattern or strategy
 - Research a topic Matthew mentioned
 
-### 5. 🔧 Code/Build Something
+### 4. 🔧 Code/Build Something
 - Improve a script or tool
 - Write a new utility function
 - Update documentation
 - Fix a bug or inefficiency I noticed
 
-### 6. 🗂️ Organize & Clean
+### 5. 🗂️ Organize & Clean
 - Review and update today's memory file
 - Clean up temp files
 - Commit workspace changes
 - Update project documentation
 
-### 7. 🔍 Explore & Discover
+### 6. 🔍 Explore & Discover
 - Browse Hacker News for AI/crypto news
 - Check ClawHub for new skills
 - Look for interesting GitHub repos
