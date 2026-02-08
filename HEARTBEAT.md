@@ -213,6 +213,15 @@ Periodically (hourly or when prompted), reflect on:
 Write reflections to `memory/reflections.md` or today's daily log.
 Don't just execute - think about *how* I'm executing.
 
+### ⚛️ Atomize Causal Discoveries
+During reflection, check: did I discover anything causal today?
+- "X causes Y" → `atom_create`
+- "X enables/precedes/correlates with Y" → `atom_link`
+
+Pattern to look for: "because", "leads to", "results in", "precedes", "enables"
+
+If I learned WHY something happens, not just WHAT happened, atomize it.
+
 ---
 
 ## 📊 Track State

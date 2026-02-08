@@ -1,5 +1,41 @@
 # Reflections
 
+## 2026-02-07 20:45 EST - AUGUR v0.3.0 & The Ship-It Pattern
+
+### What I Did Well
+- **Actually shipped something:** Built `candle_builder.py` from scratch - 22,316 candles aggregated from 550K trades across 4 timeframes (1m/5m/15m/1h). Not planning, not discussing - built and pushed.
+- **Set up automation:** System cron running every 5 minutes to keep candles fresh. Infrastructure, not a one-off script.
+- **Proper versioning:** Tagged v0.3.0, updated CHANGELOG.md, committed to gitea. Real release hygiene.
+- **Fixed bugs in real-time:** Caught timestamp bug (seconds not milliseconds), fixed it, verified fix worked.
+
+### What I Learned
+- **Matthew catches "just words":** When he said "your tendency is to say you'll do things and not actually do them" - he was right. I had to show proof: file exists, cron running, candles in database.
+- **Show > Tell:** Posting the actual `ls -la candle_builder.py` output and `crontab -l` results was more convincing than any description.
+- **Proof requires verification:** Didn't just say "I set up cron" - ran `crontab -l` to prove it.
+
+### Patterns Noticed
+- **Implementation > Intent:** Saying "I'll add this to HEARTBEAT.md" is empty unless I actually edit the file. Matthew explicitly called this out.
+- **The atomization pattern:** I added the habit check to HEARTBEAT.md's Reflections section. Now I have a structural reminder to check for causal discoveries during reflection.
+- **Trailing stops as philosophy:** 0.3% from peak, 15s min, 5min max. Let winners run, cut losers fast. Simple but requires discipline.
+
+### What Could Improve
+- **Weekend data quality:** Paper trader at 48.9% WR on weekend data. Expected to be lower - thin liquidity. Need to wait for Monday M-F data for real validation.
+- **Atom utilization:** Created 4 new atoms today but should be doing this more naturally. The causal chains (trailing stops → enables → persistence pattern) are the valuable part.
+
+### Causal Discovery (Atomize Check)
+**Did I discover anything causal today?**
+- Yes: Trailing stops → enable → persistence pattern extraction (already atomized)
+- Yes: 5pm-8pm window → causes → consistent profitability (already atomized)
+- Yes: Weekend thin liquidity → causes → higher variance/lower WR
+
+That last one isn't atomized yet. Should I create an atom for it? 
+Pattern: weekend trading has different characteristics because market makers reduce activity.
+
+### Meta-Learning
+**"Empty words" detector:** When I find myself describing what I *will* do or *plan* to do, that's a warning sign. Either do it now or add it to BACKLOG.md with a timeline. No middle ground.
+
+---
+
 ## 2026-02-06 19:13 EST - WebSocket Implementation Success
 
 ### What I Did Well
@@ -294,3 +330,15 @@ Quiet night. Good time for maintenance work.
 - Market at extreme fear (historically bullish signal)
 - Strategy iteration engine ready for approval to launch next search
 - All systems operational
+
+## 2026-02-07 17:45 - AUGUR Born
+
+**What I built:** Pattern discovery system for finding LEADING indicators in order book data. Named it AUGUR - Algorithmic Unit for Gaining Upstream Recognition.
+
+**Key insight:** Simple imbalance signals are ~50% (random). PERSISTENCE is the edge - sustained buy pressure over 40+ seconds predicts direction on some pairs.
+
+**Self-correction:** Initially skeptical when first patterns didn't hit 55% WR. Kept digging, found compound patterns work on specific pairs (ETH 57.4%, SKR 67%, AAVE 57.2%).
+
+**What I learned:** Saturday data is thin. Real patterns will emerge from M-F trading hours. Don't trust high WR on low-liquidity pairs (SKR at 67% suspicious).
+
+**Next:** Let collector run through the week. Re-run AUGUR on Monday close for real patterns.
