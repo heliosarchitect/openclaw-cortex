@@ -1,130 +1,117 @@
 #!/usr/bin/env python3
 """
-Solve Moltbook verification challenges
+Moltbook verification solver - handles obfuscated number words.
 """
-import sys
-import json
-import re
 import requests
+import json
+import sys
+import re
 
-def parse_challenge(challenge_text):
-    """Parse math challenge and solve it."""
-    # Clean up the obfuscated text
-    clean = re.sub(r'[^a-zA-Z0-9\s]', ' ', challenge_text.lower())
-    # Collapse 3+ repeated characters (nEeWwToOnS -> newtons, but keep 'three', 'teen')
-    clean = re.sub(r'(.)\1{2,}', r'\1', clean)
+def normalize_word(word):
+    """Remove repeated characters and normalize obfuscated words."""
+    # Remove non-alpha
+    word = re.sub(r'[^a-zA-Z]', '', word.lower())
+    if not word:
+        return ""
     
-    # Extract number words
+    # Remove consecutive duplicates (e.g., "fortyy" -> "forty", "tweelve" -> "twelve")
+    result = word[0]
+    for char in word[1:]:
+        if char != result[-1]:
+            result += char
+    
+    return result
+
+def parse_numbers(text):
+    """Extract numbers from obfuscated challenge text."""
     word_to_num = {
         'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
         'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10,
         'eleven': 11, 'twelve': 12, 'thirteen': 13, 'fourteen': 14, 'fifteen': 15,
         'sixteen': 16, 'seventeen': 17, 'eighteen': 18, 'nineteen': 19,
         'twenty': 20, 'thirty': 30, 'forty': 40, 'fifty': 50,
-        'sixty': 60, 'seventy': 70, 'eighty': 80, 'ninety': 90,
-        'one hundred': 100, 'twenty one': 21, 'twenty two': 22, 'twenty three': 23,
-        'twenty four': 24, 'twenty five': 25, 'twenty six': 26, 'twenty seven': 27,
-        'twenty eight': 28, 'twenty nine': 29, 'thirty one': 31, 'thirty two': 32,
-        'thirty three': 33, 'thirty four': 34, 'thirty five': 35, 'thirty six': 36,
-        'thirty seven': 37, 'thirty eight': 38, 'thirty nine': 39
+        'sixty': 60, 'seventy': 70, 'eighty': 80, 'ninety': 90
     }
     
-    # Check for newton patterns (including obfuscated like neewwtoons)
-    has_newton = bool(re.search(r'n[e]+[w]+[t]+[o]+[n]+[s]?', clean)) or 'newton' in clean
+    # Clean text
+    text_clean = re.sub(r'[^a-zA-Z\s]', ' ', text.lower())
+    words = text_clean.split()
     
-    # Force-related questions: only count numbers followed by 'newton'
-    if has_newton or 'force' in clean:
-        force_values = []
-        newton_pattern = r'n[e]+[w]+[t]+[o]+[n]+[s]?'
-        
-        # Look for patterns like "twenty three newtons" or "7 newtons"
-        # Only match if newton appears within 15 chars after the number (to avoid false matches)
-        for phrase, num in sorted(word_to_num.items(), key=lambda x: -len(x[0])):
-            # Check if number word is followed by newton within ~15 chars (not 30)
-            idx = clean.find(phrase)
-            if idx >= 0:
-                after = clean[idx+len(phrase):idx+len(phrase)+15]  # Only look AFTER the number
-                if 'newton' in after or re.search(newton_pattern, after):
-                    force_values.append(num)
-                    clean = clean[:idx] + '#' * len(phrase) + clean[idx+len(phrase):]  # Use # to mark used
-        
-        # Also check for digit patterns like "23 newtons"
-        digit_matches = re.findall(r'(\d+)\s*' + newton_pattern, clean)
-        for d in digit_matches:
-            force_values.append(int(d))
-        
-        if force_values:
-            return sum(force_values)
+    numbers = []
+    i = 0
+    while i < len(words):
+        word = normalize_word(words[i])
+        if word in word_to_num:
+            num = word_to_num[word]
+            # Check for compound (e.g., "forty five")
+            if i + 1 < len(words):
+                next_word = normalize_word(words[i+1])
+                if next_word in word_to_num and word_to_num[next_word] < 10:
+                    num += word_to_num[next_word]
+                    i += 1
+            numbers.append(num)
+        i += 1
     
-    # Fallback: extract all numbers
-    values = []
-    for phrase, num in sorted(word_to_num.items(), key=lambda x: -len(x[0])):
-        if phrase in clean:
-            values.append(num)
-            clean = clean.replace(phrase, '', 1)
+    return numbers
+
+def determine_operation(text):
+    """Determine math operation from challenge text."""
+    text = text.lower()
     
-    if len(values) == 0:
+    if 'product' in text or 'multipl' in text:
+        return 'multiply'
+    elif 'loses' in text or 'subtract' in text or 'minus' in text or 'difference' in text:
+        return 'subtract'
+    else:  # 'total', 'adds', 'sum', 'combined', etc.
+        return 'add'
+
+def solve(challenge):
+    """Solve a verification challenge."""
+    numbers = parse_numbers(challenge)
+    operation = determine_operation(challenge)
+    
+    if not numbers:
         return None
     
-    # Detect operation
-    lower_text = challenge_text.lower()
-    if 'times' in lower_text or 'multipl' in lower_text or 'product' in lower_text:
-        # Multiplication
-        result = 1
-        for v in values:
-            result *= v
-        return result
-    elif 'total' in lower_text or 'sum' in lower_text or 'add' in lower_text:
-        # Addition
-        return sum(values)
-    else:
-        # Default to addition
-        return sum(values)
+    if operation == 'multiply':
+        result = numbers[0] * numbers[1] if len(numbers) >= 2 else numbers[0]
+    elif operation == 'subtract':
+        result = numbers[0] - numbers[1] if len(numbers) >= 2 else numbers[0]
+    else:  # add
+        result = sum(numbers)
+    
+    return f"{result:.2f}"
 
-def verify_comment(verification_data, api_key):
-    """Solve verification and submit answer."""
-    challenge = verification_data['challenge']
-    code = verification_data['code']
-    
-    # Solve the challenge
-    answer = parse_challenge(challenge)
-    if answer is None:
-        print(f"❌ Could not solve challenge: {challenge}", file=sys.stderr)
-        return False
-    
-    # Submit verification
-    response = requests.post(
-        'https://www.moltbook.com/api/v1/verify',
-        headers={
-            'Content-Type': 'application/json',
-            'X-API-Key': api_key
-        },
-        json={
-            'verification_code': code,
-            'answer': f'{answer:.2f}'
-        }
+def verify(api_key, code, answer):
+    """Submit verification answer."""
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    resp = requests.post(
+        "https://www.moltbook.com/api/v1/verify",
+        headers=headers,
+        json={"verification_code": code, "answer": answer}
     )
-    
-    result = response.json()
-    if result.get('success'):
-        print(f"✅ Verification successful: {result.get('message')}")
-        return True
-    else:
-        print(f"❌ Verification failed: {result.get('message')}", file=sys.stderr)
-        return False
+    return resp.json()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: solve_verification.py <api_key> <verification_json>")
         sys.exit(1)
     
     api_key = sys.argv[1]
-    verification_json = sys.argv[2]
+    verification = json.loads(sys.argv[2])
     
-    try:
-        verification_data = json.loads(verification_json)
-        success = verify_comment(verification_data, api_key)
-        sys.exit(0 if success else 1)
-    except Exception as e:
-        print(f"❌ Error: {e}", file=sys.stderr)
-        sys.exit(1)
+    challenge = verification.get("challenge", "")
+    code = verification.get("code", "")
+    
+    print(f"Challenge: {challenge}")
+    answer = solve(challenge)
+    print(f"Answer: {answer}")
+    
+    if answer:
+        result = verify(api_key, code, answer)
+        print(json.dumps(result, indent=2))
+    else:
+        print("Could not parse challenge")

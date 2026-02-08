@@ -15,7 +15,7 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 - ✅ Calendar - Events, scheduling
 - ✅ Sheets - Read/write spreadsheets
 - ✅ Docs - Read/write documents
-- ⚠️ Contacts - Needs People API scope
+- ✅ Contacts - Working! (People API scope added 2026-02-07)
 
 **Setup:**
 ```bash
@@ -78,6 +78,60 @@ curl -X POST http://localhost:8020/tts \
 **Format:** UUID filenames (e.g., `8a25ed80-1fc6-48eb-aa98-e1a6e156a620`)
 **Access:** All incoming Signal media (audio, images, documents) stored here for local access
 **Note:** Check this directory when processing Signal attachments - don't assume they're temporary
+
+---
+
+## Ollama - Local LLM
+
+**Service:** `systemctl status ollama` (system-level, enabled at boot)
+**Port:** 11434
+**Models:**
+- phi3:mini (3.8B, Q4_0, 2.2GB) - fast, CAPTCHA solving
+- llama3.1-lexi (8B, Q8, 8.5GB) - conversation, content drafting
+
+```bash
+# Check status
+ollama list                    # List models
+curl http://localhost:11434/api/tags  # API check
+
+# Quick inference
+echo "Question?" | ollama run phi3:mini
+
+# API call (non-streaming)
+curl -s http://localhost:11434/api/generate \
+  -d '{"model":"phi3:mini","prompt":"2+2=","stream":false}' \
+  | jq -r '.response'
+```
+
+**Use cases:**
+- 🦞 **Moltbook CAPTCHA solving** - decodes obfuscated math puzzles
+- 🧠 **Local reasoning** - quick inference without API costs
+- 📝 **Text processing** - summarization, extraction, classification
+- 🔍 **Code review** - lightweight analysis of snippets
+- 💬 **Draft responses** - generate candidates before polishing
+
+**Performance:** ~22ms for simple prompts on RTX 5090
+
+**Pull more models:**
+```bash
+ollama pull llama3.2          # 3B general purpose
+ollama pull codellama:7b      # Code-focused
+ollama pull mistral           # 7B balanced
+```
+
+**VRAM Budget (RTX 5090 = 32GB):**
+```bash
+python3 ~/.openclaw/workspace/scripts/check_vram.py  # Check before GPU work
+```
+
+| Task | VRAM Needed | Notes |
+|------|-------------|-------|
+| phi3:mini | ~3GB | Fast, stays loaded 5min |
+| llama3.1-lexi | ~8.5GB | Best for content/conversation |
+| ComfyUI SD1.5 | ~8GB | Safe choice |
+| ComfyUI SDXL | ~20GB | Need to free Ollama first |
+
+**Before ComfyUI work:** Wait for Ollama auto-unload (5min idle) or use smaller model.
 
 ---
 
@@ -161,3 +215,25 @@ Working solver inline in comment posting script.
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+---
+
+## Stripe (Lover Bear Farm, LLC)
+
+**Status:** ✅ Live, charges + payouts enabled
+**Account:** Lover Bear Farm, LLC (US)
+**Key location:** `~/.secrets/stripe.env`
+
+```bash
+# Load and use
+source ~/.secrets/stripe.env
+python3 -c "import stripe; stripe.api_key='$STRIPE_API_KEY'; print(stripe.Account.retrieve())"
+```
+
+**Capabilities:**
+- Accept payments (cards, ACH, etc.)
+- Create invoices
+- Set up subscriptions
+- Issue payouts
+
+**Use for:** Digital product sales, freelance payments, service invoicing
