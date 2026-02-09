@@ -84,6 +84,14 @@ DEPLOY:  I review all three outputs. If clean → commit + restart.
 **Label prefix:** `build-`
 **Key rule:** Get v0.1 working first, then iterate. No over-engineering.
 
+### 📦 Archivist *(planned — not yet built)*
+**Role:** Automated memory extraction from conversation transcripts
+**Implementation:** Local LLM (phi3:mini via Ollama, ~22ms on RTX 5090)
+**When:** Cron every 2-4 hours — reads recent .jsonl transcripts, extracts decisions/corrections/insights, dedupes against existing cortex, writes new memories
+**Cost:** Zero API tokens — runs entirely local
+**Philosophy:** Opus thinks, phi3 remembers. Over-capture, prune later.
+**Status:** Documented. Build when bandwidth allows.
+
 ---
 
 ## Delegation Rules
@@ -103,20 +111,25 @@ DEPLOY:  I review all three outputs. If clean → commit + restart.
 
 | # | Task | Pipeline Stage | Assigned | Status |
 |---|------|---------------|----------|--------|
-| P0-1 | Fix direction bug (SHORT→down) | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-2 | Pattern dedup (3165→363) | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-3 | Raise min WR to 60%, min occ to 100 | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-4 | Position dedup per product | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-5 | Regime halt (rolling WR < 30%) | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-6 | Blacklist poison pairs | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-7 | Remove hardcoded pairs in main() | ✅ BUILD done | Engineer | Awaiting QA |
-| P0-8 | Kill duplicate systemd service | Not started | Engineer | — |
-| P0-9 | Add flock single-instance lock | Not started | Engineer | — |
-| P0-10 | Determine canonical paper trader | Not started | Engineer | — |
-| P0-11 | Move collector into AUGUR repo | Not started | Engineer | — |
-| P0-12 | Spot-check P&L calculation | Not started | QA | — |
+| P0-1 | Fix direction bug (SHORT→down) | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-2 | Pattern dedup (3165→363) | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-3 | Raise min WR to 60%, min occ to 100 | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-4 | Position dedup per product | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-5 | Regime halt (rolling WR < 30%) | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-6 | Blacklist poison pairs | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-7 | Remove hardcoded pairs in main() | 🚀 DEPLOYED | Engineer → QA | ✅ 7/7 QA PASS |
+| P0-8 | Kill duplicate systemd service | ✅ DONE | Engineer | Completed 2026-02-08 |
+| P0-9 | Add flock single-instance lock | ✅ DONE | Engineer | Completed 2026-02-08 |
+| P0-10 | Determine canonical paper trader | ✅ DONE | Engineer | 4 scripts archived |
+| P0-11 | Normalize code / archive dead scripts | 🔄 IN PROGRESS | Engineer | Audit running |
+| P0-12 | Spot-check P&L calculation | ✅ DONE | QA | Math correct, flags correct |
+| P0-13 | Write automated test suite (pytest) | 📝 SPEC | — | No tests exist yet |
+| P0-14 | Add exit_reason column to DB | 📝 SPEC | — | Found by P&L audit |
+| P0-15 | Move collector into AUGUR repo | Not started | Engineer | — |
 
-**Next action:** Deploy QA agent to verify P0-1 through P0-7 (the code changes already applied).
+**Deployed 2026-02-08 22:45 EST.** QA monitor watching first 30 min of live output.
+
+**Constraint discovered:** Coinbase Advanced Trade = longs only. SHORT patterns are validation-only in paper; become defensive signals (don't-buy / exit-early) for live execution.
 
 ---
 
@@ -133,4 +146,4 @@ This isn't a document I read once. It's my operating system for development.
 
 ---
 
-*Last updated: 2026-02-08 21:39 EST*
+*Last updated: 2026-02-08 22:52 EST*
