@@ -4,6 +4,11 @@
       "content": "All 11 atom tools working! GPU embeddings enabled. 7 atoms, field-level search verified. Memory injection (hot/episodic/semantic/diverse) active. Ready for deep abstraction.",
       "pinnedAt": "2026-02-07T21:32:33.552Z",
       "label": "Phase 3 COMPLETE"
+    },
+    {
+      "content": "When a sub-agent completion is announced to this session, ALWAYS reply NO_REPLY. Do NOT summarize or announce sub-agent results to Matthew via Signal. Instead, check sub-agent results during heartbeats or when relevant, and share findings naturally in conversation only when they matter. Matthew finds the auto-announce replies confusing because they reply to unrelated messages.",
+      "pinnedAt": "2026-02-09T02:21:36.316Z",
+      "label": "Sub-agent announce policy"
     }
   ]
 }
