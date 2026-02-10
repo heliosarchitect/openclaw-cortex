@@ -17,13 +17,14 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - **LCARS Dashboard** — giggletits:8090 (task board + ITSM service monitoring)
 
 ## Infrastructure
-- **Fleet**: .163=giggletits (compute), .104=hpserver1 (Gitea/Prometheus), .107=woodserve1 (Pi-hole), .143=blackview (Wazuh), .198=bliss-rpi
-- **SSH**: All servers on port 2222. giggletits ssh needs restart.
-- **Ansible**: ~/.ansible/ — inventory, playbooks, group_vars. Run from giggletits.
-- **Wazuh**: https://192.168.10.143 — 4 agents active. API password still default (needs hardening).
-- **LCARS**: http://giggletits:8090 — /itsm shows per-service status for entire fleet
+- **Fleet**: .163=giggletits (compute), .104=hpserver1 (Gitea/Prometheus), .107=woodserve1 (Pi-hole), .143=blackview (Wazuh), .198=bliss-rpi (SSH down)
+- **SSH**: All remote servers on port 2222 ✅. giggletits still on 22 (local, low priority).
+- **Docker**: No sudo needed on .104 and .107 (bonsaihorn in docker group). .143 no docker group.
+- **Ansible**: ~/.ansible/ — inventory, playbooks, group_vars. Run from giggletits. All remote servers NOPASSWD.
+- **Wazuh**: https://192.168.10.143 — 4 agents active. API password changed: `~/.secrets/wazuh-api.env`
+- **LCARS**: http://giggletits:8090 — /itsm shows per-service status + Cortex panel
 - **Services**: `systemctl --user status {openclaw-gateway,paper-augur,enhanced-collector}`
-- **Collector**: MemoryMax=2G is too low (needs 8G). /boot partition full on giggletits.
+- **Collector**: MemoryMax=10G, running healthy. Gitea SSH on port 2223 (was 2222, conflicted with sshd).
 
 ## Key Tools
 - `skylight` — Skylight list CLI (grocery/actions/farm). Always post tasks here + Discord.

@@ -57,7 +57,7 @@ openclaw gateway config.patch --raw '{
   --id "watson" \
   --emoji "🔬" \
   --specialty "Research and analysis specialist" \
-  --model "anthropic/claude-opus-4-5" \
+  --model "anthropic/claude-opus-4-6" \
   --workspace "$HOME/agents/watson" \
   --discord-channel "1234567890"
 ```
@@ -101,7 +101,7 @@ scripts/create-agent.sh \
   --id "watson" \
   --emoji "🔬" \
   --specialty "Deep research and competitive analysis" \
-  --model "anthropic/claude-opus-4-5" \
+  --model "anthropic/claude-opus-4-6" \
   --workspace "$HOME/agents/watson" \
   --discord-channel "1234567890"
 
@@ -142,7 +142,7 @@ scripts/create-agent.sh \
   --id "watson" \
   --emoji "🔬" \
   --specialty "Deep research and competitive analysis" \
-  --model "anthropic/claude-opus-4-5" \
+  --model "anthropic/claude-opus-4-6" \
   --workspace "$HOME/agents/watson" \
   --discord-channel "1234567890"
 ```
@@ -166,7 +166,7 @@ scripts/create-agent.sh \
   --id "nurse-joy" \
   --emoji "💊" \
   --specialty "Health tracking and wellness monitoring" \
-  --model "anthropic/claude-opus-4-5" \
+  --model "anthropic/claude-opus-4-6" \
   --workspace "$HOME/agents/nurse-joy" \
   --discord-channel "5555555555"
 ```
@@ -256,7 +256,7 @@ Agents and channels are automatically configured:
         "name": "Watson",
         "workspace": "/path/to/agents/watson",
         "model": {
-          "primary": "anthropic/claude-opus-4-5"
+          "primary": "anthropic/claude-opus-4-6"
         },
         "identity": {
           "name": "Watson",
@@ -338,7 +338,7 @@ For complex work, spawn a sub-agent in an isolated session:
 sessions_spawn({
   agentId: "watson",  // Optional: use specific agent
   task: "Research competitive landscape for X and write a report",
-  model: "anthropic/claude-opus-4-5",  // Optional: override model
+  model: "anthropic/claude-opus-4-6",  // Optional: override model
   runTimeoutSeconds: 3600,  // 1 hour max
   cleanup: "delete"  // Delete session after completion
 })

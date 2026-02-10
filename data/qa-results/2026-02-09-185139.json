@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-02-09T23:51:39.757416+00:00",
+  "host": "giggletits",
+  "tests_run": 15,
+  "summary": {
+    "pass": 14,
+    "warn": 1,
+    "fail": 0,
+    "error": 0
+  },
+  "results": [
+    {
+      "test_name": "augur_trader_running",
+      "result": "pass",
+      "message": "paper-augur is active",
+      "metrics": {
+        "state": "active"
+      },
+      "timestamp": "2026-02-09T23:51:38.829004+00:00"
+    },
+    {
+      "test_name": "augur_collector_running",
+      "result": "pass",
+      "message": "enhanced-collector is active",
+      "metrics": {
+        "state": "active"
+      },
+      "timestamp": "2026-02-09T23:51:38.832133+00:00"
+    },
+    {
+      "test_name": "augur_data_fresh",
+      "result": "pass",
+      "message": "Data is 0.1m old (table: trades)",
+      "metrics": {
+        "age_seconds": 4.1,
+        "table": "trades",
+        "last_ts": "1770681095"
+      },
+      "timestamp": "2026-02-09T23:51:39.134457+00:00"
+    },
+    {
+      "test_name": "openclaw_gateway_running",
+      "result": "pass",
+      "message": "openclaw-gateway is active",
+      "metrics": {
+        "state": "active"
+      },
+      "timestamp": "2026-02-09T23:51:39.138421+00:00"
+    },
+    {
+      "test_name": "disk_usage",
+      "result": "pass",
+      "message": "Disk 1.1% used",
+      "metrics": {
+        "used_pct": 1.1,
+        "total_gb": 228.4,
+        "free_gb": 214.3
+      },
+      "timestamp": "2026-02-09T23:51:39.138450+00:00"
+    },
+    {
+      "test_name": "memory_usage",
+      "result": "pass",
+      "message": "Memory 20.8% used",
+      "metrics": {
+        "used_pct": 20.8,
+        "total_gb": 93.9,
+        "available_gb": 74.4
+      },
+      "timestamp": "2026-02-09T23:51:39.138547+00:00"
+    },
+    {
+      "test_name": "collector_memory_usage",
+      "result": "warn",
+      "message": "Collector using 1.9G (>1800M, limit 2G)",
+      "metrics": {
+        "memory_mb": 1945.6,
+        "raw": "1.9G (max: 2.0G available: 536.0K peak: 2.0G)"
+      },
+      "timestamp": "2026-02-09T23:51:39.144998+00:00"
+    },
+    {
+      "test_name": "dashboard_responds",
+      "result": "pass",
+      "message": "Dashboard /health returned 200",
+      "metrics": {
+        "status_code": 200
+      },
+      "timestamp": "2026-02-09T23:51:39.159985+00:00"
+    },
+    {
+      "test_name": "ollama_responds",
+      "result": "pass",
+      "message": "Ollama OK, 2 models loaded",
+      "metrics": {
+        "models": [
+          "llama3.1-lexi:latest",
+          "phi3:mini"
+        ],
+        "count": 2
+      },
+      "timestamp": "2026-02-09T23:51:39.160620+00:00"
+    },
+    {
+      "test_name": "gpu_temp",
+      "result": "pass",
+      "message": "GPU temp 28\u00b0C",
+      "metrics": {
+        "temp_c": 28
+      },
+      "timestamp": "2026-02-09T23:51:39.185086+00:00"
+    },
+    {
+      "test_name": "skylight_auth",
+      "result": "pass",
+      "message": "Skylight auth OK",
+      "metrics": {
+        "has_token": true,
+        "user_id": "12339837"
+      },
+      "timestamp": "2026-02-09T23:51:39.571359+00:00"
+    },
+    {
+      "test_name": "gitea_reachable",
+      "result": "pass",
+      "message": "Gitea reachable on :3000",
+      "metrics": {},
+      "timestamp": "2026-02-09T23:51:39.571998+00:00"
+    },
+    {
+      "test_name": "pihole_reachable",
+      "result": "pass",
+      "message": "Pi-hole reachable on :80",
+      "metrics": {},
+      "timestamp": "2026-02-09T23:51:39.572413+00:00"
+    },
+    {
+      "test_name": "bliss_rpi_reachable",
+      "result": "pass",
+      "message": "BLISS RPi reachable on :22",
+      "metrics": {},
+      "timestamp": "2026-02-09T23:51:39.572657+00:00"
+    },
+    {
+      "test_name": "discord_bot_valid",
+      "result": "pass",
+      "message": "Bot valid: helios",
+      "metrics": {
+        "username": "helios",
+        "id": "1470469492252606579"
+      },
+      "timestamp": "2026-02-09T23:51:39.757323+00:00"
+    }
+  ]
+}

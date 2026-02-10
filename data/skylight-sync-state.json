@@ -1,0 +1,64 @@
+{
+  "synced_discord_msgs": [
+    "1470495617330450523",
+    "1470498565036969996"
+  ],
+  "known_skylight_items": {
+    "103613205": {
+      "label": "Dog Licenses",
+      "status": "completed"
+    },
+    "103613135": {
+      "label": "DC Ticket",
+      "status": "completed"
+    },
+    "130938384": {
+      "label": "Find Wazuh & iTop on network (SSH into .104/.107, run docker ps)",
+      "status": "pending"
+    },
+    "130938385": {
+      "label": "Connect Skylight to heliosarchitectlbf Google Calendar",
+      "status": "completed"
+    },
+    "130945564": {
+      "label": "Find Wazuh, iTop, Skylight on network",
+      "status": "pending"
+    },
+    "97687655": {
+      "label": "E&T Rollout",
+      "status": "completed"
+    },
+    "96576190": {
+      "label": "Clean garage",
+      "status": "completed"
+    },
+    "97110948": {
+      "label": "Trim trees",
+      "status": "completed"
+    },
+    "97468641": {
+      "label": "BBCE",
+      "status": "completed"
+    },
+    "97494926": {
+      "label": "SES Evaluations ",
+      "status": "completed"
+    },
+    "97479820": {
+      "label": "Call Justin Benavidez",
+      "status": "completed"
+    },
+    "97197603": {
+      "label": "Fill wood bin. ",
+      "status": "completed"
+    },
+    "98796940": {
+      "label": "Christmas packages",
+      "status": "completed"
+    },
+    "103227011": {
+      "label": "Goodwill",
+      "status": "completed"
+    }
+  }
+}

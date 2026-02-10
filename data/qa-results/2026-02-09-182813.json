@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-02-09T23:28:13.975975+00:00",
+  "host": "giggletits",
+  "tests_run": 15,
+  "summary": {
+    "pass": 13,
+    "warn": 1,
+    "fail": 1,
+    "error": 0
+  },
+  "results": [
+    {
+      "test_name": "augur_trader_running",
+      "result": "pass",
+      "message": "paper-augur is active",
+      "metrics": {
+        "state": "active"
+      },
+      "timestamp": "2026-02-09T23:28:13.174833+00:00"
+    },
+    {
+      "test_name": "augur_collector_running",
+      "result": "pass",
+      "message": "enhanced-collector is active",
+      "metrics": {
+        "state": "active"
+      },
+      "timestamp": "2026-02-09T23:28:13.177943+00:00"
+    },
+    {
+      "test_name": "augur_data_fresh",
+      "result": "pass",
+      "message": "Data is 0.0m old (table: trades)",
+      "metrics": {
+        "age_seconds": 1.3,
+        "table": "trades",
+        "last_ts": "1770679692"
+      },
+      "timestamp": "2026-02-09T23:28:13.331735+00:00"
+    },
+    {
+      "test_name": "openclaw_gateway_running",
+      "result": "pass",
+      "message": "openclaw-gateway is active",
+      "metrics": {
+        "state": "active"
+      },
+      "timestamp": "2026-02-09T23:28:13.335563+00:00"
+    },
+    {
+      "test_name": "disk_usage",
+      "result": "pass",
+      "message": "Disk 1.0% used",
+      "metrics": {
+        "used_pct": 1.0,
+        "total_gb": 228.4,
+        "free_gb": 214.3
+      },
+      "timestamp": "2026-02-09T23:28:13.335599+00:00"
+    },
+    {
+      "test_name": "memory_usage",
+      "result": "pass",
+      "message": "Memory 20.8% used",
+      "metrics": {
+        "used_pct": 20.8,
+        "total_gb": 93.9,
+        "available_gb": 74.3
+      },
+      "timestamp": "2026-02-09T23:28:13.335674+00:00"
+    },
+    {
+      "test_name": "collector_memory_usage",
+      "result": "warn",
+      "message": "Collector using 1.9G (>1800M, limit 2G)",
+      "metrics": {
+        "memory_mb": 1945.6,
+        "raw": "1.9G (max: 2.0G available: 132.0K peak: 2.0G)"
+      },
+      "timestamp": "2026-02-09T23:28:13.342278+00:00"
+    },
+    {
+      "test_name": "dashboard_responds",
+      "result": "pass",
+      "message": "Dashboard /health returned 200",
+      "metrics": {
+        "status_code": 200
+      },
+      "timestamp": "2026-02-09T23:28:13.356843+00:00"
+    },
+    {
+      "test_name": "ollama_responds",
+      "result": "pass",
+      "message": "Ollama OK, 2 models loaded",
+      "metrics": {
+        "models": [
+          "llama3.1-lexi:latest",
+          "phi3:mini"
+        ],
+        "count": 2
+      },
+      "timestamp": "2026-02-09T23:28:13.357518+00:00"
+    },
+    {
+      "test_name": "gpu_temp",
+      "result": "pass",
+      "message": "GPU temp 29\u00b0C",
+      "metrics": {
+        "temp_c": 29
+      },
+      "timestamp": "2026-02-09T23:28:13.381881+00:00"
+    },
+    {
+      "test_name": "skylight_auth",
+      "result": "pass",
+      "message": "Skylight auth OK",
+      "metrics": {
+        "has_token": true,
+        "user_id": "12339837"
+      },
+      "timestamp": "2026-02-09T23:28:13.767742+00:00"
+    },
+    {
+      "test_name": "gitea_reachable",
+      "result": "fail",
+      "message": "Gitea unreachable: [Errno 111] Connection refused",
+      "metrics": {},
+      "timestamp": "2026-02-09T23:28:13.768323+00:00"
+    },
+    {
+      "test_name": "pihole_reachable",
+      "result": "pass",
+      "message": "Pi-hole reachable on :80",
+      "metrics": {},
+      "timestamp": "2026-02-09T23:28:13.768642+00:00"
+    },
+    {
+      "test_name": "bliss_rpi_reachable",
+      "result": "pass",
+      "message": "BLISS RPi reachable on :22",
+      "metrics": {},
+      "timestamp": "2026-02-09T23:28:13.768842+00:00"
+    },
+    {
+      "test_name": "discord_bot_valid",
+      "result": "pass",
+      "message": "Bot valid: helios",
+      "metrics": {
+        "username": "helios",
+        "id": "1470469492252606579"
+      },
+      "timestamp": "2026-02-09T23:28:13.975861+00:00"
+    }
+  ]
+}

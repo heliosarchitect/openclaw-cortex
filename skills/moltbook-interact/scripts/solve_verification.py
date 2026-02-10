@@ -7,20 +7,26 @@ import json
 import sys
 import re
 
+def dedupe_chars(s):
+    """Remove consecutive duplicate characters: 'foouur' -> 'four'."""
+    if not s:
+        return s
+    result = [s[0]]
+    for c in s[1:]:
+        if c != result[-1]:
+            result.append(c)
+    return ''.join(result)
+
 def normalize_word(word):
-    """Remove repeated characters and normalize obfuscated words."""
+    """Remove non-alpha and normalize obfuscated words. Try raw first, then deduped."""
     # Remove non-alpha
     word = re.sub(r'[^a-zA-Z]', '', word.lower())
     if not word:
         return ""
     
-    # Remove consecutive duplicates (e.g., "fortyy" -> "forty", "tweelve" -> "twelve")
-    result = word[0]
-    for char in word[1:]:
-        if char != result[-1]:
-            result += char
-    
-    return result
+    # Return as-is first (preserves valid doubles like 'ee' in 'fourteen')
+    # Caller will try dictionary lookup; if it fails, dedupe_chars is available
+    return word
 
 def parse_numbers(text):
     """Extract numbers from obfuscated challenge text."""
@@ -33,21 +39,74 @@ def parse_numbers(text):
         'sixty': 60, 'seventy': 70, 'eighty': 80, 'ninety': 90
     }
     
-    # Clean text
+    def match_word(w):
+        """Try raw word first, then deduped. Returns matched key or None."""
+        if w in word_to_num:
+            return w
+        deduped = dedupe_chars(w)
+        if deduped in word_to_num:
+            return deduped
+        return None
+    
+    # Strategy 1: Strip ALL non-alpha, lowercase, then use sliding window to find number words
+    stripped = re.sub(r'[^a-zA-Z]', '', text).lower()
+    
+    # Greedily extract number words from the stripped string
+    all_number_words = sorted(word_to_num.keys(), key=len, reverse=True)
+    # Also add deduped variants
+    found_numbers_s1 = []
+    remaining = stripped
+    while remaining:
+        matched = False
+        for nw in all_number_words:
+            # Try exact match at start
+            if remaining.startswith(nw):
+                found_numbers_s1.append(word_to_num[nw])
+                remaining = remaining[len(nw):]
+                matched = True
+                break
+            # Try deduped match: expand nw to see if remaining starts with an obfuscated version
+            # e.g., remaining="foortyy..." should match "forty"
+            deduped_prefix = dedupe_chars(remaining[:len(nw)*3])  # generous prefix
+            if deduped_prefix.startswith(nw):
+                # Find how many chars of remaining produce this deduped prefix
+                for end in range(len(nw), min(len(remaining)+1, len(nw)*3+1)):
+                    if dedupe_chars(remaining[:end]) == nw:
+                        found_numbers_s1.append(word_to_num[nw])
+                        remaining = remaining[end:]
+                        matched = True
+                        break
+                    elif dedupe_chars(remaining[:end]).startswith(nw) and len(dedupe_chars(remaining[:end])) > len(nw):
+                        # Went past — use previous
+                        found_numbers_s1.append(word_to_num[nw])
+                        remaining = remaining[end-1:]
+                        matched = True
+                        break
+                if matched:
+                    break
+        if not matched:
+            remaining = remaining[1:]  # skip one char
+    
+    if found_numbers_s1:
+        return found_numbers_s1
+    
+    # Strategy 2 (fallback): Split on spaces, try word-by-word matching
     text_clean = re.sub(r'[^a-zA-Z\s]', ' ', text.lower())
     words = text_clean.split()
-    
+
     numbers = []
     i = 0
     while i < len(words):
         word = normalize_word(words[i])
-        if word in word_to_num:
-            num = word_to_num[word]
+        matched_key = match_word(word)
+        if matched_key:
+            num = word_to_num[matched_key]
             # Check for compound (e.g., "forty five")
             if i + 1 < len(words):
                 next_word = normalize_word(words[i+1])
-                if next_word in word_to_num and word_to_num[next_word] < 10:
-                    num += word_to_num[next_word]
+                next_matched = match_word(next_word)
+                if next_matched and word_to_num[next_matched] < 10:
+                    num += word_to_num[next_matched]
                     i += 1
             numbers.append(num)
         i += 1
@@ -58,11 +117,13 @@ def determine_operation(text):
     """Determine math operation from challenge text."""
     text = text.lower()
     
-    if 'product' in text or 'multipl' in text:
+    if 'product' in text or 'multipl' in text or 'times' in text:
         return 'multiply'
-    elif 'loses' in text or 'subtract' in text or 'minus' in text or 'difference' in text:
+    elif 'loses' in text or 'subtract' in text or 'minus' in text or 'difference' in text or 'fewer' in text or 'less' in text:
         return 'subtract'
-    else:  # 'total', 'adds', 'sum', 'combined', etc.
+    elif 'divid' in text or 'split' in text:
+        return 'divide'
+    else:  # 'total', 'adds', 'sum', 'combined', 'force', etc.
         return 'add'
 
 def solve(challenge):

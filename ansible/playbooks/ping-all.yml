@@ -1,0 +1,7 @@
+---
+- name: Ping all LBF fleet hosts
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Ping
+      ping:

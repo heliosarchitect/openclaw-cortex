@@ -10,8 +10,8 @@ Full details: `reference/TOOLS_FULL.md`
 | Ollama (phi3:mini, lexi) | 11434 | systemd, RTX 5090 |
 | AUGUR paper trader | — | `systemctl --user status paper-augur` |
 | Enhanced collector | — | `systemctl --user status enhanced-collector` |
-| LCARS dashboard | 8090 | `~/Projects/AUGUR/dashboard/` |
-| BLISS server | 8765/8766 | `~/Projects/emotiv/server/` |
+| LCARS dashboard | 8090 | `~/Projects/lbf-dashboard/` |
+| BLISS server | 8765/8766 | `~/Projects/bliss/server/` |
 
 ## Network
 - giggletits: 192.168.10.163 (main PC)
@@ -24,9 +24,9 @@ Full details: `reference/TOOLS_FULL.md`
 - Signal media: `~/.openclaw/media/inbound/`
 
 ## Key Paths
-- AUGUR: `~/Projects/AUGUR/`
+- AUGUR: `~/Projects/augur-trading/`
 - OpenClaw: `~/Projects/helios/`
-- BLISS: `~/Projects/emotiv/`
+- BLISS: `~/Projects/bliss/`
 - Workspace: `~/.openclaw/workspace/`
-- Data collector DB: `~/Projects/Chad_Volume_tracker/enhanced_data.db`
-- Trade DB: `~/Projects/AUGUR/paper_results.db`
+- Data collector DB: `~/Projects/augur-collector/enhanced_data.db`
+- Trade DB: `~/Projects/augur-trading/paper_results.db`
