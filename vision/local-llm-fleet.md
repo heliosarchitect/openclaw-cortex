@@ -82,8 +82,9 @@ The API remains available for complex reasoning, multi-step planning, creative w
 |-----------|--------|-------|
 | Ollama | ✅ Live | Port 11434, systemd managed |
 | RTX 5090 | ✅ Available | 32GB VRAM, mostly idle |
-| phi3:mini | ✅ Installed | 2.2GB, general purpose small model |
-| llama3.1-lexi | ✅ Installed | 8.5GB, larger general model |
+| qwen2.5:32b | ✅ Installed | 19GB, primary fleet model |
+| phi3:mini | ✅ Installed | 2.2GB, legacy small model (replaced by qwen2.5) |
+| llama3.1-lexi | ✅ Installed | 8.5GB, legacy general model (replaced by qwen2.5) |
 | Modelfiles | ❌ Missing | Zero custom models created |
 | Integration | ❌ Missing | No agent workflows use local inference |
 
@@ -151,7 +152,7 @@ A fleet of 7 specialized local inference endpoints that handle routine operation
 A Modelfile is a configuration overlay on a base model. It doesn't modify weights — it sets system prompt, temperature, context window, stop tokens.
 
 ```
-FROM phi3:mini
+FROM qwen2.5:32b
 SYSTEM "You are a QA engineer..."
 PARAMETER temperature 0.1
 PARAMETER num_ctx 4096
@@ -160,19 +161,19 @@ PARAMETER stop <|end|>
 
 **Seven Specialized Models:**
 
-1. **qa-sweep** (phi3:mini, temp 0.1, 4K ctx) — Health check classification
-2. **log-analyzer** (phi3:mini, temp 0.1, 8K ctx) — Log anomaly detection  
-3. **heartbeat-monitor** (phi3:mini, temp 0.0, 4K ctx) — Escalation decisions
-4. **pattern-evaluator** (phi3:mini, temp 0.2, 4K ctx) — Pattern quality assessment
-5. **ansible-writer** (llama3.1-lexi, temp 0.3, 8K ctx) — YAML generation
-6. **discord-classifier** (phi3:mini, temp 0.1, 2K ctx) — Message routing
-7. **email-triager** (phi3:mini, temp 0.3, 4K ctx) — Email priority classification
+1. **qa-sweep** (qwen2.5:32b, temp 0.1, 4K ctx) — Health check classification
+2. **log-analyzer** (qwen2.5:32b, temp 0.1, 8K ctx) — Log anomaly detection  
+3. **heartbeat-monitor** (qwen2.5:32b, temp 0.0, 4K ctx) — Escalation decisions
+4. **pattern-evaluator** (qwen2.5:32b, temp 0.2, 4K ctx) — Pattern quality assessment
+5. **ansible-writer** (qwen2.5:32b, temp 0.3, 8K ctx) — YAML generation
+6. **discord-classifier** (qwen2.5:32b, temp 0.1, 2K ctx) — Message routing
+7. **email-triager** (qwen2.5:32b, temp 0.3, 4K ctx) — Email priority classification
 
 ### 4.2 Dependencies
 
 **Hardware:** RTX 5090 (32GB VRAM) on giggletits (192.168.10.163)
 **Runtime:** Ollama service on port 11434, systemd managed
-**Base Models:** phi3:mini (2.2GB), llama3.1-lexi (8.5GB) — shared weights across Modelfiles
+**Base Model:** qwen2.5:32b (19GB) — single base model for all Modelfiles
 **Integration:** Shell calls from Helios agents, JSON parsing of output
 
 ### 4.3 Integration Points
@@ -200,10 +201,10 @@ PARAMETER stop <|end|>
    │          Port 11434                   │
    │          RTX 5090 (32GB VRAM)         │
    │                                       │
-   │  ┌─────────┐  ┌───────────────────┐  │
-   │  │phi3:mini│  │llama3.1-lexi     │  │
-   │  │ (2.2GB) │  │ (8.5GB)          │  │
-   │  └─────────┘  └───────────────────┘  │
+   │  ┌──────────────────────────────┐     │
+   │  │ qwen2.5:32b (19GB)          │     │
+   │  │ Single base, 7 Modelfiles   │     │
+   │  └──────────────────────────────┘     │
    └──────────────────────────────────────┘
 ```
 
@@ -236,8 +237,7 @@ PARAMETER stop <|end|>
 
 | Model | Est. Tokens/sec | Typical Output | Est. Latency |
 |-------|-----------------|----------------|--------------|
-| phi3:mini | 80-120 tok/s | 200-500 tokens | 2-6 seconds |
-| llama3.1-lexi | 30-50 tok/s | 300-800 tokens | 6-26 seconds |
+| qwen2.5:32b | 40-70 tok/s | 200-500 tokens | 3-12 seconds |
 
 **Cost Targets:**
 
@@ -282,7 +282,7 @@ PARAMETER stop <|end|>
 
 | ID | Risk/Blocker | Impact | Mitigation | Status |
 |----|-------------|--------|------------|--------|
-| R-1 | phi3:mini capability floor insufficient for complex tasks | High | Test against fixtures, upgrade to llama3.1-lexi if <80% accuracy | Open |
+| R-1 | qwen2.5:32b capability floor — unlikely given 32B params but monitor | Low | Test against fixtures, already using largest viable local model | Mitigated |
 | R-2 | System prompt engineering requires multiple iterations | Medium | Fast iteration cycle (<10s edit→test), document what works | Open |
 | R-3 | VRAM contention with AUGUR GPU workloads | Low | Ollama auto-evicts unused models, monitor with nvidia-smi | Open |
 | R-4 | Quality gap vs API leads to missed alerts | High | Conservative classification + API escalation, never miss CRITs | Open |
@@ -300,8 +300,9 @@ PARAMETER stop <|end|>
 | Date | Decision | Rationale | Who |
 |------|----------|-----------|-----|
 | 2026-02-09 | Use Modelfiles over fine-tuning | Instant creation (seconds), zero training cost, fast iteration. Fine-tuning requires datasets and GPU time. System prompts sufficient for constrained tasks. | Matthew/Helios |
-| 2026-02-09 | phi3:mini as default base model | Smallest viable model for classification tasks. Fast inference, low VRAM. Upgrade only when demonstrated insufficient. | Matthew/Helios |
-| 2026-02-09 | llama3.1-lexi for ansible-writer only | YAML generation needs more capability than classification. 4× parameters justified only where phi3 fails. | Matthew/Helios |
+| 2026-02-09 | phi3:mini as default base model | ~~Smallest viable model~~ **Superseded 2026-02-10** | Matthew/Helios |
+| 2026-02-09 | llama3.1-lexi for ansible-writer only | ~~YAML generation needs more capability~~ **Superseded 2026-02-10** | Matthew/Helios |
+| 2026-02-10 | qwen2.5:32b as single base model for all Modelfiles | 32B params massively raises capability floor. Fits in 19GB VRAM on RTX 5090 (13GB headroom). Eliminates multi-model complexity — one base, seven system prompts. Classification accuracy likely 95%+ vs phi3's estimated 80%. | Matthew/Helios |
 | 2026-02-09 | JSON output format mandatory | Parseable output non-negotiable. All Modelfiles output structured data for reliable integration. | Matthew/Helios |
 | 2026-02-09 | Temperature 0.0-0.3 for consistency | Classification tasks need consistent output. heartbeat-monitor at 0.0 (deterministic), others 0.1-0.3. | Matthew/Helios |
 | 2026-02-09 | Conservative classification + escalation | Local filters volume, API handles complexity. False positives acceptable, false negatives not. | Matthew/Helios |
@@ -318,8 +319,9 @@ PARAMETER stop <|end|>
 | giggletits | Server | 192.168.10.163 | Matthew | Live |
 | RTX 5090 | Hardware | giggletits slot 1 | Matthew | Live |
 | Ollama | Service | giggletits:11434 | Helios | Live |
-| phi3:mini | Model | Ollama registry | Helios | Live |
-| llama3.1-lexi | Model | Ollama registry | Helios | Live |
+| qwen2.5:32b | Model | Ollama registry | Helios | Live |
+| phi3:mini | Model | Ollama registry | Helios | Legacy |
+| llama3.1-lexi | Model | Ollama registry | Helios | Legacy |
 | ~/Projects/llm-fleet/ | Directory | giggletits filesystem | Helios | Planned |
 | qa-sweep | Modelfile | Ollama registry | Helios | Planned |
 | log-analyzer | Modelfile | Ollama registry | Helios | Planned |
@@ -330,8 +332,8 @@ PARAMETER stop <|end|>
 | email-triager | Modelfile | Ollama registry | Helios | Planned |
 
 **Resource Specifications:**
-- **VRAM Budget:** phi3:mini (~2.2GB) + llama3.1-lexi (~8.5GB) = ~10.7GB simultaneous max
-- **Available Headroom:** 21.3GB of 32GB total VRAM
+- **VRAM Budget:** qwen2.5:32b (~19GB) — single model, all Modelfiles share weights
+- **Available Headroom:** 13GB of 32GB total VRAM
 - **Electricity:** ~30min/day burst inference = ~$0.03/day marginal cost
 
 ---
