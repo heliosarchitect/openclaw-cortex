@@ -10,7 +10,7 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - Federal FTE, sees AI workforce reduction coming
 
 ## Active Projects
-- **AUGUR** — Phase 0 deployed (2026-02-08), 363 patterns, paper trading live. 5 critical bugs documented (`analysis/augur-deep-analysis.md`)
+- **AUGUR** — Phase 0 bugs FIXED (2026-02-10). 27,919 patterns → 738 filtered → 363 deduped. Paper trader running with all 4 code fixes. `live_augur.py` built (not running). Coinbase API: CHADSQUARED key in `~/Projects/augur-collector/.env`. Signal bridge: `live_signal.json`. Deep analysis: `analysis/augur-deep-analysis.md`
 - **LLM Fleet** — 11 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 4 codex (qwen2.5-coder:7b). Concurrent daemon architecture, not sequential.
 - **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
 - **BLISS** — Neural optimization chamber, hardware needs calibration
