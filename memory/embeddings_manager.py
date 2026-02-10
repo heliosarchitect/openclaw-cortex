@@ -48,10 +48,17 @@ def init_db():
 
 def memory_id(content, timestamp):
     """Generate deterministic ID for a memory"""
-    return hashlib.sha256(f"{content}{timestamp}".encode()).hexdigest()[:16]
+    return hashlib.sha256(f"{content}{timestamp}".encode("utf-8", errors="replace")).hexdigest()[:16]
+
+def _sanitize_text(text):
+    """Remove surrogate characters that break UTF-8 encoding."""
+    if not text:
+        return text
+    return text.encode("utf-8", errors="replace").decode("utf-8")
 
 def add_memory(content, source="manual", category=None, importance=1.0, timestamp=None):
     """Add a memory to the database"""
+    content = _sanitize_text(content)
     if timestamp is None:
         timestamp = datetime.now().isoformat()
     

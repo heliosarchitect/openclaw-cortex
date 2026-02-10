@@ -302,7 +302,9 @@ PARAMETER stop <|end|>
 | 2026-02-09 | Use Modelfiles over fine-tuning | Instant creation (seconds), zero training cost, fast iteration. Fine-tuning requires datasets and GPU time. System prompts sufficient for constrained tasks. | Matthew/Helios |
 | 2026-02-09 | phi3:mini as default base model | ~~Smallest viable model~~ **Superseded 2026-02-10** | Matthew/Helios |
 | 2026-02-09 | llama3.1-lexi for ansible-writer only | ~~YAML generation needs more capability~~ **Superseded 2026-02-10** | Matthew/Helios |
-| 2026-02-10 | qwen2.5:32b as single base model for all Modelfiles | 32B params massively raises capability floor. Fits in 19GB VRAM on RTX 5090 (13GB headroom). Eliminates multi-model complexity — one base, seven system prompts. Classification accuracy likely 95%+ vs phi3's estimated 80%. | Matthew/Helios |
+| 2026-02-10 | qwen2.5:32b as single base model for all Modelfiles | 32B params massively raises capability floor. Fits in 19GB VRAM on RTX 5090. Eliminates multi-model complexity — one base, seven system prompts. Classification accuracy likely 95%+ vs phi3's estimated 80%. | Matthew/Helios |
+| 2026-02-10 | Dynamic VRAM — don't shoehorn into leftover space | Ollama evicts idle models automatically. Full 32GB available to active model. Coding models can be 32B+ — just not simultaneously with classification models. Sequential sub-agent execution means one model at a time. VRAM budget = 32GB total, not "what's left after qwen." | Matthew/Helios |
+| 2026-02-10 | Metric is token offload rate, not VRAM efficiency | Every token running locally = money saved. Maximize task type coverage with specialist models. More models = more tasks handled locally = higher offload %. Goal: 90%+ local. | Matthew/Helios |
 | 2026-02-09 | JSON output format mandatory | Parseable output non-negotiable. All Modelfiles output structured data for reliable integration. | Matthew/Helios |
 | 2026-02-09 | Temperature 0.0-0.3 for consistency | Classification tasks need consistent output. heartbeat-monitor at 0.0 (deterministic), others 0.1-0.3. | Matthew/Helios |
 | 2026-02-09 | Conservative classification + escalation | Local filters volume, API handles complexity. False positives acceptable, false negatives not. | Matthew/Helios |
@@ -332,8 +334,8 @@ PARAMETER stop <|end|>
 | email-triager | Modelfile | Ollama registry | Helios | Planned |
 
 **Resource Specifications:**
-- **VRAM Budget:** qwen2.5:32b (~19GB) — single model, all Modelfiles share weights
-- **Available Headroom:** 13GB of 32GB total VRAM
+- **VRAM Budget:** 32GB total (RTX 5090) — Ollama dynamically loads/unloads models
+- **Key insight:** Models don't need to fit simultaneously. Ollama evicts idle models and loads active ones on demand. Full 32GB available to whichever model is running. Sequential task execution (sub-agents) means only one model active at a time.
 - **Electricity:** ~30min/day burst inference = ~$0.03/day marginal cost
 
 ---

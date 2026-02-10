@@ -123,6 +123,9 @@ def cleanup_expired():
     
     for item in stm["short_term_memory"]:
         ts = datetime.fromisoformat(item["timestamp"])
+        # Strip timezone info for comparison (normalize to naive)
+        if ts.tzinfo is not None:
+            ts = ts.replace(tzinfo=None)
         if ts > expire_date or item.get("importance", 0) >= 2.0:
             kept.append(item)
         else:
