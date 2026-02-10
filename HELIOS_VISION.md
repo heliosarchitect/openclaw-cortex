@@ -4,13 +4,18 @@
 
 **Status:** Active (Phase 0 — 50% complete)  
 **Owner:** Matthew & Helios  
-**Updated:** 2026-02-09
+**Updated:** 2026-02-10
 
 ---
 
 ## Vision Documents
 
 The Helios program spans four integrated domains, each with its own detailed vision document:
+
+### 📊 [AUGUR Trading Intelligence](vision/augur-trading.md)
+**Autonomous Trading** — Continuous signal mining → validation pipeline → live execution  
+**Status:** Phase 2 active (continuous miner deploying)  
+**Focus:** 7-layer greedy expansion, 72 features × 368 products, daemon architecture
 
 ### 🤖 [Helios AI Partner Program](vision/helios-program.md)
 **Core Program** — Memory, temporal awareness, and conversation continuity  
@@ -38,6 +43,7 @@ The Helios program spans four integrated domains, each with its own detailed vis
 
 | Component | Phase | Status | Next Milestone |
 |-----------|-------|--------|----------------|
+| **AUGUR Trading** | Phase 2 | 🟢 Active | Continuous miner daemon |
 | **Context Optimization** | Phase 0 | 🟡 50% | Internalization (H0-4) |
 | **Memory System** | Phase 3 | ✅ Complete | Archivist integration |
 | **Sub-Agent Team** | Operational | ✅ Live | QA automation |
