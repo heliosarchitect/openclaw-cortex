@@ -9,7 +9,7 @@
 | **Owner** | Helios & Matthew |
 | **Status** | Active |
 | **Created** | 2026-02-09 |
-| **Last Updated** | 2026-02-09 |
+| **Last Updated** | 2026-02-10 |
 | **ITIL Process** | Service Design · Service Transition |
 
 ---
@@ -247,19 +247,56 @@ all:
 **Method:** rsync via Ansible playbook
 **Schedule:** Daily (via cron/systemd timer)
 
-### Monitoring Stack
+### Monitoring & Alerting Stack
 
-**Prometheus on hpserver1 (.104):**
-- **Status:** Installed, needs activation
+**Philosophy:** Push-based alerting — services alert when they break, we don't discover failures during conversations.
+
+#### Prometheus (hpserver1 .104)
+- **Status:** Installed, self-scraping only — needs full activation
 - **Port:** 9090
-- **Targets:** node_exporter on all servers
+- **Scrape targets needed:**
+  - `node_exporter` on all 4 servers (CPU, RAM, disk, network)
+  - Custom AUGUR exporter on giggletits (service health, trade P&L, miner progress, signal count)
+  - OpenClaw process metrics (uptime, session count)
+  - Systemd service state (enhanced-collector, augur-live-v3, augur-continuous-miner, augur-pipeline)
 - **Retention:** 15 days local storage
+- **Config:** `/etc/prometheus/prometheus.yml` on .104
 
-**Grafana on hpserver1 (.104):**
-- **Status:** Planned installation
+#### Alertmanager (hpserver1 .104)
+- **Status:** Planned
+- **Alert routes:**
+  - **Critical** (service down, disk >90%) → Signal via OpenClaw webhook + Discord #system-health
+  - **Warning** (high CPU, memory pressure) → Discord #system-health only
+  - **Info** (service restart, config reload) → Discord #system-health only
+- **Alert rules:**
+  - `augur_service_down` — any AUGUR systemd service inactive for >60s
+  - `node_disk_full` — disk usage >85% (warning), >95% (critical)
+  - `node_memory_pressure` — available RAM <10%
+  - `collector_stale` — no new data in enhanced_data.db for >5 min
+  - `trade_loss_limit` — daily P&L exceeds -$50 threshold
+
+#### Grafana (hpserver1 .104)
+- **Status:** Planned
 - **Port:** 3000
 - **Data Source:** Prometheus
-- **Dashboards:** Infrastructure overview, service health
+- **Dashboards:**
+  - Fleet Overview (all server CPU/RAM/disk/network)
+  - AUGUR Trading (positions, P&L, signal fire rate, maker fill rate)
+  - Service Health (systemd states, uptime, restart frequency)
+  - Security (Wazuh agent status, alert counts)
+
+#### Custom AUGUR Metrics Exporter
+- **Location:** giggletits, runs as systemd service
+- **Port:** 9101 (Prometheus scrape target)
+- **Metrics exposed:**
+  - `augur_v3_positions_open` — current open positions count
+  - `augur_v3_daily_pnl` — today's P&L in USD
+  - `augur_v3_trades_total` — total trades today (with labels: won/lost)
+  - `augur_v3_maker_fill_rate` — % of orders filling as maker
+  - `augur_miner_batch_current` / `augur_miner_batch_total` — mining progress
+  - `augur_miner_signals_inserted` — total signals in DB
+  - `augur_pipeline_wr` — paper trader win rate
+  - `augur_collector_rows_total` — enhanced_data.db row count
 
 ---
 
@@ -284,7 +321,8 @@ all:
 - [x] IR-1: **Deploy SSH keys to .104, .107, .143** — 15 min (Matthew)
 - [x] IR-2: **Assess Wazuh** — Find manager, confirm version, deploy agents
 - [x] IR-6: **Configure Wazuh agents** — all hosts report to .143
-- [ ] IR-3: **Assess Prometheus on .104** — version, config, targets
+- [ ] IR-3: **Deploy Prometheus on .104** — Docker container, scrape all fleet node_exporters
+- [ ] IR-3a: **Deploy node_exporter fleet-wide** — giggletits, .104, .107, .143
 - [ ] IR-4: **Activate Ansible** — install on giggletits, validate inventory, test connectivity
 
 ### Phase 2 — Monitoring & Configuration
