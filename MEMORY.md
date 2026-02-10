@@ -10,11 +10,12 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - Federal FTE, sees AI workforce reduction coming
 
 ## Active Projects
-- **AUGUR** — Phase 0 deployed (2026-02-08), 363 patterns, paper trading live
+- **AUGUR** — Phase 0 deployed (2026-02-08), 363 patterns, paper trading live. 5 critical bugs documented (`analysis/augur-deep-analysis.md`)
+- **LLM Fleet** — 11 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 4 codex (qwen2.5-coder:7b). Concurrent daemon architecture, not sequential.
 - **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
 - **BLISS** — Neural optimization chamber, hardware needs calibration
 - **Infrastructure Hardening** — Ansible fleet management, Wazuh SIEM, security assessment
-- **LCARS Dashboard** — giggletits:8090 (task board + ITSM service monitoring)
+- **LCARS Dashboard** — giggletits:8090 (task board + ITSM service monitoring + LLM Fleet panel)
 
 ## Infrastructure
 - **Fleet**: .163=giggletits (compute), .104=hpserver1 (Gitea/Prometheus), .107=woodserve1 (Pi-hole), .143=blackview (Wazuh), .198=bliss-rpi (SSH down)
@@ -26,10 +27,20 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - **Services**: `systemctl --user status {openclaw-gateway,paper-augur,enhanced-collector}`
 - **Collector**: MemoryMax=10G, running healthy. Gitea SSH on port 2223 (was 2222, conflicted with sshd).
 
+## LLM Fleet (RTX 5090, 32GB VRAM)
+- **Base models**: qwen2.5:32b (19GB, classification), qwen2.5-coder:7b (4.7GB, coding)
+- **Classifiers**: qa-sweep, log-analyzer, heartbeat-monitor, pattern-evaluator, ansible-writer, discord-classifier, email-triager
+- **Codex**: codex-lint, codex-test, codex-review, codex-json
+- **Key metric**: Token offload rate — every local token saves API cost (~$500/day Claude spend)
+- **Architecture**: Multiple small models concurrent in VRAM. Large models swap in on demand.
+- **Repo**: `~/Projects/llm-fleet/` → Gitea `Helios/llm-fleet`
+- **Next**: Wire into agent workflows, build confidence-based router (local→API escalation)
+
 ## Key Tools
 - `skylight` — Skylight list CLI (grocery/actions/farm). Always post tasks here + Discord.
 - `~/.openclaw/workspace/scripts/discord-post.sh` — Post to Discord channels
 - `gog` — Google Workspace (email, calendar, drive)
+- `claude-usage-tracker.py` — Reads session JSONLs for API cost data (--days, --by-day, --by-session)
 - Ansible playbooks — fleet hardening, bootstrap-sudo
 
 ## Key Principles
