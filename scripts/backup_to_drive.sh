@@ -40,7 +40,7 @@ tar -czf "$BACKUP_NAME" "helios-backup-$(date +%Y%m%d)"
 # Upload to Google Drive
 echo "☁️ Uploading to Google Drive..."
 # Helios-Backup folder ID: 1hOKp5XvyT68lPpkANxxZooySV7Z74Tu9
-gog drive upload "/tmp/$BACKUP_NAME" --name "$BACKUP_NAME" --parent "1hOKp5XvyT68lPpkANxxZooySV7Z74Tu9"
+gog drive upload "/tmp/$BACKUP_NAME" --name "$BACKUP_NAME" --parent "1hOKp5XvyT68lPpkANxxZooySV7Z74Tu9" --account heliosarchitectlbf@gmail.com
 
 # Cleanup
 rm -rf "$BACKUP_DIR" "/tmp/$BACKUP_NAME"
