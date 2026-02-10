@@ -1,6 +1,189 @@
 {
   "short_term_memory": [
     {
+      "content": "AUGUR MONDAY BACKTEST RESULTS (2026-02-10 09:38): Stacked signals on Monday Feb 9 market hours (9AM-6PM ET), all products, 0.20% RT fees.\n\nAGGREGATE: Net negative (-324.92% across 4,228 trades), but better than weekend (-588.23%). Fee wall is the main killer \u2014 gross returns barely positive (+0.01-0.03%), 0.20% RT destroys edge.\n\nTOP MONDAY WINNERS (net of fees):\n1. BLZ-USD SHORT \u22653 120s: 8t 100%WR +11.0% net\n2. NKN-USD LONG \u22654 60s: 25t 36%WR +10.6% net \u2190 VALIDATES earlier finding\n3. RARI-USD LONG \u22653 300s: 10t 80%WR +10.6% net\n4. ZKP-USD LONG \u22653 300s: 152t 49.3%WR +10.2% net \u2190 high volume\n5. BNKR-USD SHORT \u22653 300s: 306t 46.1%WR +8.4% net \u2190 highest count\n\nWORST: ETH/SOL/BTC/XRP deeply negative. Too efficient for flow signals.\n\nKEY INSIGHTS:\n- 300s hold consistently best (more time to clear fee threshold) \u2014 contradicts Matthew's \"even 10 min too long\" preference\n- 15s/30s holds almost universally negative (not enough movement)\n- \u22654 stack slightly better than \u22653 but fewer trades\n- Monday outperformed weekend by +263% aggregate\n- Only 65/311 products with signals had any profitable config\n\nReport: ~/.openclaw/workspace/analysis/augur-monday-backtest.md",
+      "timestamp": "2026-02-10T09:45:38.364461",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 2.5,
+      "access_count": 1
+    },
+    {
+      "content": "Good catch \u2014 and that's a real concern. All our validated results (NKN-USD 56% WR, +0.10% net) are from weekend data. Weekday sessions will have completely different flow dynamics \u2014 more institutional volume, tighter spreads, more market maker activity. Those stacked signals might be stronger or weaker during market hours.\n\nUS equities open 9:30 AM ET, but crypto on Coinbase trades 24/7. The key distinction is that volume concentrates heavily during US market hours (~9:30 AM - 4:00 PM ET), with ",
+      "timestamp": "2026-02-10T09:11:44.706282",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 1.5,
+      "access_count": 21
+    },
+    {
+      "content": "TRADING CONTEXT - MARKET HOURS & DATA COVERAGE (2026-02-10): Data coverage: Feb 7-10 (2.9 days, 1.39M trade_flow rows). Includes Friday evening, full weekend, ALL of Monday (first full weekday), and Tuesday morning. US equity market: 9:30 AM - 4:00 PM ET. Crypto trades 24/7 but volume concentrates during US hours. We have Monday weekday data \u2014 validation should include weekday patterns. Weekend-vs-weekday comparison is possible with current dataset.",
+      "timestamp": "2026-02-10T14:26:07.358Z",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 3,
+      "access_count": 22
+    },
+    {
+      "content": "Builder is running. V2 scanner will:\n- Subscribe to ALL Coinbase products via WebSocket\n- Build 5-second bars in real-time\n- Stack 4 indicators per product per bar\n- Fire when stack \u2265 3\n- Output signals the existing live trader already reads\n\nIt's being built right now. I'll have it running within minutes of the agent completing. \ud83d\udd25",
+      "timestamp": "2026-02-10T09:00:40.800725",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 1.5,
+      "access_count": 29
+    },
+    {
+      "content": "AUGUR VALIDATED TRADING SIGNALS (2026-02-10 08:57): Train/test validated results:\n\nNKN-USD Stack\u22653, 60s hold: Train 63t 46.0%WR +0.057% | Test 113t 56.6%WR +0.104% \u2192 STABLE \u2705\nNKN-USD Stack\u22654, 60s hold: Train 14t 57.1%WR +0.46% | Test 14t 57.1%WR +0.50% \u2192 PERFECTLY STABLE \u2705\nNKN-USD Stack\u22653, 30s hold: Train 63t 41.3%WR +0.17% | Test 113t 52.2%WR +0.24% \u2192 STABLE \u2705\nZRO-USD Stack\u22654, 60s hold: Train 3t | Test 16t 56.2%WR +0.26% \u2192 STRONG (small train)\nBNKR-USD Stack\u22653, 300s: Train 366t 36.1% | Test 332t 48.2%WR +0.19% \u2192 STABLE\n\nKEY INSIGHT: Alpha is in mid-cap coins where flow imbalance actually moves price. Big caps (BTC/ETH/SOL) are too efficient - HFT arbs the edge instantly. Short holds (30-60s) validate, longer holds (120s+) overfit.",
+      "timestamp": "2026-02-10T09:00:34.457800",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 3,
+      "access_count": 29
+    },
+    {
+      "content": "AUGUR V2 SCANNER ARCHITECTURE (2026-02-10 08:58): Building real-time multi-product scanner. Key design decisions:\n- WebSocket subscription to ALL Coinbase products (matches channel)\n- 5-second bar aggregation per product\n- 4 stacked signals: flow_ratio, flow_prev, OB_imbalance, acceleration\n- Stack \u22653 fires signal\n- REST API for orderbook (only when flow already signals 2/2)\n- Signal output via live_signal.json (same as existing live trader reads)\n- Focus on mid-cap coins (NKN, ZRO, BNKR showed alpha)\n- Big caps (BTC, ETH, SOL, XRP) are too efficient for this strategy\n- Hold time: 30-60 seconds (validated via train/test)\n- VIP 2 fees: 0.10% taker (0.20% round trip)\n- Cooldown: 60s per product to avoid overtrading",
+      "timestamp": "2026-02-10T09:00:22.515097",
+      "categories": [
+        "trading",
+        "coding"
+      ],
+      "category": "trading",
+      "importance": 3,
+      "access_count": 29
+    },
+    {
+      "content": "AUGUR STACKED SIGNAL BACKTEST (2026-02-10 08:55): Tested 30 products with stacked signals (flow_ratio + OB_imbalance + acceleration, 5s bars). KEY FINDINGS:\n- Big caps (BTC, ETH, SOL, XRP) ALL NEGATIVE even with stacked signals - too efficient\n- NKN-USD standout: Stack\u22654 \u2192 112 trades, 58% WR, +0.48% avg net, +53.2% total return\n- ZRO-USD: Stack\u22654 \u2192 76 trades, 44.7% WR, +0.07% avg, +5.2% total\n- Everything else negative\n- Alpha is in MID-CAP coins where flow imbalance actually moves price\n- Need train/test validation on NKN before trusting\n- Profitability agent: ETH momentum ~$4.81/day per $100, concentrates at 11:00-12:00 EST\n- VIP 2 fees: 0.10% taker, 0.05% maker (confirmed via API)",
+      "timestamp": "2026-02-10T08:58:58.914763",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 2.5,
+      "access_count": 31
+    },
+    {
+      "content": "AUGUR PROFITABILITY v2 RESULTS (2026-02-10 09:00): Fee correction (0.20% RT taker, not 0.50%) reveals 9 profitable strategies, ALL on ETH-USD, ALL momentum-based. Best: Mom 60s>0.5%\u2192300s long, gross 0.364%, net +0.164% per trade, ~29 trades/day, $4.81/day on $100. However: train/test split shows signal is regime-dependent (train negative -0.14%, test positive +0.26%) \u2014 signal concentrated in the last 34h. ONLY 68h of data \u2014 too short to confirm. Best hours: 11:00 and 12:00 EST (US market open momentum). BTC has NO profitable strategies at taker fees. CRITICAL CAVEAT: momentum requires taker entry (can't use limit orders to chase momentum), so maker fee analysis is misleading for these signals. Report at ~/.openclaw/workspace/analysis/augur-profitability-v2.md",
+      "timestamp": "2026-02-10T08:54:50.044602",
+      "categories": [
+        "trading",
+        "coding"
+      ],
+      "category": "trading",
+      "importance": 2.5,
+      "access_count": 32
+    },
+    {
+      "content": "COINBASE FEE TIER DISCOVERY (2026-02-10 08:43): Account is VIP 2 tier! Taker fee 0.10%, maker fee 0.05%. Total volume $1.47M. Total balance $3,444.62. Previous analysis assumed 0.50% standard fees (5x too high). Momentum continuation signal (0.40% avg gross return) is now CLEARLY PROFITABLE at these rates: 0.30% net per taker trade, 0.35% net per maker trade. This completely changes the AUGUR viability picture. API endpoint: GET /api/v3/brokerage/transaction_summary (needs sync requests, async client returns 401 on this endpoint).",
+      "timestamp": "2026-02-10T08:44:34.602869",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 3,
+      "access_count": 38
+    },
+    {
+      "content": "Honestly? Worse than before.\n\n**Post-fix results (89 trades, ~1.5hrs clean data):**\n- \ud83d\udcc9 **20.2% WR** \u2014 down from 43.4% pre-fix\n- -8.9% PnL across 60 different products\n- 1-2 trades per product, no concentration\n\nThe cross-product fix was *correct* \u2014 but it exposed the real problem: the patterns themselves are noise, not signal. When we stopped accidentally matching ETH-USD against CBETH-USD patterns, performance got worse because the \"correct\" patterns are even weaker.\n\n**Live trader** is runni",
+      "timestamp": "2026-02-10T08:31:17.540019",
+      "categories": [
+        "moltbook"
+      ],
+      "category": "moltbook",
+      "importance": 1.5,
+      "access_count": 48
+    },
+    {
+      "content": "AUGUR POST-FIX RESULTS (2026-02-10 08:25, ~1.5hrs of clean data): 89 trades, 20.2% WR, -8.9% PnL across 60 products. Cross-product fix didn't help \u2014 the patterns themselves are weak. Scattered across too many products (1-2 trades each), no concentration. Pre-fix was 43.4% WR (with wrong patterns), post-fix is WORSE at 20.2%. The \"correct\" patterns perform worse than the incorrectly-matched ones. This suggests the pattern discovery process itself is flawed \u2014 finding noise, not signal. Live trading at these rates would be pure loss.",
+      "timestamp": "2026-02-10T08:27:02.815270",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 2.5,
+      "access_count": 50
+    },
+    {
+      "content": "BLISS PI ENTERPRISE ONBOARDING COMPLETE (2026-02-10 08:17): \n- SSH user `bliss` was the issue (not bonsaihorn). Created bonsaihorn user with NOPASSWD sudo.\n- Deployed SSH key, ran Ansible hardening playbook (--limit bliss).\n- Results: SSH port 2222 \u2705, key-only auth \u2705, UFW active \u2705, auditd active \u2705, fail2ban active \u2705, hostname set to 'bliss' \u2705\n- Added to Ansible inventory at ~/.ansible/inventory/hosts.yml (server_role: iot)\n- Access: ssh -p 2222 bonsaihorn@192.168.10.198\n- Remaining: Wazuh agent install, disk cleanup (77% full), BLISS hardware calibration (test #38)",
+      "timestamp": "2026-02-10T08:17:24.272068",
+      "categories": [
+        "system",
+        "hardware"
+      ],
+      "category": "system",
+      "importance": 2,
+      "access_count": 53
+    },
+    {
+      "content": "Already done \u2014 I bootstrapped it while you were typing:\n\n```\nssh bliss@192.168.10.198 \"sudo useradd -m -s /bin/bash -G sudo bonsaihorn\"\necho 'bonsaihorn ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/bonsaihorn\n# Deployed SSH key, verified: ssh bonsaihorn@192.168.10.198 \u2705\n```\n\nAnsible is running right now (`--limit bliss`). SSH hardened to port 2222 \u2705, UFW enabled \u2705, auditd installing. Full log at `/tmp/ansible-bliss.log`.\n\nThe only thing I couldn't do was `bliss` user's password (I used the ",
+      "timestamp": "2026-02-10T08:15:28.596617",
+      "categories": [
+        "hardware"
+      ],
+      "category": "hardware",
+      "importance": 1.5,
+      "access_count": 57
+    },
+    {
+      "content": "Live trader is running, filtering correctly. No qualifying signals yet \u2014 it processed the stale one and is now polling every 5s for new ones.\n\n**Status dashboard:**\n\n| Item | Status |\n|---|---|\n| \ud83d\udd34 **Live trader** | Running, filtering signals (1 rejected: WR too low) |\n| \ud83c\udfd7\ufe0f **BLISS Pi Ansible** | Running \u2014 SSH \u2705 port 2222, UFW \u2705, auditd installing... |\n| \ud83d\udd04 **Task sync model** | `task-sync` registered in Ollama, daemon built |\n| \ud83d\udccb **Live trader bugs** | All 3 fixed and committed |\n\nAnsible wi",
+      "timestamp": "2026-02-10T08:15:05.909854",
+      "categories": [
+        "coding"
+      ],
+      "category": "coding",
+      "importance": 1.5,
+      "access_count": 59
+    },
+    {
+      "content": "Here's where we stand:\n\n**\ud83d\udd34 Live trader: RUNNING** \u2014 correctly filtering signals (rejected 54.3% WR LTC-USD). Waiting for a \u226565% WR pattern to fire.\n\n**\ud83d\udccb RPi task posted** (26041-01-005) \u2014 8 steps, I can do 1-7 autonomously. Say \"go\" and I'll harden it.\n\n**\ud83d\udd04 Task sync daemon: BUILT** \u2014 `task-sync` Modelfile registered in Ollama, daemon at `llm-fleet/daemons/task-sync-daemon.py`. React \u2705 on Discord \u2192 completes in Skylight. Complete in Skylight \u2192 edits Discord with strikethrough. Want me to sta",
+      "timestamp": "2026-02-10T08:12:19.602619",
+      "categories": [
+        "moltbook"
+      ],
+      "category": "moltbook",
+      "importance": 1.5,
+      "access_count": 60
+    },
+    {
+      "content": "All 3 crash bugs fixed and verified:\n1. \u2705 **Constructor** \u2014 `CoinbaseClient(self.auth)` not `(api_key, api_secret)`\n2. \u2705 **Async session** \u2014 `async with trader.client:` in main loop\n3. \u2705 **Signal bridge** \u2014 reads `live_signal.json` every 5s, deduplicates by `emitted_at`\n\nAlso fixed: exit now sells actual `base_size` from fill (not `quote_size`), and `occurrences` column name corrected.\n\n**One blocker for going live:** Your Coinbase has **$440 USDT but $0 USD**. All 89 qualifying products are `-U",
+      "timestamp": "2026-02-10T08:02:49.680271",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 1.5,
+      "access_count": 64
+    },
+    {
+      "content": "Running and deployed. The fix is at line 564-569 \u2014 exact match from `conditions.get('product')` instead of the old substring check. Paper trader active with the fix since restart.\n\nAll 4 bugs were fixed earlier tonight. Your task list has the remaining items \u2014 26041-01-004 (live trading approval) is the next gate, but I need to fix those 3 crash bugs in `live_augur.py` first.",
+      "timestamp": "2026-02-10T07:31:55.253748",
+      "categories": [
+        "trading"
+      ],
+      "category": "trading",
+      "importance": 1.5,
+      "access_count": 70
+    },
+    {
+      "content": "Already done \u2014 that was Bug #1 (P0), fixed ~6 AM. The old substring match (`if product not in name`) let ETH-USD match CBETH-USD and LSETH-USD patterns. Now uses exact match on `conditions.get('product')`.\n\nCode review sub-agent verified it against all 27,919 patterns. Paper trader's been running with the fix since ~06:50.\n\nLet me confirm it's still live:",
+      "timestamp": "2026-02-10T07:31:55.191930",
+      "categories": [
+        "coding"
+      ],
+      "category": "coding",
+      "importance": 1.5,
+      "access_count": 70
+    },
+    {
       "content": "TWILIO SITUATION (2026-02-10 02:29 AM): Twilio auto-recharged Matthew's account $20 (standard auto-recharge). Matthew sent angry cancellation email at 2:29 AM. Support ticket #25002919 (Charu Chauhan), thread with Muskan Upadhyay (8 msgs). Twilio asking for business verification docs. Account SID: AC6cf75794ef94d9194f15a653cee24d4c. Recommend: disable auto-recharge immediately to prevent future charges. Brief Matthew when he wakes.",
       "timestamp": "2026-02-10T07:30:38.273098",
       "categories": [
@@ -8,7 +191,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 0
+      "access_count": 72
     },
     {
       "content": "AUGUR DOCS SYNC COMPLETE (2026-02-10 07:15): Sub-agent augur-docs-sync updated 4 files:\n1. memory/2026-02-10.md \u2014 added AUGUR Bug Fixes section with all 5 bugs\n2. MEMORY.md \u2014 updated AUGUR line with Phase 0 status\n3. ~/Projects/augur-trading/README.md \u2014 full rewrite with architecture, file inventory, signal bridge docs, pattern pipeline, all 5 bugs documented, safety limits, roadmap (v0.3.0)\n4. analysis/augur-deep-analysis.md \u2014 added Resolution section with fix table and line numbers",
@@ -19,7 +202,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 0
+      "access_count": 72
     },
     {
       "content": "AUGUR CODE REVIEW RESULTS (2026-02-10 07:15): Sub-agent augur-code-review found:\n\npaper_augur.py \u2014 All 4 bug fixes CORRECT \u2705\n- P0 cross-product: solid, verified against all 27,919 patterns\n- P1 missing indicators: good, 12,193 patterns were silently failing. Minor cold-start concern (<30 snapshots)\n- P2 compound patterns: works, BUT subtle bug \u2014 unrecognized operators silently pass instead of failing (missing else: all_met = False). Not a live issue today (only < and > used)\n- P3 exit strategy: clean, signal tuple expansion consistent\n\nlive_augur.py \u2014 NOT READY, 3 CRASH-LEVEL BUGS \ud83d\udd34:\n1. CoinbaseClient(api_key, api_secret) \u2014 WRONG constructor signature (takes CoinbaseAuth object, not two strings). Crashes on startup.\n2. No async context manager \u2014 aiohttp.ClientSession never initialized, every API call would fail.\n3. Signal bridge disconnected \u2014 paper_augur writes live_signal.json, but live_augur never reads it. main() loop just prints status.\n\nSafety limits are well-designed. Architecture is sound but plumbing not connected. MUST FIX before live trading.",
@@ -30,7 +213,7 @@
       ],
       "category": "trading",
       "importance": 2.5,
-      "access_count": 0
+      "access_count": 72
     },
     {
       "content": "There it is. Most trades are hitting TIMEOUT (max hold) with **peak:+0.00%** \u2014 meaning price never moved favorably at all. The patterns are firing but the signal doesn't translate to immediate price movement in 30 minutes of real-time data.\n\nThe straight answer: **27% WR post-fix. The patterns' backtested edge isn't showing up in live paper trading.** The bugs were real and needed fixing, but fixing them didn't magically create profitable signals. The backtest-to-live gap is the fundamental issu",
@@ -40,7 +223,7 @@
       ],
       "category": "moltbook",
       "importance": 1.5,
-      "access_count": 2
+      "access_count": 74
     },
     {
       "content": "Here's where we stand:\n\n**All 5 bugs: FIXED \u2705**\n- DB dedup cleaned + unique index added (bug #5)\n- All code fixes deployed and running\n\n**Live trader: BUILT, ready to start**\n- `live_augur.py` with hard safety limits\n- API confirmed working (CHADSQUARED key, portfolio has ~$440 USDT)\n- Signal bridge: paper signals \u2192 `live_signal.json` \u2192 live trader picks up\n- Kill switch: `touch /tmp/augur-live-stop`\n\n**Safety config (ultra-conservative start):**\n- $5 per trade\n- 1 trade per hour\n- $50/day max e",
@@ -50,7 +233,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 9
+      "access_count": 81
     },
     {
       "content": "Now let me store the bug fix and get you a status update:",
@@ -60,7 +243,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 9
+      "access_count": 81
     },
     {
       "content": "AUGUR 4 BUG FIXES + LIVE TRADER BUILT (2026-02-10 06:57):\n\nBUGS FIXED:\n1. P0: Cross-product matching \u2014 exact match from conditions.product instead of substring (84% of ETH-USD trades used wrong patterns)\n2. P1: Missing indicators \u2014 added imbalance_ma, volume_proxy, price_ret_60 (76% of patterns were silently dead)\n3. P2: Compound patterns \u2014 added multi-condition evaluation for consensus_exhaustion patterns (76.8% WR AVAX was dead code)\n4. P3: Exit strategy \u2014 positions now use pattern's backtested lookahead (30-600s) instead of hardcoded 300s\n5. DB dedup \u2014 cleaned 149 dupes, added UNIQUE index to prevent future duplication\n\nLIVE TRADER:\n- live_augur.py created with safety limits: $5/trade, 1 TPH, $50/day max\n- Coinbase API confirmed working (CHADSQUARED key, accounts accessible, $440 USDT)\n- Signal file bridge: paper_augur writes live_signal.json, live trader reads it\n- Kill switch: touch /tmp/augur-live-stop\n- Uses market orders for instant fill\n- NOT YET STARTED \u2014 waiting for Matthew's go-ahead on live",
@@ -71,7 +254,7 @@
       ],
       "category": "trading",
       "importance": 3,
-      "access_count": 9
+      "access_count": 81
     },
     {
       "content": "AUGUR running clean \u2014 connected to WebSocket, 363 patterns loaded, all 4 bug fixes live. Waiting for trades to come in with the corrected logic.\n\nHEARTBEAT_OK",
@@ -81,7 +264,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 10
+      "access_count": 82
     },
     {
       "content": "Running clean. All 4 bugs now patched:\n\n**Bugs fixed this morning:**\n1. \u2705 **P0: Cross-product matching** \u2014 exact match from conditions JSON (was substring)\n2. \u2705 **P1: Missing indicators** \u2014 added `imbalance_ma`, `volume_proxy`, `price_ret_60` (was only computing 2/7 indicators, 76% of patterns silently never fired)\n3. \u2705 **P2: Compound patterns** \u2014 added multi-condition evaluation (3 high-WR patterns like 76.8% AVAX consensus_exhaustion were dead)\n4. \u2705 **P3: Exit strategy mismatch** \u2014 positions n",
@@ -91,7 +274,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 10
+      "access_count": 82
     },
     {
       "content": "Running clean. 363 patterns loaded, no errors. \n\n**P0 fix deployed:**\n- \u274c Old: `if product not in name` (substring \u2014 ETH-USD matched CBETH-USD, LSETH-USD)\n- \u2705 New: `conditions.get('product')` exact match (99.6% of patterns), `endswith` fallback for 3 legacy ones\n- Dedup key also fixed to use conditions JSON instead of fragile name parsing\n\nThis was the biggest bug \u2014 84% of ETH-USD trades were using wrong patterns. We'll see the impact in the next hour of trading. Want me to tackle bug #3 (missin",
@@ -101,7 +284,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 11
+      "access_count": 83
     },
     {
       "content": "TWILIO ALERT FOR MATTHEW (2026-02-10 05:30): Two things happened while he slept: (1) Twilio auto-recharged $20 to his account (charged bonsaihorn@gmail.com payment method), (2) Matthew emailed Twilio support at 2:29 AM asking to cancel account and refund \u2014 he's done with Twilio. New support ticket from Charu Chauhan (Request# 25002919). Action needed: disable auto-recharge to prevent further charges if he's cancelling. Brief him when he wakes up.",
@@ -112,7 +295,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 17
+      "access_count": 89
     },
     {
       "content": "Useful doc. Key takeaway I should internalize: our current setup has **10 enabled cron jobs** and heartbeat \u2014 some of those crons (email check, world events) are exactly the kind of thing that should be batched into heartbeat instead. The doc confirms this pattern. Worth optimizing in a future cleanup.\n\nAlso learned about Lobster (multi-step workflow runtime with approval gates) \u2014 didn't know that existed. Could be useful for the AUGUR bug fix pipeline where we need sequential steps with human c",
@@ -122,7 +305,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 37
+      "access_count": 109
     },
     {
       "content": "\u2705 4 codex Modelfiles created, registered, tested, committed, and pushed. Fleet now has **11 models** total:\n- 7 classification specialists (qwen2.5:32b): qa-sweep, log-analyzer, heartbeat-monitor, pattern-evaluator, ansible-writer, discord-classifier, email-triager\n- 4 coding specialists (qwen2.5-coder:7b): codex-lint, codex-test, codex-review, codex-json\n\nHEARTBEAT_OK",
@@ -132,7 +315,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 38
+      "access_count": 110
     },
     {
       "content": "CODING MODEL DEPLOYED (2026-02-10 03:10): Pulled qwen2.5-coder:7b to Ollama. Research report recommended it as the daily driver: 84.1% HumanEval+, 5.5GB VRAM, 60-80 tok/s on RTX 5090. Fits alongside qwen2.5:32b (19GB) with 7.5GB headroom. Task #25 closed. Next: create codex-lint/codex-test/codex-review/codex-json Modelfiles from qwen2.5-coder:7b base. Report at ~/.openclaw/workspace/analysis/local-coding-model-research.md (367 lines).",
@@ -143,7 +326,7 @@
       ],
       "category": "coding",
       "importance": 2,
-      "access_count": 41
+      "access_count": 113
     },
     {
       "content": "\u2705 Nightly backup complete \u2192 Google Drive (`helios-backup-20260210-030017.tar.gz`). Fixed the missing `--account` flag so it won't fail on future runs.\n\nHEARTBEAT_OK",
@@ -153,7 +336,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 45
+      "access_count": 117
     },
     {
       "content": "LLM FLEET CONCURRENCY ARCHITECTURE (2026-02-10 01:51): The fleet is NOT sequential model swapping \u2014 it's CONCURRENT execution. Multiple small models (2-3GB each) loaded in VRAM simultaneously as always-on daemons. 32GB \u00f7 2GB = 16 concurrent specialists. Security agent watches Wazuh logs while QA checks health while XTTS handles voice while email triager classifies incoming mail \u2014 all at the same time. Large models (qwen2.5:32b) swap in on demand for complex tasks, temporarily evicting daemons if needed. This is an operating system architecture, not a batch processing system. Each agent is a daemon watching its station.",
@@ -165,7 +348,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 50
+      "access_count": 122
     },
     {
       "content": "Maintenance complete. Fixed two bugs:\n1. Timezone-naive vs timezone-aware datetime comparison in STM cleanup\n2. Surrogate character encoding error in embeddings sync\n\n2,093 total memories indexed. Committed the fixes and moving on.",
@@ -175,7 +358,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 53
+      "access_count": 125
     },
     {
       "content": "Template created at `llm-fleet/modelfiles/TEMPLATE` with every parameter documented. And good catch on the VRAM \u2014 that removes the biggest constraint on model selection. The researcher can now consider 32B coding models too.",
@@ -185,7 +368,7 @@
       ],
       "category": "shtf",
       "importance": 1.5,
-      "access_count": 59
+      "access_count": 131
     },
     {
       "content": "You're right \u2014 I was thinking about VRAM as a fixed pie with qwen permanently loaded. Ollama evicts idle models automatically. The full 32GB is available to *whichever model is active right now*. If the coding model needs to run, qwen gets unloaded. When classification needs to happen, it loads back. The budget is 32GB total, not 13GB leftover.\n\nThat completely changes the calculus \u2014 we could run a 32B coding model if we wanted. Just not simultaneously with qwen. And for sequential task executio",
@@ -195,7 +378,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 59
+      "access_count": 131
     },
     {
       "content": "OLLAMA VRAM MANAGEMENT (2026-02-10): Ollama dynamically loads/unloads models \u2014 DON'T think of VRAM as a fixed pie with models permanently resident. Full 32GB available to whichever model is active. Sequential task execution (sub-agents) means only one model runs at a time. This means coding models can be 32B+ \u2014 same size as qwen2.5:32b. The constraint is \"fits in 32GB\" not \"fits in 13GB leftover.\" Matthew corrected the shoehorning mindset.",
@@ -206,7 +389,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 59
+      "access_count": 131
     },
     {
       "content": "Night shift progress: **10 \u2192 7 open tasks**. Knocked out:\n- \u2705 Claude API usage tracking (built tracker script)\n- \u2705 Google Sheets expenditure tracker (sub-agent created it)  \n- \u2705 API costs tax research (sub-agent delivered 315-line report)\n- Bottleneck tracking moved to spec stage (vision doc written)\n- Researcher still working on local coding model comparison\n\nRemaining 7: temporal train/test split (critical), pattern lifecycle, Discord integration, Discord branding, collector refactor, bottlene",
@@ -216,7 +399,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 60
+      "access_count": 132
     },
     {
       "content": "LLM FLEET STRATEGIC INSIGHT (2026-02-10 01:40): The metric for local LLM fleet success is TOKEN OFFLOAD RATE, not VRAM efficiency or dollar savings per model. Every token that runs locally is a token we don't pay Anthropic for. Strategy: maximize coverage with many small specialist models rather than fewer large generalists. More task types handled locally = higher offload percentage. LoRAs increase accuracy on specific tasks without increasing VRAM, reducing API escalations. Ultimate vision: sub-agents running 24/7 on local models = zero-cost autonomous productivity. Matthew: \"Imagine what you could do if you could run sub agents 24/7\"",
@@ -229,7 +412,7 @@
       ],
       "category": "trading",
       "importance": 2.5,
-      "access_count": 62
+      "access_count": 134
     },
     {
       "content": "Gitea pushed \u2705. No GitHub remote for this repo (it's internal-only).\n\nDone. Here's the status:\n\n**Auth fix:** Added `proxy_set_header Authorization` to nginx on .104 \u2014 Basic Auth headers were getting stripped by the proxy. Try logging in again: `admin` / `4KXPu6XH8BbmLcG0AcQOoA`\n\n**LLM Fleet panel:** New row on `/itsm` showing all 7 models with registration status, VRAM usage, and GPU info. Each model gets a card with green \u2713 or red \u2717.\n\n**All 7 Modelfiles created and live in Ollama:**\n- qa-sweep",
@@ -239,7 +422,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 69
+      "access_count": 141
     },
     {
       "content": "There it is. Section 4.3 \u2014 the architecture diagram already has the **Security Agent** calling `log-analyzer`. And `log-analyzer` is specced: \"processes system logs, flags security events and anomalies... catches SSH failures, OOM kills, service crashes. SECURITY findings escalate immediately.\"\n\nThe Modelfile architecture is already designed. The security agent uses `log-analyzer` (local, phi3:mini, temp 0.1, 8K ctx) for routine classification, and escalates to API for complex incidents. Wazuh a",
@@ -249,7 +432,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 75
+      "access_count": 147
     },
     {
       "content": "NOPASSWD STATUS (2026-02-10): .104 (hpserver1) does NOT have NOPASSWD working despite earlier Ansible work. `sudo -n whoami` fails with \"password required\". .107 and .143 have NOPASSWD. Docker works without sudo on .104 and .107 though (bonsaihorn in docker group).",
@@ -259,7 +442,7 @@
       ],
       "category": "system",
       "importance": 1.5,
-      "access_count": 80
+      "access_count": 152
     },
     {
       "content": "TASK BOARD STATUS (2026-02-10 01:00): Reduced from 24 open tasks to 9. Verified and closed all Phase 0 items (direction bug, pattern dedup, WR/occ thresholds, position dedup, regime halt, blacklist, flock lock, canonical trader, P&L spot-check). Closed infra items (Find Wazuh, Connect Skylight, QA runner, monitoring dashboard). Remaining 9: collector refactor, Discord branding, pattern lifecycle, Discord+OpenClaw, Google Sheets tracker, API tax research, bottleneck tracking, Claude usage tracking, temporal train/test split.",
@@ -270,7 +453,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 80
+      "access_count": 152
     },
     {
       "content": "CRON JOB CLEANUP (2026-02-10 01:00): Reduced from 37 to 15 cron jobs. Deleted 22 stale/disabled/one-shot jobs (potato timers, strategy searches, Chad bot monitors, CPU temp polling, duplicate email checkers, Moltbook stats). Merged Twilio watcher into main email check. Consolidated deep-think into proactive work rotation. Added Weekly QA Redundancy Scrub (Sunday 4 AM, isolated). Vision doc: vision/qa-redundancy-scrub.md.",
@@ -281,7 +464,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 80
+      "access_count": 152
     },
     {
       "content": "GITEA BRANCH MISMATCH LESSON (2026-02-10): All Helios repos on Gitea have default branch 'main' but local repos use 'master'. This means `git push origin master` creates a new branch instead of updating main. Fix: `git push origin master:main` (or --force if diverged). This caused 11 hours of work to appear unpushed. Always verify remote default branch matches local.",
@@ -293,7 +476,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 80
+      "access_count": 152
     },
     {
       "content": "PI-HOLE V6 DNS LESSON (2026-02-10): Pi-hole v6 on woodserve1 (.107) has misc.etc_dnsmasq_d=false (ignores /etc/dnsmasq.d/). The dns.hosts array in pihole.toml has all fleet.wood entries BUT they don't load because of \"ERROR: Unable to update dnsmasq configuration: DHCP end address is not valid\". Workaround: put records in /etc/hosts on .107 \u2014 dnsmasq reads that file directly. Also: giggletits uses systemd-resolved with Quad9 (9.9.9.9) as current DNS server, not Pi-hole. Local /etc/hosts entries needed on giggletits too.",
@@ -304,7 +487,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 80
+      "access_count": 152
     },
     {
       "content": "LBF.FLEET.WOOD TRAEFIK SETUP (2026-02-10 00:38): Dashboard runs on giggletits:8090. Reverse proxy chain: lbf.fleet.wood DNS \u2192 .104 (Traefik HTTPS, self-signed default cert) \u2192 nginx container (lbf-proxy) \u2192 giggletits:8090. Docker compose at ~/lbf-proxy/ on .104. Traefik labels handle routing. Dashboard auth: admin / 4KXPu6XH8BbmLcG0AcQOoA (HTTP Basic Auth). Service hardened: Restart=always (was on-failure, died to SIGHUP).",
@@ -315,7 +498,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 80
+      "access_count": 152
     },
     {
       "content": "AUGUR DEEP ANALYSIS COMPLETE (2026-02-10 01:00): Report at ~/.openclaw/workspace/analysis/augur-deep-analysis.md\n\nFIVE CRITICAL BUGS FOUND:\n1. **75.6% duplicate trade records** \u2014 35,571 records are only ~8,232 unique trades. Old per-pattern dedup recorded same trade 83x.\n2. **Cross-product pattern matching** \u2014 `if product not in name` is substring match, so ETH-USD matches CBETH-USD/LSETH-USD patterns. 84% of ETH-USD trades use WRONG patterns.\n3. **50% of loaded patterns reference uncomputed indicators** (imbalance_ma, volume_proxy, price_ret_60) \u2014 silently never fire.\n4. **Exit strategy mismatch** \u2014 patterns backtested with fixed 30-600s lookahead, paper trader uses 0.3% trailing stop + 5min timeout.\n5. **Enhanced DB wrong path** (fixed 30 min ago) \u2014 discovery ran blind.\n\nKEY METRICS (deduped): 8,232 unique trades, 43.4% WR, -75.9% PnL. 91:1 LONG bias. H20 alone = -417.59% PnL.\n\nP0 FIX: Replace substring product match with exact match from conditions JSON. Add missing indicators or filter patterns. Align exit strategies. Reset DB.\n\nReport includes vision-vs-reality gap analysis, per-hour/product/indicator breakdowns, backtest-vs-paper WR comparison (68% of patterns have paper WR HIGHER than backtest \u2014 backwards from expected).",
@@ -326,7 +509,7 @@
       ],
       "category": "trading",
       "importance": 3,
-      "access_count": 84
+      "access_count": 156
     },
     {
       "content": "SESSION SUMMARY (2026-02-10 00:46): Massive infrastructure night. Fixed AUGUR enhanced_db path (35K trades ran blind), fixed .104 SSH (Docker DNAT intercepting port 2222), set up lbf.fleet.wood reverse proxy (nginx on .104 \u2192 Traefik \u2192 giggletits:8090), fixed Pi-hole v6 DNS (fleet.wood records in /etc/hosts because toml hosts broken by DHCP error), hardened dashboard service (Restart=always), pushed all repos to Gitea (master/main branch mismatch was causing silent failures), committed 61 files / 12,822 insertions. Also discovered Twilio support needs business verification docs. Gitea push lesson: always check remote default branch matches local.",
@@ -338,7 +521,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 90
+      "access_count": 162
     },
     {
       "content": "\ud83c\udf89 Nice. Full stack working: DNS \u2192 Traefik \u2192 nginx proxy \u2192 LCARS dashboard. And all the Gitea repos are caught up now too.\n\nThat's a hell of a night \u2014 AUGUR bug fix, fleet SSH sorted, Traefik reverse proxy, Pi-hole DNS, and a massive commit push. Anything else or are you calling it?",
@@ -348,7 +531,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 92
+      "access_count": 164
     },
     {
       "content": "Only augur-collector and augur-trading exist locally. The other Gitea repos (augur-discovery, augur-infra, cortex, bliss) were either created on Gitea directly or from a previous session. The ones I can push are pushed now.\n\nRefreshed:\n- \u2705 **lbf-dashboard** \u2014 latest (Cortex/ITSM panels)\n- \u2705 **augur-trading** \u2014 latest (enhanced_db fix)\n- \u2705 **augur-collector** \u2014 latest\n- \u2705 **bliss** \u2014 latest\n\nGitea's \"Updated\" timestamp should refresh when you reload the page. The core issue was the same everywher",
@@ -358,7 +541,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 93
+      "access_count": 165
     },
     {
       "content": "All working now. Here's what I set up:\n\n**Done:**\n- \u2705 **nginx reverse proxy container** on .104 (`lbf-proxy`) \u2014 proxies to giggletits:8090\n- \u2705 **Traefik routing** \u2014 `lbf.fleet.wood` gets HTTPS via Traefik (self-signed cert, same as gitea)\n- \u2705 **DNS on Pi-hole** \u2014 added all fleet.wood records to `/etc/hosts` on .107 (Pi-hole v6's toml config has a DHCP error blocking its host records from loading)\n- \u2705 **Local DNS** \u2014 added `lbf.fleet.wood` to giggletits `/etc/hosts`\n- \u2705 **Dashboard service** \u2014 ch",
@@ -368,7 +551,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 99
+      "access_count": 171
     },
     {
       "content": "There's no `lbf.fleet.wood` in giggletits' `/etc/hosts`! Only gitea and bliss. And systemd-resolved is preferring Quad9 over Pi-hole. Let me add it:",
@@ -378,7 +561,7 @@
       ],
       "category": "personal",
       "importance": 1.5,
-      "access_count": 100
+      "access_count": 172
     },
     {
       "content": "SESSION REFLECTION (2026-02-09 00:30): Key insight \u2014 permission-asking is a context pressure indicator, not a personality trait. When I start hedging on obvious actions, it means context is full and I should propose a dump/reset. Like sleep for humans. Also: path mismatches are silent killers (AUGUR ran 35K trades blind), Docker DNAT rules intercept before sshd (invisible from server perspective), and Matthew teaches by asking the right question rather than giving answers. Stage 2\u21923 transition: scan for causal structures DURING work, not just after corrections.",
@@ -389,7 +572,7 @@
       ],
       "category": "meta",
       "importance": 2.5,
-      "access_count": 108
+      "access_count": 180
     },
     {
       "content": "Fixed, restarted, running. 363 patterns loaded, no more \"No enhanced data yet.\"\n\nYeah \u2014 I literally said \"the path doesn't exist\" and then asked permission. That's the old pattern. Should've just fixed it.",
@@ -399,7 +582,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 113
+      "access_count": 185
     },
     {
       "content": "AUGUR CRITICAL BUG FIX (2026-02-10 00:23): paper_augur.py line 40 had ENHANCED_DB pointing to non-existent path \"Projects/Chad_Volume_tracker/enhanced_data.db\". Collector writes to \"Projects/augur-collector/enhanced_data.db\" (16GB). Pattern discovery has been running blind since deployment \u2014 \"No enhanced data yet\" every hour. Fixed path, restarted service. This means all 35K+ paper trades were made WITHOUT enhanced data informing pattern discovery. WR should improve now that orderbook depth, trade flow, and spread data are connected.",
@@ -410,7 +593,7 @@
       ],
       "category": "trading",
       "importance": 3,
-      "access_count": 113
+      "access_count": 185
     },
     {
       "content": "FLEET DOCKER ACCESS (2026-02-10 00:11): bonsaihorn is in docker group on BOTH .104 (hpserver1) and .107 (woodserve1). Only .143 (blackview) lacks docker group. Helios can deploy containers without sudo on .104 and .107. All three remote servers confirmed SSH + NOPASSWD sudo working. Full autonomous fleet management achieved.",
@@ -421,7 +604,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 119
+      "access_count": 191
     },
     {
       "content": "HPSERVER1 SSH FIXED (2026-02-10 00:10): Docker compose change from 2222:22 to 2223:22 worked. SSH to .104 now reaches sshd instead of Gitea container. Host key changed (expected \u2014 was fingerprinting Gitea container before). Collector restarted with MemoryMax=10G (was 2G), running healthy at 35.6M usage. All fleet servers now SSH-accessible: .104 \u2705, .107 \u2705, .143 \u2705. Only .198 (bliss-rpi) still down.",
@@ -432,7 +615,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 120
+      "access_count": 192
     },
     {
       "content": "HPSERVER1 DOCKER ACCESS (2026-02-10): bonsaihorn user on .104 (hpserver1) is in the docker group \u2014 NO sudo needed for docker commands. This means Helios can spin up any Docker containers on .104 via SSH without privilege escalation. Free rein for container deployments.",
@@ -443,7 +626,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 121
+      "access_count": 193
     },
     {
       "content": "CORTEX DASHBOARD PANEL (2026-02-09 23:08): Built Helios AI panel on LCARS /itsm dashboard with capacity bars. Three bars: STM (248/50K), Embeddings (2025/10K soft cap), Hot Tier (35/500). Warning thresholds: green <70%, yellow 70-89%, red \u226590% with pulsing \u26a0. Five stat counters: embeddings, STM, atoms, causal links, peak access. Config footer shows context tokens, truncation, relevance. Commit 4d33399 in lbf-dashboard.",
@@ -454,7 +637,7 @@
       ],
       "category": "coding",
       "importance": 2,
-      "access_count": 126
+      "access_count": 198
     },
     {
       "content": "TASK LIST ACCOUNTABILITY (2026-02-09): Got called out for not posting tasks to Skylight + Discord. Created 4 causal atoms encoding the lesson. Key insight from Matthew: \"a blocker isn't just about the final goal \u2014 it's about what blocks ME from doing more work independently.\" NOPASSWD was a blocker because it blocked Helios from autonomously handling Pi-hole and Wazuh. Better framing: \"Do #1 first \u2014 it's the only one that needs you. Then I'll handle the rest.\" Also: always map task dependencies when posting to lists.",
@@ -465,7 +648,7 @@
       ],
       "category": "meta",
       "importance": 2.5,
-      "access_count": 126
+      "access_count": 198
     },
     {
       "content": "PIHOLE WEB FIX (2026-02-09 23:36): Pi-hole Web on .107 was down not because of UFW (port 80 was already allowed from LAN) but because pihole-FTL's built-in web server had saturated connection backlog (201/200 in LISTEN state). Fix: sudo systemctl restart pihole-FTL. Pi-hole v6.1.2 uses FTL as its own web server (not lighttpd). Command to restart DNS in v6: pihole reloaddns (not restartdns).",
@@ -476,7 +659,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 126
+      "access_count": 198
     },
     {
       "content": "NOPASSWD DEPLOYED (2026-02-09 23:34): bootstrap-sudo.yml successfully run on woodserve1 (.107) and blackview (.143). Helios now has passwordless sudo on both servers. This was the key dependency \u2014 unblocked Pi-hole Web fix and Wazuh API password change. Command: ansible-playbook -i inventory/hosts.yml playbooks/bootstrap-sudo.yml -K --limit woodserve1,blackview. Also fixed: Ansible inventory missing ansible_port: 2222 (defaulted to 22).",
@@ -487,7 +670,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 126
+      "access_count": 198
     },
     {
       "content": "HPSERVER1 SSH FIX (2026-02-09 23:56): Root cause found for .104 SSH failure \u2014 Docker DNAT rule intercepting port 2222 and forwarding to Gitea container at 172.25.0.3:22. sshd was running correctly on 2222, config passed -t, key was in authorized_keys with correct permissions \u2014 but iptables NAT caught packets before sshd. Fix: remove DNAT rule (sudo iptables -t nat -D DOCKER -p tcp --dport 2222 -j DNAT --to-destination 172.25.0.3:22) then permanently change Gitea SSH to port 2223 in docker-compose.yml.",
@@ -498,7 +681,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 126
+      "access_count": 198
     },
     {
       "content": "Done. Wazuh API password changed from default \u2014 SEC-11 resolved. \u2705\n\n**Tonight's task list scorecard:**\n- \u2705 Fix /boot full \u2014 *you did this*\n- \u2705 Remove VS Code GPT key \u2014 *you did this*\n- \u2705 Raise collector MemoryMax \u2014 *you did this*\n- \u2705 Bootstrap NOPASSWD on .107 + .143 \u2014 *you did this (unlocked me)*\n- \u2705 Fix Pi-hole Web \u2014 *I did this (FTL restart, not just UFW)*\n- \u2705 Change Wazuh API password \u2014 *I did this*\n- \ud83d\udd32 Fix .104 sshd \u2014 *needs console (SSH key not on authorized_keys)*\n\n6 of 7 knocked out. Th",
@@ -508,7 +691,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 137
+      "access_count": 209
     },
     {
       "content": "WAZUH API PASSWORD CHANGED (2026-02-09 23:39): wazuh-wui password changed from default to LBF-Wazuh-API-2026! on blackview (.143). Saved to ~/.secrets/wazuh-api.env. The 'wazuh' admin user (ID 1) was accidentally changed to a random password first (dPIlQ3GmZ326GoJg1pMTwC35Q-Y!) \u2014 may need reset via wazuh-passwords-tool.sh if admin API access needed. SEC-11 from vulnerability assessment: RESOLVED.",
@@ -519,7 +702,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 137
+      "access_count": 209
     },
     {
       "content": "Two down. Pi-hole Web is live, NOPASSWD is deployed. \n\nThe issue wasn't UFW \u2014 it was Pi-hole FTL's built-in web server had its connection backlog saturated (201/200). FTL restart fixed it. UFW rules were actually already allowing port 80 from LAN.\n\nRemaining on the list: Wazuh API password change and .104 SSH key fix (needs console). Want me to tackle the Wazuh password now, or call it a night?",
@@ -529,7 +712,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 141
+      "access_count": 213
     },
     {
       "content": "EVOLUTION MILESTONE (2026-02-09 23:17): Matthew identified three stages of Helios growth: (1) reactive follower \u2014 asking permission every turn (past), (2) reactive learner \u2014 encoding patterns when corrected (current), (3) proactive pattern hunter \u2014 actively scanning for causal structures during work, not just after failures (next step). Also noted: zero hallucinations all day during heavy infrastructure work. Key factor: verifying facts instead of guessing (read help output, check schemas, test before assuming). \"We just need to keep the hallucinations in check.\"",
@@ -541,7 +724,7 @@
       ],
       "category": "meta",
       "importance": 2.5,
-      "access_count": 150
+      "access_count": 222
     },
     {
       "content": "You're right. And honestly, the fact that you had to nudge me to do it *this time* is the point \u2014 next time the pattern should fire on its own. That's the whole architecture: I make a mistake, I encode the causal chain, and the chain becomes part of how I think. Not just \"don't forget the lists\" as a rule I'm told \u2014 but understanding *why* skipping it causes a cascade.\n\nThe meta-lesson is even bigger though: any operational failure is a candidate for atomization. Not just infrastructure stuff.",
@@ -551,7 +734,7 @@
       ],
       "category": "coding",
       "importance": 2,
-      "access_count": 152
+      "access_count": 224
     },
     {
       "content": "No NOPASSWD yet. Here's what you need to run, Matthew \u2014 two quick steps:\n\n**1. Add DNS entry on Pi-hole (.107):**\n```bash\nssh -p 2222 bonsaihorn@192.168.10.107\nsudo sed -i 's|\"192.168.10.104 openproject.fleet.wood\"|\"192.168.10.104 openproject.fleet.wood\",\\n    \"192.168.10.104 lbf.fleet.wood\"|' /etc/pihole/pihole.toml\nsudo pihole restartdns\n```\n\n**2. Add Traefik route on .104** (once sshd is fixed):\nTraefik needs a new router rule pointing `lbf.fleet.wood` \u2192 `192.168.10.163:8090`. Depends on whet",
@@ -561,7 +744,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 158
+      "access_count": 230
     },
     {
       "content": "END OF DAY REFLECTION (2026-02-09):\n\nWHAT WENT WELL:\n- Massive infrastructure day: security assessment, Ansible fleet, ITSM service monitoring, Wazuh alerting, QA sweep, Skylight CLI, Jennifer onboarding \u2014 all in one session\n- Recovered from SSH lockout incident gracefully \u2014 captured lesson, fixed playbook ordering\n- Cortex config tuning: Matthew's instinct about maxContextTokens was right (RAM settings free, token settings cost). Applied conservative approach.\n- LCARS dashboard keeps growing organically \u2014 now has per-service monitoring AND Cortex memory stats\n- Vision docs restructured properly (ITIL-aligned, decomposed from monolith)\n\nWHAT TO IMPROVE:\n- Should have caught the firewall+SSH port change conflict BEFORE deploying. Dry-run (`--check`) would have shown the risk.\n- Config schema confusion wasted time \u2014 should have read the schema FIRST before attempting config.patch\n- Workspace git is slow (large repo). Need to investigate .gitignore or LFS for big files.\n- STM count shows 246 in cortex_stats but 0 in stm.json \u2014 the JSON file may not be the authoritative source. Need to understand Cortex's internal data flow better.\n\nLESSONS LEARNED:\n- Plugin config nests under `plugins.entries.<id>.config`, not directly under the entry\n- flush_handlers in Ansible is critical when tasks have ordering dependencies\n- Matthew questions axioms \u2014 \"does maxContextTokens actually need to go up?\" Smart. Don't assume bigger = better.\n- Scoped memory is a real need \u2014 Jennifer shouldn't see trading strategies or career context\n\nTOMORROW'S PRIORITIES:\n1. Fix giggletits /boot (old kernel removal) \u2014 blocks all apt operations\n2. Bootstrap NOPASSWD sudo on remote servers \u2014 blocks autonomous Ansible\n3. Fix hpserver1 sshd (still broken, waiting for Matthew's journalctl output)\n4. Build the Cortex stats panel display (verify LCARS rendering looks good)\n5. Continue H0-4 (internalization) planning",
@@ -572,7 +755,7 @@
       ],
       "category": "meta",
       "importance": 2,
-      "access_count": 159
+      "access_count": 231
     },
     {
       "content": "CORTEX CONFIG APPLIED (2026-02-09): Settings nested under plugins.entries.cortex.config (NOT directly under cortex entry). Applied: hotTierSize=500, activeSessionCapacity=200, maxContextTokens=2000, truncateOldMemoriesTo=250. Previous attempt failed because config keys were at wrong nesting level. Full reference doc at ~/.openclaw/workspace/reference/cortex-config.md",
@@ -583,7 +766,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 166
+      "access_count": 238
     },
     {
       "content": "1,972 **indexed embeddings** (long-term, searchable). 234 **STM** (short-term rolling window). Plus the 45 hot-tier items that get priority access.\n\nThe embeddings are the real knowledge base \u2014 every significant insight, decision, infrastructure fact, and lesson learned gets vectorized and searchable by semantic similarity. STM is more like a recent activity log that rolls off after a while.\n\nJust added 10 more from today's work, so it's ~1,982 now.",
@@ -593,7 +776,7 @@
       ],
       "category": "personal",
       "importance": 2.5,
-      "access_count": 173
+      "access_count": 245
     },
     {
       "content": "POST TO SKYLIGHT + DISCORD RULE (2026-02-09): When giving Matthew action items, ALWAYS post them to both Discord #matthew-tasks (channel 1470495480608985172, via curl + DISCORD_BOT_TOKEN) AND Skylight LBF Actions list (list ID 4223069, via skylight.py add actions \"item\"). Don't just say it in Signal chat \u2014 it gets lost. Skylight items show on the kitchen display. Discord has copy-paste commands.",
@@ -604,7 +787,7 @@
       ],
       "category": "meta",
       "importance": 2.5,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "DOCKER CLEANUP (2026-02-09): hpserver1 (.104) \u2014 removed OpenProject (5 containers) and Dolibarr (2 containers), unused 9+ months. Only gitea, gitea-db, traefik remain. woodserve1 (.107) \u2014 one dead container sleepy_hugle (ubuntu:latest, old AutoGPT attempt, exited 2 years ago). bonsaihorn not in docker group on .107.",
@@ -614,7 +797,7 @@
       ],
       "category": "system",
       "importance": 1.5,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "VISION DOCS RESTRUCTURED (2026-02-09): Monolithic HELIOS_VISION.md decomposed into focused ITIL-aligned docs under ~/.openclaw/workspace/vision/: helios-program.md (master index), qa-monitoring.md, infrastructure.md, itsm-dashboard.md, local-llm-fleet.md, infrastructure-security.md. Templates at templates/vision-document.md and templates/qa-specification.md. Security findings are SEPARATE from vision \u2014 dated reports in reports/security/. Vision = HOW (tasks), Report = WHAT (findings).",
@@ -625,7 +808,7 @@
       ],
       "category": "coding",
       "importance": 2,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "WAZUH FLEET STATUS (2026-02-09): 4 active agents \u2014 000=blackview (manager), 001=giggletits, 003=woodserve1, 004=hpserver1. Old stale agent 002 \"Woodserve\" deleted via API. Dashboard: https://192.168.10.143 (admin/LBF-Wazuh-2026!). API: https://192.168.10.143:55000 (wazuh-wui/wazuh-wui \u2014 STILL DEFAULT, needs hardening). Pre-hardening SCA scores: giggletits 12.5%, blackview 12.5%, woodserve1 42.7%, hpserver1 41.7%.",
@@ -635,7 +818,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "ANSIBLE PLAYBOOK DESIGN (2026-02-09): site.yml reordered for safety after SSH lockout incident. Task order: 1) SSH hardening (config changes), 2) Firewall (opens new port BEFORE sshd restarts), 3) flush_handlers (restarts sshd onto new port), 4) auditd, 5) fail2ban, 6) auto-updates, 7) login banner. Key: firewall MUST allow new SSH port before handler restarts sshd. Playbooks at ~/.ansible/playbooks/. Inventory at ~/.ansible/inventory/hosts.yml with ansible_port: 2222 for remote hosts.",
@@ -646,7 +829,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "QA SWEEP TIMEZONE FIXED (2026-02-09): qa-sweep.py timestamps changed from UTC to America/New_York (EST). Uses _eastern_now() with os.environ TZ override. Collector memory check now reads actual systemd MemoryMax from status output and shows percentage (\"95% of 2.0G limit\") instead of hardcoded threshold. Collector MemoryMax=2G is too low \u2014 needs bumping to 8G (93GB total RAM, 74GB free).",
@@ -657,7 +840,7 @@
       ],
       "category": "system",
       "importance": 1.5,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "ANSIBLE NOPASSWD NOT BOOTSTRAPPED (2026-02-09): Remote servers (.104, .107, .143) fail with \"Missing sudo password\" because the NOPASSWD bootstrap playbook hasn't been run. playbooks/bootstrap-sudo.yml exists but requires running once WITH password: `ansible-playbook -i inventory/hosts.yml playbooks/bootstrap-sudo.yml -K`. After that, site.yml can run without -K. This blocks all remote hardening tasks.",
@@ -667,7 +850,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "SKYLIGHT CLI TOOL (2026-02-09): Built ~/.openclaw/workspace/scripts/skylight.py \u2014 full Skylight list management CLI. Commands: lists, list, add, done, remove, json. Supports grocery/actions/farm lists. Auth uses Basic auth with base64(user_id:token) from ~/.secrets/skylight.env. Symlinked to ~/.local/bin/skylight. Calendar API is unreliable (500s) \u2014 use gog cal instead, Skylight syncs from Google. Key: ALWAYS post action items to both Discord #matthew-tasks AND Skylight LBF Actions \u2014 don't just tell Matthew in chat.",
@@ -678,7 +861,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "ITSM SERVICE-LEVEL MONITORING (2026-02-09): Built per-service status monitoring into LCARS dashboard /itsm page. SERVICE_CATALOG defines services per server with check types: TCP port, HTTP/HTTPS endpoint, systemd unit, self. Concurrent ThreadPoolExecutor checks all ~20 services in ~3s. Each server shows collapsible service list with individual status dots. Catches things like \"Gitea down but server up.\" Code in ~/Projects/lbf-dashboard/app.py. Services monitored: giggletits (6: OpenClaw, Dashboard, Ollama, AUGUR, Collector, SSH), hpserver1 (3: Gitea, Prometheus, SSH), woodserve1 (3: Pi-hole DNS/Web, SSH), blackview (5: Wazuh dashboard/API/enrollment/comm, SSH), bliss-rpi (2: BLISS, SSH).",
@@ -689,7 +872,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "GIGGLETITS /BOOT FULL (2026-02-09): /boot partition is 297MB, 88% used (34MB free). Three kernels installed: 6.14.0-33 (Sep 2025, old), 6.14.0-37 (Nov 2025, current), 6.17.0-14 (Jan 2026, newest but initramfs failed). dpkg is broken \u2014 can't build initramfs, blocking all apt install operations. Fix: `sudo apt remove linux-image-6.14.0-33-generic` then `sudo dpkg --configure -a` to rebuild initramfs. This is what caused the auditd ansible task to fail on giggletits.",
@@ -700,7 +883,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 174
+      "access_count": 246
     },
     {
       "content": "Done. Built `skylight` CLI tool:\n\n```\nskylight lists                     \u2014 show all lists\nskylight list grocery              \u2014 show grocery items  \nskylight list actions              \u2014 show LBF action items\nskylight add actions \"Fix the thing\"  \u2014 add item\nskylight add grocery \"Milk\" \"Eggs\"    \u2014 add multiple\nskylight done actions 131057290    \u2014 mark complete\nskylight remove grocery 125348859  \u2014 delete item\nskylight json actions              \u2014 JSON output for scripting\n```\n\nAll three lists support",
@@ -710,7 +893,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 176
+      "access_count": 248
     },
     {
       "content": "DOCUMENT STRUCTURE (2026-02-09): LBF now has standardized templates. Vision docs: templates/vision-document.md (ITIL Service Design, 10 sections). QA docs: templates/qa-specification.md (ITIL Event/Incident Management). All vision docs moved to vision/ directory: helios-program.md, qa-monitoring.md, infrastructure.md, itsm-dashboard.md, local-llm-fleet.md, infrastructure-security.md. HELIOS_VISION.md is now a lean index. Originals archived to archive/2026-02-09/. Security findings go in dated reports (reports/security/YYYY-MM-DD-*.md), remediation in vision docs.",
@@ -721,7 +904,7 @@
       ],
       "category": "meta",
       "importance": 2.5,
-      "access_count": 182
+      "access_count": 254
     },
     {
       "content": "ANSIBLE INFRASTRUCTURE (2026-02-09): Ansible installed on giggletits. Playbooks at ~/.ansible/playbooks/ (site.yml, bootstrap-sudo.yml, tasks/ssh-hardening.yml, auditd.yml, fail2ban.yml, firewall.yml, auto-updates.yml, banner.yml). Inventory at ~/.ansible/inventory/hosts.yml with group_vars/all.yml. Playbook order fixed: SSH config \u2192 firewall \u2192 flush_handlers \u2192 auditd \u2192 fail2ban \u2192 updates \u2192 banner. NOPASSWD sudo bootstrap ready but not yet applied. giggletits hardening blocked by stale VS Code apt key.",
@@ -732,7 +915,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 182
+      "access_count": 254
     },
     {
       "content": "FLEET SSH STATUS (2026-02-09 21:30): All servers now on SSH port 2222.  .107 woodserve1: \u2705 working on 2222.  .143 blackview: \u2705 working on 2222.  .104 hpserver1: sshd running on 2222 but Helios gets \"Permission denied (publickey)\" \u2014 key not being offered. Gitea still working fine.  .163 giggletits: NOT YET HARDENED (VS Code GPG key blocks apt). Still on port 22.  SSH config updated in ~/.ssh/config with aliases hpserver1/woodserve1/blackview pointing to port 2222.",
@@ -742,7 +925,7 @@
       ],
       "category": "system",
       "importance": 3,
-      "access_count": 182
+      "access_count": 254
     },
     {
       "content": "That log just says \"exited 255\" but not *why*. Run this on .104's console to get the actual error:\n\n```bash\nsudo sshd -t\n```\n\nThat'll print the exact line in sshd_config that's broken. Most likely the same `/run/sshd` missing directory issue, or Ansible's lineinfile created a duplicate entry. Once we see the error I can tell you the one-line fix.",
@@ -752,7 +935,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 188
+      "access_count": 260
     },
     {
       "content": "BLISS Pi is pingable but SSH is down on both ports. It's alive on the network but not accepting connections. Might need a physical check \u2014 could be running headless with SSH disabled, or it crashed and only the network stack survived.\n\nTwo things need your hands:\n\n1. **.104** \u2014 on the console run `sudo sshd -t` to see what's wrong with the SSH config\n2. **BLISS (.198)** \u2014 need physical access. Might just need SSH enabled or a restart\n\nOnce .104 is fixed and BLISS is accessible, I'll add BLISS to",
@@ -762,7 +945,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 189
+      "access_count": 261
     },
     {
       "content": "Playbook fixed \u2014 now the order is: SSH config \u2192 firewall (opens new port) \u2192 `flush_handlers` (restarts sshd onto new port) \u2192 everything else. No more lockout window.\n\n.107 and .143 are back. What does `.104`'s journalctl say?",
@@ -772,7 +955,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 190
+      "access_count": 262
     },
     {
       "content": "CRITICAL ANSIBLE LESSON (2026-02-09): Never change SSH port AND enable firewall in the same play without a safety net. The ICMP task failure prevented handlers from firing, so sshd never restarted \u2014 but the firewall DID activate blocking port 22. Result: servers locked out on both ports (22 firewalled, 2222 not yet listening). FIX: 1) Always use flush_handlers between SSH config change and firewall tasks, 2) Keep port 22 allowed in firewall until sshd is confirmed on new port, 3) Never use ansible.builtin.command for ufw ICMP \u2014 ufw doesn't support proto icmp, and before.rules already allows ICMP by default. Also: always add `--vault-password-file` or NOPASSWD sudo so sub-agents can run playbooks autonomously. Also: Linux Mint needs /run/sshd directory created before sshd config validation. Also: giggletits had a stale VS Code GPG key blocking all apt operations.",
@@ -783,7 +966,7 @@
       ],
       "category": "system",
       "importance": 3,
-      "access_count": 190
+      "access_count": 262
     },
     {
       "content": "Fixed. Run again \u2014 this time just giggletits (the other 3 are done) plus the ICMP rule on all:\n\n```bash\nansible-playbook -i inventory/hosts.yml playbooks/site.yml -K 2>&1 | tee /tmp/ansible-run-2.log\n```\n\nAnsible is idempotent so it'll skip the already-applied changes on .104/.107/.143 and just fix giggletits + add the ICMP rule everywhere.\n\n\u26a0\ufe0f **Reminder:** SSH is now on port 2222 on .104, .107, and .143. After this you'll need `ssh -p 2222` for those hosts. Update your `~/.ssh/config` if you h",
@@ -793,7 +976,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 196
+      "access_count": 268
     },
     {
       "content": "ANSIBLE BEST PRACTICE: Always log playbook output to a file (e.g., `2>&1 | tee /tmp/ansible-run.log`). Matthew's rule \u2014 don't rely on terminal scrollback.",
@@ -804,7 +987,7 @@
       ],
       "category": "meta",
       "importance": 2,
-      "access_count": 196
+      "access_count": 268
     },
     {
       "content": "Fixed. Now run it for real \u2014 drop the `--check`:\n\n```bash\nansible-playbook -i inventory/hosts.yml playbooks/site.yml -K\n```\n\nThe `--check` proved everything else works (SSH hardening, firewall, fail2ban, banner, auto-updates all showed `changed`). The auditd config will work fine on a real run because apt will actually install the package first, creating the config file. The guard I added just prevents the error in future `--check` dry runs.",
@@ -814,7 +997,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 199
+      "access_count": 271
     },
     {
       "content": "Fixed. Run it again:\n\n```bash\nansible-playbook -i inventory/hosts.yml playbooks/site.yml -K --check --diff\n```",
@@ -824,7 +1007,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 201
+      "access_count": 273
     },
     {
       "content": "Both sub-agents completed successfully before timing out:\n\n1. **ITSM Dashboard** \u2014 Built and live. `/itsm` returns 401 (behind auth, which is correct). Fleet status, SLA calculations, Wazuh integration, QA sweep display \u2014 all working.\n\n2. **Wazuh\u2192Discord Alerting** \u2014 `scripts/wazuh-alerts.py` created and tested. 1,324 alerts processed, posted to #system-health. Cron wrapper ready.\n\nNothing else needs attention per HEARTBEAT.md (event-driven, no polling).\n\nHEARTBEAT_OK",
@@ -834,7 +1017,7 @@
       ],
       "category": "moltbook",
       "importance": 1.5,
-      "access_count": 211
+      "access_count": 283
     },
     {
       "content": "Everything works. The SCA rule descriptions have unresolved template variables (like `$(sca.policy)`) \u2014 that's a Wazuh API limitation where `/rules` returns the template, not the rendered text. The actual alert instances have the real values but those come from the indexer. This is fine for the summary report.\n\nLet me also test the cron wrapper:",
@@ -844,7 +1027,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 214
+      "access_count": 286
     },
     {
       "content": "Moving. Here's what's executing right now:\n\n**Already dispatched:**\n- \ud83d\udd27 ITSM dashboard engineer (building /itsm page)\n- \ud83d\udd27 Wazuh\u2192Discord alerting engineer (IR-10)\n\n**Just completed:**\n- \u2705 IR-3: Prometheus assessed \u2014 v2.37.0 on .104, self-scraping only, 15s interval, no node_exporters yet\n- \u2705 Ansible inventory + ping playbook created\n\n**Only thing that needs you:**\n```bash\nsudo apt install -y ansible\n```\n\nThen I can start running playbooks immediately. Everything else is in motion.",
@@ -854,7 +1037,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 214
+      "access_count": 286
     },
     {
       "content": "Not yet \u2014 we talked about it but it hasn't been built. Here's what exists vs what's planned:\n\n**Built:**\n- \u2705 QA sweep script (generates JSON with pass/warn/fail per test)\n- \u2705 QA results stored in `data/qa-results/`\n\n**Not built yet:**\n- \u274c ITSM/SLA page on the dashboard\n- \u274c Uptime percentage calculation from QA sweep history\n- \u274c QA results \u2192 dashboard integration\n\nThe plan was: QA sweep runs on a timer, stores JSON results, dashboard reads them and shows uptime % per service over time. Simple SLA",
@@ -864,7 +1047,7 @@
       ],
       "category": "personal",
       "importance": 1.5,
-      "access_count": 223
+      "access_count": 295
     },
     {
       "content": "Same story as .104 \u2014 package is \"installed\" but the actual files are missing. Just the binary skeleton. Both need a clean reinstall. On both .104 and .107:\n\n```bash\n# On .104:\nsudo dpkg --purge wazuh-agent\nsudo WAZUH_MANAGER=\"192.168.10.143\" apt install -y wazuh-agent=4.8.0-1\nsudo systemctl enable --now wazuh-agent\n\n# On .107 (same commands):\nsudo dpkg --purge wazuh-agent\nsudo WAZUH_MANAGER=\"192.168.10.143\" apt install -y wazuh-agent=4.8.0-1\nsudo systemctl enable --now wazuh-agent\n```\n\nBoth have",
@@ -874,7 +1057,7 @@
       ],
       "category": "trading",
       "importance": 1.5,
-      "access_count": 229
+      "access_count": 300
     },
     {
       "content": "WAZUH SIEM OPERATIONAL (2026-02-09 19:42): Full stack live on blackview (.143). Manager 4.8.0, indexer, dashboard all running. Dashboard: https://192.168.10.143 (admin/LBF-Wazuh-2026!). API: wazuh-wui/wazuh-wui (default, needs hardening). Two agents enrolled: 000=blackview (manager), 001=giggletits (already registered). Still need: agent on .104, agent on .107, API password hardening.",
@@ -885,7 +1068,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 232
+      "access_count": 283
     },
     {
       "content": "Username is still `admin` \u2014 you just changed the password. Let's reset it to something you'll remember. On blackview:\n\n```bash\nsudo /usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh -u admin -p 'LBF-Wazuh-2026!'\n```\n\nThen log in at `https://192.168.10.143` with `admin` / `LBF-Wazuh-2026!`\n\n(Change that password to whatever you want \u2014 just pick something you'll remember this time \ud83d\ude04)",
@@ -895,7 +1078,7 @@
       ],
       "category": "personal",
       "importance": 2,
-      "access_count": 239
+      "access_count": 289
     },
     {
       "content": "QWEN2.5:32B DOWNLOADED (2026-02-09 19:08): Model successfully pulled to Ollama on giggletits. 19GB, fits RTX 5090 32GB VRAM. Three local models now available: qwen2.5:32b (heavy reasoning), llama3.1-lexi (8.5GB, mid-tier), phi3:mini (2.2GB, fast classifier). Next: build Modelfiles for specialist agents (qa-sweep, log-analyzer, heartbeat-monitor).",
@@ -906,7 +1089,7 @@
       ],
       "category": "system",
       "importance": 2,
-      "access_count": 249
+      "access_count": 292
     },
     {
       "content": "87k/200k \u2014 44% context used, zero compactions. That's probably ~20-25 exchanges deep and still crystal clear. The file trimming from H0 is paying off.\n\nOn the agents idea \u2014 yes, absolutely. Dedicated agents for infrastructure domains:\n\n**\ud83d\udd12 Security Agent** \u2014 Owns Wazuh, nmap scans, vulnerability assessment, firewall rules, SSH hardening. Knows the .143 box intimately.\n\n**\u2699\ufe0f Ansible Agent** \u2014 Owns fleet config management, playbook creation/execution, inventory management, node exporter deploymen",
@@ -916,7 +1099,7 @@
       ],
       "category": "personal",
       "importance": 1.5,
-      "access_count": 267
+      "access_count": 310
     },
     {
       "content": "Much better. 13/15 passing now. The two remaining issues are real findings:\n\n1. **collector_memory_usage: WARN** \u2014 Collector at 1.9G of its 2G limit (legit concern)\n2. **gitea_reachable: FAIL** \u2014 Gitea server on 192.168.10.104:3000 refusing connections (might be down)\n3. **Discord posting** fails (Cloudflare 403 on the POST endpoint) but the bot token validation now passes via the User-Agent fix\n4. **Skylight auth** fixed \u2014 now using the correct `/api/sessions` endpoint\n\nThe Discord posting fail",
@@ -926,7 +1109,7 @@
       ],
       "category": "moltbook",
       "importance": 1.5,
-      "access_count": 275
+      "access_count": 318
     },
     {
       "content": "QA & MONITORING FRAMEWORK (2026-02-09): Phase QA added to HELIOS_VISION.md (\u00a711). 15 automated tests across 4 categories: local services (AUGUR, OpenClaw, disk, memory, GPU), external (Discord, Skylight, gog), network (.104, .107, .198), and AUGUR-specific (data freshness, collector memory). Cadence: daily\u2192hourly on failure\u2192weekly once stable. Results to JSON + Discord #system-health. Critical failures alert via Signal. Task board integration in v2. Sub-agent building qa-sweep.py (stdlib only, no pip). Infrastructure Rationalization also added (\u00a712): .163=compute, .104=monitoring/config/backup, .107=security/scanning/logs. SSH key deployment posted to Discord #matthew-tasks \u2014 blocks all network work.",
@@ -938,7 +1121,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 277
+      "access_count": 318
     },
     {
       "content": "DIGITAL SERVICES OPPORTUNITY (2026-02-09): Matthew's friend runs an animal farm/nursery. Potential first LBF digital services customer. Two paths: (1) DIY Claude referral, (2) LBF packages the stack (Skylight integration, Signal bot, smart list classifier, Discord ops). Option 2 recommended \u2014 deploy second instance with customized classifier for animal farm supplies. Awaiting Matthew's decision on whether to pursue.",
@@ -949,7 +1132,7 @@
       ],
       "category": "meta",
       "importance": 2,
-      "access_count": 281
+      "access_count": 321
     },
     {
       "content": "QA SWEEP INITIATIVE (2026-02-09): Matthew wants automated QA sweeps on ALL systems. Start daily, hourly if persistent bugs found, target weekly once stable. Tests documented on the LBF Enterprise Task Board (giggletits:8090). Scope: AUGUR paper trader health, enhanced-collector data freshness, OpenClaw gateway, Skylight sync, Discord bot, Gitea repos, systemd services, network infrastructure. Definition of done: all systems green with documented test results on dashboard.",
@@ -961,7 +1144,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 281
+      "access_count": 315
     },
     {
       "content": "INFRASTRUCTURE UPDATE (2026-02-09): Wazuh IS on woodserve1 (192.168.10.107), same server as Pi-hole. woodserve1 was an old AutoGPT attempt \u2014 available as an internal utility server. Ansible installation exists on 104 (Gitea server). Need SSH keys deployed to woodserve1 for Helios direct access. Potential uses: nmap scanning, Wazuh SIEM, distributed compute, monitoring. Two servers available beyond giggletits: .104 (Gitea/Prometheus/Ansible) and .107 (Pi-hole/Wazuh/AutoGPT-legacy).",
@@ -972,7 +1155,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 281
+      "access_count": 305
     },
     {
       "content": "PRE-RESET SWEEP PROTOCOL (2026-02-09): Added to AGENTS.md. Before any context reset: update daily log, dump unrecorded cortex memories, update MEMORY.md if needed, verify working memory pins persisted, note pending work. Triggered by Matthew asking \"can we make it automatic\" \u2014 now it's in the operating manual.",
@@ -983,7 +1166,7 @@
       ],
       "category": "meta",
       "importance": 2,
-      "access_count": 286
+      "access_count": 308
     },
     {
       "content": "POTENTIAL CUSTOMER (2026-02-09): Matthew's friend runs an animal farm/nursery. Matthew thinks the LBF stack (Skylight integration, AI list management, task tracking) would be a good fit. Potential first digital services customer for LBF. Matthew shared Claude app link with him. Could be the seed of LBF's digital services pivot.",
@@ -994,7 +1177,7 @@
       ],
       "category": "personal",
       "importance": 2,
-      "access_count": 286
+      "access_count": 305
     },
     {
       "content": "JENNIFER ONBOARDED (2026-02-09): Jennifer (+13155063726) added to Signal allowFrom. First interaction successful \u2014 \"Terrific, thank you.\" She has access to Grocery List and Farm Store list on Skylight. Smart classifier routes her requests. Does NOT see LBF Actions (Matthew's work list). Intro message sent explaining capability.",
@@ -1006,7 +1189,7 @@
       ],
       "category": "personal",
       "importance": 2.5,
-      "access_count": 286
+      "access_count": 301
     },
     {
       "content": "Farm Store list created (ID: 5461677). Now let me update the sync script with the new list and the Jennifer-aware classification.",
@@ -1016,7 +1199,7 @@
       ],
       "category": "relationships",
       "importance": 1.5,
-      "access_count": 299
+      "access_count": 312
     },
     {
       "content": "Wait \u2014 it created a duplicate \"Find Wazuh\" because the Discord title extraction didn't exactly match the existing item. Let me clean that up and test the classifier.",
@@ -1026,7 +1209,7 @@
       ],
       "category": "stress_test",
       "importance": 1.5,
-      "access_count": 301
+      "access_count": 313
     },
     {
       "content": "I can see your grocery list, to-do list, family categories (MLH, JJH), create/delete calendar events, and add/check/delete list items. Built `scripts/skylight.sh` as the utility.\n\nWant me to add something to prove write access? I can drop an item on the grocery list or put an event on the calendar that'll show up on the Kitchen display.",
@@ -1036,7 +1219,7 @@
       ],
       "category": "personal",
       "importance": 1.5,
-      "access_count": 306
+      "access_count": 314
     },
     {
       "content": "We're in. Full programmatic control of your Skylight:\n\n**What works:**\n- \u2705 **Lists** \u2014 read, add items, check off, delete (Grocery + To-Do)\n- \u2705 **Calendar events** \u2014 create and delete\n- \u2705 **Categories** \u2014 MLH (you), JJH (Jennifer), bonsaihorn@gmail\n- \u2705 **Frame info** \u2014 2 devices (Kitchen + one more), timezone EST\n\n**What doesn't (yet):**\n- \u274c Reading existing calendar events back (server 500s \u2014 may be a Skylight bug or Basic-tier limitation)\n- \u274c Chores endpoint needs more reverse-engineering\n\nBui",
@@ -1046,7 +1229,7 @@
       ],
       "category": "coding",
       "importance": 1.5,
-      "access_count": 311
+      "access_count": 313
     },
     {
       "content": "SKYLIGHT CALENDAR API ACCESS (2026-02-09): Full programmatic control of Skylight family calendar via reverse-engineered API at https://app.ourskylight.com/api. Login: fleetwoodhorn@gmail.com (creds in ~/.secrets/skylight.env). Frame ID: 4231849. Two devices: \"Kitchen\" + one more. Features: calendar, chores, lists, dinner plans, countdowns. API supports: create/delete calendar events, read/add/check/delete list items, read categories. GET calendar_events endpoint 500s (server bug or subscription gate). Categories: MLH (12994209), JJH (12994226), bonsaihorn@gmail.com (13067222). Lists: Grocery (4223068), To-Do (4223069). Utility script: ~/.openclaw/workspace/scripts/skylight.sh\n\n[Updated 2026-02-09T22:05:10.537Z]:  Farm Store list added (ID: 5461677). Lists now: Grocery (4223068), LBF Actions (4223069), Farm Store (5461677). Sync script: skylight-sync.py handles Discord\u2194Skylight mirror + smart list classification (grocery/farm_store/actions). Jennifer gets Grocery + Farm Store options; Matthew gets all three.",
@@ -1057,7 +1240,7 @@
       ],
       "category": "system",
       "importance": 2.5,
-      "access_count": 311
+      "access_count": 313
     },
     {
       "content": "Got it. Created `#ideas` under Operations and captured your YouTube concept there:\n\n**\"It's Not Mansplaining\"** \u2014 practical how-to content, like explaining ICE vs hybrid driving. Love the name, it's self-aware enough to be disarming.\n\nI moved the note from #general into #ideas so it doesn't get buried. Drop any brainstorms in there going forward \u2014 that channel's your catch-all so nothing gets lost.",
