@@ -1,15 +1,15 @@
 # Local LLM Fleet — Vision Document
 
-> *Zero-API-cost intelligence for routine operations through purpose-built local inference endpoints.*
+> *A concurrent fleet of specialist AI agents running as GPU daemons — always on, always watching, zero API cost.*
 
 | Field | Value |
 |-------|-------|
 | **Program** | Local LLM Fleet — Purpose-Built Inference |
 | **Parent** | LBF / Helios Operations |
 | **Owner** | Matthew (Founder) / Helios (AI CTO) |
-| **Status** | Planning |
+| **Status** | Phase 1 Active — 7 Modelfiles deployed |
 | **Created** | 2026-02-09 |
-| **Last Updated** | 2026-02-09 |
+| **Last Updated** | 2026-02-10 |
 | **ITIL Process** | Service Design |
 
 ---
@@ -104,13 +104,14 @@ Conservative estimate of API tokens burned on tasks that could be local:
 
 At ~$3/M input tokens (Claude Sonnet), that's ~$0.22/day or ~$6.70/month on routine classification work alone. The real cost isn't dollars — it's **architectural dependency.** Every automated workflow that requires an API call is a workflow that fails when the API is unavailable, slow, or rate-limited.
 
-### What's Actually Happening
+### What's Actually Happening (Updated 2026-02-10)
 
-- **Two generic models sit installed.** Neither has been customized. Neither is being used for anything automated.
-- **No Modelfiles exist.** The entire value proposition of this project — specialized local models — is at zero.
-- **Ollama is running but doing nothing useful.** It's a service consuming resources with no automated consumers.
-- **The RTX 5090 is an expensive space heater.** 32GB of VRAM, idle. The most powerful consumer GPU on the market, waiting for someone to give it work.
-- **Every automated task burns API tokens.** Heartbeat analysis, health checks, log review, message classification — all of it goes through the API.
+- **7 Modelfiles deployed and registered** in Ollama, all on qwen2.5:32b base ✅
+- **LLM Fleet panel live** on ITSM dashboard showing all model statuses ✅
+- **Modelfile TEMPLATE** created with every parameter documented ✅
+- **Not yet wired** into agent workflows — models exist but no automated callers
+- **No concurrent daemon architecture** yet — models available but not running as persistent agents
+- **API still handles everything** — the fleet is deployed but not integrated
 
 ---
 
@@ -118,27 +119,48 @@ At ~$3/M input tokens (Claude Sonnet), that's ~$0.22/day or ~$6.70/month on rout
 
 *What "done" looks like. Paint the picture.*
 
-A fleet of 7 specialized local inference endpoints that handle routine operations with zero API dependency. Each Modelfile is a purpose-built tool:
+**Not a batch processing system. A concurrent operating system.**
 
-**qa-sweep** reads health check JSON, classifies severity (OK/WARN/CRIT), generates incident summaries. Temperature 0.1, deterministic output, 4K context. Handles 95% of health assessments locally.
+Multiple small specialist models loaded in VRAM simultaneously, each running as a daemon — always on, always watching its domain. The GPU isn't a single-task processor; it's a parallel fleet of agents.
 
-**log-analyzer** processes system logs, flags security events and anomalies, ignores operational noise. Catches SSH failures, OOM kills, service crashes. SECURITY findings escalate immediately.
+### The Fleet (Always-On Daemons)
 
-**heartbeat-monitor** makes binary escalation decisions on system heartbeats. Temperature 0.0, fully deterministic. Never misses a CRIT situation. False positives acceptable.
+| Agent | Model | VRAM | Role | Trigger |
+|-------|-------|------|------|---------|
+| **Security** | log-analyzer (3B) | ~2GB | Tails Wazuh/syslog, flags intrusions | Continuous |
+| **QA** | qa-sweep (3B) | ~2GB | Health checks, service monitoring | Every 5 min |
+| **Heartbeat** | heartbeat-monitor (3B) | ~2GB | Binary escalation decisions | On heartbeat |
+| **Pattern Watch** | pattern-evaluator (3B) | ~2GB | Scores new pattern discoveries | On discovery |
+| **Email** | email-triager (3B) | ~2GB | Classifies incoming email | On arrival |
+| **Discord** | discord-classifier (3B) | ~2GB | Routes messages by intent | On message |
+| **XTTS** | voice model | ~3GB | Text-to-speech for calls | On demand |
 
-**pattern-evaluator** assesses trading pattern statistics, grades patterns as STRONG/VIABLE/WEAK/REJECT based on win rate, sample size, profit factor. Advisory only, no escalation.
+**Total concurrent VRAM: ~15GB of 32GB.** Leaves 17GB headroom for on-demand large models.
 
-**ansible-writer** generates valid Ansible YAML from plain-language requirements. Uses llama3.1-lexi for better YAML generation capability. Output passes ansible-lint.
+### On-Demand Models (Loaded When Needed)
 
-**discord-classifier** routes Discord messages by intent (QUESTION/TASK/ALERT/UPDATE/NOISE). Enables automated response routing and priority handling.
+| Model | VRAM | Role | When |
+|-------|------|------|------|
+| qwen2.5:32b | ~19GB | Complex classification, Ansible generation | Sub-agent tasks |
+| coding model (TBD) | ~4-19GB | Linting, testing, code review | Engineering tasks |
 
-**email-triager** classifies email importance (P1_URGENT through P4_IGNORE), suggests actions, drafts brief responses. Surfaces urgent items, auto-archives noise.
+Ollama dynamically loads/unloads on-demand models. Small daemon models stay resident; large models swap in for specific tasks then get evicted.
 
-**Integration reality:** Agents call `ollama run <model> <input>` and get back structured JSON. No wrapper libraries. No API servers. Just shell calls with reliable output formats.
+### Architecture Principles
 
-**Escalation design:** Local models filter the volume (95% handled locally). Complex cases escalate to API automatically. Conservative classification — better to escalate unnecessarily than miss something critical.
+1. **Small daemons are concurrent.** Multiple 2-3GB models fit in VRAM simultaneously. They don't compete — they cooperate.
+2. **Large models are on-demand.** qwen2.5:32b or a coding model loads when needed, evicts when idle. Ollama manages this automatically.
+3. **The metric is token offload rate.** Every task type handled locally = fewer API tokens = money saved. Maximize coverage, not per-model quality.
+4. **Conservative escalation.** Local models handle the 90%. Claude handles the 10% that requires complex reasoning. Better to over-escalate than miss something.
+5. **LoRAs add accuracy without VRAM.** Fine-tune on our specific data (fleet topology, trading vocabulary, email patterns) to reduce API escalations further.
 
-**Performance target:** Sub-2-second response for most classification tasks. <10GB VRAM total usage. 95%+ local handling rate for routine operations.
+### Integration
+
+Agents call `ollama run <model> <input>` and get structured JSON. No wrapper libraries. No API servers. Just shell calls with reliable output formats. Daemon agents run as systemd services or long-running processes that watch their input sources (log files, message queues, API endpoints).
+
+### The Vision
+
+Sub-agents running 24/7 on local models = zero-cost autonomous productivity. The API becomes the escalation path, not the default. The RTX 5090 becomes a fleet of always-on crew members, each watching their station on the bridge.
 
 ---
 
@@ -179,33 +201,38 @@ PARAMETER stop <|end|>
 ### 4.3 Integration Points
 
 ```
-┌─────────────────────────────────────────────────┐
-│                  Helios Agent Layer              │
-│                                                  │
-│  ┌──────────┐  ┌──────────┐  ┌──────────────┐  │
-│  │ QA/SRE   │  │ Security │  │ Infra/Ansible│  │
-│  │ Agent    │  │ Agent    │  │ Agent        │  │
-│  └────┬─────┘  └────┬─────┘  └──────┬───────┘  │
-│       │              │               │           │
-│       ▼              ▼               ▼           │
-│  ┌─────────┐   ┌──────────┐  ┌────────────┐    │
-│  │qa-sweep │   │log-      │  │ansible-    │    │
-│  │heartbeat│   │analyzer  │  │writer      │    │
-│  └────┬────┘   └────┬─────┘  └─────┬──────┘    │
-│       │              │              │            │
-└───────┼──────────────┼──────────────┼────────────┘
-        │              │              │
-        ▼              ▼              ▼
-   ┌──────────────────────────────────────┐
-   │          Ollama Runtime               │
-   │          Port 11434                   │
-   │          RTX 5090 (32GB VRAM)         │
-   │                                       │
-   │  ┌──────────────────────────────┐     │
-   │  │ qwen2.5:32b (19GB)          │     │
-   │  │ Single base, 7 Modelfiles   │     │
-   │  └──────────────────────────────┘     │
-   └──────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│                    Helios Agent Layer                      │
+│                                                            │
+│  ┌──────────┐ ┌──────────┐ ┌────────┐ ┌──────────────┐  │
+│  │ QA/SRE   │ │ Security │ │ Comms  │ │ Infra/Ansible│  │
+│  │ Agent    │ │ Agent    │ │ Agent  │ │ Agent        │  │
+│  └────┬─────┘ └────┬─────┘ └───┬────┘ └──────┬───────┘  │
+│       │             │           │              │           │
+└───────┼─────────────┼───────────┼──────────────┼──────────┘
+        │             │           │              │
+        ▼             ▼           ▼              ▼
+   ┌────────────────────────────────────────────────────┐
+   │              Ollama Runtime — Port 11434            │
+   │              RTX 5090 (32GB VRAM)                   │
+   │                                                     │
+   │  ┌─── ALWAYS-ON DAEMONS (concurrent, ~15GB) ────┐  │
+   │  │                                                │  │
+   │  │  qa-sweep (2GB)    log-analyzer (2GB)          │  │
+   │  │  heartbeat (2GB)   discord-clf (2GB)           │  │
+   │  │  email-triage (2GB) pattern-eval (2GB)         │  │
+   │  │  XTTS voice (3GB)                              │  │
+   │  │                                                │  │
+   │  └────────────────────────────────────────────────┘  │
+   │                                                      │
+   │  ┌─── ON-DEMAND (swap in/out, up to 32GB) ──────┐  │
+   │  │                                                │  │
+   │  │  qwen2.5:32b (19GB) — complex tasks            │  │
+   │  │  coding model (TBD) — linting, tests           │  │
+   │  │  (evicts daemons temporarily if needed)        │  │
+   │  │                                                │  │
+   │  └────────────────────────────────────────────────┘  │
+   └──────────────────────────────────────────────────────┘
 ```
 
 **Workflow Example — QA Sweep:**
