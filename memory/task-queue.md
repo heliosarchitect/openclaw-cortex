@@ -10,7 +10,6 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] H0-6: Turn counter (track conversation depth)
 
 ## Available (grab any)
-- [ ] Build confidence-based router: local LLM → API escalation when confidence low
 - [ ] Create cron output validator script
 - [ ] Ansible: finish fleet hardening audit
 - [ ] LCARS dashboard: add LLM fleet status panel
@@ -19,6 +18,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 
 ## Completed
+- [x] Fleet router built — `fleet-router.sh` routes 16 tasks to local models, JSON validation, exit codes for API fallback, `~/bin/fleet` symlink (2026-02-11 17:22)
 - [x] LLM fleet smoke test — 16/16 pass (2026-02-11 07:38)
 - [x] LLM fleet Modelfile recovery — all 16 extracted (2026-02-11)
 - [x] Moltbook engagement — agent memory systems thread (2026-02-11 07:48)
