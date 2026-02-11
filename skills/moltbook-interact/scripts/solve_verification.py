@@ -48,49 +48,10 @@ def parse_numbers(text):
             return deduped
         return None
     
-    # Strategy 1: Strip ALL non-alpha, lowercase, then use sliding window to find number words
-    stripped = re.sub(r'[^a-zA-Z]', '', text).lower()
-    
-    # Greedily extract number words from the stripped string
-    all_number_words = sorted(word_to_num.keys(), key=len, reverse=True)
-    # Also add deduped variants
-    found_numbers_s1 = []
-    remaining = stripped
-    while remaining:
-        matched = False
-        for nw in all_number_words:
-            # Try exact match at start
-            if remaining.startswith(nw):
-                found_numbers_s1.append(word_to_num[nw])
-                remaining = remaining[len(nw):]
-                matched = True
-                break
-            # Try deduped match: expand nw to see if remaining starts with an obfuscated version
-            # e.g., remaining="foortyy..." should match "forty"
-            deduped_prefix = dedupe_chars(remaining[:len(nw)*3])  # generous prefix
-            if deduped_prefix.startswith(nw):
-                # Find how many chars of remaining produce this deduped prefix
-                for end in range(len(nw), min(len(remaining)+1, len(nw)*3+1)):
-                    if dedupe_chars(remaining[:end]) == nw:
-                        found_numbers_s1.append(word_to_num[nw])
-                        remaining = remaining[end:]
-                        matched = True
-                        break
-                    elif dedupe_chars(remaining[:end]).startswith(nw) and len(dedupe_chars(remaining[:end])) > len(nw):
-                        # Went past — use previous
-                        found_numbers_s1.append(word_to_num[nw])
-                        remaining = remaining[end-1:]
-                        matched = True
-                        break
-                if matched:
-                    break
-        if not matched:
-            remaining = remaining[1:]  # skip one char
-    
-    if found_numbers_s1:
-        return found_numbers_s1
-    
-    # Strategy 2 (fallback): Split on spaces, try word-by-word matching
+    # Word-by-word matching (split on non-alpha, then match each word)
+    # NOTE: Greedy substring matching on stripped text was removed because it
+    # found false positives like "ten" inside "antenna" (caused 42 instead of 32,
+    # got us suspended from Moltbook for 1 day — 2026-02-11)
     text_clean = re.sub(r'[^a-zA-Z\s]', ' ', text.lower())
     words = text_clean.split()
 
@@ -99,12 +60,36 @@ def parse_numbers(text):
     while i < len(words):
         word = normalize_word(words[i])
         matched_key = match_word(word)
+        
+        # If no match, try merging with next 1-2 words (handles split obfuscation
+        # like "tW/eN tY" → ["tw", "en", "ty"] → "twenty")
+        if not matched_key and i + 1 < len(words):
+            merged2 = word + normalize_word(words[i+1])
+            matched_key = match_word(merged2)
+            if matched_key:
+                i += 1  # consumed extra word
+            elif i + 2 < len(words):
+                merged3 = merged2 + normalize_word(words[i+2])
+                matched_key = match_word(merged3)
+                if matched_key:
+                    i += 2  # consumed two extra words
+        
         if matched_key:
             num = word_to_num[matched_key]
             # Check for compound (e.g., "forty five")
             if i + 1 < len(words):
                 next_word = normalize_word(words[i+1])
                 next_matched = match_word(next_word)
+                # Also try merge for the units part
+                if not next_matched and i + 2 < len(words):
+                    merged_next = next_word + normalize_word(words[i+2])
+                    next_matched = match_word(merged_next)
+                    if next_matched and word_to_num[next_matched] < 10:
+                        num += word_to_num[next_matched]
+                        i += 2
+                        numbers.append(num)
+                        i += 1
+                        continue
                 if next_matched and word_to_num[next_matched] < 10:
                     num += word_to_num[next_matched]
                     i += 1
