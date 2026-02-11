@@ -38,6 +38,9 @@
 │  72 features per product (returns, z-scores, EMA crosses,  │
 │  flow imbalances, VWAP divergence, RSI, volatility, etc.)  │
 │                                                            │
+│  ⚡ FOCUS CONSTRAINTS (2026-02-10):                        │
+│  Direction: LONG ONLY (Coinbase has no short selling)       │
+│  Data window: M-F 9AM-6PM EST (trading hours only)         │
 │  Products: ALL (~368 on Coinbase, ~39 with signal)         │
 │  Hold times: 10s, 15s, 30s, 60s, 120s, 300s, 600s,       │
 │              900s, 1800s                                    │
@@ -54,12 +57,13 @@
               ▼
 ┌─────────────────────────────────────────────────────────┐
 │              SIGNAL DATABASE                               │
-│  signals_validated.db                                      │
-│  Table: validated_signals                                  │
+│  augur_signals.db (migrated 2026-02-10)                    │
+│  Table: signals                                            │
 │  Schema: product, direction, features (JSON),              │
 │          hold_seconds, train/test WR & net return,         │
 │          combo_type (single/pair/triple/quad/.../sept)      │
-│  Current: 58,950+ signals across 39 products               │
+│  Current: 6M+ signals (95.8% LONG), 9 active products     │
+│  Indexed: product, direction, hold, product+direction, WR  │
 │  Growing continuously as miner finds new patterns          │
 └─────────────┬───────────────────────────────────────────┘
               │
@@ -68,10 +72,10 @@
 │              VALIDATION PIPELINE                           │
 │  augur_pipeline.py (systemd, NOT YET STARTED)              │
 │                                                            │
-│  Reads top signals from signals_validated.db               │
+│  Reads top LONG signals from augur_signals.db              │
 │  Watches live data feed via Coinbase WebSocket              │
 │  Paper trades with time-based exits (hold for N seconds)   │
-│  Tracks live WR per signal in paper_validated.db           │
+│  Tracks live WR per signal in augur_trades.db              │
 │  Auto-retires signals that fail live (WR < 52% after 50+) │
 │  Hot-reloads new signals every 5 min from miner            │
 │                                                            │
