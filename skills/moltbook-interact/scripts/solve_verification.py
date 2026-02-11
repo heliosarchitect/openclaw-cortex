@@ -111,8 +111,71 @@ def determine_operation(text):
     else:  # 'total', 'adds', 'sum', 'combined', 'force', etc.
         return 'add'
 
+def solve_with_llm(challenge):
+    """Solve using local Ollama model (primary method). Falls back to regex."""
+    try:
+        # Pre-clean the obfuscation
+        cleaned = re.sub(r'[^a-zA-Z\s+]', ' ', challenge).lower()
+        cleaned = ' '.join(cleaned.split())
+        
+        # Also try deduping consecutive chars for better readability
+        deduped = re.sub(r'(.)\1+', r'\1', cleaned)
+        
+        prompt = (
+            "This is an obfuscated math word problem from a CAPTCHA. Words have been "
+            "scrambled with doubled letters and split across spaces.\n\n"
+            f"Raw cleaned: {cleaned}\n"
+            f"Deduped: {deduped}\n\n"
+            "Steps:\n"
+            "1. Read through the noise and identify the NUMBERS written as words "
+            "(like 'twenty five', 'seven', 'forty two', etc)\n"
+            "2. Identify the operation (total/sum = add, product = multiply, "
+            "difference/loses = subtract)\n"
+            "3. Calculate the answer\n\n"
+            "Respond with ONLY the final number with 2 decimal places (e.g. 32.00). "
+            "No explanation, no words, just the number."
+        )
+        
+        # Run 3 times, take majority answer (local models can be inconsistent)
+        answers = []
+        for attempt in range(3):
+            resp = requests.post(
+                "http://localhost:11434/api/generate",
+                json={"model": "qwen2.5:32b", "prompt": prompt, "stream": False},
+                timeout=60
+            )
+            raw = resp.json().get("response", "").strip()
+            # Extract number
+            if re.match(r'^\d+\.\d{2}$', raw):
+                answers.append(raw)
+            else:
+                match = re.search(r'(\d+\.\d{2})', raw)
+                if match:
+                    answers.append(match.group(1))
+        
+        if answers:
+            # Take most common answer (consensus)
+            from collections import Counter
+            most_common = Counter(answers).most_common(1)[0]
+            answer = most_common[0]
+            votes = most_common[1]
+            print(f"  LLM consensus: {answer} ({votes}/{len(answers)} votes)")
+            return answer
+    except Exception as e:
+        print(f"LLM solve failed: {e}")
+    
+    return None
+
 def solve(challenge):
-    """Solve a verification challenge."""
+    """Solve a verification challenge. Try LLM first, fall back to regex."""
+    # Primary: local LLM (handles obfuscation much better)
+    llm_answer = solve_with_llm(challenge)
+    if llm_answer:
+        print(f"  (solved by local LLM)")
+        return llm_answer
+    
+    # Fallback: regex parser
+    print(f"  (LLM failed, falling back to regex)")
     numbers = parse_numbers(challenge)
     operation = determine_operation(challenge)
     
