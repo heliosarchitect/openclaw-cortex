@@ -139,3 +139,19 @@ Yesterday was the single most productive AUGUR day. Matthew got frustrated ("You
 
 ### Process That Emerged
 Mine everything → validate with train/test split → rank by test performance → deploy cautiously → collect more data → re-mine. The cycle, not the snapshot, is the system.
+
+---
+
+## 2026-02-11 15:47 — The Whitelist Leak: Defense in Depth
+
+**What happened:** Implemented a product whitelist (12→9→8 products) but the system was still trading 363 unfiltered patterns across 88 products. Four leak points bypassed the whitelist: pattern reloads, discovery loop, periodic checks, and the discovery engine itself.
+
+**The pattern:** This is a defense-in-depth failure. I added one filter (pair subscription) but the system had multiple paths to the same outcome (trading). Each path needed its own filter. The analogy: locking the front door while leaving four windows open.
+
+**Why it matters:** In trading, a single leaked path means the system silently degrades. The WR dropped from (theoretical) 60%+ to 37.9% because 361 noise patterns overwhelmed the 2 validated ones. The signal-to-noise ratio was 2:361 — the good patterns were there, just drowned.
+
+**The fix pattern for future:** When adding a filter/constraint to a system, search for EVERY path that produces the same output. Grep for the output (pattern loading, trade execution) not just the input (pair selection). The question isn't "did I filter the front door?" but "what are ALL the ways a trade can enter the system?"
+
+**Quantitative proof:** Pre-fix: 37.9% WR, -4.55% PnL. Post-fix (1.5hr): 49% WR, +3.75% PnL. Same market, same time window. The only change was removing 361 noise patterns.
+
+**Meta-insight:** Bug hunting in trading systems is high-leverage. A single bug fix turned a losing system into a winning one. This is why Matthew pushes for rigor — "volume is vanity, profit is sanity" applies to code paths too.
