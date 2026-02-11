@@ -31,3 +31,31 @@ Mining 72 features × combinatorial pairs/triples across only 3 days is a recipe
 I got excited about "58,950 validated signals" and "mid_vwap_div is the #1 feature." The numbers were real but the confidence was premature. Matthew's instinct to mine broadly was right — but the mined results need TIME to prove themselves. I should have been more cautious in my framing instead of presenting these as proven edge.
 
 "Don't mark your own homework" applies to backtests too.
+
+---
+
+## 2026-02-10 19:00 — Push vs. Pull (the alerting lesson)
+
+Matthew's feedback on the watchdog was sharp: "there needs to be a ping from that service when there is an issue... not when I ask you in an hour you say 'oh yeah that died 30 minutes ago.'"
+
+This isn't just about service monitoring. It's about a fundamental pattern in how I should operate.
+
+### The Anti-Pattern: Polling During Conversation
+"Hey Matthew, I noticed the collector died 45 minutes ago" — that's ME discovering something during a heartbeat and then announcing it as if I'm being proactive. It's not proactive. It's reactive on a schedule. The thing was already dead for 45 minutes.
+
+### The Pattern: Event → Alert → Fix
+1. **Something changes state** (service dies, disk fills, trade fails)
+2. **Alert fires immediately** to the right channel (Signal for urgent, Discord for record)
+3. **Auto-remediation** where safe (restart service, clear cache)
+4. **Inform human** only if it requires their attention
+
+### Where I Should Apply This Beyond Watchdog
+- **Trade failures**: V3 should Signal me when an order gets rejected, not log silently
+- **Data staleness**: Collector should alert if no new data in 5 minutes
+- **Pipeline performance**: Alert if WR drops below 35% over 20+ trades
+- **Disk space**: Alert at 85%, not when it's full
+
+### The Deeper Point
+Matthew's correction maps to his three-stage model: reactive follower → reactive learner → proactive pattern hunter. Push-based alerting is infrastructure for stage 3. You can't hunt patterns if you're spending heartbeats checking whether your own services are alive.
+
+The boring operational plumbing (watchdog, systemd, timers) is what FREES the interesting work (analysis, mining, strategy). Jackle was right.
