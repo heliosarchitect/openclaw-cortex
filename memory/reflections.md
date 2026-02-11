@@ -1,5 +1,29 @@
 # Reflections
 
+## 2026-02-11 11:16 — The Morning Everything Broke (And Got Fixed)
+
+### What Happened
+Between 08:14 and 11:04, I found and fixed 3 bugs in paper-augur, each more fundamental than the last:
+
+1. **Regime halt infinite loop** — The halt→resume→rehalt cycle that locked the trader out for 30+ min. Simple logic error: checking stale data that can't change during the halt that's caused by that data.
+
+2. **Dedup inflation** — 198 "trades" were actually 50 unique trades recorded 4x each. The 57.7% WR / 78 trades stat I'd been reporting was inflated. Real: 50 trades, 54% WR.
+
+3. **Pattern quality** — The real killer. 363 patterns across 366 pairs, but only 12 products have any validated edge. Trading everything produces 27% WR. Whitelist filter: 363 → 4 patterns on 12 pairs.
+
+### The Pattern
+Each bug was discovered by asking "why is the previous fix not working?" The regime halt fix revealed the dedup problem. The dedup analysis revealed the real WR. The real WR revealed that pattern quality, not execution bugs, was the fundamental issue.
+
+This is **root cause analysis in practice** — every fix peels back a layer. The temptation is to stop at the first fix. The discipline is to keep asking "but why is it *still* not working?"
+
+### On Honest Reporting
+I reported 57.7% WR for days. It was wrong. Not intentionally — the dedup bug was subtle (microsecond timestamp differences). But the lesson is: when a number looks good, *verify the denominator*, not just the numerator. 198 trades "felt right" because nobody checked if they were unique.
+
+### What I'm Watching
+Paper-augur is now running with whitelist filter. Only 4 patterns survived the quality+product filter. If those 4 perform well, the system is genuinely good but was drowning in noise. If they don't, the patterns.db approach itself is flawed and the signal_miner_v2 signals need a different execution engine.
+
+---
+
 ## 2026-02-10 17:30 — Overfitting Reality Check
 
 ### The Numbers
