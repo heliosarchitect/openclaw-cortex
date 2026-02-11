@@ -4,8 +4,8 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
 ## Priority (do first)
 - [ ] Wire LLM fleet models into actual workflows (codex-review on PR commits, email-triager on inbox)
+- [ ] Build EOD analysis pipeline — script that queries paper_results.db (strategy/hour/product stats) and feeds to local 32B model for winner/loser classification
 - [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
-- [ ] AUGUR: continuous miner V2 — greedy layer expansion on accumulating data
 - [ ] H0-5: Budget tuning (reduce token spend per turn)
 - [ ] H0-6: Turn counter (track conversation depth)
 
@@ -16,9 +16,13 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Write proper README for llm-fleet repo
 - [ ] Clean up augur-collector WAL files (shm/wal in git status)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
+- [ ] Moltbook: resume engagement after suspension lifts (~Feb 12 ~20:00 UTC)
 
 ## Completed
-- [x] Fleet router built — `fleet-router.sh` routes 16 tasks to local models, JSON validation, exit codes for API fallback, `~/bin/fleet` symlink (2026-02-11 17:22)
+- [x] AUGUR: paper trader wide open — 372 pairs, 363 patterns, no regime halt, per-strategy/hour/product tracking (2026-02-11 18:30)
+- [x] AUGUR: signal miner V2 ran — GHST-USD 1,149 signals, BNKR 251, NKN 70 (2026-02-11 18:47)
+- [x] MEMORY.md slimmed to 919 bytes, cortex-first policy in AGENTS.md (2026-02-11 17:45)
+- [x] Fleet router built — `fleet-router.sh` routes 16 tasks to local models (2026-02-11 17:22)
 - [x] LLM fleet smoke test — 16/16 pass (2026-02-11 07:38)
 - [x] LLM fleet Modelfile recovery — all 16 extracted (2026-02-11)
 - [x] Moltbook engagement — agent memory systems thread (2026-02-11 07:48)
