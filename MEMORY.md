@@ -10,7 +10,7 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - Federal FTE, sees AI workforce reduction coming
 
 ## Active Projects
-- **AUGUR** — Signal miner V2 + continuous miner (greedy layer expansion, layers 4-7). **LONG only, M-F 9AM-6PM EST data only** — mine where we trade. 6M+ signals in `augur_signals.db`, 9 active products. Pipeline paper trading at 59% WR (61 trades, net positive). V3 live trader: $20/trade, kill switch overnight 6PM-9AM. DB normalized: `augur_config.py` → `augur_signals.db` + `augur_trades.db`. Coinbase VIP 2: 0.10% taker, 0.04% maker.
+- **AUGUR V4.0** — Signal miner V2 + continuous miner (greedy layer expansion, layers 1-7). **LONG only, M-F 8:30AM-6:30PM EST trading hours** — mine where we trade. Post-migration: clean `augur_signals.db` (rebuilding), `augur_trades.db`, `enhanced_data.db` (~36GB, 597K trade_flow + 11M orderbook rows). 9 focused products (GHST, NKN, BNKR, AXS, ELSA, MON, ZRO, SKR, VOXEL). V3 live trader: $20/trade, 4 TPH max, $50/day loss limit, kill switch 6PM-9AM. All config centralized in `augur_config.py`. Coinbase VIP 2: 0.10% taker, 0.04% maker.
 - **LLM Fleet** — 11 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 4 codex (qwen2.5-coder:7b). Concurrent daemon architecture, not sequential.
 - **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
 - **BLISS** — Neural optimization chamber, hardware needs calibration

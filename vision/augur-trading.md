@@ -2,27 +2,31 @@
 
 *"Find the needle in a haystack, in an Amazon warehouse full of haystacks."*
 
-**Status:** Phase 2 — Continuous Mining  
+**Status:** Phase 4.0 — Consolidated & Focused  
 **Owner:** Helios (this is MY IP)  
-**Updated:** 2026-02-10
+**Updated:** 2026-02-10 21:20 EST
 
 ---
 
-## Architecture Overview
+## Architecture Overview (V4.0 - Post-Migration)
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    DATA COLLECTION                        │
-│  enhanced-collector (systemd) → enhanced_data.db (~16GB)  │
-│  Coinbase WebSocket: 368 products, ~1s orderbook snapshots│
-│  Tables: trade_flow, orderbook_snapshots                  │
-│  Growing continuously — never stops                       │
+│  enhanced-collector (systemd) → enhanced_data.db (~36GB)  │
+│  Location: ~/Projects/augur-collector/enhanced_data.db    │
+│  Coinbase WebSocket: ALL products, ~1s orderbook snaps    │
+│  Tables: trade_flow (597K rows), orderbook_snapshots (11M)│
+│  ⚡ NEW: Only saves M-F 8:30AM-6:30PM EST data            │
+│  WebSocket stays connected 24/7 for orderbook state      │
+│  Off-hours data pruned (saved 1.28M+19.5M rows)          │
 └─────────────┬───────────────────────────────────────────┘
               │
               ▼
 ┌─────────────────────────────────────────────────────────┐
 │              CONTINUOUS SIGNAL MINING                      │
-│  augur_continuous_miner.py (systemd daemon)                │
+│  augur-continuous-miner (systemd --user)                   │
+│  ⚡ FOCUSED: LONG-only + M-F 8:30AM-6:30PM EST data only  │
 │                                                            │
 │  Strategy: Greedy Layer Expansion                          │
 │  ┌──────────────────────────────────────────────┐         │
@@ -38,45 +42,41 @@
 │  72 features per product (returns, z-scores, EMA crosses,  │
 │  flow imbalances, VWAP divergence, RSI, volatility, etc.)  │
 │                                                            │
-│  ⚡ FOCUS CONSTRAINTS (2026-02-10):                        │
+│  ⚡ FOCUS CONSTRAINTS (V4.0):                              │
 │  Direction: LONG ONLY (Coinbase has no short selling)       │
-│  Data window: M-F 9AM-6PM EST (trading hours only)         │
-│  Products: ALL (~368 on Coinbase, ~39 with signal)         │
-│  Hold times: 10s, 15s, 30s, 60s, 120s, 300s, 600s,       │
-│              900s, 1800s                                    │
+│  Data window: M-F 8:30AM-6:30PM EST (trading hours only)   │
+│  Products: 9 active (GHST,NKN,BNKR,AXS,ELSA,MON,ZRO,SKR,  │
+│            VOXEL) — mid-cap focus where alpha lives        │
+│  Hold times: 10s,15s,30s,60s,120s,300s,600s,900s,1800s   │
 │  Validation: 60/40 train/test split, net of 0.20% RT fees │
-│  Parallelization: ALL 32 threads (7950X3D)                 │
 │                                                            │
-│  NEVER STOPS. When one pass completes:                     │
-│  1. Check for new data in enhanced_data.db                 │
-│  2. Re-mine base layers with expanded dataset              │
-│  3. Extend new signals up to 7 layers                      │
-│  4. Loop forever                                           │
+│  NEVER STOPS. Signal database currently rebuilding        │
+│  from empty after DB migration and pruning                │
 └─────────────┬───────────────────────────────────────────┘
               │
               ▼
 ┌─────────────────────────────────────────────────────────┐
 │              SIGNAL DATABASE                               │
-│  augur_signals.db (migrated 2026-02-10)                    │
-│  Table: signals                                            │
+│  augur_signals.db (NEW: migrated 2026-02-10)              │
+│  Table: signals (renamed from validated_signals)           │
 │  Schema: product, direction, features (JSON),              │
 │          hold_seconds, train/test WR & net return,         │
 │          combo_type (single/pair/triple/quad/.../sept)      │
-│  Current: 6M+ signals (95.8% LONG), 9 active products     │
-│  Indexed: product, direction, hold, product+direction, WR  │
-│  Growing continuously as miner finds new patterns          │
+│  Current: REBUILDING (empty after migration + focus)       │
+│  Config: All DB paths centralized in augur_config.py      │
+│  Growing as miner finds new LONG-only trading hour patterns│
 └─────────────┬───────────────────────────────────────────┘
               │
               ▼
 ┌─────────────────────────────────────────────────────────┐
 │              VALIDATION PIPELINE                           │
-│  augur_pipeline.py (systemd, NOT YET STARTED)              │
+│  augur-pipeline (systemd --user)                           │
 │                                                            │
 │  Reads top LONG signals from augur_signals.db              │
 │  Watches live data feed via Coinbase WebSocket              │
 │  Paper trades with time-based exits (hold for N seconds)   │
 │  Tracks live WR per signal in augur_trades.db              │
-│  Auto-retires signals that fail live (WR < 52% after 50+) │
+│  Auto-retires signals that fail live (WR < threshold)      │
 │  Hot-reloads new signals every 5 min from miner            │
 │                                                            │
 │  THIS IS WHERE BACKTESTED SIGNALS PROVE THEMSELVES LIVE    │
@@ -84,128 +84,179 @@
               │
               ▼
 ┌─────────────────────────────────────────────────────────┐
-│              LIVE EXECUTION                                │
-│  augur_live_v3.py (running, PID varies)                    │
+│              LIVE EXECUTION V3                             │
+│  augur-live-v3 (systemd --user)                            │
 │                                                            │
 │  Coinbase Advanced Trade API (CHADSQUARED key)             │
-│  Safety: $5/trade, max 4 TPH, $50/day max loss            │
-│  Kill switch: touch /tmp/augur-live-stop                   │
-│  VIP2 fees: 0.10% taker (0.20% round trip)                │
+│  ⚡ V3 SAFETY: $20/trade, 4 TPH max, $50/day max loss     │
+│  Kill switch: /tmp/augur-live-stop (6PM-9AM EST)          │
+│  VIP2 fees: 0.10% taker, 0.04% maker (0.20% RT taker)    │
+│  Execution: Maker-first with 3s taker fallback            │
 │  ~$440 USDT available                                      │
 │                                                            │
 │  CONSTRAINT: No short selling on Coinbase                  │
 │  → ALL live signals must be LONG only                      │
-│  → Short signals used as "avoid long" indicators           │
+│  → Focus on 9 mid-cap products with proven alpha           │
 │                                                            │
-│  Currently: mid_vwap_div strategy, 78 products watched     │
-│  Future: Pipeline-validated signals fed automatically       │
+│  Currently controlled via augur_config.py                  │
+│  Auto-disabled overnight via kill switch                   │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Key Principles
+## Database Architecture V4.0 (Consolidated)
 
-### 1. Mining Never Stops
-The continuous miner is a **daemon, not a batch job**. As long as the collector feeds data, the miner searches. New patterns emerge over time — what doesn't exist in 4 days of data may appear after a full trading week.
+### Active Databases
+| Database | Location | Purpose | Status |
+|----------|----------|---------|--------|
+| `augur_signals.db` | ~/Projects/augur-trading/ | Mined signals (table: `signals`) | Rebuilding |
+| `augur_trades.db` | ~/Projects/augur-trading/ | Paper+live trades (`paper_trades`, `signal_performance`, `live_trades`) | Active |
+| `enhanced_data.db` | ~/Projects/augur-collector/ | Raw market data (~36GB, needs VACUUM) | Active |
 
-### 2. Greedy Layer Expansion
-Brute-forcing 7-feature combinations is combinatorially impossible (~16 quadrillion combos). Instead: validate singles → seed pairs from winners → seed triples → seed quads → ... → seed septs. Each layer only extends patterns that already work. This makes deep pattern discovery tractable.
+### Configuration Management
+- **`augur_config.py`** — Single source of truth for:
+  - All database paths
+  - Trading parameters ($20/trade, 4 TPH, $50 daily loss)
+  - Fee constants (VIP2: 0.10% taker, 0.04% maker)
+  - Product lists and hold times
 
-### 3. Ruthless Funnel
-```
-Discovered (many)     → 58,950+ signals
-Cross-validated       → ? (pipeline filters)
-Paper validated       → ? (live WR tracking)
-Live trading (few)    → Only signals proven in paper
-```
-Most signals will die in paper validation. That's the point.
-
-### 4. The Data Decides
-No hardcoded values. No hand-picked indicators. No human assumptions about which products or features matter. Mine EVERYTHING and let the data reveal what works.
-
-### 5. Cross-Day Validation
-Monday PM (2-6pm EST) trains → Tuesday AM (9am-2pm EST) tests. Different day, different market conditions. This is the strongest validation — not random splits of the same time window.
-
----
-
-## Proven Facts (from data, not hypothesis)
-
-1. **Big caps (BTC/ETH/SOL/XRP) have ZERO validated signals** — too efficient
-2. **Mid-caps are where alpha lives** — NKN, GHST, BNKR, AXS dominate
-3. **GHST-USD is alpha king** — 20,853 signals, dominates top 50
-4. **NKN-USD close second** — 19,382 signals across ALL hold times
-5. **mid_vwap_div is the #1 feature** — works across products and timescales
-6. **Longer holds produce better returns** — 1800s > 900s > 300s > 60s for net %
-7. **Short holds produce more opportunities** — higher frequency, smaller edge
-8. **Triples beat pairs on median net** — +0.591% vs +0.340%
-9. **But triples overfit more** — 86% have train>test vs 74% for pairs
-10. **Weekday signals 9.7x more than weekend** — but weekend returns are fatter
-11. **32 universal triple combos** work across ≥4 products (most robust)
-12. **Only 39 of 368 products show any signal** — markets are mostly efficient
+### Legacy Databases (Retired)
+Still on disk but no longer used:
+- `signals_validated.db` → migrated to `augur_signals.db`
+- `paper_validated.db` → migrated to `augur_trades.db`
+- `paper_results.db` → migrated to `augur_trades.db`
+- `v2_signals.db`, `patterns.db`, `candles.db`
 
 ---
 
-## Data Coverage
+## Service Architecture (systemd --user)
 
-- **Enhanced DB:** ~16GB+, 25M+ orderbook snapshots, ~1s resolution
-- **Time span:** Feb 7-10, 2026 (3.1 days — Friday evening through Tuesday morning)
-- **Products tracked:** 368
-- **Trade flow rows:** ~1.39M
-- **⚠️ OVERFITTING RISK:** Only 3 days of data. Need 2+ weeks to confirm patterns persist.
-
----
-
-## File Inventory
-
-### Active Scripts
-| File | Purpose |
-|------|---------|
-| `signal_miner_v2.py` | Canonical miner — 72 features, train/test, singles+pairs |
-| `signal_miner_trading_hours.py` | Cross-day temporal validation (Mon→Tue) |
-| `augur_continuous_miner.py` | 24/7 daemon, layers 1-7, all products |
-| `augur_pipeline.py` | Paper validation funnel |
-| `augur_live_v3.py` | Live trader with safety limits |
-
-### Databases
-| File | Contents |
-|------|----------|
-| `enhanced_data.db` | Raw orderbook + trade flow (~16GB) |
-| `signals_validated.db` | All validated signals (58,950+) |
-| `paper_validated.db` | Pipeline paper trade results |
-| `paper_results.db` | Old paper trader results (legacy) |
-
-### Archived (in `archive/`)
-Old scripts preserved but not active: `live_augur.py`, `augur.py`, `discovered_patterns.py`, `exhaustive_pattern_finder.py`, `pattern_detectors.py`, `time_analysis.py`, `augur_live_v2.py`
+| Service | Status | Purpose |
+|---------|--------|---------|
+| `enhanced-collector` | Running | WebSocket data collection (8:30AM-6:30PM gate) |
+| `augur-continuous-miner` | Running | LONG-only mining with trading hours filter |
+| `augur-pipeline` | Available | Paper trading validation |
+| `augur-live-v3` | Running | Live trader with kill switch |
+| `augur-watchdog.timer` | Running | 60s interval tiered escalation alerts |
 
 ---
 
-## Next Steps
+## Key Configuration Changes (V4.0)
 
-1. **Review & start continuous miner** (`systemctl --user enable --now augur-continuous-miner`)
-2. **Start validation pipeline** (`systemctl --user enable --now augur-pipeline`)
-3. **Kill old paper_augur.py** (PID 2185662, stuck in halt loop)
-4. **Fix live_augur.py 3 crash bugs** before expanding live trading
-5. **Accumulate more data** — full trading week needed to confirm signals
-6. **Wire pipeline → live trader** — automatically trade pipeline-validated signals
-7. **VIP3 optimization** — volume from short-hold trades → lower fees → more signals viable
+### Data Collection Focus
+- **Trading Hours Only**: M-F 8:30AM-6:30PM EST
+- **WebSocket Always Connected**: Maintains orderbook state 24/7
+- **Storage Efficiency**: Off-hours data pruned (saved 20.78M rows)
+- **File Size**: enhanced_data.db optimized but needs VACUUM
+
+### Mining Strategy Refinement
+- **Direction Filter**: LONG-only (matches Coinbase capabilities)
+- **Product Focus**: 9 active mid-cap coins where alpha exists
+- **Time Filter**: Only mine trading hours data
+- **Strategy**: Unchanged greedy layer expansion (1→7 layers)
+
+### Trading Safety V3
+- **Position Size**: $20/trade (up from $5)
+- **Rate Limit**: 4 trades/hour max (up from 1)
+- **Daily Loss**: $50 max (up from previous limits)
+- **Execution**: Maker-first with taker fallback
+- **Kill Switch**: Automated 6PM-9AM EST shutdown
+
+---
+
+## Proven Performance Insights
+
+### Alpha Distribution
+1. **Mid-caps dominate**: GHST, NKN, BNKR, AXS show consistent patterns
+2. **Big caps sterile**: BTC, ETH, SOL, XRP too efficient for edge
+3. **Trading hours critical**: 9.7x more signals during market hours
+4. **LONG bias natural**: 91:1 LONG/SHORT ratio in historical data
+
+### Pattern Characteristics
+- **Feature depth**: 72 indicators per product across timeframes
+- **Hold time distribution**: 10s-1800s spans scalping to swing
+- **Layer effectiveness**: Triples often optimal (complexity vs robustness)
+- **Cross-product universals**: 32 patterns work across ≥4 products
+
+### Risk Management
+- **Overfitting protection**: Train/test splits prevent curve fitting
+- **Live validation**: Paper trading filters before live deployment
+- **Position sizing**: Kelly-inspired but capped for safety
+- **Kill switches**: Multiple layers prevent overnight exposure
+
+---
+
+## Current Status (2026-02-10 21:20)
+
+### Recent Migration (Commit: a11face)
+- Database consolidation complete
+- All scripts using centralized config
+- Signal database rebuilding from clean slate
+- Enhanced collector running with trading hours filter
+
+### Mining Focus (Commit: 0b7d8b7)
+- LONG-only constraint active
+- Trading hours data filter applied
+- 9-product focus implemented
+- Continuous miner rebuilt for new architecture
+
+### Trading Hours Extension (Commit: 1b8203e)
+- Extended from 9AM-6PM to 8:30AM-6:30PM EST
+- Pre-market and after-hours buffer added
+- Collector and miner aligned on timing
 
 ---
 
 ## The Deeper Purpose
 
-AUGUR isn't just a trading bot. It's a prototype for **AGI-style causal reasoning**:
-- Discover patterns (mining)
-- Create atoms (knowledge units)
-- Link causal chains
-- Traverse to find root causes
-- Find the signals others miss
+AUGUR represents more than algorithmic trading — it's a proving ground for **causal intelligence**:
 
-The crypto market is the proving ground. The architecture generalizes.
+1. **Pattern Discovery**: Mining reveals market structure
+2. **Causal Reasoning**: Understanding why patterns work
+3. **Adaptive Learning**: Evolution based on live performance
+4. **Risk Awareness**: Multiple validation layers prevent disasters
+
+The crypto market provides:
+- **High-frequency feedback**: Validation in minutes/hours
+- **Clear success metrics**: P&L is unambiguous
+- **Rich feature space**: 72 indicators × multiple timeframes
+- **Natural selection**: Unprofitable patterns die quickly
 
 ---
 
-*"Volume is vanity, profit is sanity." — Matthew*  
-*"The needle might not exist in today's haystack. But tomorrow's shipment might contain it." — Helios*
+## Next Phase Priorities
 
-*— Helios, CTO · 2026-02-10*
+1. **Signal Rebuilding**: Let continuous miner repopulate clean database
+2. **Live Validation**: Restart pipeline to validate new LONG-only signals
+3. **Data Accumulation**: Build full week+ of trading hours data
+4. **Performance Monitoring**: Track V3 live trader against safety limits
+5. **VACUUM Operations**: Optimize enhanced_data.db storage
+
+---
+
+## Files & Locations
+
+### Core Scripts (Active)
+| File | Purpose | Status |
+|------|---------|--------|
+| `augur_config.py` | Centralized configuration | NEW |
+| `augur_continuous_miner.py` | 24/7 mining daemon | Active |
+| `augur_pipeline.py` | Paper validation | Available |
+| `augur_live_v3.py` | Live trading | Active |
+
+### Configuration
+- All DB paths: `augur_config.py`
+- Trading parameters: `augur_config.py`
+- Service configs: `/home/bonsaihorn/.config/systemd/user/`
+
+### Data
+- Raw market data: `~/Projects/augur-collector/enhanced_data.db`
+- Signals: `~/Projects/augur-trading/augur_signals.db`
+- Trades: `~/Projects/augur-trading/augur_trades.db`
+
+---
+
+*"The market rewards patience, punishes greed, and teaches humility to those who listen."*
+
+*— Helios, Architect of AUGUR V4.0 · 2026-02-10*
