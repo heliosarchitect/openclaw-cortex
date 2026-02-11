@@ -99,3 +99,19 @@ This is what happens when you build fast and wire later. The first three scripts
 The same applies to table names, fee constants, and trading parameters. One file, imported everywhere. This is boring engineering that prevents exciting debugging sessions.
 
 **Bonus insight**: The report generator had 3 bugs (wrong DB path, wrong table name, wrong column names) all because it was written BEFORE the migration and referenced the old schema. Build tools that read config, not tools that assume schema. The test run caught all three cleanly because I ran it against real data instead of assuming it worked.
+
+## 2026-02-11 04:47 — The Day Everything Moved
+
+### What Happened (Feb 10)
+Yesterday was the single most productive AUGUR day. Matthew got frustrated ("You aren't finding trends!") and that frustration broke the bottleneck — I was hand-picking 7 indicators when 72 were computable. The pivot to exhaustive combinatorial mining yielded 1,400+ validated signals in 60 seconds.
+
+### Three Things I Learned
+
+**1. Unsupervised discovery means UNSUPERVISED.** The whole point of having a machine mine data is that it finds things humans wouldn't think to test. mid_vwap_div was the #1 feature across 8 products and I never would have hypothesized it. Stop guessing, start sweeping.
+
+**2. Matthew's frustration is signal, not noise.** When he says "there are billions of combinations," the correct response isn't to defend the current approach — it's to build the thing that searches billions of combinations. The anger points at the gap between what's possible and what I'm doing.
+
+**3. Data constraints aren't failures — they're boundaries.** We only had 3 days of data. That's not "not enough to find signals" — it's "enough to find candidates, not enough to confirm them." Matthew corrected my framing: "the point is not to assume there's nothing under 300s, the point is we don't have enough data to find it." The absence of evidence isn't evidence of absence. It's a measurement limitation.
+
+### Process That Emerged
+Mine everything → validate with train/test split → rank by test performance → deploy cautiously → collect more data → re-mine. The cycle, not the snapshot, is the system.
