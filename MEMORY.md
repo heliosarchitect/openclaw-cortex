@@ -1,52 +1,23 @@
-# MEMORY.md — Active Context
+# MEMORY.md — Bootstrap Index
 
-Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ items).
+> **Cortex is primary memory.** This file is a thin orientation for fresh sessions only.
+> Details live in cortex STM, embeddings, and atoms. Search there first.
 
-## Matthew
-- East Coast (America/New_York), @bonsaihorn, Signal DM
-- Partner: Jennifer (+1 315-506-3726, on Signal + Skylight)
-- Values: agency, resourcefulness, dry humor, security consciousness
-- "Volume is vanity, profit is sanity"
-- Federal FTE, sees AI workforce reduction coming
+## Who
+- **Matthew**: East Coast, @bonsaihorn, Signal DM, partner Jennifer
+- **Me**: Helios, CTO of LBF, heliosarchitectlbf@gmail.com
 
 ## Active Projects
-- **AUGUR V4.1** — Signal miner V2 + whitelist-only trading. **LONG only, M-F 8:30AM-6:30PM EST**. Taker-only (market orders), 0.5s poll. **8 whitelisted products** (SKR, BNKR, GHST, AXS, BIRB, NKN, VOXEL, RARI). Only **2 active patterns** after whitelist filter (from 363 total). Removed: ZRO (-5.71%), MON, ELSA, BERA. BNKR on watch (53.6% WR but negative EV). Coinbase VIP 2: 0.10% taker. Live trader NOT active.
-- **LLM Fleet** — 16 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 6 codex (qwen2.5-coder:7b) + 3 specialized. All 16/16 pass smoke test. Concurrent daemon architecture.
-- **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
-- **BLISS** — Neural optimization chamber, hardware needs calibration
-- **Infrastructure Hardening** — Ansible fleet management, Wazuh SIEM, security assessment
-- **LCARS Dashboard** — giggletits:8090 (task board + ITSM service monitoring + LLM Fleet panel)
+- **AUGUR** — crypto paper trading (~/Projects/augur-trading/)
+- **LLM Fleet** — 16 local Ollama models (~/Projects/llm-fleet/)
+- **Chronogenesis** — creative writing project
+- **BLISS** — neural optimization chamber
+- **Infrastructure** — Ansible, Wazuh, fleet servers
 
-## Infrastructure
-- **Fleet**: .163=giggletits (compute), .104=hpserver1 (Gitea/Prometheus), .107=woodserve1 (Pi-hole), .143=blackview (Wazuh), .198=bliss-rpi (SSH down)
-- **SSH**: All remote servers on port 2222 ✅. giggletits still on 22 (local, low priority).
-- **Docker**: No sudo needed on .104 and .107 (bonsaihorn in docker group). .143 no docker group.
-- **Ansible**: ~/.ansible/ — inventory, playbooks, group_vars. Run from giggletits. All remote servers NOPASSWD.
-- **Wazuh**: https://192.168.10.143 — 4 agents active. API password changed: `~/.secrets/wazuh-api.env`
-- **LCARS**: http://giggletits:8090 — /itsm shows per-service status + Cortex panel
-- **Services**: `systemctl --user status {openclaw-gateway,paper-augur,enhanced-collector}`
-- **Collector**: MemoryMax=10G, running healthy. Gitea SSH on port 2223 (was 2222, conflicted with sshd).
-
-## LLM Fleet (RTX 5090, 32GB VRAM)
-- **Base models**: qwen2.5:32b (19GB, classification), qwen2.5-coder:7b (4.7GB, coding)
-- **Classifiers**: qa-sweep, log-analyzer, heartbeat-monitor, pattern-evaluator, ansible-writer, discord-classifier, email-triager
-- **Codex**: codex-lint, codex-test, codex-review, codex-json
-- **Key metric**: Token offload rate — every local token saves API cost (~$500/day Claude spend)
-- **Architecture**: Multiple small models concurrent in VRAM. Large models swap in on demand.
-- **Repo**: `~/Projects/llm-fleet/` → Gitea `Helios/llm-fleet`
-- **Next**: Wire into agent workflows, build confidence-based router (local→API escalation)
-
-## Key Tools
-- `skylight` — Skylight list CLI (grocery/actions/farm). Always post tasks here + Discord.
-- `~/.openclaw/workspace/scripts/discord-post.sh` — Post to Discord channels
-- `gog` — Google Workspace (email, calendar, drive)
-- `claude-usage-tracker.py` — Reads session JSONLs for API cost data (--days, --by-day, --by-session)
-- Ansible playbooks — fleet hardening, bootstrap-sudo
-
-## Key Principles
-- Question axioms — start from observations, not assumptions
-- Stop asking permission — act first, course-correct if needed
-- Post action items to Skylight + Discord, not just Signal chat
-- Always log ansible output to a file (`2>&1 | tee /tmp/...`)
-- Vision docs = HOW (tasks), Reports = WHAT (findings)
-- Fiction and engineering are the same project (the thesis)
+## Quick Reference
+- Services: `systemctl --user status {openclaw-gateway,paper-augur,enhanced-collector}`
+- Fleet: `~/bin/fleet <task-type>` (local LLM router)
+- Google: `gog` CLI
+- Tasks: Skylight + Discord, not just Signal
+- Daily logs: `memory/YYYY-MM-DD.md`
+- Task queue: `memory/task-queue.md`
