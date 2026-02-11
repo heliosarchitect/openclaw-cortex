@@ -5,9 +5,9 @@
 2. Main session only: also read `MEMORY.md` (never in group/shared contexts)
 
 ## Memory
-- **Daily notes:** `memory/YYYY-MM-DD.md` — raw logs
-- **Long-term:** `MEMORY.md` — curated, distilled
-- **Cortex:** STM + embeddings + atoms for semantic recall
+- **Cortex FIRST**: STM + embeddings + atoms = primary memory. Always store here.
+- **Daily notes:** `memory/YYYY-MM-DD.md` — raw session logs
+- **MEMORY.md:** Thin bootstrap index only — points to cortex, not a knowledge store
 - Write it down. Mental notes don't survive restarts.
 
 ## Safety
@@ -31,7 +31,7 @@
 Before any context reset or when context > 80%:
 1. **Daily log**: Update `memory/YYYY-MM-DD.md` with everything accomplished
 2. **Cortex dump**: Store any unrecorded insights, decisions, or context via `cortex_add`
-3. **MEMORY.md**: Update if major state changes (new projects, infra, key decisions)
+3. **MEMORY.md**: Only update if project list changes (it's a thin index)
 4. **Working memory**: Verify pins are captured in persistent storage
 5. **Pending items**: Note any in-progress work in daily log so next session can pick up
 
