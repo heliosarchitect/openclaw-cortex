@@ -10,7 +10,7 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - Federal FTE, sees AI workforce reduction coming
 
 ## Active Projects
-- **AUGUR** — Signal miner V2 built (2026-02-10). Combinatorial discovery: 72 features × 50+ products × pairs. Found `mid_vwap_div` (VWAP-midprice divergence) as top feature across 8+ products. Live V3 trader running (PID 2569041) watching 78 products. Deep mining: 20K+ signals, 1800s holds dramatically better. $5/trade, kill switch: `touch /tmp/augur-live-stop`. Coinbase VIP 2: 0.10% taker. Key files: `signal_miner_v2.py`, `augur_live_v3.py`, `analysis/augur-deep-mining-results.md`
+- **AUGUR** — Signal miner V2 + continuous miner (greedy layer expansion, layers 4-7). **LONG only, M-F 9AM-6PM EST data only** — mine where we trade. 6M+ signals in `augur_signals.db`, 9 active products. Pipeline paper trading at 59% WR (61 trades, net positive). V3 live trader: $20/trade, kill switch overnight 6PM-9AM. DB normalized: `augur_config.py` → `augur_signals.db` + `augur_trades.db`. Coinbase VIP 2: 0.10% taker, 0.04% maker.
 - **LLM Fleet** — 11 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 4 codex (qwen2.5-coder:7b). Concurrent daemon architecture, not sequential.
 - **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
 - **BLISS** — Neural optimization chamber, hardware needs calibration
