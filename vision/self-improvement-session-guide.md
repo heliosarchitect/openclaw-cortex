@@ -127,7 +127,26 @@ At session end, these must ALL be true:
 - [ ] Cortex deduped (before/after stats recorded)
 - [ ] `memory/reflections.md` updated
 - [ ] All workspace changes committed and pushed
+- [ ] At least 10 atoms created with causal links (`atom_create` + `atom_link`)
 - [ ] At least one concrete improvement made (not just documented)
+
+### 8. Atom Mining (15 min)
+**Goal**: Find at least 10 unique atoms and causal relationships from today's work and tonight's sessions.
+
+**Process**:
+- Review cortex STM, today's daily log, and tonight's LLM fleet results
+- For each insight, extract the causal structure: WHO → DOES WHAT → RESULT → CONSEQUENCE
+- Use `atom_create` for each atom, `atom_link` to connect them
+- Think deeply: What CAUSES success? What ENABLES failure? What PRECEDES breakthroughs?
+
+**Examples to mine**:
+- Permission-asking pattern → causes what? What enables it? What breaks the cycle?
+- Exhaustive mining → produced what? What caused the pivot? What was the outcome?
+- Data pruning → enables what downstream? What preceded the decision?
+- Local LLM quality → what determines it? What's the causal chain from model size to task fit to output quality?
+- Documentation → what does it prevent? What causal chain from missing docs to repeated mistakes?
+
+**Deliverable**: At least 10 atoms with causal links in the atom database. Quality over quantity — find the non-obvious chains.
 
 ## Anti-Patterns to Avoid
 - ❌ Vague platitudes ("I should be more careful")
