@@ -27,15 +27,25 @@
 - **NEW**: Cron audit procedure — `scripts/cron-audit.md` with expected runtimes and escalation tiers
 - **NEW**: Night shift runbook — `runbooks/nightshift.md` with decision tree, troubleshooting, and monitoring
 - **NEW**: LLM Fleet API smoke test — `~/Projects/llm-fleet/scripts/smoke-test-api.sh` (16/16 pass)
+- **NEW**: AUGUR V4.1 "Speed" — taker-only execution, 0.5s poll (was 10s), sub-1s market response
 
 ### Bug Fixes
 - **FIX**: HEARTBEAT.md rewritten — was purely event-driven with no idle-state mandate → now build-by-default with max 2 consecutive OKs
 - **FIX**: Cron output validation — sessions were fire-and-forget → now audited every heartbeat with expected runtime thresholds
 
+### Cron Cleanup
+- **DISABLED**: Trading Manager (old Chad system, firing every 5min for nothing)
+- **DISABLED**: Fine-tune dataset builder (same old system)
+- **DISABLED**: Weekly pair updater (referenced `Chad_Volume_tracker`)
+- **UPDATED**: Trading Day Start/End → AUGUR V4 with mid-cap focus, LONG only
+- **FIXED**: Night shift cron restricted to 23:00-07:00 (was 24/7)
+
 ### Key Commits
 - `136be5f` — fix: anti-idle heartbeat system - task queue, cron audit, build mandate
+- `325f2ba` — docs: NIGHT-001 postmortem, night shift runbook, changelog, cron audit
+- `329e2c3` — docs: log cron audit and remediation work
 - `3d4f3d5` — feat: add API-based smoke test, first full quality run (16/16 pass)
-- `20d7cf0` — chore: update moltbook tracker, reflections, STM state
+- `bf5a1a9` — perf: taker-only execution, 0.5s poll interval (augur-trading)
 
 ### Lessons Learned
 See `reports/postmortem-2026-02-11-nightshift.md` for full incident analysis.

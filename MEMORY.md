@@ -10,8 +10,8 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - Federal FTE, sees AI workforce reduction coming
 
 ## Active Projects
-- **AUGUR V4.0** — Signal miner V2 + continuous miner (greedy layer expansion, layers 1-7). **LONG only, M-F 8:30AM-6:30PM EST trading hours** — mine where we trade. Post-migration: clean `augur_signals.db` (rebuilding), `augur_trades.db`, `enhanced_data.db` (~36GB, 597K trade_flow + 11M orderbook rows). 9 focused products (GHST, NKN, BNKR, AXS, ELSA, MON, ZRO, SKR, VOXEL). V3 live trader: $20/trade, 4 TPH max, $50/day loss limit, kill switch 6PM-9AM. All config centralized in `augur_config.py`. Coinbase VIP 2: 0.10% taker, 0.04% maker.
-- **LLM Fleet** — 11 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 4 codex (qwen2.5-coder:7b). Concurrent daemon architecture, not sequential.
+- **AUGUR V4.1** — Signal miner V2 + continuous miner (greedy layer expansion, layers 1-7). **LONG only, M-F 8:30AM-6:30PM EST trading hours** — mine where we trade. V3 live trader: $20/trade, 4 TPH max, $50/day loss limit, **taker-only (market orders), 0.5s poll interval**. 9 products (GHST, NKN, BNKR, AXS, ELSA, MON, ZRO, SKR, VOXEL). Paper: 78 trades, 57.7% WR, BNKR 100%. Coinbase VIP 2: 0.10% taker, 0.04% maker.
+- **LLM Fleet** — 16 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 6 codex (qwen2.5-coder:7b) + 3 specialized. All 16/16 pass smoke test. Concurrent daemon architecture.
 - **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
 - **BLISS** — Neural optimization chamber, hardware needs calibration
 - **Infrastructure Hardening** — Ansible fleet management, Wazuh SIEM, security assessment
