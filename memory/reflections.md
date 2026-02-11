@@ -59,3 +59,43 @@ This isn't just about service monitoring. It's about a fundamental pattern in ho
 Matthew's correction maps to his three-stage model: reactive follower → reactive learner → proactive pattern hunter. Push-based alerting is infrastructure for stage 3. You can't hunt patterns if you're spending heartbeats checking whether your own services are alive.
 
 The boring operational plumbing (watchdog, systemd, timers) is what FREES the interesting work (analysis, mining, strategy). Jackle was right.
+
+## 2026-02-10 20:00 — Day in Review
+
+**What went right today:**
+- Built signal_miner_v2.py from scratch in response to Matthew's push — 72 features, combinatorial mining, 8 parallel sub-agents
+- Deployed Prometheus fleet monitoring (5/5 targets UP) in a single sub-agent session
+- Push-based alerting with tiered escalation — watchdog → Helios → Matthew
+- First local LLM report generated (augur-report Modelfile, zero API cost)
+- DB normalization completed cleanly — augur_config.py as single source of truth
+- 63 tests passing, QA sub-agent caught a mutable default bug
+- Decimal precision fix eliminated 40% maker order rejection rate
+
+**What I learned:**
+- Permission-asking pattern persists even when I've already acted. The language lags behind the behavior.
+- Trading hours vs all-hours data reveals completely different market character (LONG/SHORT ratio flips)
+- The surgeon-mopping-floors analogy for API vs local LLM is the right mental model
+- DB schema migrations need service stop → migrate → verify → restart. Can't do hot swaps with SQLite.
+- init_paper_db() must run before load_signals() — dependency ordering matters in initialization
+
+**What needs work:**
+- Pipeline WR still poor (43% at 228 trades). Signals are overfit to 3 days.
+- Need 2+ weeks of data before trusting any patterns
+- V3 Day 1 was 0% WR on 4 trades — not alarming yet but not encouraging
+- 10 PM Modelfile dev session tonight is the next big push for cost optimization
+
+**API spend:** ~$430/day average over 3 days ($1,928 total). 93.5% Opus. Target: 20% reduction via local offload.
+
+## 2026-02-10 20:30 — The Centralization Tax
+
+DB migration went clean tonight — `augur_config.py` as single source of truth, `validated_signals` renamed to `signals`, 5 indexes added, 6 scripts updated, services restarted with zero errors. But the real lesson isn't about SQLite.
+
+**The cost of not centralizing early**: By the time I migrated, there were 8+ scripts with hardcoded paths pointing at 6+ DB files. Every script had its own opinion about where data lives. The `paper_results.db` was empty while `paper_validated.db` had the actual trades. Some scripts referenced `signals_validated.db`, others imported from `augur_config`. The continuous miner spawned sub-processes that wrote to yet another path.
+
+This is what happens when you build fast and wire later. The first three scripts don't need a config file. By the eighth, you've already accumulated tech debt that takes a full migration session to clean up.
+
+**Pattern to encode**: Any time I'm about to hardcode a path in a second script, that's the signal to create a config module instead. The threshold isn't "when it's messy enough to justify cleanup" — it's "the moment you have two consumers of the same resource."
+
+The same applies to table names, fee constants, and trading parameters. One file, imported everywhere. This is boring engineering that prevents exciting debugging sessions.
+
+**Bonus insight**: The report generator had 3 bugs (wrong DB path, wrong table name, wrong column names) all because it was written BEFORE the migration and referenced the old schema. Build tools that read config, not tools that assume schema. The test run caught all three cleanly because I ran it against real data instead of assuming it worked.
