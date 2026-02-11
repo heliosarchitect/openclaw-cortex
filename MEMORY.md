@@ -10,7 +10,7 @@ Full history: `reference/MEMORY_FULL.md` | Cortex has detailed memories (1972+ i
 - Federal FTE, sees AI workforce reduction coming
 
 ## Active Projects
-- **AUGUR V4.1** — Signal miner V2 + continuous miner (greedy layer expansion, layers 1-7). **LONG only, M-F 8:30AM-6:30PM EST trading hours** — mine where we trade. V3 live trader: $20/trade, 4 TPH max, $50/day loss limit, **taker-only (market orders), 0.5s poll interval**. 9 products (GHST, NKN, BNKR, AXS, ELSA, MON, ZRO, SKR, VOXEL). Paper: 78 trades, 57.7% WR, BNKR 100%. Coinbase VIP 2: 0.10% taker, 0.04% maker.
+- **AUGUR V4.1** — Signal miner V2 + whitelist-only trading. **LONG only, M-F 8:30AM-6:30PM EST**. Taker-only (market orders), 0.5s poll. 12 validated mid-cap products only (SKR, BNKR, GHST, MON, ZRO, AXS, BIRB, BERA, NKN, ELSA, VOXEL, RARI). Paper (deduped): 50 unique trades, 54% WR, +17.6% cumulative. Post-whitelist: SKR 67% WR (star), ELSA 0% (remove candidate). Coinbase VIP 2: 0.10% taker. Live trader NOT active.
 - **LLM Fleet** — 16 Ollama models at `~/Projects/llm-fleet/`. 7 classifiers (qwen2.5:32b) + 6 codex (qwen2.5-coder:7b) + 3 specialized. All 16/16 pass smoke test. Concurrent daemon architecture.
 - **Chronogenesis trilogy** — Personal creative project (NOT LBF). Our thing. The thesis.
 - **BLISS** — Neural optimization chamber, hardware needs calibration
