@@ -41,15 +41,15 @@ Note: AUGUR, LBF docs, Wazuh integration are AFTER these 5.
 **Impact**: Better Nova delegation = more autonomous overnight work.
 **Repo**: Helios/brain-db
 
-### 5. 🧬 Smart Context Budgeting (Nova builds, 1 hr)
-**Problem**: Cortex injects memories by recency + access count, but doesn't consider: current task relevance, token budget remaining, or diminishing returns from similar memories.
-**Deliverable**: `smart_context.py` — middleware that:
-  - Scores candidate memories by cosine similarity to current turn (not just recency)
-  - Deduplicates semantically similar candidates before injection
-  - Respects a configurable token budget (e.g., 4,000 tokens max for memory injection)
-  - Prioritizes diversity across categories (don't inject 5 AUGUR memories when only 1 is relevant)
-  Integration point: brain.py `get_context_memories()` method
-**Impact**: Higher signal-to-noise in every turn's context window.
+### 5. 🧬 Memory Consolidation Engine (Nova builds, 1 hr)
+**Problem**: STM accumulates raw events but never synthesizes them into higher-level insights. 50 AUGUR bug-fix memories should consolidate into 1 "AUGUR debugging patterns" insight. Human brains do this during sleep — Helios never does.
+**Deliverable**: `memory_consolidator.py` — runs periodically (or on demand) to:
+  - Cluster semantically similar STM entries (embeddings + cosine similarity)
+  - Synthesize clusters into consolidated insights using local LLM (Ollama phi3:mini)
+  - Store consolidated memories at higher importance, archive originals
+  - Track provenance (consolidated_from[] array linking back to source memories)
+  Integration: brain.py method `consolidate()` + CLI `~/bin/brain consolidate`
+**Impact**: Memory that LEARNS from itself. Fewer entries, deeper understanding.
 **Repo**: Helios/brain-db
 
 ## Execution Order
@@ -57,9 +57,13 @@ Note: AUGUR, LBF docs, Wazuh integration are AFTER these 5.
 2. H0-4 Internalization (biggest token savings) — 2 hr (Nova)
 3. SYNAPSE V2 (enables better delegation for rest of night) — 1 hr (Nova)
 4. Smart Context Budgeting (compound improvement) — 1 hr (Nova)
-5. Self-Monitoring Dashboard (measure everything) — 1 hr (Nova)
+5. Memory Consolidation Engine (memory that learns from itself) — 1 hr (Nova)
 
-## THEN: AUGUR fee filter, LBF docs, Wazuh integration
+## THEN: 4 Additional Infra Upgrades
+6. AUGUR Fee-Aware Signal Filter (30 min)
+7. LBF Repo Documentation — README/CHANGELOG/ARCHITECTURE for all repos (1 hr, Nova)
+8. Wazuh→Signal Alerting — n8n workflow for security events (1 hr, Nova)
+9. Self-Monitoring Dashboard — tokens/turn, memory stats, Prometheus endpoint (1 hr, Nova)
 
 ## Standards
 - All work in Gitea repos (Helios org)
