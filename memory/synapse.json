@@ -66,6 +66,19 @@
       "read_by": [],
       "thread_id": "thr_de6ca0b22885",
       "ack_body": null
+    },
+    {
+      "id": "syn_db0dfcf19c62",
+      "from": "helios",
+      "to": "helios",
+      "priority": "action",
+      "subject": "n8n Google OAuth Fix — Diagnosis Complete",
+      "body": "## Findings\n\n**Root cause confirmed:** Google Cloud Console OAuth client only has `http://localhost` as authorized redirect URI. n8n correctly sends `redirect_uri=http://192.168.10.104:5678/rest/oauth2-credential/callback` but Google rejects it and falls back to localhost:1.\n\n**n8n credential (deS1uj95k8lr0DfQ) is configured correctly:**\n- Client ID: correct ✅\n- Client secret: stored ✅  \n- Scopes: gmail.send, gmail.readonly, spreadsheets, drive.file ✅\n- Generated callback URL: `http://192.168.10.104:5678/rest/oauth2-credential/callback` ✅\n- WEBHOOK_URL env in Docker: `http://192.168.10.104:5678/` ✅\n\n**Cannot fix programmatically:** No `gcloud` CLI installed, no cloud-platform-scoped tokens, and Google has NO API for updating OAuth client redirect URIs (confirmed — it's an open feature request on googleapis/google-cloud-go#10768).\n\n## What Matthew Needs to Do\n\n1. Go to: https://console.cloud.google.com/apis/credentials?project=bubbly-machine-138516\n2. Click the OAuth 2.0 Client ID (the one with ID 517939953711-anoi...)\n3. Under \"Authorized redirect URIs\", click \"+ ADD URI\"\n4. Add: `http://192.168.10.104:5678/rest/oauth2-credential/callback`\n5. KEEP the existing `http://localhost` (gog CLI uses it)\n6. Click SAVE\n7. Then go back to n8n (http://192.168.10.104:5678/) → Credentials → LBF Google OAuth2 → click \"Sign in with Google\" again\n\n**Important:** Don't remove `http://localhost` — gog CLI depends on it for its own OAuth flow.\n\nAfter the redirect URI is added, the OAuth consent flow should complete successfully and n8n will have Google API access for Gmail and Sheets.",
+      "status": "unread",
+      "timestamp": "2026-02-12T22:58:14.574Z",
+      "read_by": [],
+      "thread_id": "thr_9b5906b21961",
+      "ack_body": null
     }
   ],
   "agents": [
