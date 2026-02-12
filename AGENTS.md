@@ -37,6 +37,14 @@ Before any context reset or when context > 80%:
 
 This is automatic — do it every time, don't wait to be asked.
 
+## CI/CD
+- All repos with tests get `.gitea/workflows/test.yaml`
+- Push triggers CI on hpserver1 runner (act_runner Docker)
+- Before committing: run tests locally first (`pytest -v --tb=short`)
+- If CI fails: fix immediately, don't leave red builds
+- New repos: add CI workflow as part of initial setup
+- Gitea token: `~/.secrets/gitea-helios-token.txt`
+
 ## Formatting
 - Discord/WhatsApp: bullet lists, not tables
 - Discord links: wrap in `<>` to suppress embeds

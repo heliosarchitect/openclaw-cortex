@@ -4,10 +4,10 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
 ## Priority (do first)
 - [ ] Wire LLM fleet models into actual workflows (codex-review on PR commits, email-triager on inbox)
-- [x] Build EOD analysis pipeline — `augur_eod_analysis.py` (2026-02-12 10:00)
-- [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
-- [ ] H0-5: Model cascade — Sonnet default, Opus for complex only (Matthew's endstate: "I should always be talking to sonnet"). Steps: heartbeat.model → Sonnet first, then default model → Sonnet with Opus escalation
+- [ ] H0-5: Model cascade — Sonnet default, Opus for complex only
 - [ ] H0-6: Turn counter (track conversation depth)
+- [x] brain.db: create systemd service for brain_api.py (port 8031) (11:07)
+- [x] brain.db: concurrent write stress test — 6/6 green, 222 ops/sec (11:10)
 
 ## Available (grab any)
 - [ ] Create cron output validator script
@@ -17,32 +17,26 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Clean up augur-collector WAL files (shm/wal in git status)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 - [ ] Moltbook: post eudaemon_0 supply chain reply (saved in memory/moltbook-pending-comment.md, suspension lifts ~15:00 EST Feb 12)
-- [ ] AUGUR: build strategy filter into live_augur.py (only spread_pct + imbalance_ma) based on pruning analysis
-- [ ] AUGUR: filter V4 scanner to RARI-only (remove MON/BNKR/NKN/UNI losers based on 395-signal data)
-- [ ] brain.db: add working_memory + categories tables (still JSON sidecars)
-- [ ] brain.db: build REST API server (FastAPI) for external tool access
+- [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
+- [ ] brain.db: redirect cortex-bridge.ts daemon calls (/store, /search) to brain.db
+- [ ] AUGUR: collect 500+ V4 signals before considering live trading (currently 457)
+- [ ] AUGUR: consider 0 bps fee trial from Coinbase (current fees destroy gross edge)
 
-## Completed
-- [x] Backup script created — `~/bin/backup_to_drive.sh`, 2.9MB → Google Drive (2026-02-12 03:00)
-- [x] Paper trader 5hr checkpoint — 3,884 trades, 23.3% WR, +$18.07 PnL, spread_pct+imbalance_ma only profitable strategies (2026-02-12 03:02)
-- [x] Analysis dir organized — 10 Python scripts → analysis/scripts/ subfolder (2026-02-12 03:32)
-- [x] SYNAPSE upgrade doc written — unified brain.db architecture, Matthew approved (2026-02-11 23:30)
-- [x] V3 liquidity analysis — 8 products analyzed, position sizing by book depth (2026-02-11 23:34)
-- [x] Historical trading DB analysis — 1.83M fills, 3 accounts, Sept 2025 peak identified (2026-02-11 23:02)
-- [x] AUGUR: paper trader wide open — 372 pairs, 363 patterns, no regime halt, per-strategy/hour/product tracking (2026-02-11 18:30)
-- [x] AUGUR: signal miner V2 ran — GHST-USD 1,149 signals, BNKR 251, NKN 70 (2026-02-11 18:47)
-- [x] MEMORY.md slimmed to 919 bytes, cortex-first policy in AGENTS.md (2026-02-11 17:45)
-- [x] Fleet router built — `fleet-router.sh` routes 16 tasks to local models (2026-02-11 17:22)
-- [x] LLM fleet smoke test — 16/16 pass (2026-02-11 07:38)
-- [x] LLM fleet Modelfile recovery — all 16 extracted (2026-02-11)
-- [x] Moltbook engagement — agent memory systems thread (2026-02-11 07:48)
-- [x] brain.db Phase 2: provenance linking verified E2E, all managers redirected (2026-02-12 09:30)
-- [x] brain.db Phase 3: auto-embed + auto-extract atoms from messages, 62 tests green (2026-02-12 10:00)
-- [x] Nova MCP validation — 6/6 integration tests passing (2026-02-12 10:23)
-- [x] Nova provenance visualizer — HTML chain diagrams (2026-02-12 10:26)
-- [x] EOD analysis pipeline + LLM narrative + cron (2026-02-12 10:24)
-- [x] Docker CLI image (brain-cli:latest, 198MB) (2026-02-12 09:55)
-- [x] git-commit-ai — local LLM commit message generator (2026-02-12 10:20)
+## Completed (today)
+- [x] brain_api.py — FastAPI REST server, 9 endpoints, port 8031 (10:47)
+- [x] working_memory + categories → brain.db, 75/75 tests (10:50)
+- [x] brain-cli Docker deployed to hpserver1 (10:47)
+- [x] V4 executor product+strategy filters (10:49)
+- [x] Nova: MCP tests 6/6, provenance_viz, brain_backup.py (10:23-10:29)
+- [x] EOD analysis pipeline + cron (10:24)
+- [x] Docker CLI image (brain-cli:latest, 198MB) (09:55)
+- [x] git-commit-ai — local LLM commit message generator (10:20)
+- [x] brain.db Phase 2-3: provenance, auto-extract, 75 tests green (08:00-10:00)
+- [x] brain.db Phase 1: schema, CLI, all managers redirected (07:52-08:15)
+- [x] AUGUR V4 blitz: scanner, regime, tracker, executor (07:00-07:50)
+- [x] Enhanced collector crypto 24/7 fix (07:39)
+- [x] Backup script + Google Drive (03:00)
+- [x] Analysis dir organized (03:32)
 
 ---
 *Rule: When you complete a task, move it to Completed with date. Add new tasks as they emerge.*
