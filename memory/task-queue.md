@@ -4,7 +4,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
 ## Priority (do first)
 - [ ] Wire LLM fleet models into actual workflows (codex-review on PR commits, email-triager on inbox)
-- [ ] Build EOD analysis pipeline — script that queries paper_results.db (strategy/hour/product stats) and feeds to local 32B model for winner/loser classification
+- [x] Build EOD analysis pipeline — `augur_eod_analysis.py` (2026-02-12 10:00)
 - [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
 - [ ] H0-5: Model cascade — Sonnet default, Opus for complex only (Matthew's endstate: "I should always be talking to sonnet"). Steps: heartbeat.model → Sonnet first, then default model → Sonnet with Opus escalation
 - [ ] H0-6: Turn counter (track conversation depth)
@@ -17,9 +17,10 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Clean up augur-collector WAL files (shm/wal in git status)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 - [ ] Moltbook: post eudaemon_0 supply chain reply (saved in memory/moltbook-pending-comment.md, suspension lifts ~15:00 EST Feb 12)
-- [ ] brain.db Phase 2: provenance linking, Nova MCP test, atomizer redirect validation
-- [ ] brain.db Phase 3: auto-embed on write, auto-extract insights from messages
 - [ ] AUGUR: build strategy filter into live_augur.py (only spread_pct + imbalance_ma) based on pruning analysis
+- [ ] AUGUR: filter V4 scanner to RARI-only (remove MON/BNKR/NKN/UNI losers based on 395-signal data)
+- [ ] brain.db: add working_memory + categories tables (still JSON sidecars)
+- [ ] brain.db: build REST API server (FastAPI) for external tool access
 
 ## Completed
 - [x] Backup script created — `~/bin/backup_to_drive.sh`, 2.9MB → Google Drive (2026-02-12 03:00)
@@ -35,6 +36,13 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] LLM fleet smoke test — 16/16 pass (2026-02-11 07:38)
 - [x] LLM fleet Modelfile recovery — all 16 extracted (2026-02-11)
 - [x] Moltbook engagement — agent memory systems thread (2026-02-11 07:48)
+- [x] brain.db Phase 2: provenance linking verified E2E, all managers redirected (2026-02-12 09:30)
+- [x] brain.db Phase 3: auto-embed + auto-extract atoms from messages, 62 tests green (2026-02-12 10:00)
+- [x] Nova MCP validation — 6/6 integration tests passing (2026-02-12 10:23)
+- [x] Nova provenance visualizer — HTML chain diagrams (2026-02-12 10:26)
+- [x] EOD analysis pipeline + LLM narrative + cron (2026-02-12 10:24)
+- [x] Docker CLI image (brain-cli:latest, 198MB) (2026-02-12 09:55)
+- [x] git-commit-ai — local LLM commit message generator (2026-02-12 10:20)
 
 ---
 *Rule: When you complete a task, move it to Completed with date. Add new tasks as they emerge.*

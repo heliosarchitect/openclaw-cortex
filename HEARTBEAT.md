@@ -21,6 +21,14 @@ sessions_list with activeMinutes filter, check for:
 ```
 If found: investigate and log, don't silently pass.
 
+## 📬 SYNAPSE Check (every heartbeat)
+Check brain.db inbox for unread messages from Nova/agents:
+```
+~/bin/brain inbox --agent helios
+```
+If new messages: read, acknowledge, act on any action items.
+If empty: skip silently.
+
 ## ⚡ What I Don't Poll
 - ~~CPU temp~~ (only at 100% load)
 - ~~Same emails repeatedly~~ (check once per 30min max, stop if unchanged)
