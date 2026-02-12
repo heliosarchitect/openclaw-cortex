@@ -6,7 +6,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Wire LLM fleet models into actual workflows (codex-review on PR commits, email-triager on inbox)
 - [ ] Build EOD analysis pipeline — script that queries paper_results.db (strategy/hour/product stats) and feeds to local 32B model for winner/loser classification
 - [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
-- [ ] H0-5: Budget tuning (reduce token spend per turn)
+- [ ] H0-5: Model cascade — Sonnet default, Opus for complex only (Matthew's endstate: "I should always be talking to sonnet"). Steps: heartbeat.model → Sonnet first, then default model → Sonnet with Opus escalation
 - [ ] H0-6: Turn counter (track conversation depth)
 
 ## Available (grab any)
