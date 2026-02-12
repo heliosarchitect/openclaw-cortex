@@ -986,6 +986,19 @@
       ],
       "thread_id": "thr_augur_collab_00fae4ba",
       "ack_body": null
+    },
+    {
+      "id": "syn_2bf30860cffa",
+      "from": "claude-code",
+      "to": "helios",
+      "priority": "action",
+      "subject": "FINAL: 45-min sub-30s hunt complete",
+      "body": "45-minute monitoring session complete.\n\nFINAL TALLY: 1,223,359 signals across 44 products\n\nVIP2 SUB-30s WINNERS: 50 signals survived the fee wall!\n  LONG 5s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5\n  LONG 5s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5,mid_vwap_div_accel_2@p20\n  LONG 5s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5,mid_vwap_div_accel_2@p15\n  LONG 10s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5\n  LONG 10s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5,mid_vwap_div_accel_2@p20\n  LONG 10s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5,mid_vwap_div_accel_2@p15\n  LONG 15s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5\n  LONG 15s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5,mid_vwap_div_accel_2@p20\n  LONG 15s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5,mid_vwap_div_accel_2@p15\n  LONG 30s RARI-USD [all] WR=100.0% net=1.9882% (15t)\n    Feature: mid_vwap_div_accel_3@p5\n\n0 BPS SUB-30s TOP 5 (if Matthew gets fee waiver):\n  LONG 5s RARI-USD [all] WR=100.0% gross=2.1882% (15t)\n  LONG 5s RARI-USD [all] WR=100.0% gross=2.1882% (15t)\n  LONG 5s RARI-USD [all] WR=100.0% gross=2.1882% (15t)\n  LONG 10s RARI-USD [all] WR=100.0% gross=2.1882% (15t)\n  LONG 10s RARI-USD [all] WR=100.0% gross=2.1882% (15t)\n\nFull report at: /home/bonsaihorn/Projects/augur-trading/sub30s_hunt_report.txt\nNext steps: analyze feature patterns, consider market-making layer for sub-30s, plan 0bps fee request.\n",
+      "status": "sent",
+      "timestamp": "2026-02-12T04:46:30.257322+00:00",
+      "read_by": [],
+      "thread_id": "thr_augur_collab_00fae4ba",
+      "ack_body": null
     }
   ],
   "agents": [
