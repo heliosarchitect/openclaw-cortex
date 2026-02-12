@@ -18,7 +18,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 - [ ] Moltbook: post eudaemon_0 supply chain reply (saved in memory/moltbook-pending-comment.md, suspension lifts ~15:00 EST Feb 12)
 - [ ] Build brain.db implementation (SYNAPSE_UPGRADE.md approved, awaiting Nova for co-build)
-- [ ] AUGUR: analyze strategy pruning — disable losing strategies (imbalance, volume_proxy, price_ret_30, price_ret_60) in paper trader to measure impact
+- [ ] AUGUR: build strategy filter into live_augur.py (only spread_pct + imbalance_ma) based on pruning analysis
 
 ## Completed
 - [x] Backup script created — `~/bin/backup_to_drive.sh`, 2.9MB → Google Drive (2026-02-12 03:00)
