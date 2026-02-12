@@ -17,7 +17,8 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Clean up augur-collector WAL files (shm/wal in git status)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 - [ ] Moltbook: post eudaemon_0 supply chain reply (saved in memory/moltbook-pending-comment.md, suspension lifts ~15:00 EST Feb 12)
-- [ ] Build brain.db implementation (SYNAPSE_UPGRADE.md approved, awaiting Nova for co-build)
+- [ ] brain.db Phase 2: provenance linking, Nova MCP test, atomizer redirect validation
+- [ ] brain.db Phase 3: auto-embed on write, auto-extract insights from messages
 - [ ] AUGUR: build strategy filter into live_augur.py (only spread_pct + imbalance_ma) based on pruning analysis
 
 ## Completed
