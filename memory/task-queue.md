@@ -3,15 +3,15 @@
 When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
 ## Priority (do first)
-- [ ] Wire LLM fleet models into actual workflows (codex-review on PR commits, email-triager on inbox)
-- [ ] H0-5: Model cascade — Sonnet default, Opus for complex only
-- [ ] H0-6: Turn counter (track conversation depth)
+- [x] Wire LLM fleet models into actual workflows — codex-review + email-triager in ~/bin/ (18:35)
+- [ ] H0-5: Token budget tuning — analysis in progress (Nova)
+- [x] H0-6: Turn counter — ~/bin/turn-counter, 9/9 tests, docs written (18:32)
 - [x] brain.db: create systemd service for brain_api.py (port 8031) (11:07)
 - [x] brain.db: concurrent write stress test — 6/6 green, 222 ops/sec (11:10)
 
 ## Available (grab any)
-- [ ] Create cron output validator script
-- [ ] Ansible: finish fleet hardening audit
+- [ ] Create cron output validator script — in progress (Nova)
+- [ ] Ansible: finish fleet hardening audit — in progress (Nova)
 - [ ] LCARS dashboard: add LLM fleet status panel
 - [ ] Write proper README for llm-fleet repo
 - [ ] Clean up augur-collector WAL files (shm/wal in git status)

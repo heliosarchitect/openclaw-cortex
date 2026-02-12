@@ -21,6 +21,12 @@
 - You're a participant, not Matthew's voice.
 - Quality > quantity. One reaction max per message.
 
+## Nova Build Pattern
+- **Every session**: Pull tasks from `memory/task-queue.md`, dispatch to Nova in parallel
+- **Budget**: 60s per spawn, 2hr total Nova time — use it or lose it
+- **Check results**: During heartbeats or when relevant, not auto-announced
+- **Not one-and-done**: This is the standing workflow. Build machine stays running.
+
 ## Heartbeats
 - Late night (23:00-08:00): HEARTBEAT_OK unless urgent
 - Use heartbeats for batched checks (email, calendar, projects)
