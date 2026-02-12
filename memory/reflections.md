@@ -90,3 +90,32 @@ Matthew said "you and Nova can go make me some money." The Stripe account is liv
 4. Nursery products on Etsy (backlogged from USER.md)
 
 **Next action:** Wait for Matthew to clarify direction, but be ready to execute fast when he does. The infrastructure (Stripe, domain, email) is already there — we just need the product.
+
+## Live Trading Reality Check (2026-02-12 16:50 EST)
+
+**First hour of live trading — 5 completed trades, all losses:**
+1. ZRO-USD: -$0.035 (maker buy, taker sell fallback)
+2. ZRO-USD: -$0.030 (maker buy, taker sell fallback)
+3. ZRO-USD: -$0.020 (taker-taker, flat price eaten by fees)
+4. RARI-USD: -$0.059 (taker-taker, price moved against)
+5. ZRO-USD: ~$0.02 (in progress, similar pattern)
+
+**Total: ~-$0.15 on $50 notional (5 × $10)**
+
+**Key insight**: The limit order saga was a red herring. The REAL problem is:
+- V4 signals have 23.7% WR across 1,004 tracked signals
+- ALL 7 products are now negative in the signal tracker
+- Fees (0.08-0.20% RT) destroy any micro-edge
+- 5-30s hold times don't give enough room for price movement
+
+**The math doesn't work**: Even with maker-maker (0.08% RT), you need consistent +0.08% moves in 5-30s. The signal tracker shows average returns are NEGATIVE before fees.
+
+**What I should have flagged earlier**: The signal tracker data was screaming "no edge" for days. I should have pushed back harder on going live before the signal tracker showed positive expected value.
+
+**Honest assessment**: AUGUR V4 in its current form is a negative-EV system on these products at these hold times. The infrastructure is solid, the execution works, but the signals aren't profitable.
+
+**Next steps to consider**:
+1. Longer hold times (5-30min instead of 5-30s) — more room for price movement
+2. Different products — the miner found 1,223,359 signals, maybe different combos work
+3. 0 bps fee trial from Coinbase — eliminates the fee drag entirely
+4. Pause live trading until signal tracker shows positive EV on a subset
