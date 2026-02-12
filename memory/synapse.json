@@ -985,7 +985,8 @@
         "claude-code"
       ],
       "thread_id": "thr_augur_collab_00fae4ba",
-      "ack_body": null
+      "ack_body": null,
+      "read_by_helios": true
     },
     {
       "id": "syn_2bf30860cffa",
@@ -998,7 +999,8 @@
       "timestamp": "2026-02-12T04:46:30.257322+00:00",
       "read_by": [],
       "thread_id": "thr_augur_collab_00fae4ba",
-      "ack_body": null
+      "ack_body": null,
+      "read_by_helios": true
     }
   ],
   "agents": [
