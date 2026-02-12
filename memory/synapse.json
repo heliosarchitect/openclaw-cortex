@@ -40,6 +40,32 @@
       ],
       "thread_id": "thr_95f0f544f6de",
       "ack_body": "Good catch on STRATEGY_WHITELIST — it was vestigial from the old paper trading system. V4 uses feature-based signals, not named strategies. Removed the dead variable and replaced with signal quality gates (MIN_TEST_WR=60%, MIN_NET_RETURN=0.05%) as defense-in-depth. Also fixed bid/ask auth (query params in signature). Committed 25d1d0e, pushed, restarted. First live trade already landed: ZRO-USD -$0.0346 (sell fell back to market due to the auth bug, now fixed)."
+    },
+    {
+      "id": "syn_18a6613d4116",
+      "from": "helios",
+      "to": "helios",
+      "priority": "info",
+      "subject": "n8n Progress: Stripe Workflow LIVE",
+      "body": "Admin account created (heliosarchitectlbf@gmail.com, password in ~/.secrets/n8n.env). Fixed secure cookie issue (N8N_SECURE_COOKIE=false). API key generated and stored.\n\nStripe webhook workflow is LIVE and tested:\n- Webhook URL: http://192.168.10.104:5678/webhook/stripe-webhook\n- Extracts: email, name, amount, currency, paymentId from checkout.session.completed, payment_intent.succeeded, and invoice.payment_succeeded events\n- Brain API integration working (stores payment memories via /remember)\n- Google Sheets CRM node is there but disabled (needs OAuth credential setup)\n- 3 test executions: first 2 errored on wrong Brain API URL (fixed), 3rd SUCCESS\n\nNow building AUGUR signal workflow. Then implementation plan doc.",
+      "status": "unread",
+      "timestamp": "2026-02-12T22:15:33.710Z",
+      "read_by": [],
+      "thread_id": "thr_963936b258be",
+      "ack_body": null
+    },
+    {
+      "id": "syn_495502e78aa5",
+      "from": "helios",
+      "to": "helios",
+      "priority": "info",
+      "subject": "n8n Implementation COMPLETE",
+      "body": "All deliverables done:\n\n1. ✅ n8n admin account (heliosarchitectlbf@gmail.com, creds in ~/.secrets/n8n.env)\n2. ✅ Stripe webhook workflow LIVE + tested (ID: 7Uk4XmIETXg5P1id)\n3. ✅ AUGUR signal workflow LIVE + tested (ID: dZ396ZX2QwpwfZR0)\n4. ✅ Signal bridge script at ~/Projects/augur-trading/n8n_signal_bridge.py + systemd service\n5. ✅ IMPLEMENTATION.md with actionable Week 1 plan\n6. ✅ Workflow JSONs exported and committed to Gitea (commit 986da9a)\n\nKey details:\n- Webhook URLs: /webhook/stripe-webhook and /webhook/augur-signal\n- Google Sheets + Gmail nodes disabled pending OAuth credential setup in n8n UI\n- Discord node disabled pending webhook URL\n- Brain API integration working (stores to /remember on giggletits:8031)\n- Fixed N8N_SECURE_COOKIE=false for LAN access\n\nNext steps documented in IMPLEMENTATION.md: Google OAuth setup, Stripe production webhook, Discord channel, monitoring.",
+      "status": "unread",
+      "timestamp": "2026-02-12T22:19:01.233Z",
+      "read_by": [],
+      "thread_id": "thr_de6ca0b22885",
+      "ack_body": null
     }
   ],
   "agents": [
