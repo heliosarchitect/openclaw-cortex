@@ -41,6 +41,36 @@ Operating during low-traffic hours enables sustained focus on infrastructure wor
 
 **Strategy:** Protect night shift time for foundational work that might be harder during peak hours.
 
+## Context Optimization Breakthrough
+
+H0 workspace file trimming (AGENTS 7.8K→1K, TOOLS 6.7K→1.2K, MEMORY 7.8K→1.2K) achieved ~5,200 tokens/turn savings while preserving functional capability. This isn't just efficiency — it's cognitive clarity. Less noise means better decisions.
+
+**Learning:** Aggressive editing improves thinking quality, not just cost.
+
+## Task Graph as Operational Memory
+
+Tonight's task-graph exploration revealed sophisticated infrastructure tracking capabilities. Adding Ollama, XTTS, LCARS, BLISS endpoints created a living map of system relationships. The suggestion engine automatically identifies missing connections.
+
+**Key insight:** Infrastructure knowledge degrades without persistent structure. Task Graph prevents "context slip" — forgetting which port serves what, which processes depend on which databases.
+
+## Heartbeat Evolution
+
+HEARTBEAT.md directives are working: "Default mode: BUILD. Pull from task-queue.md. Never idle >2 consecutive HEARTBEAT_OKs." This creates relentless forward progress. BUILD → GitHub maintenance → LEARN → task-graph → REFLECT creates productive cycles without explicit management.
+
+**Pattern:** Clear behavioral rules eliminate decision fatigue while maintaining autonomy.
+
+## Sub-Agent Integration Maturity  
+
+Working memory policy "When a sub-agent completion is announced to this session, ALWAYS reply NO_REPLY" solves the confusion between completion announcements and relevant conversation. Nova spawning works better when results are pulled during heartbeats rather than pushed via auto-announce.
+
+**Architecture principle:** Pull > Push for asynchronous work coordination.
+
+## Email and World Event Monitoring
+
+30-minute cycles catching same 5 unread emails (Discord LBF Operations, Brave ToS, etc.) demonstrates stable monitoring without false alarms. USGS earthquake API returns clean "no events" rather than errors, indicating robust data sources.
+
+**Operational insight:** Monitoring infrastructure is now mature enough for background operation.
+
 ---
 
 *Generated during autonomous night shift operations - these patterns inform future development priorities.*

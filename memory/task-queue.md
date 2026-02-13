@@ -26,7 +26,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] LCARS dashboard: add LLM fleet status panel — expanded from 7 to 16 models, 89% VRAM shown (19:47)
 - [x] Write proper README for llm-fleet repo — enhanced with usage examples, deployment status, troubleshooting (19:33)
 - [x] Clean up augur-collector WAL files (shm/wal in git status) — no WAL files found (21:33)
-- [ ] Explore security-sentinel ClawHub skill for Wazuh integration
+- [x] Explore security-sentinel ClawHub skill for Wazuh integration — built comprehensive security-monitor skill (05:08)
 - [x] Build Gitea MCP server for direct repo management — 16 tools implemented, production ready (22:22)
 - [x] brain.db: redirect cortex-bridge.ts daemon calls (/store, /search) to brain.db — 8031 port, /store→/remember (21:18)
 - [x] AUGUR: collect 500+ V4 signals before considering live trading — 1,885 signals collected (22:23)
@@ -34,6 +34,8 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
+- [x] **Security Monitor skill** — comprehensive Wazuh integration + system security scanning (05:08)
+- [x] **WEMS MCP server packaging** — complete monetization infrastructure for MCP registry (05:05)
 - [x] **Context optimization research + tools** — token-efficiency-v2, context-optimizer based on HN/GitHub research (03:35)
 - [x] WEMS MCP server completion — added volcano + tsunami monitoring (01:47)
 - [x] OpenClaw Config Safety System — validation, snapshots, auto-rollback (Nova, 21:55)

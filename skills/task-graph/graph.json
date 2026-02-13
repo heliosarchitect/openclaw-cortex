@@ -83,9 +83,26 @@
       "rel": "serves",
       "src": "brain_api",
       "updated": 1770967180
+    },
+    {
+      "attrs": {},
+      "dst": "phi3_mini",
+      "rel": "serves",
+      "src": "ollama_api",
+      "updated": 1770974317
     }
   ],
   "nodes": {
+    "bliss_server": {
+      "attrs": {
+        "alt_port": "8766",
+        "purpose": "BLISS neural optimization",
+        "status": "up",
+        "url": "http://localhost:8765"
+      },
+      "type": "endpoint",
+      "updated": 1770974311
+    },
     "brain_api": {
       "attrs": {
         "path": "/home/bonsaihorn/Projects/brain-db",
@@ -132,6 +149,15 @@
       "type": "env",
       "updated": 1770233622
     },
+    "lcars_dashboard": {
+      "attrs": {
+        "purpose": "LBF monitoring dashboard",
+        "status": "up",
+        "url": "http://localhost:8090"
+      },
+      "type": "endpoint",
+      "updated": 1770974307
+    },
     "live_trader": {
       "attrs": {
         "path": "/home/bonsaihorn/Projects/Chad2930/Chad_Profit_Bot/live_trader_final.py",
@@ -161,6 +187,15 @@
       "type": "endpoint",
       "updated": 1770233622
     },
+    "ollama_api": {
+      "attrs": {
+        "purpose": "Ollama LLM API",
+        "status": "up",
+        "url": "http://localhost:11434"
+      },
+      "type": "endpoint",
+      "updated": 1770974300
+    },
     "oobabooga": {
       "attrs": {
         "path": "/home/bonsaihorn/Projects/text-generation-webui",
@@ -189,6 +224,25 @@
       },
       "type": "db",
       "updated": 1770438165
+    },
+    "paper_augur": {
+      "attrs": {
+        "location": "/home/bonsaihorn/Projects/augur-trading",
+        "purpose": "AUGUR paper trading bot",
+        "status": "running"
+      },
+      "type": "process",
+      "updated": 1770974325
+    },
+    "phi3_mini": {
+      "attrs": {
+        "endpoint": "ollama_api",
+        "family": "phi3",
+        "size": "3.8b",
+        "status": "loaded"
+      },
+      "type": "model",
+      "updated": 1770974315
     },
     "qwen32": {
       "attrs": {
@@ -264,6 +318,15 @@
       },
       "type": "service",
       "updated": 1770967174
+    },
+    "xtts_api": {
+      "attrs": {
+        "purpose": "Elby voice synthesis",
+        "status": "up",
+        "url": "http://localhost:8020"
+      },
+      "type": "endpoint",
+      "updated": 1770974304
     }
   }
 }
