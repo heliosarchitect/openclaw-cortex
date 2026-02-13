@@ -1,4 +1,11 @@
 # Reflections
+<!-- AI.TOC: Reflections — Read lines 1-20 for navigation.
+  §1 2026-02-12 14:05 — CI/CD: When to Stop D   → lines 3-21
+  §2 2026-02-12 11:52 — V4 Signal Tracker Tru   → lines 22-48
+  §3 brain.db Sprint Retrospective (2026-02-1   → lines 49-93
+  §4 Live Trading Reality Check (2026-02-12 1   → lines 94-122
+  Total: 122 lines | Sections: 4
+-->
 
 ## 2026-02-12 14:05 — CI/CD: When to Stop Debugging Infra
 

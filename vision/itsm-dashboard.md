@@ -1,4 +1,18 @@
 # ITSM/SLA Dashboard — Vision Document
+<!-- AI.TOC: ITSM/SLA Dashboard — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-67
+  §3 2. Current State                           → lines 68-84
+  §4 3. Target State                            → lines 85-146
+  §5 4. Architecture                            → lines 147-197
+  §6 5. Service Level Targets                   → lines 198-210
+  §7 6. Tasks & Milestones                      → lines 211-238
+  §8 7. Risks & Blockers                        → lines 239-250
+  §9 8. Decision Log                            → lines 251-262
+  §10 9. Configuration Items                     → lines 263-289
+  §11 10. Definition of Done                     → lines 290-309
+  Total: 309 lines | Sections: 11
+-->
 
 > *A single LCARS-themed page showing fleet health, SLA compliance, and service status. Replaces the need for external ITSM tools.*
 

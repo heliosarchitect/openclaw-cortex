@@ -1,4 +1,18 @@
 # Cortex Memory System for OpenClaw
+<!-- AI.TOC: Cortex Memory System for OpenClaw — Read lines 1-20 for navigation.
+  §1 Quick Start                                → lines 7-51
+  §2 Architecture                               → lines 52-63
+  §3 Features                                   → lines 64-82
+  §4 File Structure                             → lines 83-97
+  §5 Usage Examples                             → lines 98-187
+  §6 Security                                   → lines 188-206
+  §7 Maintenance                                → lines 207-231
+  §8 Integration with OpenClaw                  → lines 232-244
+  §9 Lessons Learned                            → lines 245-257
+  §10 Contributing                               → lines 258-268
+  §11 License                                    → lines 269-273
+  Total: 273 lines | Sections: 11
+-->
 
 A hybrid memory architecture combining the best of both worlds:
 - **Cortex-style intelligence:** Temporal awareness, auto-categorization, semantic search

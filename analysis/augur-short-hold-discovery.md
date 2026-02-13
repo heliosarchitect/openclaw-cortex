@@ -1,4 +1,13 @@
 # AUGUR Short-Hold Signal Discovery
+<!-- AI.TOC: AUGUR Short-Hold Signal Discovery — Read lines 1-20 for navigation.
+  §1 Validation Criteria                        → lines 10-16
+  §2 Product Data Summary                       → lines 17-33
+  §3 Taker Fee Results (0.20% RT)               → lines 34-117
+  §4 Maker Fee Results (0.10% RT)               → lines 118-260
+  §5 ⚠️ CRITICAL: Spread Reality Check          → lines 261-292
+  §6 Conclusions & Recommendations              → lines 293-313
+  Total: 313 lines | Sections: 6
+-->
 **Generated:** 2026-02-10 11:55
 **Data:** Feb 7-10 2026 (all available data)
 **Bar size:** 5 seconds

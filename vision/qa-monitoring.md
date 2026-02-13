@@ -1,4 +1,18 @@
 # QA & Monitoring Framework — Vision Document
+<!-- AI.TOC: QA & Monitoring Framework — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-66
+  §3 2. Current State                           → lines 67-87
+  §4 3. Target State                            → lines 88-128
+  §5 4. Architecture                            → lines 129-201
+  §6 5. Service Level Targets                   → lines 202-214
+  §7 6. Tasks & Milestones                      → lines 215-240
+  §8 7. Risks & Blockers                        → lines 241-253
+  §9 8. Decision Log                            → lines 254-265
+  §10 9. Configuration Items                     → lines 266-280
+  §11 10. Definition of Done                     → lines 281-299
+  Total: 299 lines | Sections: 11
+-->
 
 > *Zero manual health checks. Every LBF system has automated tests with green/red status logged to the Enterprise Task Board.*
 

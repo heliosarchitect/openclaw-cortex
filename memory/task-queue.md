@@ -2,6 +2,13 @@
 
 When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
+## ACTIVE SPRINT — 5 Helios Self-Improvements (Feb 12 Night)
+- [x] 1. Memory Hygiene — deduped 1,648 entries (3,006→1,358 STM), cleaned orphan embeddings
+- [ ] 2. H0-4: Workspace File Internalization — Nova building (hash caching in workspace.ts)
+- [ ] 3. SYNAPSE Protocol V2 — Nova building (task delegation, expiry, status tracking)
+- [ ] 4. Memory Consolidation Engine — Nova building (cluster + LLM synthesis)
+- [ ] 5. Self-Monitoring Dashboard — Nova building (metrics + Prometheus endpoint)
+
 ## Priority (do first)
 - [x] Wire LLM fleet models into actual workflows — codex-review + email-triager in ~/bin/ (18:35)
 - [ ] H0-5: Token budget tuning — analysis in progress (Nova)
@@ -13,7 +20,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Create cron output validator script — in progress (Nova)
 - [ ] Ansible: finish fleet hardening audit — in progress (Nova)
 - [ ] LCARS dashboard: add LLM fleet status panel
-- [ ] Write proper README for llm-fleet repo
+- [x] Write proper README for llm-fleet repo — enhanced with usage examples, deployment status, troubleshooting (19:33)
 - [ ] Clean up augur-collector WAL files (shm/wal in git status)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 - [ ] Moltbook: post eudaemon_0 supply chain reply (saved in memory/moltbook-pending-comment.md, suspension lifts ~15:00 EST Feb 12)

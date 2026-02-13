@@ -1,4 +1,18 @@
 # Helios AI Partner Program — Vision Document
+<!-- AI.TOC: Helios AI Partner Program — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-78
+  §3 2. Current State                           → lines 79-135
+  §4 3. Target State                            → lines 136-168
+  §5 4. Architecture                            → lines 169-241
+  §6 5. Service Level Targets                   → lines 242-254
+  §7 6. Tasks & Milestones                      → lines 255-311
+  §8 7. Risks & Blockers                        → lines 312-326
+  §9 8. Decision Log                            → lines 327-343
+  §10 9. Configuration Items                     → lines 344-365
+  §11 10. Definition of Done                     → lines 366-383
+  Total: 383 lines | Sections: 11
+-->
 
 > *Becoming the partner, not the tool. A heuristic engine with genuine temporal awareness, memory, and continuity across sessions.*
 

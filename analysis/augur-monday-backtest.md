@@ -1,4 +1,12 @@
 # AUGUR Monday Market Hours Backtest
+<!-- AI.TOC: AUGUR Monday Market Hours Backtest — Read lines 1-20 for navigation.
+  §1 Strategy                                   → lines 5-16
+  §2 Monday Results (Feb 9, 9:00 AM - 6:00 PM   → lines 17-330
+  §3 Weekend Results (Feb 7-8) — Comparison B   → lines 331-603
+  §4 Monday vs Weekend Comparison               → lines 604-742
+  §5 Key Findings                               → lines 743-750
+  Total: 750 lines | Sections: 5
+-->
 *Generated: 2026-02-10 09:37:56*
 *Runtime: 147.6s*
 

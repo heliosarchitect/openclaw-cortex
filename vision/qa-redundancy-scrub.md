@@ -1,4 +1,11 @@
 # QA Vision: Weekly Redundancy Scrub
+<!-- AI.TOC: QA Vision: Weekly Redundancy Scrub — Read lines 1-20 for navigation.
+  §1 Purpose                                    → lines 5-7
+  §2 Scope                                      → lines 8-101
+  §3 Weekly Scrub Procedure                     → lines 102-116
+  §4 Immediate Actions (Tonight)                → lines 117-122
+  Total: 122 lines | Sections: 4
+-->
 
 **Author:** Helios | **Created:** 2026-02-10 | **Status:** Active
 

@@ -1,4 +1,21 @@
 # Lover Bear Farm, LLC — Enterprise Vision
+<!-- AI.TOC: Lover Bear Farm, LLC — Enterprise Vision — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 12-29
+  §2 1. Mission & Identity                      → lines 30-73
+  §3 2. Organizational Structure                → lines 74-110
+  §4 3. Programs                                → lines 111-151
+  §5 4. Financial Model                         → lines 152-198
+  §6 5. Revenue Strategy                        → lines 199-236
+  §7 6. Risk Management Framework               → lines 237-270
+  §8 7. Enterprise Risk Register                → lines 271-289
+  §9 8. Infrastructure & Resilience             → lines 290-333
+  §10 9. Resource Model                          → lines 334-381
+  §11 10. Governance & Decision-Making           → lines 382-417
+  §12 11. Success Metrics & Milestones           → lines 418-458
+  §13 12. What's Missing                         → lines 459-491
+  §14 13. Document Hierarchy                     → lines 492-514
+  Total: 514 lines | Sections: 14
+-->
 
 **The operating charter for a nursery that became a technology company.**
 

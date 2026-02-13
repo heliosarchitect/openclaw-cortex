@@ -1,4 +1,19 @@
 # LBF Local LLM Fleet — Vision Document
+<!-- AI.TOC: LBF Local LLM Fleet — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 12-26
+  §2 1. Mission                                 → lines 27-52
+  §3 2. Current State — Honest Assessment       → lines 53-95
+  §4 3. Core Insight                            → lines 96-123
+  §5 4. The Fleet — Modelfile Specifications    → lines 124-490
+  §6 5. Architecture                            → lines 491-606
+  §7 6. Resource Model                          → lines 607-665
+  §8 7. Tasks                                   → lines 666-720
+  §9 8. Risks                                   → lines 721-779
+  §10 9. Definition of Done                      → lines 780-810
+  §11 10. Decision Log                           → lines 811-824
+  §12 Appendix A: Quick Reference                → lines 825-882
+  Total: 882 lines | Sections: 12
+-->
 
 **Program:** Local LLM Fleet — Purpose-Built Inference
 **Parent:** LBF (Lover Bear Farm) / Helios Operations

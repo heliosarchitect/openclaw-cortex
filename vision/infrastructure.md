@@ -1,4 +1,18 @@
 # Infrastructure Rationalization — Vision Document
+<!-- AI.TOC: Infrastructure Rationalization — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-67
+  §3 2. Current State                           → lines 68-117
+  §4 3. Target State                            → lines 118-185
+  §5 4. Architecture                            → lines 186-302
+  §6 5. Service Level Targets                   → lines 303-315
+  §7 6. Tasks & Milestones                      → lines 316-356
+  §8 7. Risks & Blockers                        → lines 357-369
+  §9 8. Decision Log                            → lines 370-382
+  §10 9. Configuration Items                     → lines 383-421
+  §11 10. Definition of Done                     → lines 422-441
+  Total: 441 lines | Sections: 11
+-->
 
 > *Distribute workloads across available servers, eliminate single points of failure, and establish proper configuration management across the LBF fleet.*
 

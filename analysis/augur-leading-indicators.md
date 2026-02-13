@@ -1,4 +1,14 @@
 # AUGUR Leading Indicator Analysis
+<!-- AI.TOC: AUGUR Leading Indicator Analysis — Read lines 1-20 for navigation.
+  §1 Executive Summary                          → lines 8-22
+  §2 Baseline (Random Entry)                    → lines 23-37
+  §3 Indicator Results                          → lines 38-132
+  §4 BTC-USD Cross-Validation                   → lines 133-149
+  §5 ❌ The Fee Wall: Why This Signal Is Unpro   → lines 150-171
+  §6 Honest Assessment                          → lines 172-208
+  §7 Recommended Next Steps                     → lines 209-220
+  Total: 220 lines | Sections: 7
+-->
 *Generated: 2026-02-10 08:38 EST*  
 *Data: ~68 hours of ETH-USD and BTC-USD from enhanced_data.db (last 24h analyzed)*  
 *Price range: ETH $1,994 - $2,145 (7.3% range), ~86K orderbook snapshots, 604K trades*

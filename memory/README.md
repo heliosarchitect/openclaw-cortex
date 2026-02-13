@@ -1,4 +1,14 @@
 # Memory System
+<!-- AI.TOC: Memory System — Read lines 1-20 for navigation.
+  §1 Structure                                  → lines 5-18
+  §2 Components                                 → lines 19-59
+  §3 Usage                                      → lines 60-96
+  §4 Implementation Phases                      → lines 97-122
+  §5 Design Principles                          → lines 123-137
+  §6 Comparison to Alternatives                 → lines 138-150
+  §7 Future                                     → lines 151-162
+  Total: 162 lines | Sections: 7
+-->
 
 **Hybrid architecture:** Inspired by Cortex, adapted for OpenClaw simplicity.
 

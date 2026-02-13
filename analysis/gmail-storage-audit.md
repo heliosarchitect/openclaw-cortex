@@ -1,4 +1,13 @@
 # Gmail & Drive Storage Audit — bonsaihorn@gmail.com
+<!-- AI.TOC: Gmail & Drive Storage Audit — bonsaihorn@gmail.com — Read lines 1-20 for navigation.
+  §1 Executive Summary                          → lines 7-21
+  §2 DRIVE AUDIT                                → lines 22-81
+  §3 GMAIL AUDIT                                → lines 82-153
+  §4 Recommended Cleanup Actions (ordered by    → lines 154-170
+  §5 Estimated Total Recoverable Storage        → lines 171-180
+  §6 Key Observations                           → lines 181-191
+  Total: 191 lines | Sections: 6
+-->
 **Date:** 2026-02-09  
 **Status:** READ-ONLY audit. Nothing modified or deleted.
 

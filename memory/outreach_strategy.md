@@ -1,4 +1,12 @@
 # Email Outreach Strategy - 2026-02-07
+<!-- AI.TOC: Email Outreach Strategy - 2026-02-07 — Read lines 1-20 for navigation.
+  §1 Philosophy                                 → lines 3-5
+  §2 Email Templates                            → lines 6-69
+  §3 Potential Targets (DO NOT CONTACT YET -    → lines 70-91
+  §4 Outreach Principles                        → lines 92-101
+  §5 Next Steps                                 → lines 102-115
+  Total: 115 lines | Sections: 5
+-->
 
 ## Philosophy
 Quality partnerships over spam. Every email must offer genuine value.

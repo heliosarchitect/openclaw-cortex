@@ -1,4 +1,12 @@
 # 🔥 AUGUR 4-Hour Blitz Sprint
+<!-- AI.TOC: 🔥 AUGUR 4-Hour Blitz Sprint — Read lines 1-20 for navigation.
+  §1 Mission                                    → lines 6-8
+  §2 Workstreams                                → lines 9-35
+  §3 Success Criteria                           → lines 36-41
+  §4 Success Criteria (Updated)                 → lines 42-48
+  §5 Sprint Log                                 → lines 49-169
+  Total: 169 lines | Sections: 5
+-->
 **Date:** 2026-02-12, 07:00–11:00 EST
 **Agents:** Helios (main) + Nova (sub-agents)
 **Resources:** RTX 5090 (30GB VRAM free), Docker, 16 local LLMs via Ollama, Coinbase API

@@ -1,4 +1,22 @@
 # LBF Enterprise Task Board — Vision Document
+<!-- AI.TOC: LBF Enterprise Task Board — Vision Document — Read lines 1-20 for navigation.
+  §1 1. Purpose & Scope                         → lines 10-40
+  §2 2. Hierarchy Definition                    → lines 41-66
+  §3 3. Programs & Projects — Recommended Str   → lines 67-126
+  §4 4. Data Model                              → lines 127-223
+  §5 5. UI/UX Specification                     → lines 224-342
+  §6 6. API Endpoints                           → lines 343-382
+  §7 7. Tech Stack                              → lines 383-420
+  §8 8. Migration Plan                          → lines 421-559
+  §9 9. What "Done" Looks Like                  → lines 560-592
+  §10 10. Authentication (NEW — v2.1)            → lines 593-627
+  §11 11. Gitea Integration (NEW — v2.1)         → lines 628-688
+  §12 12. Discord Integration & LBF Branding (   → lines 689-726
+  §13 13. Non-Goals (v2.1)                       → lines 727-746
+  §14 Appendix A: Current Codebase Audit         → lines 747-781
+  §15 Appendix B: LCARS Color Reference          → lines 782-806
+  Total: 806 lines | Sections: 15
+-->
 
 **Version:** 2.1  
 **Date:** 2026-02-09  

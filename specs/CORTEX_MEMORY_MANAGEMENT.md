@@ -1,4 +1,11 @@
 # Cortex Memory Management Spec
+<!-- AI.TOC: Cortex Memory Management Spec — Read lines 1-20 for navigation.
+  §1 Current State                              → lines 3-9
+  §2 Proposed Additions                         → lines 10-176
+  §3 Priority Order                             → lines 177-191
+  §4 Implementation Notes                       → lines 192-199
+  Total: 199 lines | Sections: 4
+-->
 
 ## Current State
 - `cortex_create_category` — create new category with keywords

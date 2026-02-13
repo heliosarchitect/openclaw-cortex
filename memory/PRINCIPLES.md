@@ -1,4 +1,15 @@
 # Memory System Principles
+<!-- AI.TOC: Memory System Principles — Read lines 1-20 for navigation.
+  §1 Foundational Axiom                         → lines 3-10
+  §2 Design Principles                          → lines 11-44
+  §3 Memory Schema                              → lines 45-77
+  §4 Validation Rules                           → lines 78-96
+  §5 Examples                                   → lines 97-123
+  §6 Conflict Resolution                        → lines 124-153
+  §7 Implementation                             → lines 154-172
+  §8 Why This Matters                           → lines 173-189
+  Total: 189 lines | Sections: 8
+-->
 
 ## Foundational Axiom
 

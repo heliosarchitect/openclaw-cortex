@@ -1,4 +1,14 @@
 # AUGUR Deep Signal Mining Results
+<!-- AI.TOC: AUGUR Deep Signal Mining Results — Read lines 1-20 for navigation.
+  §1 Executive Summary                          → lines 9-24
+  §2 1. All Products Run (300s hold)            → lines 25-61
+  §3 2. Multi Hold Time Results                 → lines 62-120
+  §4 3. Triple Combination Results              → lines 121-155
+  §5 4. Feature Frequency Analysis              → lines 156-201
+  §6 5. Caveats & Warnings                      → lines 202-227
+  §7 6. Actionable Signals (Conservative Sele   → lines 228-254
+  Total: 254 lines | Sections: 7
+-->
 **Date:** 2026-02-10  
 **Data:** 72.7 hours (~3 days) of enhanced orderbook + trade flow data  
 **Database:** enhanced_data.db (16GB)  

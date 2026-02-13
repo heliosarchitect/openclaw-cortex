@@ -1,4 +1,14 @@
 # AUGUR Spread Distribution Analysis
+<!-- AI.TOC: AUGUR Spread Distribution Analysis — Read lines 1-20 for navigation.
+  §1 Key Question                               → lines 7-9
+  §2 Executive Summary                          → lines 10-45
+  §3 Proposed '2x Average Spread' Gate          → lines 46-72
+  §4 Per-Product Spread Distributions           → lines 73-99
+  §5 Win vs Loss Spread at Entry                → lines 100-126
+  §6 Global Threshold Sweep                     → lines 127-169
+  §7 Recommendations                            → lines 170-197
+  Total: 197 lines | Sections: 7
+-->
 *Generated: 2026-02-11 22:01:45*
 
 **Data**: 20,141,766 orderbook snapshots from enhanced_data.db (2026-02-09 to 2026-02-11)

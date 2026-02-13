@@ -1,4 +1,18 @@
 # Local LLM Fleet — Vision Document
+<!-- AI.TOC: Local LLM Fleet — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-76
+  §3 2. Current State                           → lines 77-117
+  §4 3. Target State                            → lines 118-166
+  §5 4. Architecture                            → lines 167-247
+  §6 5. Service Level Targets                   → lines 248-278
+  §7 6. Tasks & Milestones                      → lines 279-307
+  §8 7. Risks & Blockers                        → lines 308-322
+  §9 8. Decision Log                            → lines 323-341
+  §10 9. Configuration Items                     → lines 342-369
+  §11 10. Definition of Done                     → lines 370-401
+  Total: 401 lines | Sections: 11
+-->
 
 > *A concurrent fleet of specialist AI agents running as GPU daemons — always on, always watching, zero API cost.*
 

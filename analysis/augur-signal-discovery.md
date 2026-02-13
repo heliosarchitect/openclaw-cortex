@@ -1,4 +1,15 @@
 # AUGUR Signal Discovery - Exhaustive Search Results
+<!-- AI.TOC: AUGUR Signal Discovery - Exhaustive Search Results — Read lines 1-20 for navigation.
+  §1 0. Price Context (Full Period)             → lines 10-18
+  §2 1. Base Rates (Random Entry)               → lines 19-31
+  §3 2. Top 20 Validated Signals (Train+Test    → lines 32-56
+  §4 3. Liquid Market Signals                   → lines 57-60
+  §5 4. Cross-Product Signal Stability          → lines 61-80
+  §6 5. Best Signal Per Product                 → lines 81-130
+  §7 6. Indicator Definitions                   → lines 131-166
+  §8 7. Summary & Recommendations               → lines 167-208
+  Total: 208 lines | Sections: 8
+-->
 
 Generated: 2026-02-10 16:04 UTC
 

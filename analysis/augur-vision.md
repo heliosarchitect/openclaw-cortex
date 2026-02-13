@@ -1,4 +1,19 @@
 # AUGUR Program Vision
+<!-- AI.TOC: AUGUR Program Vision — Read lines 1-20 for navigation.
+  §1 1. Mission                                 → lines 11-24
+  §2 2. Current State — Honest Assessment       → lines 25-62
+  §3 3. Architecture                            → lines 63-104
+  §4 4. Project Details                         → lines 105-266
+  §5 5. The Discovery Engine — The Big Idea     → lines 267-351
+  §6 6. Risks & Mitigations                     → lines 352-403
+  §7 7. Resource Model                          → lines 404-434
+  §8 8. Decision Log                            → lines 435-455
+  §9 9. Metrics — What Success Looks Like       → lines 456-490
+  §10 10. What "Live" Looks Like                 → lines 491-537
+  §11 11. The Path From Here                     → lines 538-565
+  §12 Appendix: Key File Locations               → lines 566-583
+  Total: 583 lines | Sections: 12
+-->
 
 **Program:** AUGUR — Algorithmic Trading Platform
 **Parent:** LBF (Lover Bear Farm)

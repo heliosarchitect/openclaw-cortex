@@ -1,4 +1,18 @@
 # AUGUR Phase 0 — First Monday Performance Evaluation
+<!-- AI.TOC: AUGUR Phase 0 — First Monday Performance Evaluation — Read lines 1-20 for navigation.
+  §1 📋 EXECUTIVE SUMMARY (Signal-ready)         → lines 8-28
+  §2 1. Overall Performance Summary             → lines 29-71
+  §3 2. Hourly Performance Deep Dive (EST)      → lines 72-139
+  §4 3. Pair Performance                        → lines 140-187
+  §5 4. Pattern Performance                     → lines 188-261
+  §6 5. Direction Analysis                      → lines 262-290
+  §7 6. Regime Halt Analysis                    → lines 291-324
+  §8 7. Monday Morning Analysis                 → lines 325-336
+  §9 8. Recommendations                         → lines 337-441
+  §10 Appendix A: Phase 0 Elapsed Hour Perform   → lines 442-455
+  §11 Appendix B: Full Pair Performance Table    → lines 456-463
+  Total: 463 lines | Sections: 11
+-->
 **Date:** Monday, February 9, 2026 08:42 EST  
 **Period:** Feb 7 18:03 → Feb 9 04:54 EST (~35 hours total, ~6 hours Phase 0)  
 **Analyst:** Helios (Sub-agent: augur-analyst)

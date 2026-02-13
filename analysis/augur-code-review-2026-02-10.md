@@ -1,4 +1,11 @@
 # AUGUR Code Review — 2026-02-10
+<!-- AI.TOC: AUGUR Code Review — 2026-02-10 — Read lines 1-20 for navigation.
+  §1 Part 1: paper_augur.py Bug Fixes           → lines 9-103
+  §2 Part 2: live_augur.py Review               → lines 104-230
+  §3 Part 3: Systemic Issues                    → lines 231-258
+  §4 Summary                                    → lines 259-283
+  Total: 283 lines | Sections: 4
+-->
 
 **Scope:** 4 bug fixes in `paper_augur.py` + new `live_augur.py` module  
 **Reviewer:** Helios (sub-agent)  

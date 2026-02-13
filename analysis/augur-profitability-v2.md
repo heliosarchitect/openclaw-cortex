@@ -1,4 +1,11 @@
 # AUGUR Profitability Reanalysis v2
+<!-- AI.TOC: AUGUR Profitability Reanalysis v2 — Read lines 1-20 for navigation.
+  §1 Executive Summary                          → lines 10-34
+  §2 ETH-USD                                    → lines 35-376
+  §3 BTC-USD                                    → lines 377-702
+  §4 Final Recommendations                      → lines 703-767
+  Total: 767 lines | Sections: 4
+-->
 *Generated: 2026-02-10 08:54 EST*
 *Fee structure: Taker 0.10%/side (0.20% RT) | Maker 0.05%/side (0.10% RT)*
 *Previous report used 0.25%/side (0.50% RT) — was 2.5× too high*

@@ -1,4 +1,14 @@
 # [System/Feature] — QA Specification
+<!-- AI.TOC: [System/Feature] — QA Specification — Read lines 1-20 for navigation.
+  §1 1. Test Inventory                          → lines 17-24
+  §2 2. Results Schema                          → lines 25-53
+  §3 3. Escalation Matrix                       → lines 54-65
+  §4 4. Alerting Configuration                  → lines 66-73
+  §5 5. Dependencies                            → lines 74-81
+  §6 6. Maintenance                             → lines 82-89
+  §7 7. History & Trends                        → lines 90-100
+  Total: 100 lines | Sections: 7
+-->
 
 > *One-line: what is being tested and why.*
 

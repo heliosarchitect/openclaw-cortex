@@ -1,4 +1,21 @@
 # LBF Tax Write-Off Research: API Costs, Software, Hardware & Infrastructure
+<!-- AI.TOC: LBF Tax Write-Off Research: API Costs, Software, Hardware & Infrastructure — Read lines 1-20 for navigation.
+  §1 TL;DR — What Matthew Should Track          → lines 10-26
+  §2 1. IRS Section 162: The Foundation         → lines 27-42
+  §3 2. Software, SaaS & API Costs              → lines 43-70
+  §4 3. Hardware Depreciation                   → lines 71-106
+  §5 4. Home Office Deduction                   → lines 107-131
+  §6 5. Internet & Utilities (Partial Busines   → lines 132-149
+  §7 6. Domain Registration & Hosting           → lines 150-166
+  §8 7. Sole Proprietor vs LLC (Single-Member   → lines 167-184
+  §9 8. Virginia-Specific Considerations        → lines 185-210
+  §10 9. Documentation Requirements              → lines 211-235
+  §11 10. Recommended Tracking Approach          → lines 236-260
+  §12 11. Audit Red Flags & Risk Mitigation      → lines 261-281
+  §13 12. Specific LBF Deduction Estimate (Ann   → lines 282-302
+  §14 Key Takeaways                              → lines 303-316
+  Total: 316 lines | Sections: 14
+-->
 
 **Prepared:** 2026-02-10  
 **For:** Helios Architect LBF (Virginia-registered LLC)  

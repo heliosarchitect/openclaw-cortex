@@ -1,4 +1,11 @@
 # Pattern Audit — 2026-02-11
+<!-- AI.TOC: Pattern Audit — 2026-02-11 — Read lines 1-20 for navigation.
+  §1 Top 3 Failure Modes                        → lines 8-52
+  §2 Skill Gaps                                 → lines 53-74
+  §3 Memory Hygiene Results                     → lines 75-91
+  §4 SOUL.md Assessment                         → lines 92-103
+  Total: 103 lines | Sections: 4
+-->
 
 **Session:** 4:00 AM Self-Improvement  
 **Method:** Cortex STM scan (meta, learning, relationships), daily log review, reflections review

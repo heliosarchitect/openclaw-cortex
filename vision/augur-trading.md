@@ -1,4 +1,16 @@
 # AUGUR — Autonomous Trading Intelligence
+<!-- AI.TOC: AUGUR — Autonomous Trading Intelligence — Read lines 1-20 for navigation.
+  §1 Architecture Overview (V4.0 - Post-Migra   → lines 11-107
+  §2 Database Architecture V4.0 (Consolidated   → lines 108-132
+  §3 Service Architecture (systemd --user)      → lines 133-144
+  §4 Key Configuration Changes (V4.0)           → lines 145-167
+  §5 Proven Performance Insights                → lines 168-189
+  §6 Current Status (2026-02-10 21:20)          → lines 190-210
+  §7 The Deeper Purpose                         → lines 211-227
+  §8 Next Phase Priorities                      → lines 228-237
+  §9 Files & Locations                          → lines 238-262
+  Total: 262 lines | Sections: 9
+-->
 
 *"Find the needle in a haystack, in an Amazon warehouse full of haystacks."*
 

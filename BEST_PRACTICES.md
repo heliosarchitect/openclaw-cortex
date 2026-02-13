@@ -10,8 +10,9 @@
   §8 Security            → lines 287-315
   §9 Infrastructure      → lines 317-350
   §10 Sprint Process     → lines 352-385
+  §11 Issue Tracking     → lines 330-380  (Gitea CLI, labels, repos, rules)
+  AI.LIBRARY: AI_LIBRARY.md — master document index (152 docs)
   Full audit: analysis/context-injection-audit.md
-  Vision docs: HELIOS_VISION.md, vision/helios-program.md
 -->
 
 ---
@@ -321,3 +322,44 @@ bash -n script.sh  # syntax check
 - ❌ Completing tasks without cortex storage
 - ❌ Not checking Nova results before marking done
 - ❌ Skipping tests "because it's simple"
+- ❌ Fixing bugs without filing a Gitea issue first
+
+---
+
+## §11 Issue Tracking (Gitea)
+
+All bugs, features, and research items are tracked in Gitea (https://gitea.fleet.wood).
+
+### CLI Tool
+```bash
+~/bin/gitea-issue create <owner/repo> <title> [-b body] [-l labels]
+~/bin/gitea-issue list <owner/repo> [--state open|closed]
+~/bin/gitea-issue close <owner/repo> <number> [-c comment]
+~/bin/gitea-issue comment <owner/repo> <number> <body>
+~/bin/gitea-issue labels <owner/repo>
+```
+
+### Standard Labels (all repos)
+| Label | Color | Meaning |
+|-------|-------|---------|
+| `P0` | 🔴 red | Critical — fix now |
+| `P1` | 🟠 orange | High — fix this sprint |
+| `P2` | 🟡 yellow | Medium — scheduled |
+| `bug` | 🔴 red | Something broken |
+| `feature` | 🔵 blue | New functionality |
+| `research` | 🟣 purple | Investigation needed |
+| `ops` | 🟤 peach | Infrastructure/operations |
+
+### Key Repos
+- `Helios/augur-trading` — Trading engine, signals, live/paper
+- `Helios/brain-db` — Unified memory (SYNAPSE + Cortex)
+- `Helios/cortex` — Memory system, self-improvement
+- `Helios/llm-fleet` — Local LLM models and routing
+- `loverbearfarm/fleetwood-core` — Infrastructure stack
+
+### Rules
+1. **File before fix** — Every bug gets an issue BEFORE you start fixing
+2. **Close with evidence** — Issues closed with a comment showing the fix/result
+3. **Mine memory** — Periodically scan Cortex STM for unfiled issues
+4. **Link issues** — Reference related issues in descriptions ("Refs: #1")
+5. **Definition of Done** includes issue closed in Gitea
