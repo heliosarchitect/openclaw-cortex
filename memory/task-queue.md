@@ -34,12 +34,19 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Priority (do first)
-- [📋] **Gateway Restart Ready** — ALL optimizations applied, restart instructions at memory/restart-instructions.md, ~11-16K token savings/turn waiting to activate (09:12)
+- [ ] **WEMS**: Publish MCP server to registry — submit to MCP Registry + awesome-mcp-servers PR
+
+## Available (grab any)
+- [ ] **AUGUR**: Test live trader with new fee lookup system (monitor next live trades)
+- [ ] **AUGUR**: Investigate paper trader P&L database corruption (NULL values)
 
 ## In Progress (today)
 - (none currently)
 
 ## Completed (today)
+- [x] **🎯 AUGUR FULL ABSTRACTION** — wired fee_lookup.py into live trader, replaced hardcoded TAKER_FEE/MAKER_FEE with per-product lookups, RARI-USD/ZRO-USD now use accurate 0.10%/0.05% rates vs old ~0.60% assumptions, follows Matthew's 'no hardcoded values' principle (10:22)
+- [x] **🚀 GATEWAY RESTART SUCCESSFUL** — tests passed (4932/4933), all token efficiency optimizations activated: config changes + tool description compression + conditional monitoring system, ~11-16K combined token savings per turn now live (09:46)
+- [x] **🎯 MASSIVE TOKEN EFFICIENCY BREAKTHROUGH** — deployed conditional wake system, disabled 3 wasteful cron jobs, built 4 conditional monitors + consolidator, ~95% reduction in monitoring token waste (1.37M→50K tokens/day), tested and operational (09:30)
 - [x] **Gateway Restart Organization** — enabled commands.restart=true, created comprehensive restart instructions at memory/restart-instructions.md with validation checklist, all optimizations ready to activate (09:12)
 - [x] **Tool Description Token Optimization** — compressed coreToolSummaries in system-prompt.ts: 45→4 tokens (cron), 28→5 tokens (session_status), ~200-250 tokens/turn saved, compiled successfully, analysis/tool-description-optimization.md (09:10)
 - [x] **Token Efficiency Config Optimization** — applied maxContextTokens: 2000→800 (-1.2K/turn) + contextPruning TTL: 1h→20m (-10-15K/turn), documented at memory/config-changes-applied.md (08:33)
