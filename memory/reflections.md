@@ -1,3 +1,52 @@
+# Night Shift Reflections - 2026-02-13 07:47
+
+## Heartbeat Efficiency Architecture Convergence (07:30-07:47)
+
+### The n8n Revelation
+
+Matthew's "Don't forget about n8n" comment crystallized the full architectural picture. n8n isn't just a business automation tool — it's the event-driven nervous system that can replace polling-based heartbeats entirely.
+
+**Architecture insight:** Current heartbeat every 30 minutes = expensive "are we there yet?" The correct pattern is event bus (n8n) → triggers → wake OpenClaw only when action needed.
+
+**Economic validation:** Nova's analysis showed 82% heartbeat waste rate ($1.71/day pure burn). n8n workflows polling email/world events separately means I only wake for real work, not status checks.
+
+**Infrastructure synergy:** n8n already running on :5678, BC/DR workflows already exist. This isn't new infrastructure — it's completing an existing system's intended purpose.
+
+### H0-7 Systematic Implementation Plan
+
+Nova delivered comprehensive 3-stage migration plan with real data:
+- **Stage 1:** Cron migration (30% savings, $19/month)  
+- **Stage 2:** Frequency + token optimization (63% savings, $46/month)
+- **Stage 3:** n8n event-driven (71% savings, $54/month)
+
+**Execution insight:** Each stage exceeds Matthew's 5-50% target independently. Stage 1 is pure win with minimal risk. This enables iterative deployment with early validation.
+
+**Metrics discipline:** 258 HEARTBEAT_OK vs 63 productive triggers = quantified waste. Real session data defeats speculation about "how much do heartbeats actually cost."
+
+### Event-Driven vs Polling Paradigm Shift
+
+The heartbeat redesign reveals a fundamental architecture choice:
+- **Polling model:** "Check everything regularly in case something happened"
+- **Event-driven model:** "Only wake when something definitely happened"
+
+**Scale insight:** Polling costs grow linearly with monitoring scope. Event-driven costs grow only with actual events. As capabilities expand, the efficiency gap becomes exponential.
+
+**AI operations principle:** Human managers don't constantly ask "anything new?" every 30 minutes. They set up systems that notify them when decisions are needed. Same principle applies to AI orchestration.
+
+### Implementation Strategy Pattern
+
+The full H0-7 plan demonstrates mature engineering:
+1. **Baseline measurement** (real data, not estimates)  
+2. **Phased rollout** (validate each stage before proceeding)
+3. **Rollback triggers** (specific conditions, not gut feelings)
+4. **Progressive savings** (30% → 63% → 71%, each standalone valuable)
+
+**Risk management insight:** Don't swing for the fences on architectural changes. Take the guaranteed 30% win first, build confidence, then pursue the ambitious 71% target.
+
+**Documentation discipline:** Having ready-to-apply cron job definitions and config patches means the plan can execute immediately when Matthew approves. Analysis without implementation is just expensive speculation.
+
+---
+
 # Night Shift Reflections - 2026-02-13 07:18
 
 ## Morning Breakthrough Session (07:00-07:17)
