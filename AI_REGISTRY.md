@@ -30,7 +30,6 @@
 - cortex#4 [bug] Permission-asking pattern
 - cortex#5 [feature] Cross-context message sends
 - cortex#6 [feature] QA test suite gap
-- cortex#7 [bug] Moltbook dedup guard
 - llm-fleet#1 [feature] Router availability check
 - lbf-dashboard#1 [feature] Stripe payment links
 
