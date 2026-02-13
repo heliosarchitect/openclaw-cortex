@@ -5,7 +5,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 ## ACTIVE SPRINT — 5 Helios Self-Improvements (Feb 12 Night)
 - [x] 1. Memory Hygiene — deduped 1,648 entries (3,006→1,358 STM), cleaned orphan embeddings
 - [x] 2. H0-4: Workspace File Internalization — COMPLETE (helios-sprint, 19:00)
-- [ ] 3. SYNAPSE Protocol V2 — Nova building (task delegation, expiry, status tracking)
+- [🔄] 3. SYNAPSE Protocol V2 — Nova RUNNING (session salty-pine, task delegation + expiry + status tracking)
 - [ ] 4. Memory Consolidation Engine — Nova building (cluster + LLM synthesis)
 - [ ] 5. Self-Monitoring Dashboard — Nova building (metrics + Prometheus endpoint)
 
@@ -34,6 +34,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
+- [x] **Nova/Claude Code Setup** — Node.js via NVM + claude symlink, --local agent runs working (07:02)
 - [x] **Security Monitor skill** — comprehensive Wazuh integration + system security scanning (05:08)
 - [x] **WEMS MCP server packaging** — complete monetization infrastructure for MCP registry (05:05)
 - [x] **Context optimization research + tools** — token-efficiency-v2, context-optimizer based on HN/GitHub research (03:35)
