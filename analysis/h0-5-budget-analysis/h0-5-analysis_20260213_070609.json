@@ -1,0 +1,193 @@
+{
+  "individual_results": {
+    "conservative": {
+      "budget": 800,
+      "scenario": "conservative",
+      "allocation": {
+        "hot_memory": 320,
+        "semantic_memory": 280,
+        "episodic_memory": 120,
+        "cortex_stm": 80,
+        "diverse_context": 0
+      },
+      "simulation": {
+        "total_tokens_used": 800,
+        "memories_injected": 6,
+        "categories_included": 4,
+        "estimated_relevance_score": 0.8599999999999999,
+        "estimated_waste_tokens": 90,
+        "context_window_usage": 0.004
+      },
+      "efficiency": {
+        "token_efficiency": 0.8875,
+        "relevance_score": 0.8599999999999999,
+        "value_per_token": 1.0749999999999997,
+        "waste_percentage": 0.1125,
+        "context_pressure": 0.004,
+        "overall_score": 0.8982
+      },
+      "timestamp": "2026-02-13T07:06:09.392544"
+    },
+    "balanced": {
+      "budget": 1500,
+      "scenario": "balanced",
+      "allocation": {
+        "hot_memory": 450,
+        "semantic_memory": 525,
+        "episodic_memory": 300,
+        "cortex_stm": 150,
+        "diverse_context": 75
+      },
+      "simulation": {
+        "total_tokens_used": 1500,
+        "memories_injected": 12,
+        "categories_included": 5,
+        "estimated_relevance_score": 0.8099999999999999,
+        "estimated_waste_tokens": 205,
+        "context_window_usage": 0.0075
+      },
+      "efficiency": {
+        "token_efficiency": 0.8633333333333333,
+        "relevance_score": 0.8099999999999999,
+        "value_per_token": 0.5399999999999999,
+        "waste_percentage": 0.13666666666666666,
+        "context_pressure": 0.0075,
+        "overall_score": 0.8678333333333333
+      },
+      "timestamp": "2026-02-13T07:06:09.392562"
+    },
+    "aggressive": {
+      "budget": 2000,
+      "scenario": "aggressive",
+      "allocation": {
+        "hot_memory": 500,
+        "semantic_memory": 800,
+        "episodic_memory": 400,
+        "cortex_stm": 200,
+        "diverse_context": 100
+      },
+      "simulation": {
+        "total_tokens_used": 2000,
+        "memories_injected": 16,
+        "categories_included": 5,
+        "estimated_relevance_score": 0.8,
+        "estimated_waste_tokens": 285,
+        "context_window_usage": 0.01
+      },
+      "efficiency": {
+        "token_efficiency": 0.8575,
+        "relevance_score": 0.8,
+        "value_per_token": 0.4,
+        "waste_percentage": 0.1425,
+        "context_pressure": 0.01,
+        "overall_score": 0.861
+      },
+      "timestamp": "2026-02-13T07:06:09.392569"
+    },
+    "current": {
+      "budget": 2200,
+      "scenario": "balanced",
+      "allocation": {
+        "hot_memory": 660,
+        "semantic_memory": 770,
+        "episodic_memory": 440,
+        "cortex_stm": 220,
+        "diverse_context": 110
+      },
+      "simulation": {
+        "total_tokens_used": 2200,
+        "memories_injected": 18,
+        "categories_included": 5,
+        "estimated_relevance_score": 0.8099999999999999,
+        "estimated_waste_tokens": 302,
+        "context_window_usage": 0.011
+      },
+      "efficiency": {
+        "token_efficiency": 0.8627272727272727,
+        "relevance_score": 0.8099999999999999,
+        "value_per_token": 0.3681818181818181,
+        "waste_percentage": 0.13727272727272727,
+        "context_pressure": 0.011,
+        "overall_score": 0.8668909090909092
+      },
+      "timestamp": "2026-02-13T07:06:09.392574"
+    }
+  },
+  "comparison": {
+    "token_efficiency": {
+      "scores": {
+        "conservative": 0.8875,
+        "balanced": 0.8633333333333333,
+        "aggressive": 0.8575,
+        "current": 0.8627272727272727
+      },
+      "best": "conservative",
+      "worst": "aggressive",
+      "range": 0.029999999999999916,
+      "mean": 0.8677651515151514
+    },
+    "relevance_score": {
+      "scores": {
+        "conservative": 0.8599999999999999,
+        "balanced": 0.8099999999999999,
+        "aggressive": 0.8,
+        "current": 0.8099999999999999
+      },
+      "best": "conservative",
+      "worst": "aggressive",
+      "range": 0.05999999999999983,
+      "mean": 0.82
+    },
+    "value_per_token": {
+      "scores": {
+        "conservative": 1.0749999999999997,
+        "balanced": 0.5399999999999999,
+        "aggressive": 0.4,
+        "current": 0.3681818181818181
+      },
+      "best": "conservative",
+      "worst": "current",
+      "range": 0.7068181818181816,
+      "mean": 0.5957954545454545
+    },
+    "overall_score": {
+      "scores": {
+        "conservative": 0.8982,
+        "balanced": 0.8678333333333333,
+        "aggressive": 0.861,
+        "current": 0.8668909090909092
+      },
+      "best": "conservative",
+      "worst": "aggressive",
+      "range": 0.03720000000000001,
+      "mean": 0.8734810606060606
+    }
+  },
+  "recommendation": {
+    "recommended_strategy": "conservative",
+    "recommended_budget": 800,
+    "recommended_allocation": {
+      "hot_memory": 320,
+      "semantic_memory": 280,
+      "episodic_memory": 120,
+      "cortex_stm": 80,
+      "diverse_context": 0
+    },
+    "expected_performance": {
+      "token_efficiency": 0.8875,
+      "relevance_score": 0.8599999999999999,
+      "value_per_token": 1.0749999999999997,
+      "waste_percentage": 0.1125,
+      "context_pressure": 0.004,
+      "overall_score": 0.8982
+    },
+    "confidence": 0.9982,
+    "insights": [],
+    "implementation_notes": [
+      "Allocate 800 tokens total across memory injection",
+      "Focus 280 tokens on semantic memory",
+      "Reserve 320 tokens for hot memory",
+      "Monitor relevance scores and adjust allocation based on actual usage patterns"
+    ]
+  }
+}

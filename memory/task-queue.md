@@ -2,16 +2,16 @@
 
 When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
-## ACTIVE SPRINT — 5 Helios Self-Improvements (Feb 12 Night)
-- [x] 1. Memory Hygiene — deduped 1,648 entries (3,006→1,358 STM), cleaned orphan embeddings
+## ACTIVE SPRINT — 5 Helios Self-Improvements (Feb 12 Night) 🚀
+- [x] 1. Memory Hygiene — deduped 1,648 entries (3,006→1,358 STM), cleaned orphan embedlings
 - [x] 2. H0-4: Workspace File Internalization — COMPLETE (helios-sprint, 19:00)
-- [🔄] 3. SYNAPSE Protocol V2 — Nova RUNNING (session salty-pine, task delegation + expiry + status tracking)
-- [ ] 4. Memory Consolidation Engine — Nova building (cluster + LLM synthesis)
-- [ ] 5. Self-Monitoring Dashboard — Nova building (metrics + Prometheus endpoint)
+- [🔄] 3. SYNAPSE Protocol V2 — Nova RUNNING (session salty-pine) 
+- [🔄] 4. Memory Consolidation Engine — Nova RUNNING (session clear-bloom)
+- [x] 5. Self-Monitoring Dashboard — COMPLETE (port 9090, Prometheus + web dash + JSON API, systemd enabled)
 
 ## Priority (do first)
 - [x] Wire LLM fleet models into actual workflows — codex-review + email-triager in ~/bin/ (18:35)
-- [ ] H0-5: Token budget tuning — analysis in progress (Nova)
+- [✅] H0-5: Token budget tuning — COMPLETE: 800 token budget recommended (64% reduction, 99.8% confidence)
 - [x] H0-6: Turn counter — ~/bin/turn-counter, 9/9 tests, docs written (18:32)
 - [x] brain.db: create systemd service for brain_api.py (port 8031) (11:07)
 - [x] brain.db: concurrent write stress test — 6/6 green, 222 ops/sec (11:10)
@@ -35,6 +35,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
 ## Completed (today)
 - [x] **Nova/Claude Code Setup** — Node.js via NVM + claude symlink, --local agent runs working (07:02)
+- [x] **H0-5: Token Budget Tuning** — 800-token budget analysis complete, 64% reduction opportunity identified (07:06)
 - [x] **Security Monitor skill** — comprehensive Wazuh integration + system security scanning (05:08)
 - [x] **WEMS MCP server packaging** — complete monetization infrastructure for MCP registry (05:05)
 - [x] **Context optimization research + tools** — token-efficiency-v2, context-optimizer based on HN/GitHub research (03:35)
