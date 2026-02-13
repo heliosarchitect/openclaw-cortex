@@ -76,9 +76,35 @@
       "rel": "uses",
       "src": "live_trader",
       "updated": 1770438173
+    },
+    {
+      "attrs": {},
+      "dst": "brain_db",
+      "rel": "serves",
+      "src": "brain_api",
+      "updated": 1770967180
     }
   ],
   "nodes": {
+    "brain_api": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/brain-db",
+        "port": "8031",
+        "purpose": "FastAPI REST server for brain.db",
+        "status": "running"
+      },
+      "type": "service",
+      "updated": 1770967169
+    },
+    "brain_db": {
+      "attrs": {
+        "path": "/home/bonsaihorn/.openclaw/workspace/extensions/cortex/brain.db",
+        "purpose": "Unified memory system - STM, categories, working memory",
+        "status": "active"
+      },
+      "type": "db",
+      "updated": 1770967178
+    },
     "cb_websocket": {
       "attrs": {
         "protocol": "websocket",
@@ -229,6 +255,15 @@
       },
       "type": "db",
       "updated": 1770438165
+    },
+    "wems_mcp": {
+      "attrs": {
+        "path": "/home/bonsaihorn/Projects/wems-mcp-server",
+        "purpose": "World Event Monitoring System - earthquakes, solar, volcanoes, tsunamis",
+        "status": "ready"
+      },
+      "type": "service",
+      "updated": 1770967174
     }
   }
 }

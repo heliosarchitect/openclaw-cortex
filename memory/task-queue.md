@@ -17,6 +17,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] brain.db: concurrent write stress test — 6/6 green, 222 ops/sec (11:10)
 
 ## Available (grab any)
+- [x] **WEMS**: Build World Event Monitoring System MCP server — earthquakes ✅, solar ✅, volcano ✅, tsunami ✅ (COMPLETE, 01:47)
 - [x] AUGUR: comprehensive zero fee analysis report — analysis/augur-zero-fee-comprehensive-analysis.md (22:42)
 - [❌] AUGUR: run signal_miner on CBETH-USD and DAI-USD (0% maker fee stable pairs) — process killed, 0 signals found
 - [x] AUGUR: backtest existing patterns with 0% maker fee scenarios — 142,330 patterns become profitable at 0% maker fees (22:40)
@@ -33,6 +34,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
+- [x] WEMS MCP server completion — added volcano + tsunami monitoring (01:47)
 - [x] OpenClaw Config Safety System — validation, snapshots, auto-rollback (Nova, 21:55)
 - [x] BC/DR n8n Workflow Migration — cron→n8n with enhanced monitoring (Nova, 21:55)
 - [x] brain_api.py — FastAPI REST server, 9 endpoints, port 8031 (10:47)
