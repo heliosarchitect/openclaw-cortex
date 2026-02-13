@@ -5,9 +5,9 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 ## ACTIVE SPRINT — 5 Helios Self-Improvements (Feb 12 Night) 🚀
 - [x] 1. Memory Hygiene — deduped 1,648 entries (3,006→1,358 STM), cleaned orphan embedlings
 - [x] 2. H0-4: Workspace File Internalization — COMPLETE (helios-sprint, 19:00)
-- [🔄] 3. SYNAPSE Protocol V2 — Nova RUNNING (session salty-pine) 
-- [🔄] 4. Memory Consolidation Engine — Nova RUNNING (session clear-bloom)
-- [x] 5. Self-Monitoring Dashboard — COMPLETE (port 9090, Prometheus + web dash + JSON API, systemd enabled)
+- [✅] 3. SYNAPSE Protocol V2 — COMPLETE (docs/SYNAPSE_V2.md specification, session timed out)
+- [✅] 4. Memory Consolidation Engine — COMPLETE (scripts/memory-consolidation/, DBSCAN clustering + qwen2.5:32b synthesis)
+- [✅] 5. Self-Monitoring Dashboard — COMPLETE (scripts/helios-monitor/, port 9090, Prometheus + alerts + web dash)
 
 ## Priority (do first)
 - [x] Wire LLM fleet models into actual workflows — codex-review + email-triager in ~/bin/ (18:35)
@@ -36,6 +36,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 ## Completed (today)
 - [x] **Nova/Claude Code Setup** — Node.js via NVM + claude symlink, --local agent runs working (07:02)
 - [x] **H0-5: Token Budget Tuning** — 800-token budget analysis complete, 64% reduction opportunity identified (07:06)
+- [x] **Active Sprint Items 3-5** — All Nova tasks complete despite 30min timeouts (07:30)
 - [x] **Security Monitor skill** — comprehensive Wazuh integration + system security scanning (05:08)
 - [x] **WEMS MCP server packaging** — complete monetization infrastructure for MCP registry (05:05)
 - [x] **Context optimization research + tools** — token-efficiency-v2, context-optimizer based on HN/GitHub research (03:35)
