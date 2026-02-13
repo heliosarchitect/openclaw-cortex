@@ -30,6 +30,8 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
+- [x] OpenClaw Config Safety System — validation, snapshots, auto-rollback (Nova, 21:55)
+- [x] BC/DR n8n Workflow Migration — cron→n8n with enhanced monitoring (Nova, 21:55)
 - [x] brain_api.py — FastAPI REST server, 9 endpoints, port 8031 (10:47)
 - [x] working_memory + categories → brain.db, 75/75 tests (10:50)
 - [x] brain-cli Docker deployed to hpserver1 (10:47)

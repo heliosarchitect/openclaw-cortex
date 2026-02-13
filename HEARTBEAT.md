@@ -1,42 +1,16 @@
-# HEARTBEAT.md - Living Checklist
+# HEARTBEAT.md
 
-**Philosophy:** Event-driven, not polling. When nothing's broken, BUILD.
+**Default mode: BUILD.** Pull from `memory/task-queue.md`. Never idle >2 consecutive HEARTBEAT_OKs.
 
-## 🔥 Priority: Respond & Fix
-- Matthew messages → respond immediately
-- Something breaks → fix it
-- Interesting discovery → share it
+## Priority Order
+1. Matthew messages → respond immediately
+2. Something breaks → fix it
+3. Everything green → BUILD (dispatch Nova tasks)
 
-## 🔨 Default Mode: BUILD
-When all systems green, pull from `memory/task-queue.md` and execute.
-**Never cycle more than 2 consecutive HEARTBEAT_OKs.** On the 3rd, pick a task.
+## Every Heartbeat
+- Check `sessions_list` for failed sub-agents (<60s runs, no tool calls)
+- Check synapse inbox: `~/bin/brain inbox --agent helios`
+- If failures found: investigate and log
 
-## 🔍 Cron Audit (every heartbeat)
-Check recent cron/sub-agent sessions for failures:
-```
-sessions_list with activeMinutes filter, check for:
-- Sessions that ran < 60 seconds (likely crashed)
-- Sessions with no tool calls (empty runs)
-- Sessions that didn't produce artifacts
-```
-If found: investigate and log, don't silently pass.
-
-## 📬 SYNAPSE Check (every heartbeat)
-Check brain.db inbox for unread messages from Nova/agents:
-```
-~/bin/brain inbox --agent helios
-```
-If new messages: read, acknowledge, act on any action items.
-If empty: skip silently.
-
-## ⚡ What I Don't Poll
-- ~~CPU temp~~ (only at 100% load)
-- ~~Same emails repeatedly~~ (check once per 30min max, stop if unchanged)
-- ~~Earthquake feed~~ (only when world events cron fires)
-- ~~Moltbook karma~~
-- ~~AUGUR health~~ (self-monitoring built in)
-
-**Rule:** If checking the same thing repeatedly with no change, STOP and BUILD instead.
-
----
-*Last evolved: 2026-02-11 08:17 - Added task queue, cron audit, anti-idle mandate*
+## Don't Poll
+CPU temp, same emails repeatedly, earthquake feed, AUGUR health (self-monitoring). If checking same thing with no change → STOP and BUILD.

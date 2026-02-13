@@ -110,6 +110,14 @@ Full audit: `analysis/context-injection-audit.md`
 - If CI fails: fix immediately, don't leave red builds
 - Gitea token: `~/.secrets/gitea-helios-token.txt`
 
+### Config Change Safety (fleetwood-core#5)
+Config changes (`gateway config.apply`) MUST be safe:
+1. **Schema validation** — reject unknown fields before writing (would have caught `auth` vs `apiKey`)
+2. **Smoke test** — init all model providers after write, before restart. Fail → revert.
+3. **Auto-rollback** — if gateway unhealthy 30s post-restart, restore last known-good config
+4. **Snapshots** — keep last 3 configs at `~/.openclaw/config-history/`
+Never YOLO a config change. If you can brick yourself with a typo, the system is broken.
+
 ### Pre-Commit Checklist
 - [ ] Tests pass locally
 - [ ] No secrets in code (use `~/.secrets/`)
