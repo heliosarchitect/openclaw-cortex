@@ -4,7 +4,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
 ## ACTIVE SPRINT — 5 Helios Self-Improvements (Feb 12 Night)
 - [x] 1. Memory Hygiene — deduped 1,648 entries (3,006→1,358 STM), cleaned orphan embeddings
-- [ ] 2. H0-4: Workspace File Internalization — Nova building (hash caching in workspace.ts)
+- [x] 2. H0-4: Workspace File Internalization — COMPLETE (helios-sprint, 19:00)
 - [ ] 3. SYNAPSE Protocol V2 — Nova building (task delegation, expiry, status tracking)
 - [ ] 4. Memory Consolidation Engine — Nova building (cluster + LLM synthesis)
 - [ ] 5. Self-Monitoring Dashboard — Nova building (metrics + Prometheus endpoint)
@@ -17,16 +17,19 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] brain.db: concurrent write stress test — 6/6 green, 222 ops/sec (11:10)
 
 ## Available (grab any)
+- [x] AUGUR: comprehensive zero fee analysis report — analysis/augur-zero-fee-comprehensive-analysis.md (22:42)
+- [⏳] AUGUR: run signal_miner on CBETH-USD and DAI-USD (0% maker fee stable pairs) — RUNNING
+- [x] AUGUR: backtest existing patterns with 0% maker fee scenarios — 142,330 patterns become profitable at 0% maker fees (22:40)
 - [ ] Create cron output validator script — in progress (Nova)
 - [ ] Ansible: finish fleet hardening audit — in progress (Nova)
 - [x] LCARS dashboard: add LLM fleet status panel — expanded from 7 to 16 models, 89% VRAM shown (19:47)
 - [x] Write proper README for llm-fleet repo — enhanced with usage examples, deployment status, troubleshooting (19:33)
 - [x] Clean up augur-collector WAL files (shm/wal in git status) — no WAL files found (21:33)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
-- [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
+- [x] Build Gitea MCP server for direct repo management — 16 tools implemented, production ready (22:22)
 - [x] brain.db: redirect cortex-bridge.ts daemon calls (/store, /search) to brain.db — 8031 port, /store→/remember (21:18)
-- [ ] AUGUR: collect 500+ V4 signals before considering live trading (currently 457)
-- [ ] AUGUR: consider 0 bps fee trial from Coinbase (current fees destroy gross edge)
+- [x] AUGUR: collect 500+ V4 signals before considering live trading — 1,885 signals collected (22:23)
+- [x] AUGUR: consider 0 bps fee trial from Coinbase — analysis complete at analysis/coinbase-fee-optimization-analysis.md (22:25)
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
