@@ -21,12 +21,13 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] Ansible: finish fleet hardening audit — in progress (Nova)
 - [x] LCARS dashboard: add LLM fleet status panel — expanded from 7 to 16 models, 89% VRAM shown (19:47)
 - [x] Write proper README for llm-fleet repo — enhanced with usage examples, deployment status, troubleshooting (19:33)
-- [ ] Clean up augur-collector WAL files (shm/wal in git status)
+- [x] Clean up augur-collector WAL files (shm/wal in git status) — no WAL files found (21:33)
 - [ ] Explore security-sentinel ClawHub skill for Wazuh integration
 - [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
-- [ ] brain.db: redirect cortex-bridge.ts daemon calls (/store, /search) to brain.db
+- [x] brain.db: redirect cortex-bridge.ts daemon calls (/store, /search) to brain.db — 8031 port, /store→/remember (21:18)
 - [ ] AUGUR: collect 500+ V4 signals before considering live trading (currently 457)
 - [ ] AUGUR: consider 0 bps fee trial from Coinbase (current fees destroy gross edge)
+- [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
 - [x] brain_api.py — FastAPI REST server, 9 endpoints, port 8031 (10:47)
