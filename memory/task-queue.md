@@ -34,6 +34,7 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Completed (today)
+- [x] **Context optimization research + tools** — token-efficiency-v2, context-optimizer based on HN/GitHub research (03:35)
 - [x] WEMS MCP server completion — added volcano + tsunami monitoring (01:47)
 - [x] OpenClaw Config Safety System — validation, snapshots, auto-rollback (Nova, 21:55)
 - [x] BC/DR n8n Workflow Migration — cron→n8n with enhanced monitoring (Nova, 21:55)
