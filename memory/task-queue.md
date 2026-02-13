@@ -33,10 +33,14 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] AUGUR: consider 0 bps fee trial from Coinbase — analysis complete at analysis/coinbase-fee-optimization-analysis.md (22:25)
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
+## Priority (do first)
+- [📋] **Gateway Restart Ready** — ALL optimizations applied, restart instructions at memory/restart-instructions.md, ~11-16K token savings/turn waiting to activate (09:12)
+
 ## In Progress (today)
-- [🔄] **Gateway Restart Required** — config changes + tool description optimizations applied, need manual restart to activate (combined ~11-16K token savings/turn) (09:10)
+- (none currently)
 
 ## Completed (today)
+- [x] **Gateway Restart Organization** — enabled commands.restart=true, created comprehensive restart instructions at memory/restart-instructions.md with validation checklist, all optimizations ready to activate (09:12)
 - [x] **Tool Description Token Optimization** — compressed coreToolSummaries in system-prompt.ts: 45→4 tokens (cron), 28→5 tokens (session_status), ~200-250 tokens/turn saved, compiled successfully, analysis/tool-description-optimization.md (09:10)
 - [x] **Token Efficiency Config Optimization** — applied maxContextTokens: 2000→800 (-1.2K/turn) + contextPruning TTL: 1h→20m (-10-15K/turn), documented at memory/config-changes-applied.md (08:33)
 - [x] **Token Efficiency Deep Analysis** — Nova completed comprehensive analysis: scripts/token-efficiency-tracker.py built, 0.313% baseline confirmed, tier 1/2 strategy mapped, targeting 2-5x efficiency improvement (08:30)
