@@ -40,6 +40,9 @@ critical "enhanced-collector" "systemctl --user is-active enhanced-collector" "a
 critical "augur-v4-scanner" "systemctl --user is-active augur-v4-scanner" "active"
 critical "augur-v4-executor" "systemctl --user is-active augur-v4-executor" "active"
 
+# n8n automation hub (hpserver1)
+critical "n8n" "curl -sf -o /dev/null -w '%{http_code}' http://192.168.10.104:5678" "200"
+
 # Supporting services  
 check "augur-signal-tracker" "systemctl --user is-active augur-signal-tracker" "active"
 check "augur-continuous-miner" "systemctl --user is-active augur-continuous-miner" "active"
