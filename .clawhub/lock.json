@@ -44,6 +44,10 @@
     "agent-council": {
       "version": "1.0.0",
       "installedAt": 1770437136100
+    },
+    "task-decomposer": {
+      "version": "1.0.0",
+      "installedAt": 1771088088336
     }
   }
 }
