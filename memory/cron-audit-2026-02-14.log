@@ -142,3 +142,117 @@
 [2026-02-14T11:40:05-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
 [2026-02-14T11:40:05-05:00] [INFO] Checking job fe799b39: Reflection (0000, DISABLED)
 [2026-02-14T11:40:05-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+[2026-02-14T11:40:51-05:00] [INFO] Starting cron output validation
+[2026-02-14T11:40:51-05:00] [INFO] Audit log: /home/bonsaihorn/.openclaw/workspace/memory/cron-audit-2026-02-14.log
+[2026-02-14T11:40:51-05:00] [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+[2026-02-14T11:40:51-05:00] [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+[2026-02-14T11:40:51-05:00] [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+[2026-02-14T11:40:51-05:00] [INFO] Job 52075e39 is DISABLED - skipping validation
+[2026-02-14T11:40:51-05:00] [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+[2026-02-14T11:40:51-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+[2026-02-14T11:40:51-05:00] [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+[2026-02-14T11:40:51-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+[2026-02-14T11:40:54-05:00] [INFO] Starting cron output validation
+[2026-02-14T11:40:54-05:00] [INFO] Audit log: /home/bonsaihorn/.openclaw/workspace/memory/cron-audit-2026-02-14.log
+[2026-02-14T11:40:54-05:00] [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+[2026-02-14T11:40:54-05:00] [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+[2026-02-14T11:40:54-05:00] [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+[2026-02-14T11:40:54-05:00] [INFO] Job 52075e39 is DISABLED - skipping validation
+[2026-02-14T11:40:54-05:00] [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+[2026-02-14T11:40:54-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+[2026-02-14T11:40:54-05:00] [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+[2026-02-14T11:40:54-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+[2026-02-14T11:41:05-05:00] [INFO] Starting cron output validation
+[2026-02-14T11:41:05-05:00] [INFO] Audit log: /home/bonsaihorn/.openclaw/workspace/scripts/../memory/cron-audit-2026-02-14.log
+[2026-02-14T11:41:05-05:00] [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+[2026-02-14T11:41:05-05:00] [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+[2026-02-14T11:41:05-05:00] [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+[2026-02-14T11:41:05-05:00] [INFO] Job 52075e39 is DISABLED - skipping validation
+[2026-02-14T11:41:05-05:00] [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+[2026-02-14T11:41:05-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+[2026-02-14T11:41:05-05:00] [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+[2026-02-14T11:41:05-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+[2026-02-14T11:41:15-05:00] [INFO] Starting cron output validation
+[2026-02-14T11:41:15-05:00] [INFO] Audit log: /home/bonsaihorn/.openclaw/workspace/memory/cron-audit-2026-02-14.log
+[2026-02-14T11:41:15-05:00] [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+[2026-02-14T11:41:15-05:00] [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+[2026-02-14T11:41:15-05:00] [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+[2026-02-14T11:41:15-05:00] [INFO] Job 52075e39 is DISABLED - skipping validation
+[2026-02-14T11:41:15-05:00] [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+[2026-02-14T11:41:15-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+[2026-02-14T11:41:15-05:00] [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+[2026-02-14T11:41:15-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+[2026-02-14T11:41:41-05:00] [INFO] Starting cron output validation
+[2026-02-14T11:41:41-05:00] [INFO] Audit log: /home/bonsaihorn/.openclaw/workspace/memory/cron-audit-2026-02-14.log
+[2026-02-14T11:41:41-05:00] [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+[2026-02-14T11:41:41-05:00] [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+[2026-02-14T11:41:41-05:00] [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+[2026-02-14T11:41:41-05:00] [INFO] Job 52075e39 is DISABLED - skipping validation
+[2026-02-14T11:41:41-05:00] [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+[2026-02-14T11:41:41-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+[2026-02-14T11:41:41-05:00] [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+[2026-02-14T11:41:41-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+[2026-02-14T11:41:46-05:00] [INFO] Starting cron output validation
+[2026-02-14T11:41:46-05:00] [INFO] Audit log: /home/bonsaihorn/.openclaw/workspace/memory/cron-audit-2026-02-14.log
+[2026-02-14T11:41:46-05:00] [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+[2026-02-14T11:41:46-05:00] [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+[2026-02-14T11:41:46-05:00] [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+[2026-02-14T11:41:46-05:00] [INFO] Job 52075e39 is DISABLED - skipping validation
+[2026-02-14T11:41:46-05:00] [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+[2026-02-14T11:41:46-05:00] [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+[2026-02-14T11:41:46-05:00] [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+[2026-02-14T11:41:46-05:00] [INFO] Job fe799b39 is DISABLED - skipping validation
+2026-02-14T11:42:41-05:00 [INFO] === Cron Output Validation Started ===
+2026-02-14T11:42:41-05:00 [INFO] Command: ./scripts/cron-output-validator.sh 
+2026-02-14T11:42:41-05:00 [INFO] Starting cron output validation
+2026-02-14T11:42:41-05:00 [INFO] Checking 4 configured jobs
+2026-02-14T11:42:41-05:00 [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+2026-02-14T11:42:41-05:00 [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+2026-02-14T11:42:41-05:00 [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+2026-02-14T11:42:41-05:00 [INFO] Job 52075e39 is DISABLED - skipping validation
+2026-02-14T11:42:41-05:00 [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+2026-02-14T11:42:41-05:00 [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+2026-02-14T11:42:41-05:00 [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+2026-02-14T11:42:41-05:00 [INFO] Job fe799b39 is DISABLED - skipping validation
+2026-02-14T11:42:41-05:00 [SUMMARY] Validation complete - Issues: 0, Critical: 0
+2026-02-14T11:42:44-05:00 [INFO] === Cron Output Validation Started ===
+2026-02-14T11:42:44-05:00 [INFO] Command: ./scripts/cron-output-validator.sh 
+2026-02-14T11:42:44-05:00 [INFO] Starting cron output validation
+2026-02-14T11:42:44-05:00 [INFO] Checking 4 configured jobs
+2026-02-14T11:42:44-05:00 [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+2026-02-14T11:42:44-05:00 [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+2026-02-14T11:42:44-05:00 [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+2026-02-14T11:42:44-05:00 [INFO] Job 52075e39 is DISABLED - skipping validation
+2026-02-14T11:42:44-05:00 [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+2026-02-14T11:42:44-05:00 [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+2026-02-14T11:42:44-05:00 [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+2026-02-14T11:42:44-05:00 [INFO] Job fe799b39 is DISABLED - skipping validation
+2026-02-14T11:42:44-05:00 [SUMMARY] Validation complete - Issues: 0, Critical: 0
+2026-02-14T11:43:44-05:00 [INFO] === Cron Output Validation Started ===
+2026-02-14T11:43:44-05:00 [INFO] Command: ./scripts/cron-output-validator.sh 
+2026-02-14T11:43:44-05:00 [INFO] Starting cron output validation
+2026-02-14T11:43:44-05:00 [INFO] Checking 4 configured jobs
+2026-02-14T11:43:44-05:00 [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+2026-02-14T11:43:44-05:00 [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+2026-02-14T11:43:44-05:00 [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+2026-02-14T11:43:44-05:00 [INFO] Job 52075e39 is DISABLED - skipping validation
+2026-02-14T11:43:44-05:00 [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+2026-02-14T11:43:44-05:00 [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+2026-02-14T11:43:44-05:00 [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+2026-02-14T11:43:44-05:00 [INFO] Job fe799b39 is DISABLED - skipping validation
+2026-02-14T11:43:44-05:00 [SUMMARY] Validation complete - Issues: 0, Critical: 0
+2026-02-14T11:43:44-05:00 [INFO] Exiting with code 0 (all healthy)
+2026-02-14T11:43:46-05:00 [INFO] === Cron Output Validation Started ===
+2026-02-14T11:43:46-05:00 [INFO] Command: ./scripts/cron-output-validator.sh 
+2026-02-14T11:43:46-05:00 [INFO] Starting cron output validation
+2026-02-14T11:43:46-05:00 [INFO] Checking 4 configured jobs
+2026-02-14T11:43:46-05:00 [INFO] Validating job 6aa4edc5: Reflection (2300, DISABLED)
+2026-02-14T11:43:46-05:00 [INFO] Job 6aa4edc5 is DISABLED - skipping validation
+2026-02-14T11:43:46-05:00 [INFO] Validating job 52075e39: LLM Fleet Dev (2200, DISABLED)
+2026-02-14T11:43:46-05:00 [INFO] Job 52075e39 is DISABLED - skipping validation
+2026-02-14T11:43:46-05:00 [INFO] Validating job f683a04b: Self-improvement (0400, ACTIVE)
+2026-02-14T11:43:46-05:00 [SUCCESS] Job f683a04b validation passed (360s runtime, 1 artifacts)
+2026-02-14T11:43:46-05:00 [INFO] Validating job fe799b39: Reflection (0000, DISABLED)
+2026-02-14T11:43:46-05:00 [INFO] Job fe799b39 is DISABLED - skipping validation
+2026-02-14T11:43:46-05:00 [SUMMARY] Validation complete - Issues: 0, Critical: 0
+2026-02-14T11:43:46-05:00 [INFO] Exiting with code 0 (all healthy)
