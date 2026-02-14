@@ -28,6 +28,9 @@
 - **FIX**: `cortex_update` silently failing — was writing to stale `stm.json` → now uses brain.db (#9)
 - **FIX**: `cortex_edit` silently failing — same root cause → fixed (#9)
 - **FIX**: `cortex_move` silently failing — same root cause → fixed (#9)
+- **FIX**: `conversation-summarizer` extension writing to stale stm.json → migrated to brain_api
+- **FIX**: `self-reflection` extension reading from stale stm.json → migrated to brain_api
+- **FIX**: `loadSTMDirect` returning empty data → now reads from brain.db
 
 ### New Features
 - **NEW**: GitHub release monitor — polls 9 repos every 4h, replaces Releasebot dependency (#4)
@@ -35,6 +38,9 @@
 - **NEW**: Workspace cleanup script — organizes loose files into analysis/, scripts/, reports/ dirs
 - **NEW**: brain.py `delete_stm()` and `delete_stm_batch()` methods
 - **NEW**: cortex-bridge `editSTM()`, `updateSTM()`, `deleteSTMBatch()` bridge methods
+- **NEW**: WEMS v1.7.3 — space weather alerts + drought monitor (283 tests, published to PyPI)
+- **NEW**: Brain API documentation (BRAIN_API.md)
+- **NEW**: Pre-commit hook for stm.json write prevention
 
 ### Maintenance
 - **CLEAN**: Pruned 334 duplicate memories from STM (1,700+ → 1,370)
