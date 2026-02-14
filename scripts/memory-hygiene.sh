@@ -27,4 +27,12 @@ python3 "$CONSOLIDATE" scan 2>&1 | tail -5
 # Get final stats
 TOTAL=$(sqlite3 ~/.openclaw/workspace/memory/brain.db "SELECT COUNT(*) FROM stm;" 2>/dev/null || echo "?")
 echo "--- Final STM count: $TOTAL ---"
+# Run workspace cleanup (dry run to report only)
+echo "--- Workspace cleanup check ---"
+CLEANUP_COUNT=$(bash "$SCRIPT_DIR/workspace-cleanup.sh" --dry 2>&1 | grep -oP 'Moved: \K\d+' || echo "0")
+if [ "$CLEANUP_COUNT" -gt 0 ]; then
+    echo "WARNING: $CLEANUP_COUNT files in workspace root need organizing"
+    echo "Run: scripts/workspace-cleanup.sh to move them"
+fi
+
 echo "=== Done ==="
