@@ -9,6 +9,7 @@
 
 ## Every Heartbeat
 - Run `session_status` → if context > 75%, message Matthew: "⚠️ Context at X% — /new soon"
+- Run `scripts/system-health-check.sh --brief` → if not "OK", investigate
 - Check `sessions_list` for failed sub-agents (<60s runs, no tool calls)
 - Check synapse inbox: `~/bin/brain inbox --agent helios`
 - Check GitHub CI: `~/bin/check-github-ci` → if failures, fix immediately
