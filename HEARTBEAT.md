@@ -1,19 +1,22 @@
 # HEARTBEAT.md
 
-**Default mode: BUILD.** Pull from `memory/task-queue.md`. Never idle >2 consecutive HEARTBEAT_OKs.
+**Default: HEARTBEAT_OK.** Only act if something needs attention.
 
-## Priority Order
+## Do NOT poll on every heartbeat
+System health, CI, synapse, sessions — these are checked by external scripts.
+Only investigate if a script ALERTS you (via cron systemEvent or n8n webhook).
+
+## When to act (not routine — only if triggered)
 1. Matthew messages → respond immediately
-2. Something breaks → fix it
-3. Everything green → BUILD (dispatch Nova tasks)
+2. System alert injected → investigate and fix
+3. Context > 75% → message Matthew: "⚠️ Context at X% — /new soon"
 
-## Every Heartbeat
-- Run `session_status` → if context > 75%, message Matthew: "⚠️ Context at X% — /new soon"
-- Run `scripts/system-health-check.sh --brief` → if not "OK", investigate
-- Check `sessions_list` for failed sub-agents (<60s runs, no tool calls)
-- Check synapse inbox: `~/bin/brain inbox --agent helios`
-- Check GitHub CI: `~/bin/check-github-ci` → if failures, fix immediately
-- If failures found: investigate and log
+## When NOT to act
+- Don't run system-health-check.sh (cron handles this)
+- Don't check sessions_list (only if alerted)
+- Don't check synapse inbox (only if alerted)
+- Don't check GitHub CI (only if alerted)
+- Don't poll the same thing twice
 
-## Don't Poll
-CPU temp, same emails repeatedly, earthquake feed, AUGUR health (self-monitoring). If checking same thing with no change → STOP and BUILD.
+## BUILD mode
+If idle for >2 consecutive heartbeats AND no alerts, pull from `memory/task-queue.md`.
