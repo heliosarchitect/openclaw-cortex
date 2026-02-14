@@ -1,0 +1,74 @@
+LBF Enterprise Financial Model - 12-Month Projection
+Prepared: 2026-02-13
+
+REVENUE PROJECTIONS (Monthly)
+Stream,M1 (Mar),M2 (Apr),M3 (May),M4 (Jun),M5 (Jul),M6 (Aug),M7 (Sep),M8 (Oct),M9 (Nov),M10 (Dec),M11 (Jan 27),M12 (Feb 27)
+WEMS MCP Server,$80,$150,$290,$450,$650,$900,$1100,$1350,$1600,$1850,$2100,$2399
+ClawHub Marketplace,$180,$350,$540,$750,$950,$1100,$1400,$1700,$2000,$2300,$2550,$2800
+Brain-DB SaaS,$106,$300,$585,$800,$1050,$1268,$1600,$1900,$2200,$2500,$2750,$2980
+LLM Fleet Mgmt,$99,$250,$596,$900,$1600,$2391,$2800,$3200,$3500,$3800,$4150,$4483
+AUGUR Signals,$296,$700,$1236,$1500,$1800,$2078,$2400,$2700,$2900,$3100,$3350,$3612
+Consulting,$1000,$3000,$5000,$6000,$7000,$8000,$8500,$9000,$9500,$10000,$11000,$12000
+TOTAL REVENUE,$1761,$4750,$8247,$10400,$13050,$15737,$17800,$19850,$21700,$23550,$25900,$28274
+
+EXPENSE PROJECTIONS (Monthly)
+Category,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12
+Anthropic/OpenAI API,$2400,$2400,$2400,$2500,$2600,$2800,$2900,$3000,$3000,$3100,$3100,$3200
+Infrastructure (hosting/servers),$282,$282,$300,$320,$350,$400,$420,$440,$460,$480,$490,$500
+SaaS Subscriptions,$142,$142,$160,$170,$180,$200,$210,$220,$230,$240,$245,$250
+Payment Processing (2.9%),$51,$138,$239,$302,$378,$456,$516,$576,$629,$683,$751,$820
+Utilities (Internet/Electric),$150,$150,$150,$150,$150,$150,$150,$150,$150,$150,$150,$150
+Marketing/CAC,$100,$150,$300,$350,$400,$500,$550,$600,$650,$700,$750,$800
+Legal/Compliance,$0,$0,$200,$200,$200,$200,$200,$200,$200,$200,$200,$200
+TOTAL EXPENSES,$3125,$3262,$3749,$3992,$4258,$4706,$4946,$5186,$5319,$5553,$5686,$5920
+
+PROFITABILITY
+Metric,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12
+Net Income,-$1364,$1488,$4498,$6408,$8792,$11031,$12854,$14664,$16381,$17997,$20214,$22354
+Cumulative Net Income,-$1364,$124,$4622,$11030,$19822,$30853,$43707,$58371,$74752,$92749,$112963,$135317
+Gross Margin %,0%,69%,55%,62%,67%,70%,72%,74%,75%,77%,78%,79%
+
+UNIT ECONOMICS BY PRODUCT
+Product,COGS/User/Mo,Gross Margin %,Est. CAC,LTV (12mo),LTV:CAC,Churn Rate
+WEMS MCP Server,$0.50,95%,$10,$184,18:1,8%
+ClawHub Marketplace,$0.10,90%,$8,$230,29:1,10%
+Brain-DB SaaS,$5.00,87%,$35,$529,15:1,5%
+LLM Fleet Mgmt,$30.00,85%,$50,$2149,43:1,5%
+AUGUR Signals,$10.00,85%,$50,$490,10:1,20%
+Consulting,$0.00,98%,$0,N/A,N/A,N/A
+
+COST STRUCTURE (Current Monthly)
+Category,Amount,% of Total
+Anthropic Claude API,$2100,80%
+OpenAI API,$300,11%
+Cloud/VPS Hosting,$40,2%
+Domains,$12,0%
+GitHub/SaaS,$30,1%
+Internet Service,$100,4%
+Electricity (servers),$50,2%
+TOTAL,$2632,100%
+
+SCENARIO ANALYSIS (Year 1 Total Revenue)
+Scenario,Multiplier,Year 1 Revenue,Year 1 Expenses,Year 1 Net
+Pessimistic,40%,$68000,$45000,$23000
+Conservative,60%,$102000,$48000,$54000
+Base Case,100%,$170000,$52000,$118000
+Optimistic,150%,$255000,$58000,$197000
+Bull Case,200%,$340000,$65000,$275000
+
+INFRASTRUCTURE FLEET
+Node,Role,Monthly Cost
+giggletits,Primary workstation + OpenClaw + AUGUR,$80 (electricity + internet share)
+hpserver1,LLM Fleet (Ollama) + model hosting,$30 (electricity)
+woodserve1,Secondary compute + backups,$20 (electricity)
+blackview,Edge/monitoring,$10 (electricity)
+Cloud VPS,Light cloud footprint,$40
+
+KEY ASSUMPTIONS
+Assumption,Value,Notes
+Free-to-paid conversion (MCP tools),5%,Industry average for developer tools
+Monthly churn (SaaS),5-8%,B2B SaaS typical range
+Monthly churn (trading signals),15-25%,Signal services have high churn
+Consulting utilization,10-15 hrs/week,Preserves time for product development
+API cost growth rate,3%/quarter,Scales sub-linearly with revenue
+MCP ecosystem growth,50%+ YoY,"CData: $1.8B market, enterprise adoption accelerating"

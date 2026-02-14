@@ -1,0 +1,30 @@
+{
+  "openclaw/openclaw": {
+    "tag_name": "v2026.2.13",
+    "checked_at": "2026-02-14T11:34:21.459633"
+  },
+  "n8n-io/n8n": {
+    "tag_name": "n8n@2.7.5",
+    "checked_at": "2026-02-14T11:34:21.735943"
+  },
+  "ansible/ansible": {
+    "tag_name": "v2.20.2",
+    "checked_at": "2026-02-14T11:34:21.985870"
+  },
+  "hashicorp/terraform": {
+    "tag_name": "v1.14.5",
+    "checked_at": "2026-02-14T11:34:22.284216"
+  },
+  "hashicorp/vault": {
+    "tag_name": "v1.21.2",
+    "checked_at": "2026-02-14T11:34:22.610480"
+  },
+  "grafana/grafana": {
+    "tag_name": "v12.3.3",
+    "checked_at": "2026-02-14T11:34:22.844464"
+  },
+  "prometheus/prometheus": {
+    "tag_name": "v3.9.1",
+    "checked_at": "2026-02-14T11:34:23.132882"
+  }
+}

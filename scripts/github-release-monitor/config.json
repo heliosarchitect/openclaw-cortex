@@ -1,0 +1,14 @@
+{
+  "repositories": [
+    "openclaw/openclaw",
+    "n8n-io/n8n",
+    "ansible/ansible",
+    "hashicorp/terraform",
+    "hashicorp/vault",
+    "grafana/grafana",
+    "prometheus/prometheus",
+    "heliosarchitect/openclaw-cortex",
+    "heliosarchitect/wems-mcp-server"
+  ],
+  "watch_interval": 3600
+}

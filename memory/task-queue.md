@@ -34,16 +34,21 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [x] Build ~/bin/token-efficiency script to track optimization metrics — analyzes session transcripts, tracks O/I ratio, cache hit rate, cost per output token (21:48)
 
 ## Priority (do first)
-- [ ] **WEMS**: Publish MCP server to registry — submit to MCP Registry + awesome-mcp-servers PR
+- [✅] **WEMS**: Publish MCP server to registry — ✅ PyPI v1.5.3 published + GitHub pushed, ✅ MCP Registry LIVE (io.github.heliosarchitect/wems, published 2026-02-14), ✅ awesome-mcp-servers PR #1991 (pending review)
 
 ## Available (grab any)
-- [ ] **AUGUR**: Test live trader with new fee lookup system (monitor next live trades)
-- [ ] **AUGUR**: Investigate paper trader P&L database corruption (NULL values)
+- [x] **AUGUR**: Test live trader with new fee lookup system (monitor next live trades) — ✅ VERIFIED: fee_cache.db shows accurate per-product rates (0.1 bps for stablecoins, 10 bps for regular pairs vs old 60 bps assumptions)
+- [x] **AUGUR**: Investigate paper trader P&L database corruption (NULL values) — ✅ RESOLVED: 0/16,683 NULL P&L entries found in paper_results.db
 
 ## In Progress (today)
-- (none currently)
+- [✅] **CRYPTO-TAXES COMPLETE** — Both portfolios merged: 1,084,293 Form 8949 entries, Part I: -$43,370.82, Part II: +$3,514.56, Net: -$39,856.26 loss. Accountant package ready: ~/Projects/crypto-taxes/accountant-package-2025/ (214MB, 68MB zipped).
 
 ## Completed (today)
+- [x] **🔧 DATA RETENTION SERVICE FIX** — Fixed failed systemd data-retention.service by correcting database path from non-existent `~/Projects/Chad_Volume_tracker/enhanced_data.db` to `~/Projects/augur-collector/enhanced_data.db`. Service now running successfully after 20h failure. (23:02)
+- [x] **💰 CRYPTO TAX REPORT GENERATOR** — Built tax_report_generator.py for IRS Form 8949 compliance. FIFO methodology, matches 707,879 bot trades: $40.5M proceeds vs $40.5M cost basis = $11,896 net loss (short-term). Ready for TurboTax import. Remaining: $3,567 unrealized MON holdings. Will merge with Default portfolio data once complete. (21:35)
+- [x] **🌬️ WEMS v1.4.0 AIR QUALITY** — Added check_air_quality MCP tool using OpenAQ v3 API (free, no key, global coverage). Tier-gated: free=US only/PM2.5+O3/max 3 stations, premium=global/6 pollutants/25 stations/city search/forecasts. AQI categories with colored icons 🟢→🟤. 34 new tests, all 223 pass. Version 1.3.0→1.4.0. Published to PyPI + pushed to GitHub/Gitea. (21:30)
+- [x] **🔧 SYSTEM MAINTENANCE SCRIPT** — Built and deployed ~/bin/system-maintenance with comprehensive housekeeping: log rotation (Signal 11MB→1K lines), old augur log cleanup (10+ files), git branch cleanup, docker pruning, disk space monitoring (2% used, 214GB free), process health checks. Automated daily maintenance infrastructure. (19:39)
+- [x] **🚀 WEMS MCP REGISTRY (1/3)** — Successfully published WEMS v1.1.1 to PyPI (https://pypi.org/project/wems-mcp-server/1.1.1/). Prepared awesome-mcp-servers PR (branch ready). MCP Registry requires manual GitHub OAuth. (19:34)
 - [x] **🎯 AUGUR FULL ABSTRACTION** — wired fee_lookup.py into live trader, replaced hardcoded TAKER_FEE/MAKER_FEE with per-product lookups, RARI-USD/ZRO-USD now use accurate 0.10%/0.05% rates vs old ~0.60% assumptions, follows Matthew's 'no hardcoded values' principle (10:22)
 - [x] **🚀 GATEWAY RESTART SUCCESSFUL** — tests passed (4932/4933), all token efficiency optimizations activated: config changes + tool description compression + conditional monitoring system, ~11-16K combined token savings per turn now live (09:46)
 - [x] **🎯 MASSIVE TOKEN EFFICIENCY BREAKTHROUGH** — deployed conditional wake system, disabled 3 wasteful cron jobs, built 4 conditional monitors + consolidator, ~95% reduction in monitoring token waste (1.37M→50K tokens/day), tested and operational (09:30)

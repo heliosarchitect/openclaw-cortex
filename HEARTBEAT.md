@@ -8,8 +8,10 @@
 3. Everything green → BUILD (dispatch Nova tasks)
 
 ## Every Heartbeat
+- Run `session_status` → if context > 75%, message Matthew: "⚠️ Context at X% — /new soon"
 - Check `sessions_list` for failed sub-agents (<60s runs, no tool calls)
 - Check synapse inbox: `~/bin/brain inbox --agent helios`
+- Check GitHub CI: `~/bin/check-github-ci` → if failures, fix immediately
 - If failures found: investigate and log
 
 ## Don't Poll

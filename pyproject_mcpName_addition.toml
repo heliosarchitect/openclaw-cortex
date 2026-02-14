@@ -1,0 +1,6 @@
+# Add this to the [project] section of pyproject.toml:
+
+[project]
+# ... existing fields ...
+mcpName = "io.github.heliosarchitect/wems"
+# ... rest of configuration ...

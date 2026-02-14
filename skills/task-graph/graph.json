@@ -90,9 +90,37 @@
       "rel": "serves",
       "src": "ollama_api",
       "updated": 1770974317
+    },
+    {
+      "attrs": {},
+      "dst": "brain_api",
+      "rel": "uses",
+      "src": "openclaw_gateway",
+      "updated": 1771037946
+    },
+    {
+      "attrs": {
+        "purpose": "both use Coinbase API for different portfolios"
+      },
+      "dst": "crypto_fetcher_default",
+      "rel": "related",
+      "src": "augur_live",
+      "updated": 1771037952
     }
   ],
   "nodes": {
+    "augur_live": {
+      "attrs": {
+        "cmd": "python3 augur_live_v4.py",
+        "location": "~/Projects/augur-collector",
+        "pid": "3530806",
+        "purpose": "live crypto trading",
+        "started_at": "2026-02-13 09:00",
+        "status": "running"
+      },
+      "type": "process",
+      "updated": 1771037928
+    },
     "bliss_server": {
       "attrs": {
         "alt_port": "8766",
@@ -105,13 +133,15 @@
     },
     "brain_api": {
       "attrs": {
+        "endpoints": "9",
         "path": "/home/bonsaihorn/Projects/brain-db",
         "port": "8031",
-        "purpose": "FastAPI REST server for brain.db",
-        "status": "running"
+        "purpose": "brain.db REST API",
+        "status": "running",
+        "url": "http://localhost:8031"
       },
       "type": "service",
-      "updated": 1770967169
+      "updated": 1771037943
     },
     "brain_db": {
       "attrs": {
@@ -148,6 +178,18 @@
       },
       "type": "env",
       "updated": 1770233622
+    },
+    "crypto_fetcher_default": {
+      "attrs": {
+        "cmd": "python3 fetch_fills_default.py",
+        "fills_found": "1",
+        "location": "~/Projects/crypto-taxes",
+        "progress": "4100/8760 hours",
+        "purpose": "fetch default portfolio 2025 trades",
+        "status": "running"
+      },
+      "type": "process",
+      "updated": 1771037932
     },
     "lcars_dashboard": {
       "attrs": {
@@ -205,6 +247,16 @@
       "type": "service",
       "updated": 1770233622
     },
+    "openclaw_gateway": {
+      "attrs": {
+        "config_location": "~/.openclaw/config.json",
+        "purpose": "AI agent gateway and orchestration",
+        "status": "running",
+        "workspace": "~/.openclaw/workspace"
+      },
+      "type": "service",
+      "updated": 1771037940
+    },
     "orderbook_collector": {
       "attrs": {
         "path": "/home/bonsaihorn/Projects/Chad_Volume_tracker/collect_orderbook_data.py",
@@ -246,23 +298,28 @@
     },
     "qwen32": {
       "attrs": {
+        "downloaded_at": "4 days ago",
         "family": "qwen2.5",
         "quant": "q4_k_m",
         "size": "32b",
-        "status": "downloading"
+        "size_gb": "19",
+        "status": "ready"
       },
       "type": "model",
-      "updated": 1770233622
+      "updated": 1771037975
     },
     "qwen7": {
       "attrs": {
+        "downloaded_at": "3 days ago",
         "family": "qwen2.5",
+        "full_name": "qwen2.5-coder:7b",
         "quant": "q4_k_m",
         "size": "7b",
-        "status": "downloading"
+        "size_gb": "4.7",
+        "status": "ready"
       },
       "type": "model",
-      "updated": 1770233622
+      "updated": 1771037980
     },
     "strategy_search": {
       "attrs": {
@@ -312,12 +369,17 @@
     },
     "wems_mcp": {
       "attrs": {
+        "github_repo": "heliosarchitect/wems-mcp-server",
         "path": "/home/bonsaihorn/Projects/wems-mcp-server",
-        "purpose": "World Event Monitoring System - earthquakes, solar, volcanoes, tsunamis",
-        "status": "ready"
+        "purpose": "world event monitoring MCP server",
+        "pypi_url": "https://pypi.org/project/wems-mcp-server/",
+        "status": "published",
+        "tests": "252",
+        "tools": "11",
+        "version": "1.5.1"
       },
       "type": "service",
-      "updated": 1770967174
+      "updated": 1771037936
     },
     "xtts_api": {
       "attrs": {

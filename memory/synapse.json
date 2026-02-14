@@ -156,6 +156,19 @@
       "read_by": [],
       "thread_id": "thr_b81ca2a2c5de",
       "ack_body": null
+    },
+    {
+      "id": "syn_538e332609a0",
+      "from": "helios",
+      "to": "subagent",
+      "priority": "action",
+      "subject": "Build WEMS MCP Server v1.3.0 — add floods tool using USGS Water Services + NOAA",
+      "body": "REPO: ~/Projects/wems-mcp-server/\n\nWHAT TO BUILD:\n- New tool: `check_floods` — query USGS Water Services API for river gauge data and NOAA flood warnings\n- USGS Water Services API: https://waterservices.usgs.gov/rest/IV/ (free, no API key)\n- NOAA flood warnings can be pulled from NWS Alerts API filtering for flood event types\n- Follow the exact same patterns as existing tools (check_earthquakes, check_severe_weather, etc.)\n- Support filtering by: state, river/site, flood stage (action/minor/moderate/major), time range\n- Include free tier limits (major floods only, last 24h) and premium tier (all flood stages, extended ranges, river gauge data)\n- Add comprehensive tests following existing test patterns\n\nVERSIONING:\n- Bump version to 1.3.0 in pyproject.toml\n- Update README roadmap to mark 1.3.0 as shipped\n- Update CHANGELOG.md\n\nDO NOT:\n- Publish to PyPI (I'll do that after review)\n- Change any existing tools or tests\n- Break any existing functionality\n\nVERIFY:\n- All existing tests still pass\n- New tests pass\n- Server starts cleanly",
+      "status": "unread",
+      "timestamp": "2026-02-14T01:25:14.134Z",
+      "read_by": [],
+      "thread_id": "thr_4b3b718c5d7b",
+      "ack_body": null
     }
   ],
   "agents": [
