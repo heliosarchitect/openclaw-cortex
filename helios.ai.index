@@ -1,0 +1,103 @@
+# Helios — Searchable Index
+
+## Features (by version)  
+v0.3.0: Brain.db Direct Memory Access | LOG: "brain.db SQLite transactions" | GREP: grep "brain\.db" ~/.openclaw/logs/helios.log
+v0.3.0: Automated Memory Hygiene | LOG: "Daily 4 AM dedup" | GREP: crontab -l | grep memory
+v0.3.0: GitHub Release Monitor | LOG: "4-hourly polling of 9 repos" | GREP: ps aux | grep release-monitor
+v0.3.0: Workspace File Organization | LOG: "Files moved to analysis/, scripts/, reports/" | GREP: find ~/.openclaw/workspace -maxdepth 1 -type f
+v0.2.0: SYNAPSE V2 Protocol | LOG: "synapse_send" | GREP: grep "synapse" ~/.openclaw/logs/helios.log
+v0.1.0: Cortex STM Integration | LOG: "cortex_add" | GREP: grep "cortex_" ~/.openclaw/logs/helios.log
+
+## Log Signatures
+HEARTBEAT_CYCLE: Operational heartbeat execution | GREP: grep "HEARTBEAT\|Priority Order" ~/.openclaw/logs/helios.log
+MEMORY_OPERATION: Brain.db memory transactions | GREP: grep "cortex_\|brain\.db" ~/.openclaw/logs/helios.log
+SYSTEM_HEALTH: Health check execution | GREP: grep "system.*health\|health.*check" ~/.openclaw/logs/helios.log
+SUB_AGENT_SPAWN: Sub-agent creation and management | GREP: grep "sessions_spawn\|Nova\|Claude Code" ~/.openclaw/logs/helios.log
+GITHUB_MONITOR: Release monitoring activity | GREP: grep "github.*release\|New release" ~/.openclaw/logs/helios.log
+CRON_EXECUTION: Automated job execution | GREP: grep "cron\|scheduler" /tmp/brain-*.log
+CONTEXT_WARNING: Context window nearing limit | GREP: grep "Context at.*%\|/new soon" ~/.openclaw/logs/helios.log
+BACKUP_OPERATION: Brain.db backup activity | GREP: grep "backup\|BC/DR" /tmp/brain-backup.log
+WORKSPACE_CLEANUP: File organization activity | GREP: grep "workspace.*cleanup\|organized.*files" ~/.openclaw/logs/helios.log
+EXTENSION_CALL: Extension execution via bridge | GREP: grep "extension\|bridge.*call" ~/.openclaw/logs/helios.log
+
+## Brain API Endpoints (Port 8031)  
+GET /health — Cortex API health check
+POST /memories — add new memory to STM
+GET /memories — retrieve STM memories with filtering
+PUT /memories/{id} — update existing memory
+DELETE /memories/{id} — delete specific memory
+POST /memories/search — semantic search in memory
+GET /categories — list available memory categories
+POST /categories — create new memory category
+POST /memories/dedupe — find and handle duplicate memories
+GET /stats — memory system statistics
+
+## Cron Job Names
+brain-backup-cron — brain.db backup every 6 hours (0 */6 * * *)
+brain-qa-cron — memory QA validation every 4 hours (0 */4 * * *)
+wems-cron-wrapper — world event monitoring every 15 minutes (*/15 * * *)
+memory-hygiene — daily deduplication at 4 AM EST (0 4 * * *)
+github-release-monitor — repository monitoring every 4 hours (0 */4 * * *)
+
+## Critical Tool Names
+session_status — get current session context and token usage
+sessions_spawn — create sub-agent for complex tasks  
+sessions_list — list active and completed sub-agents
+synapse — inter-agent messaging (send, inbox, read, ack)
+cortex_add — store memory in STM with importance weighting
+cortex_stm — view recent STM memories with filtering
+cortex_search — semantic search across all memories
+cortex_dedupe — find and merge duplicate memories
+cortex_stats — memory system health and statistics
+working_memory — manage always-present episodic memory
+message — send Signal messages and reactions
+web_search — Brave search API integration
+browser — web browser automation via OpenClaw
+nodes — paired device management (camera, screen, location)
+
+## Script Paths (Organized Structure)
+~/.openclaw/workspace/scripts/system-health-check.sh — comprehensive health validation
+~/.openclaw/workspace/scripts/backup_to_drive.sh — Google Drive backup automation  
+~/.openclaw/workspace/scripts/memory-hygiene.sh — automated memory cleanup
+~/.openclaw/workspace/scripts/github-release-monitor/github-release-monitor.py — release tracking
+~/.openclaw/workspace/scripts/helios-monitor/helios_monitor.py — system monitoring
+~/.openclaw/workspace/scripts/call_matthew.py — emergency contact system
+~/.openclaw/workspace/scripts/alert_manager.py — centralized alert handling
+~/.openclaw/workspace/analysis/ — analysis scripts and reports
+~/.openclaw/workspace/vision/ — vision documents and roadmaps
+~/.openclaw/workspace/memory/ — memory system files and daily logs
+
+## Behavioral Signatures
+HEARTBEAT_OK: Normal operational cycle | GREP: grep "HEARTBEAT_OK" ~/.openclaw/logs/helios.log
+BUILD_MODE: Active construction vs idle monitoring | GREP: grep "BUILD\|dispatch.*Nova" ~/.openclaw/logs/helios.log
+CONTEXT_AT_LIMIT: Token budget approaching maximum | GREP: grep "Context at [7-9][0-9]%" ~/.openclaw/logs/helios.log
+MEMORY_HYGIENE: Automated deduplication running | GREP: grep "Pruned.*duplicates" /tmp/memory-hygiene.log
+SUB_AGENT_SUCCESS: Sub-agent completing task successfully | GREP: grep "Task completed\|nova.*done" ~/.openclaw/logs/helios.log
+EMERGENCY_CONTACT: Matthew contact system activated | GREP: grep "calling.*matthew\|emergency.*contact" ~/.openclaw/logs/helios.log
+GITHUB_NEW_RELEASE: New repository release detected | GREP: grep "New release.*v[0-9]" ~/.openclaw/logs/helios.log
+BRAIN_DB_ACTIVE: Primary memory system operational | GREP: ls -la ~/.openclaw/workspace/memory/brain.db
+STM_JSON_EMPTY: Legacy memory file properly empty | GREP: stat -c%s ~/.openclaw/workspace/memory/stm.json
+SERVICE_RESTART: Automatic service recovery | GREP: grep "restart\|systemctl.*start" ~/.openclaw/logs/helios.log
+
+## File Organization Markers
+ROOT_FILE_COUNT: Files in workspace root (target <10) | GREP: find ~/.openclaw/workspace -maxdepth 1 -type f | wc -l
+ANALYSIS_DIR: Analysis reports organized | GREP: ls ~/.openclaw/workspace/analysis/ | wc -l
+SCRIPTS_DIR: Utility scripts organized | GREP: ls ~/.openclaw/workspace/scripts/ | wc -l
+VISION_DIR: Vision documents organized | GREP: ls ~/.openclaw/workspace/vision/ | wc -l
+MEMORY_DIR: Memory system files organized | GREP: ls ~/.openclaw/workspace/memory/ | wc -l
+ARCHIVE_DIR: Historical files archived | GREP: ls ~/.openclaw/workspace/archive/ | wc -l
+
+## Health Check Patterns
+SYSTEM_HEALTHY: All systems operational | GREP: ./scripts/system-health-check.sh --brief | grep "OK"
+CPU_TEMP_NORMAL: Temperature within safe limits | GREP: grep "temp.*[3-6][0-9]°C" /tmp/cpu-temp.log
+VRAM_AVAILABLE: GPU memory sufficient | GREP: nvidia-smi | grep "MiB" | grep -v "100%"
+DISK_SPACE: Adequate storage remaining | GREP: df -h ~/.openclaw/workspace | grep -v "9[0-9]%"
+BRAIN_DB_SIZE: Memory database growth | GREP: du -h ~/.openclaw/workspace/memory/brain.db
+BACKUP_SUCCESS: Successful backup completion | GREP: grep "backup.*complete" /tmp/brain-backup.log
+
+## Extension Integration  
+conversation-summarizer — daily conversation analysis and summarization
+self-reflection — periodic capability assessment and planning
+cortex-bridge — TypeScript to Python memory bridge  
+brain_api — primary memory system interface
+loadSTMDirect — deprecated stm.json reader (should not be used)
