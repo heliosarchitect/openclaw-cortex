@@ -30,12 +30,12 @@ else
 fi
 
 # Expected minimum runtimes and job metadata
-# Format: JOB_ID:MIN_SECONDS:DESCRIPTION:SCHEDULE
+# Format: JOB_ID:MIN_SECONDS:DESCRIPTION:SCHEDULE:STATUS
 declare -A EXPECTED_JOBS=(
-    ["52075e39"]="300:LLM Fleet Dev:22:00:DISABLED"
-    ["6aa4edc5"]="120:Reflection:23:00:DISABLED" 
-    ["fe799b39"]="120:Reflection:00:00:DISABLED"
-    ["f683a04b"]="300:Self-improvement:04:00:ACTIVE"
+    ["52075e39"]="300:LLM Fleet Dev:2200:DISABLED"
+    ["6aa4edc5"]="120:Reflection:2300:DISABLED" 
+    ["fe799b39"]="120:Reflection:0000:DISABLED"
+    ["f683a04b"]="300:Self-improvement:0400:ACTIVE"
 )
 
 usage() {
@@ -193,6 +193,8 @@ generate_report() {
     done
     
     if [[ "$JSON_OUTPUT" == "true" ]]; then
+        # Suppress all stderr for clean JSON output
+        exec 2>/dev/null
         cat << EOF
 {
     "timestamp": "$(date -Iseconds)",
