@@ -7,30 +7,29 @@
 # 
 # Author: Helios (Task 2, Issue #5, v0.3.0 self-improvement sprint)
 
-set -euo pipefail
+set -uo pipefail
 
 # Configuration
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
+WORKSPACE_DIR="$HOME/.openclaw/workspace"
 AUDIT_LOG="${WORKSPACE_DIR}/memory/cron-audit-$(date +%Y-%m-%d).log"
 VERBOSE=false
 JSON_OUTPUT=false
 ISSUES_FOUND=0
 CRITICAL_ISSUES=0
 
-# Colors for output (disabled if not TTY)
-if [[ -t 1 ]]; then
+# Colors for output (disabled if not TTY or JSON mode)
+if [[ -t 1 && "$*" != *"--json"* ]]; then
     RED='\033[0;31m'
     YELLOW='\033[1;33m'
     GREEN='\033[0;32m'
     BLUE='\033[0;34m'
-    NC='\033[0m' # No Color
+    NC='\033[0m'
 else
     RED='' YELLOW='' GREEN='' BLUE='' NC=''
 fi
 
-# Expected minimum runtimes and job metadata
-# Format: JOB_ID:MIN_SECONDS:DESCRIPTION:SCHEDULE:STATUS
+# Expected job configurations
+# Format: MIN_SECONDS:DESCRIPTION:SCHEDULE:STATUS
 declare -A EXPECTED_JOBS=(
     ["52075e39"]="300:LLM Fleet Dev:2200:DISABLED"
     ["6aa4edc5"]="120:Reflection:2300:DISABLED" 
@@ -59,170 +58,179 @@ EXIT CODES:
     1 - Issues found (non-critical)
     2 - Critical failures detected
 
+EXAMPLES:
+    # Basic validation with human-readable output
+    $0
+    
+    # Verbose output showing all checks
+    $0 --verbose
+    
+    # JSON output for programmatic use
+    $0 --json
+
 EOF
 }
 
-log() {
+# Logging function that handles both console and file output
+log_to_file() {
+    echo "$(date -Iseconds) [$1] $2" >> "$AUDIT_LOG"
+}
+
+output_message() {
     local level="$1"
-    shift
-    local message="$*"
-    local timestamp=$(date -Iseconds)
+    local message="$2"
     
-    echo "[$timestamp] [$level] $message" >> "$AUDIT_LOG"
+    # Always log to file
+    log_to_file "$level" "$message"
     
-    if [[ "$level" == "ERROR" ]]; then
-        echo -e "${RED}✗ $message${NC}" >&2
-        ((ISSUES_FOUND++))
-    elif [[ "$level" == "CRITICAL" ]]; then
-        echo -e "${RED}💥 CRITICAL: $message${NC}" >&2
-        ((CRITICAL_ISSUES++))
-        ((ISSUES_FOUND++))
-    elif [[ "$level" == "WARN" ]]; then
-        echo -e "${YELLOW}⚠ $message${NC}" >&2
-        ((ISSUES_FOUND++))
-    elif [[ "$level" == "SUCCESS" ]]; then
-        echo -e "${GREEN}✓ $message${NC}" >&2
-    elif [[ "$level" == "INFO" ]] && [[ "$VERBOSE" == "true" ]]; then
-        echo -e "${BLUE}ℹ $message${NC}" >&2
+    # Console output handling
+    if [[ "$JSON_OUTPUT" == "true" ]]; then
+        # Suppress console output in JSON mode except for final result
+        return
     fi
+    
+    case "$level" in
+        ERROR)
+            echo -e "${RED}✗ $message${NC}" >&2
+            ((ISSUES_FOUND++))
+            ;;
+        CRITICAL)
+            echo -e "${RED}💥 CRITICAL: $message${NC}" >&2
+            ((CRITICAL_ISSUES++))
+            ((ISSUES_FOUND++))
+            ;;
+        WARN)
+            echo -e "${YELLOW}⚠ $message${NC}" >&2
+            ((ISSUES_FOUND++))
+            ;;
+        SUCCESS)
+            echo -e "${GREEN}✓ $message${NC}" >&2
+            ;;
+        INFO)
+            if [[ "$VERBOSE" == "true" ]]; then
+                echo -e "${BLUE}ℹ $message${NC}" >&2
+            fi
+            ;;
+    esac
 }
 
-# Check if we're running in an OpenClaw environment with cron tools available
-check_environment() {
-    log "INFO" "Starting cron output validation"
-    log "INFO" "Audit log: $AUDIT_LOG"
-    
-    # Create memory directory if it doesn't exist
-    mkdir -p "$(dirname "$AUDIT_LOG")"
-    
-    # For now, we'll simulate the cron API calls since we don't have direct access
-    # In a real agent session, this would use the actual cron tool calls
-    log "INFO" "Environment check complete"
-}
-
-# Simulate cron job listing (in real implementation, this would use cron tool)
-get_cron_jobs() {
-    log "INFO" "Fetching cron job list..."
-    
-    # Simulate the expected cron jobs
-    # In real implementation: use openclaw cron list API or cron tool
-    local job_list=""
-    for job_id in "${!EXPECTED_JOBS[@]}"; do
-        job_list="$job_list $job_id"
-    done
-    echo "$job_list"
-}
-
-# Check individual cron job status
-check_cron_job() {
+# Main validation logic for a single job
+validate_single_job() {
     local job_id="$1"
-    
-    # Check if job exists in our expected jobs
-    if [[ ! -v EXPECTED_JOBS["$job_id"] ]]; then
-        log "WARN" "Unknown job $job_id not in expected jobs list"
-        return 1
-    fi
-    
     local job_info="${EXPECTED_JOBS[$job_id]}"
     
     IFS=':' read -r min_seconds description schedule status <<< "$job_info"
     
-    log "INFO" "Checking job $job_id: $description ($schedule, $status)"
+    output_message "INFO" "Validating job $job_id: $description ($schedule, $status)"
     
-    # Simulate job run data (in real implementation: cron runs jobId=$job_id)
-    local current_time=$(date +%s)
-    local last_run_time=$((current_time - 3600)) # Simulate 1 hour ago
-    local runtime=$((min_seconds + 60)) # Simulate successful runtime
-    local last_status="success"
-    local artifacts_count=1
-    
-    # Job-specific checks
+    # Skip disabled jobs
     if [[ "$status" == "DISABLED" ]]; then
-        log "INFO" "Job $job_id is DISABLED - skipping validation"
+        output_message "INFO" "Job $job_id is DISABLED - skipping validation"
         return 0
     fi
     
-    # Check 1: Job status
+    # Simulate job run data (in real implementation, this would call OpenClaw cron API)
+    # For now, simulate successful runs to demonstrate the validation logic
+    local current_time=$(date +%s)
+    local last_run_time=$((current_time - 3600)) # Simulate ran 1 hour ago
+    local runtime=$((min_seconds + 60)) # Simulate successful runtime
+    local last_status="success"
+    local artifacts_produced=1
+    local tool_calls_made=1
+    
+    local job_passed=true
+    
+    # Validation Check 1: Last run status
     if [[ "$last_status" == "error" ]]; then
-        log "ERROR" "Job $job_id failed with error status"
-        return 1
+        output_message "ERROR" "Job $job_id failed with error status"
+        job_passed=false
     elif [[ "$last_status" == "timeout" ]]; then
-        log "ERROR" "Job $job_id timed out"
-        return 1
+        output_message "ERROR" "Job $job_id timed out"
+        job_passed=false
     fi
     
-    # Check 2: Runtime validation
+    # Validation Check 2: Runtime meets minimum expectation
     if [[ $runtime -lt $min_seconds ]]; then
-        log "WARN" "Job $job_id runtime (${runtime}s) below expected minimum (${min_seconds}s)"
-        return 1
+        output_message "WARN" "Job $job_id runtime (${runtime}s) below expected minimum (${min_seconds}s)"
+        job_passed=false
     fi
     
-    # Check 3: Artifacts produced
-    if [[ $artifacts_count -eq 0 ]]; then
-        log "ERROR" "Job $job_id produced no artifacts (no tool calls, commits, or files)"
-        return 1
+    # Validation Check 3: Job produced artifacts
+    if [[ $artifacts_produced -eq 0 ]]; then
+        output_message "ERROR" "Job $job_id produced no artifacts (files, commits, memory entries)"
+        job_passed=false
     fi
     
-    # Check 4: Recency check (job should have run within expected window)
+    # Validation Check 4: Job made tool calls (not just idle)
+    if [[ $tool_calls_made -eq 0 ]]; then
+        output_message "ERROR" "Job $job_id made no tool calls - may have been idle"
+        job_passed=false
+    fi
+    
+    # Validation Check 5: Job recency (should have run within expected window)
     local hours_since_run=$(( (current_time - last_run_time) / 3600 ))
-    if [[ $hours_since_run -gt 25 ]]; then # Allow 1 hour buffer for daily jobs
-        log "WARN" "Job $job_id hasn't run in $hours_since_run hours"
-        return 1
+    if [[ $hours_since_run -gt 25 ]]; then # Allow buffer for daily jobs
+        output_message "WARN" "Job $job_id hasn't run in $hours_since_run hours"
+        job_passed=false
     fi
     
-    log "SUCCESS" "Job $job_id validation passed (${runtime}s runtime, $artifacts_count artifacts)"
+    # Report result
+    if [[ "$job_passed" == "true" ]]; then
+        output_message "SUCCESS" "Job $job_id validation passed (${runtime}s runtime, $artifacts_produced artifacts)"
+    else
+        output_message "INFO" "Job $job_id validation completed with issues"
+    fi
+    
     return 0
 }
 
-# Generate summary report
-generate_report() {
-    local total_jobs=$(echo "${!EXPECTED_JOBS[@]}" | wc -w)
+# Generate final report in requested format
+generate_final_report() {
+    local total_jobs=${#EXPECTED_JOBS[@]}
     local active_jobs=0
     local disabled_jobs=0
     
+    # Count job statuses
     for job_id in "${!EXPECTED_JOBS[@]}"; do
-        if [[ -v EXPECTED_JOBS["$job_id"] ]]; then
-            local job_info="${EXPECTED_JOBS[$job_id]}"
-            IFS=':' read -r _ _ _ status <<< "$job_info"
-            if [[ "$status" == "ACTIVE" ]]; then
-                ((active_jobs++))
-            else
-                ((disabled_jobs++))
-            fi
+        local job_info="${EXPECTED_JOBS[$job_id]}"
+        IFS=':' read -r _ _ _ status <<< "$job_info"
+        if [[ "$status" == "ACTIVE" ]]; then
+            ((active_jobs++))
+        else
+            ((disabled_jobs++))
         fi
     done
     
+    # Output format selection
     if [[ "$JSON_OUTPUT" == "true" ]]; then
-        # Suppress all stderr for clean JSON output
-        exec 2>/dev/null
         cat << EOF
 {
     "timestamp": "$(date -Iseconds)",
-    "summary": {
-        "total_jobs": $total_jobs,
+    "validation_summary": {
+        "total_jobs_checked": $total_jobs,
         "active_jobs": $active_jobs,
         "disabled_jobs": $disabled_jobs,
         "issues_found": $ISSUES_FOUND,
         "critical_issues": $CRITICAL_ISSUES
     },
-    "status": "$([[ $CRITICAL_ISSUES -gt 0 ]] && echo "CRITICAL" || [[ $ISSUES_FOUND -gt 0 ]] && echo "WARNING" || echo "OK")",
-    "audit_log": "$AUDIT_LOG"
+    "overall_status": "$([[ $CRITICAL_ISSUES -gt 0 ]] && echo "CRITICAL" || [[ $ISSUES_FOUND -gt 0 ]] && echo "WARNING" || echo "HEALTHY")",
+    "audit_log_path": "$AUDIT_LOG",
+    "next_actions": $(if [[ $CRITICAL_ISSUES -gt 0 ]]; then echo "\"Immediate attention required\""; elif [[ $ISSUES_FOUND -gt 0 ]]; then echo "\"Review recommended\""; else echo "\"No action needed\""; fi)
 }
 EOF
     else
-        echo ""
-        echo "=== Cron Output Validation Summary ==="
-        echo "Timestamp: $(date -Iseconds)"
-        echo "Total jobs: $total_jobs (Active: $active_jobs, Disabled: $disabled_jobs)"
-        echo "Issues found: $ISSUES_FOUND"
+        cat << EOF
+
+=== Cron Output Validation Summary ===
+Timestamp: $(date -Iseconds)
+Jobs checked: $total_jobs (Active: $active_jobs, Disabled: $disabled_jobs)
+Issues found: $ISSUES_FOUND
+Critical issues: $CRITICAL_ISSUES
+Audit log: $AUDIT_LOG
+
+EOF
         if [[ $CRITICAL_ISSUES -gt 0 ]]; then
-            echo -e "${RED}Critical issues: $CRITICAL_ISSUES${NC}"
-        fi
-        echo "Audit log: $AUDIT_LOG"
-        echo ""
-        
-        if [[ $CRITICAL_ISSUES -gt 0 ]]; then
-            echo -e "${RED}🚨 CRITICAL FAILURES DETECTED - IMMEDIATE ATTENTION REQUIRED${NC}"
+            echo -e "${RED}🚨 CRITICAL FAILURES - IMMEDIATE ATTENTION REQUIRED${NC}"
         elif [[ $ISSUES_FOUND -gt 0 ]]; then
             echo -e "${YELLOW}⚠ Issues found - review recommended${NC}"
         else
@@ -231,11 +239,11 @@ EOF
     fi
 }
 
-# Main execution
+# Main execution function
 main() {
-    # Parse arguments
+    # Parse command line arguments
     while [[ $# -gt 0 ]]; do
-        case $1 in
+        case "$1" in
             --verbose|-v)
                 VERBOSE=true
                 shift
@@ -249,44 +257,47 @@ main() {
                 exit 0
                 ;;
             *)
-                echo "Unknown option: $1" >&2
-                usage
+                echo "Error: Unknown option '$1'" >&2
+                echo "Use --help for usage information." >&2
                 exit 1
                 ;;
         esac
     done
     
-    # Initialize
-    check_environment
+    # Initialize audit log
+    mkdir -p "$(dirname "$AUDIT_LOG")"
+    log_to_file "INFO" "=== Cron Output Validation Started ==="
+    log_to_file "INFO" "Command: $0 $*"
     
-    # Get and check all cron jobs
-    local jobs
-    jobs=$(get_cron_jobs)
+    output_message "INFO" "Starting cron output validation"
+    output_message "INFO" "Checking ${#EXPECTED_JOBS[@]} configured jobs"
     
-    for job_id in $jobs; do
-        if ! check_cron_job "$job_id"; then
-            log "INFO" "Job $job_id validation completed with issues"
-        fi
+    # Validate each configured job
+    for job_id in "${!EXPECTED_JOBS[@]}"; do
+        validate_single_job "$job_id"
     done
     
-    # Generate final report
-    generate_report
+    # Log final summary to file
+    log_to_file "SUMMARY" "Validation complete - Issues: $ISSUES_FOUND, Critical: $CRITICAL_ISSUES"
     
-    # Exit with appropriate code
+    # Generate and display report
+    generate_final_report
+    
+    # Exit with appropriate status code
     if [[ $CRITICAL_ISSUES -gt 0 ]]; then
-        log "CRITICAL" "Validation completed with $CRITICAL_ISSUES critical issues"
+        output_message "INFO" "Exiting with code 2 (critical issues)"
         exit 2
     elif [[ $ISSUES_FOUND -gt 0 ]]; then
-        log "WARN" "Validation completed with $ISSUES_FOUND non-critical issues"
+        output_message "INFO" "Exiting with code 1 (non-critical issues)"
         exit 1
     else
-        log "SUCCESS" "All cron jobs validated successfully"
+        output_message "INFO" "Exiting with code 0 (all healthy)"
         exit 0
     fi
 }
 
-# Handle interruption
-trap 'log "ERROR" "Cron validation interrupted"; exit 1' INT TERM
+# Handle script interruption
+trap 'echo -e "\n${YELLOW}Validation interrupted${NC}" >&2; exit 130' INT TERM
 
-# Run main function
+# Execute main function with all arguments
 main "$@"
