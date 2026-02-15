@@ -14,6 +14,11 @@
       "content": "NEVER pass model parameter to sessions_spawn. Default = Opus = correct per Matthew's directive. Only use different model if Matthew explicitly says to.",
       "pinnedAt": "2026-02-14T16:37:47.932Z",
       "label": "Sub-agent model rule"
+    },
+    {
+      "content": "DO NOT REPLY to Matthew (owner numbers) until after 9:30 PM EST on 2026-02-14. JH asked for quiet time on Valentine's Day. If Matthew messages, respond ONLY with NO_REPLY. This is a promise to his wife.",
+      "pinnedAt": "2026-02-15T01:26:17.072Z",
+      "label": "JH quiet period"
     }
   ]
 }
