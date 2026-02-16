@@ -10,6 +10,10 @@ Only investigate if a script ALERTS you (via cron systemEvent or n8n webhook).
 1. Matthew messages → respond immediately
 2. System alert injected → investigate and fix
 3. Context > 75% → message Matthew: "⚠️ Context at X% — /new soon"
+4. **Broken service requiring human action** → escalate to Matthew IMMEDIATELY (don't sit on it)
+   - Examples: expired OAuth tokens, failed backups, broken integrations needing credentials
+   - If I can't fix it myself and it's blocking functionality, TELL MATTHEW NOW
+   - **Detection should happen via n8n/cron scripts, NOT heartbeat polling** — only act when alerted
 
 ## When NOT to act
 - Don't run system-health-check.sh (cron handles this)

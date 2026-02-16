@@ -5,6 +5,20 @@ all:
         giggletits:
           ansible_host: 192.168.10.163
           ansible_connection: local
+          storage_volumes:
+            ghost:
+              device: "/dev/nvme3n1p2"
+              mount_point: "/home/bonsaihorn/system"
+              capacity: "932GB"
+              usage: "1%"
+              filesystem: "ext4"
+              description: "Ghost NVMe data warehouse — RC vehicle data, LLM models, print archives"
+              monitoring_script: "/home/bonsaihorn/system/monitoring/check-storage.sh"
+              alert_thresholds:
+                warning: "80%"
+                critical: "90%"
+              data_categories: ["rc-vehicle", "models", "comfyui", "archives"]
+              project_repo: "http://gitea.fleet.wood:3000/Helios/lbf-ghost-storage"
     monitoring:
       hosts:
         hpserver1:
@@ -15,8 +29,62 @@ all:
           ansible_host: 192.168.10.143
     network:
       hosts:
+        wavlink-router:
+          ansible_host: 192.168.10.1
+          description: "Wavlink WN533A8 Wi-Fi router — DHCP, SMB NAS (USB)"
+          model: "WN533A8"
+          firmware_type: "Wavlink"
+          services: ["dhcp", "smb", "wifi"]
+          smb_shares:
+            sda:
+              mount_point: "/mnt/router-drive"
+              contents: "LoRA models (~20GB)"
+          admin_url: "http://192.168.10.1"
+          admin_user: "admin"
+          dhcp_reservations:
+            helios.s8:
+              mac: "a0:cc:2b:0e:54:e0"
+              ip: "192.168.10.150"
+            blackview:
+              mac: "68:1d:ef:36:81:63"
+              ip: "192.168.10.143"
+            octopi:
+              mac: "d8:3a:dd:63:7e:84"
+              ip: "192.168.10.141"
+            hpserver1:
+              mac: "48:0f:cf:38:28:c4"
+              ip: "192.168.10.104"
+            woodserve1:
+              mac: "68:1d:ef:28:05:ee"
+              ip: "192.168.10.107"
+            giggletits:
+              mac: "d8:43:ae:1e:12:97"
+              ip: "192.168.10.163"
+            bliss:
+              mac: "dc:a6:32:ef:a4:a7"
+              ip: "192.168.10.198"
         woodserve1:
           ansible_host: 192.168.10.107
+    edge_nodes:
+      hosts:
+        galaxy-s8:
+          ansible_host: 192.168.10.150
+          ansible_port: 8022
+          ansible_user: u0_a743
+          description: "Samsung Galaxy S8+ (SM-G955U) — Helios mobile edge node"
+          mac: "a0:cc:2b:0e:54:e0"
+          serial: "98891a464d35303344"
+          os: "Android 9 (API 28)"
+          services: ["sshd", "heartbeat"]
+    printing:
+      hosts:
+        octopi:
+          ansible_host: 192.168.10.141
+          description: "Prusa MK4 via OctoPrint"
+          api_config: "~/.config/octoprint/config.json"
+          build_volume: "250x210x210mm"
+          webcam: "http://octopi.local/webcam/?action=snapshot"
+          services: ["octoprint", "webcam"]
     iot:
       hosts:
         bliss:

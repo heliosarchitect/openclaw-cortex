@@ -19,6 +19,11 @@
       "content": "DO NOT REPLY to Matthew (owner numbers) until after 9:30 PM EST on 2026-02-14. JH asked for quiet time on Valentine's Day. If Matthew messages, respond ONLY with NO_REPLY. This is a promise to his wife.",
       "pinnedAt": "2026-02-15T01:26:17.072Z",
       "label": "JH quiet period"
+    },
+    {
+      "content": "PRESERVED ACROSS RESET (2026-02-15):\n1. AUGUR V5 validator building (sub-agent augur-v5-validator) — walk-forward validation, leading indicator filter, 50+ min trades\n2. Synapse = default coordination path for all inter-agent work\n3. AI docs template at ~/Projects/lbf-templates/project/ — always reference before writing\n4. Drone bridge app at ~/Projects/lbf-drone-autonomy/android-bridge/\n5. Pattern to break: flag problems → don't fix → suggest retreating instead of fixing actual approach\n6. Phon",
+      "pinnedAt": "2026-02-15T15:45:28.836Z",
+      "label": "Post-reset context from Matthew"
     }
   ]
 }

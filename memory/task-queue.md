@@ -12,6 +12,9 @@ When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 - [ ] **n8n Integration**: Connect OpenClaw events to n8n workflows (event-driven architecture)
 - [ ] **CHANGELOG Automation**: Generate from conventional commits (#7)
 
+## Backlog
+- [ ] **RTSP Cameras**: Give Helios security-type vision — research RTSP camera options, integrate streams into Helios for real-time visual monitoring (indoor/outdoor), motion detection, object recognition. Phone node + RC vehicle tie-in potential.
+
 ## Available (grab any)
 - [ ] Audit remaining stm.json references in loadSTMDirect, CLI stats command
 - [ ] Build Twilio integration (Matthew wanted call capability since psilocybin session)
