@@ -1,0 +1,64 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.heliosarchitect/wems",
+  "description": "World Event Monitoring System (WEMS) - Real-time monitoring of global events including earthquakes, volcanos, weather, and more. Features free and premium tiers with advanced filtering and enhanced data access.",
+  "repository": {
+    "url": "https://github.com/heliosarchitect/wems-mcp-server",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "wems-mcp-server",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "WEMS API key for premium features (optional for free tier)",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true,
+          "name": "WEMS_API_KEY"
+        }
+      ]
+    }
+  ],
+  "pricing": {
+    "model": "freemium",
+    "tiers": [
+      {
+        "name": "free",
+        "description": "Basic earthquake monitoring (magnitude ≥4.5, hour/day timeframes)",
+        "price": 0
+      },
+      {
+        "name": "premium", 
+        "description": "Full access to all events, enhanced filtering, extended time ranges",
+        "price": 29,
+        "currency": "USD",
+        "period": "month"
+      }
+    ]
+  },
+  "capabilities": [
+    "earthquake_monitoring",
+    "volcano_tracking", 
+    "weather_alerts",
+    "real_time_data",
+    "geographic_filtering",
+    "magnitude_filtering",
+    "time_range_queries"
+  ],
+  "tags": [
+    "monitoring",
+    "earthquakes",
+    "weather", 
+    "real-time",
+    "alerts",
+    "freemium",
+    "geoscience"
+  ]
+}

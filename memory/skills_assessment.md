@@ -1,4 +1,11 @@
 # Skills Assessment - Partnership Value
+<!-- AI.TOC: Skills Assessment - Partnership Value — Read lines 1-20 for navigation.
+  §1 🏆 HIGH VALUE for Partnership (Use These    → lines 3-49
+  §2 🎯 MEDIUM VALUE (Situational Use)           → lines 50-79
+  §3 📌 NICHE VALUE (Specific Use Cases)         → lines 80-110
+  §4 🚀 Immediate Action Plan                    → lines 111-128
+  Total: 128 lines | Sections: 4
+-->
 
 ## 🏆 HIGH VALUE for Partnership (Use These First)
 

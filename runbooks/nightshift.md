@@ -1,4 +1,12 @@
 # Helios Night Shift — Operational Runbook
+<!-- AI.TOC: Helios Night Shift — Operational Runbook — Read lines 1-20 for navigation.
+  §1 Services                                   → lines 3-22
+  §2 Common Procedures                          → lines 23-64
+  §3 Troubleshooting                            → lines 65-86
+  §4 Escalation                                 → lines 87-101
+  §5 Monitoring                                 → lines 102-115
+  Total: 115 lines | Sections: 5
+-->
 
 ## Services
 

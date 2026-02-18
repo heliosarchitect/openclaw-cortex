@@ -1,4 +1,12 @@
 # LBF Task Board v2.1 — Build Report
+<!-- AI.TOC: LBF Task Board v2.1 — Build Report — Read lines 1-20 for navigation.
+  §1 Summary                                    → lines 9-12
+  §2 Changes Made                               → lines 13-71
+  §3 Final State                                → lines 72-87
+  §4 Acceptance Criteria Results                → lines 88-116
+  §5 Running Service                            → lines 117-125
+  Total: 125 lines | Sections: 5
+-->
 
 **Date:** 2026-02-09  
 **Builder:** Engineer sub-agent  

@@ -1,4 +1,20 @@
 # Multi-Asset Opportunity Scanner
+<!-- AI.TOC: Multi-Asset Opportunity Scanner — Read lines 1-20 for navigation.
+  §1 Overview                                   → lines 3-5
+  §2 Features                                   → lines 6-16
+  §3 Files                                      → lines 17-22
+  §4 Usage                                      → lines 23-51
+  §5 Output Format                              → lines 52-84
+  §6 Scoring System                             → lines 85-105
+  §7 Cron Configuration                         → lines 106-168
+  §8 Configuration                              → lines 169-186
+  §9 Troubleshooting                            → lines 187-203
+  §10 Integration Examples                       → lines 204-245
+  §11 Performance Metrics                        → lines 246-253
+  §12 Future Enhancements                        → lines 254-263
+  §13 License                                    → lines 264-266
+  Total: 266 lines | Sections: 13
+-->
 
 ## Overview
 Scans all liquid Coinbase USD pairs for trading opportunities using technical analysis.

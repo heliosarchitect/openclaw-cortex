@@ -1,0 +1,173 @@
+# Third-Party AI/ML Tools — Combined Register
+
+## Overview
+This register documents third-party AI/ML tools and frameworks that are forks or locally modified installations. These are primarily inference servers, web UIs, and content generation tools for various AI tasks.
+
+---
+
+## ComfyUI
+**PATH**: `~/Projects/ComfyUI`  
+**DESCRIPTION**: Node-based workflow UI for Stable Diffusion and AI image generation  
+**UPSTREAM**: https://github.com/comfyanonymous/ComfyUI.git  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2026-02-02  
+**LOCAL MODIFICATIONS**: Yes (35 files modified)  
+
+**PURPOSE**: Advanced image generation with node-based workflow system. Supports custom models, ControlNet, and complex generation pipelines.
+
+**MODIFICATIONS**:
+- Database integration (alembic_db/ directory present)
+- Custom nodes and workflow configurations
+- Local model storage and management
+
+---
+
+## SillyTavern-Launcher  
+**PATH**: `~/Projects/SillyTavern-Launcher`  
+**DESCRIPTION**: Launcher application for SillyTavern AI chat interface  
+**UPSTREAM**: https://github.com/SillyTavern/SillyTavern-Launcher.git  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2025-12-14  
+**LOCAL MODIFICATIONS**: None (0 files modified)  
+
+**PURPOSE**: Easy deployment and management of SillyTavern chat interface for character-based AI conversations.
+
+**STATUS**: Clean installation, no local customizations.
+
+---
+
+## stable-diffusion-webui (AUTOMATIC1111)
+**PATH**: `~/Projects/stable-diffusion-webui`  
+**DESCRIPTION**: Web interface for Stable Diffusion, implemented using Gradio library  
+**UPSTREAM**: https://github.com/AUTOMATIC1111/stable-diffusion-webui  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2025-10-08  
+**LOCAL MODIFICATIONS**: Yes (4 files modified)  
+
+**PURPOSE**: Popular web UI for Stable Diffusion image generation with extensive plugin ecosystem.
+
+**MODIFICATIONS**:
+- Custom configuration files
+- Local extensions and plugins
+- Model storage customizations
+
+---
+
+## text-generation-webui (oobabooga)
+**PATH**: `~/Projects/text-generation-webui`  
+**DESCRIPTION**: Web UI for running Large Language Models locally  
+**UPSTREAM**: https://github.com/oobabooga/text-generation-webui.git  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2025-07-15  
+**LOCAL MODIFICATIONS**: None (0 files modified)  
+
+**PURPOSE**: Local LLM inference server with web interface supporting various model formats (GGML, GPTQ, etc.).
+
+**STATUS**: Clean installation, primarily used for local LLM experimentation.
+
+---
+
+## Sana (NVIDIA)
+**PATH**: `~/Projects/Sana`  
+**DESCRIPTION**: NVIDIA's efficient diffusion transformer for image generation  
+**UPSTREAM**: https://github.com/NVlabs/Sana.git  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2025-12-14  
+**LOCAL MODIFICATIONS**: None (0 files modified)  
+
+**PURPOSE**: Research-grade diffusion model with transformer architecture for high-quality image generation.
+
+**STATUS**: Research tool, likely for evaluation and comparison with other diffusion models.
+
+---
+
+## xtts-api-server
+**PATH**: `~/Projects/xtts-api-server`  
+**DESCRIPTION**: API server for XTTS (Cross-lingual Text-To-Speech) inference  
+**UPSTREAM**: https://github.com/daswer123/xtts-api-server.git  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2026-02-05  
+**LOCAL MODIFICATIONS**: Yes (7 files modified)  
+
+**PURPOSE**: REST API server for XTTS voice synthesis with multi-language support.
+
+**MODIFICATIONS**:
+- Configuration customizations
+- Potential integration with other voice systems
+- Recent activity suggests active use
+
+---
+
+## xtts-finetune-webui
+**PATH**: `~/Projects/xtts-finetune-webui`  
+**DESCRIPTION**: Web UI for fine-tuning XTTS models on custom voice data  
+**UPSTREAM**: https://github.com/daswer123/xtts-finetune-webui.git  
+**FORK STATUS**: Direct clone (not a fork)  
+**LAST MODIFIED**: 2025-09-11  
+**LOCAL MODIFICATIONS**: Yes (26 files modified)  
+
+**PURPOSE**: Custom voice model training interface for creating personalized TTS voices.
+
+**MODIFICATIONS**:
+- Extensive local customizations (26 files modified)
+- Custom training configurations
+- Likely integrated with voice projects or BLISS system
+
+---
+
+## Usage Patterns & Integration
+
+### AI Content Generation Stack
+```
+Text Generation: text-generation-webui (LLM inference)
+Image Generation: ComfyUI + stable-diffusion-webui (visual content)
+Voice Synthesis: xtts-api-server + xtts-finetune-webui (audio content)
+Research Models: Sana (evaluation and comparison)
+```
+
+### Workflow Integration
+- **ComfyUI**: Advanced image generation workflows with custom nodes
+- **AUTOMATIC1111**: Quick image generation and experimentation  
+- **XTTS Stack**: Voice synthesis for projects like BLISS or content creation
+- **Research Tools**: Sana for state-of-art model evaluation
+
+### Local Modifications Strategy
+- **Heavy Customization**: xtts-finetune-webui (26 files) → Active voice training
+- **Moderate Changes**: ComfyUI (35 files) → Workflow customizations
+- **Light Configuration**: stable-diffusion-webui (4 files) → Basic settings
+- **Clean Installs**: Research tools maintained as vanilla installations
+
+## Maintenance Status
+
+### Active Development
+- **ComfyUI**: Recently modified (2026-02-02), actively used
+- **xtts-api-server**: Recent changes (2026-02-05), production use
+
+### Stable Installations  
+- **xtts-finetune-webui**: Heavily customized but stable (2025-09-11)
+- **stable-diffusion-webui**: Lightly modified, stable operation
+
+### Research/Evaluation Only
+- **Sana**: Clean research installation for evaluation
+- **SillyTavern-Launcher**: Utility tool, clean installation
+- **text-generation-webui**: LLM testing platform, clean
+
+## Integration with LBF Ecosystem
+
+### Direct Integration
+- **XTTS Stack**: Potential integration with BLISS voice feedback systems
+- **ComfyUI**: Advanced image generation for content creation
+
+### Supporting Tools
+- **LLM Inference**: Local model testing before production deployment
+- **Research Evaluation**: Comparing state-of-art models with production systems
+
+### Development Workflow
+- **Rapid Prototyping**: Local tools for testing before cloud deployment
+- **Custom Model Development**: Voice training and image workflow development
+- **Quality Assessment**: Comparing different AI generation approaches
+
+---
+
+*Generated by Helios VERSION_FORENSICS framework — searchable, greppable, debuggable.*  
+*Third-party tools: Maintained for AI/ML research, development, and production support.*

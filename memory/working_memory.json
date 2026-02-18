@@ -6,9 +6,14 @@
       "label": "Sub-agent announce policy"
     },
     {
-      "content": "HELIOS_VISION.md exists (600+ lines). Phase 0: H0-1/2/3 done (audit, file trim, dedup). H0-4/5/6 remain (internalization, budget tuning, turn-counter). Workspace files trimmed: AGENTS 7.8K\u21921K, TOOLS 6.7K\u21921.2K, MEMORY 7.8K\u21921.2K. ~5,200 tokens/turn saved. Next: H0-4 requires OpenClaw source changes.",
+      "content": "HELIOS_VISION.md exists (600+ lines). Phase 0: H0-1/2/3 done (audit, file trim, dedup). H0-4/5/6 remain (internalization, budget tuning, turn-counter). Workspace files trimmed: AGENTS 7.8K→1K, TOOLS 6.7K→1.2K, MEMORY 7.8K→1.2K. ~5,200 tokens/turn saved. Next: H0-4 requires OpenClaw source changes.",
       "pinnedAt": "2026-02-09T09:41:52.460Z",
       "label": "Helios H0 status"
+    },
+    {
+      "content": "NEVER pass model parameter to sessions_spawn. Default = Opus = correct per Matthew's directive. Only use different model if Matthew explicitly says to.",
+      "pinnedAt": "2026-02-14T16:37:47.932Z",
+      "label": "Sub-agent model rule"
     }
   ]
 }

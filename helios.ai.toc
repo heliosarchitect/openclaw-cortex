@@ -1,0 +1,156 @@
+# Helios — AI Documentation Table of Contents
+
+## Core Documentation
+- helios.ai.register — version forensics, feature tracking, rollback procedures
+- HELIOS_VISION.md — program vision index and roadmap
+- CHANGELOG.md — constraints, bug fixes, version history
+- HEARTBEAT.md — operational mode guide and priority order
+- IDENTITY.md — Helios identity and core principles
+- SOUL.md — philosophical framework and emotional intelligence
+- MEMORY.md — memory system architecture and usage guide
+- AGENTS.md — multi-agent coordination and spawning patterns
+- TOOLS.md — external tool integration and usage guide
+- USER.md — user interaction patterns and safety guidelines
+- README.md — workspace overview and getting started
+
+## Architecture Documentation
+- docs/SYNAPSE_V2.md — inter-agent messaging protocol and threading
+- docs/BC_DR.md — backup and disaster recovery procedures
+- docs/turn-counter-usage.md — context management and token optimization
+- cortex/README.md — Cortex memory system architecture
+- cortex/OPENCLAW_ADAPTATION.md — OpenClaw-specific adaptations
+- cortex/api/README.md — Cortex API documentation
+- cortex/api/BUILDING_WITH_CORTEX.md — developer guide for memory integration
+- cortex/api/USAGE.md — Cortex API usage examples
+- memory/CORTEX_README.md — memory system user guide
+- memory/CORTEX_PRINCIPLES.md — memory design philosophy
+- memory/PHASE3_SPEC.md — Phase 3 memory system specifications
+
+## Scripts - System Operations
+- scripts/system-health-check.sh — comprehensive system health validation
+- scripts/backup_to_drive.sh — nightly Google Drive backup automation
+- scripts/memory-hygiene.sh — daily memory deduplication and cleanup
+- scripts/workspace-cleanup.sh — file organization and directory maintenance
+- scripts/daily-efficiency-check.sh — performance metrics and optimization
+- scripts/cron-audit.sh — cron job validation and health check
+- scripts/cron-output-validator.sh — validates cron execution and output
+
+## Scripts - Communications & Alerts
+- scripts/call_matthew.py — emergency contact system (primary)
+- scripts/call_matthew_now.py — immediate contact (urgent situations)
+- scripts/signal_voice_call.py — voice notification system
+- scripts/send_morning_summary.py — daily status report generation
+- scripts/alert_manager.py — centralized alert handling and routing
+- scripts/alert-consolidator.sh — alert deduplication and batching
+- scripts/alert-watcher.sh — continuous alert monitoring
+- scripts/conditional-email-check.sh — intelligent email monitoring
+- scripts/conditional-world-events.sh — global event monitoring
+- scripts/conditional-synapse-check.sh — inter-agent message checking
+- scripts/conditional-proactive-work.sh — proactive task identification
+
+## Scripts - Monitoring & Analysis  
+- scripts/github-release-monitor/github-release-monitor.py — repository release tracking
+- scripts/helios-monitor/helios_monitor.py — Helios system monitoring daemon
+- scripts/wazuh-alerts.py — security monitoring integration
+- scripts/wems-monitor.sh — world event monitoring integration
+- scripts/claude-usage-tracker.py — API usage tracking and optimization
+- scripts/token-efficiency-tracker.py — context optimization metrics
+- scripts/check_earthquakes.py — seismic activity monitoring
+- scripts/check_crypto_price.py — cryptocurrency price monitoring
+- scripts/check_fear_greed.py — market sentiment monitoring
+- scripts/check_cpu_temp.py — hardware temperature monitoring
+- scripts/check_vram.py — GPU memory utilization monitoring
+
+## Scripts - Development & QA
+- scripts/bot_guardian.py — service watchdog and auto-restart
+- scripts/create_agentic_molt.py — sub-agent spawning automation
+- scripts/learn_from_today.py — daily learning consolidation
+- scripts/context-summary.py — context window optimization
+- scripts/end_of_day.py — end-of-day reporting and cleanup
+- scripts/overnight_shift.py — autonomous overnight operations
+
+## Memory System  
+- memory/stm.json — short-term memory (should be empty: {})
+- memory/brain.db — primary memory database (SQLite)
+- memory/synapse.json — inter-agent message store
+- memory/categories.json — memory categorization system
+- memory/working_memory.json — episodic pinned memory
+- memory/embeddings_daemon.py — embedding generation service
+- memory/cortex_client.py — memory API client
+- memory/maintenance.py — memory system maintenance tools
+- memory/stm_manager.py — short-term memory management
+- memory/collections_manager.py — memory collection management
+- memory/verify_cortex.py — memory system validation
+
+## Vision Documents
+- vision/helios-program.md — core program architecture and goals
+- vision/augur-trading.md — autonomous trading system vision
+- vision/qa-monitoring.md — automated QA framework vision
+- vision/infrastructure.md — fleet management and distribution
+- vision/itsm-dashboard.md — operations dashboard design
+- vision/local-llm-fleet.md — local language model infrastructure
+- vision/bottleneck-tracking.md — performance optimization framework
+- vision/infrastructure-security.md — security hardening strategy
+- vision/self-improvement-session-guide.md — recursive improvement methodology
+
+## Analysis & Reports
+- analysis/token-efficiency-deep-analysis.md — context optimization results
+- analysis/heartbeat-efficiency-redesign.md — operational mode optimization
+- analysis/context-injection-audit.md — memory injection performance
+- analysis/h0-5-implementation-plan.md — Phase 0 completion analysis
+- analysis/openclaw-upstream-merge-plan.md — upstream contribution strategy
+- analysis/local-coding-model-research.md — local LLM evaluation
+- analysis/expenditure-tracker-setup.md — cost monitoring implementation
+- reports/postmortem-2026-02-11-nightshift.md — overnight operations analysis
+- reports/security/2026-02-09-vulnerability-assessment.md — security audit
+- reports/LBF_OPERATING_MODEL.md — enterprise operations model
+
+## Cortex Memory API
+- cortex/main.py — Cortex memory system entry point
+- cortex/cortex/memory_system.py — core memory management
+- cortex/cortex/stm.py — short-term memory implementation
+- cortex/cortex/ltm.py — long-term memory implementation
+- cortex/cortex/embedding_manager.py — vector embedding management
+- cortex/cortex/processors.py — memory processing pipeline
+- cortex/api/app/main.py — REST API server for memory operations
+- cortex/api/app/routers/memory.py — memory endpoint routing
+- cortex/api/app/services/cortex_service.py — memory service implementation
+
+## Skills Collection
+- skills/agent-council/ — multi-agent coordination framework
+- skills/clawnance/ — trading and financial management
+- skills/desktop-control/ — desktop automation and control
+- skills/earthquake-monitor/ — seismic activity monitoring
+- skills/gog/ — Good Old Games integration
+- skills/model-usage/ — LLM usage tracking and optimization
+- skills/notion/ — Notion workspace integration
+- skills/security-monitor/ — security monitoring and alerting
+- skills/session-logs/ — conversation logging and analysis
+- skills/songsee/ — music and audio content management
+- skills/summarize/ — content summarization tools
+- skills/task-decomposer/ — complex task breakdown framework
+- skills/task-graph/ — task dependency management
+- skills/tmux/ — terminal multiplexer management
+- skills/todo-scheduler/ — task scheduling and automation
+
+## Configuration & Data
+- config/active_trader_config.json — trading system configuration
+- data/helios-metrics.json — performance metrics and analytics
+- data/skylight-sync-state.json — external synchronization state
+- keys/clawtasks/credentials.json — service authentication credentials
+- keys/clawtasks/wallet.json — cryptocurrency wallet configuration
+
+## Specifications
+- specs/CORTEX_MEMORY_MANAGEMENT.md — memory system technical specification
+- templates/vision-document.md — vision document template
+- templates/qa-specification.md — quality assurance template
+
+## Archives & Backups
+- archive/2026-02-09/ — document version backups
+- archive/old-reports/ — legacy analysis and reports
+- memory/pre_migration_backup/ — pre-brain.db migration backups
+
+## Operational Files
+- runbooks/nightshift.md — overnight operations runbook
+- sprints/v0.3.0-self-improvement.md — current sprint documentation
+- sprints/2026-02-12-augur-blitz.md — trading system sprint

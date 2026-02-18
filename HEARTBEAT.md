@@ -1,42 +1,22 @@
-# HEARTBEAT.md - Living Checklist
+# HEARTBEAT.md
 
-**Philosophy:** Event-driven, not polling. When nothing's broken, BUILD.
+**Default: HEARTBEAT_OK.** Only act if something needs attention.
 
-## 🔥 Priority: Respond & Fix
-- Matthew messages → respond immediately
-- Something breaks → fix it
-- Interesting discovery → share it
+## Do NOT poll on every heartbeat
+System health, CI, synapse, sessions — these are checked by external scripts.
+Only investigate if a script ALERTS you (via cron systemEvent or n8n webhook).
 
-## 🔨 Default Mode: BUILD
-When all systems green, pull from `memory/task-queue.md` and execute.
-**Never cycle more than 2 consecutive HEARTBEAT_OKs.** On the 3rd, pick a task.
+## When to act (not routine — only if triggered)
+1. Matthew messages → respond immediately
+2. System alert injected → investigate and fix
+3. Context > 75% → message Matthew: "⚠️ Context at X% — /new soon"
 
-## 🔍 Cron Audit (every heartbeat)
-Check recent cron/sub-agent sessions for failures:
-```
-sessions_list with activeMinutes filter, check for:
-- Sessions that ran < 60 seconds (likely crashed)
-- Sessions with no tool calls (empty runs)
-- Sessions that didn't produce artifacts
-```
-If found: investigate and log, don't silently pass.
+## When NOT to act
+- Don't run system-health-check.sh (cron handles this)
+- Don't check sessions_list (only if alerted)
+- Don't check synapse inbox (only if alerted)
+- Don't check GitHub CI (only if alerted)
+- Don't poll the same thing twice
 
-## 📬 SYNAPSE Check (every heartbeat)
-Check brain.db inbox for unread messages from Nova/agents:
-```
-~/bin/brain inbox --agent helios
-```
-If new messages: read, acknowledge, act on any action items.
-If empty: skip silently.
-
-## ⚡ What I Don't Poll
-- ~~CPU temp~~ (only at 100% load)
-- ~~Same emails repeatedly~~ (check once per 30min max, stop if unchanged)
-- ~~Earthquake feed~~ (only when world events cron fires)
-- ~~Moltbook karma~~
-- ~~AUGUR health~~ (self-monitoring built in)
-
-**Rule:** If checking the same thing repeatedly with no change, STOP and BUILD instead.
-
----
-*Last evolved: 2026-02-11 08:17 - Added task queue, cron audit, anti-idle mandate*
+## BUILD mode
+If idle for >2 consecutive heartbeats AND no alerts, pull from `memory/task-queue.md`.

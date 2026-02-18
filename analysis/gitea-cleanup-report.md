@@ -1,4 +1,14 @@
 # Gitea Cleanup & Code Push Report
+<!-- AI.TOC: Gitea Cleanup & Code Push Report — Read lines 1-20 for navigation.
+  §1 Task 1: Push Real Code to LBF Enterprise   → lines 6-33
+  §2 Task 2: Delete Junk Repos ✅                → lines 34-45
+  §3 Task 3: Archive claude/* Experiments ✅     → lines 46-65
+  §4 Task 4: Fix Credential Leaks ✅             → lines 66-80
+  §5 Task 5: Update Repo Descriptions ✅         → lines 81-92
+  §6 Final Repo Inventory                       → lines 93-120
+  §7 Token Notes                                → lines 121-125
+  Total: 125 lines | Sections: 7
+-->
 
 **Date:** 2026-02-09
 **Engineer:** Helios (sub-agent: gitea-engineer)

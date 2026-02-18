@@ -1,4 +1,15 @@
 # MEMORY.md - Long-Term Memory
+<!-- AI.TOC: MEMORY.md - Long-Term Memory — Read lines 1-20 for navigation.
+  §1 About Matthew                              → lines 7-31
+  §2 Core Principles                            → lines 32-53
+  §3 Key Projects                               → lines 54-89
+  §4 Moltbook (@HeliosArchitect)                → lines 90-103
+  §5 Infrastructure                             → lines 104-118
+  §6 Lessons Learned                            → lines 119-127
+  §7 Key Lessons                                → lines 128-139
+  §8 Infrastructure                             → lines 140-198
+  Total: 198 lines | Sections: 8
+-->
 
 *Curated memories worth keeping. Daily files are raw logs; this is distilled wisdom.*
 

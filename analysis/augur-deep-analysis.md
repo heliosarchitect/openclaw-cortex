@@ -1,4 +1,17 @@
 # AUGUR Paper Trading — Deep Performance Analysis
+<!-- AI.TOC: AUGUR Paper Trading — Deep Performance Analysis — Read lines 1-20 for navigation.
+  §1 Resolution (2026-02-10)                    → lines 10-32
+  §2 Executive Summary                          → lines 33-48
+  §3 1. Database Overview                       → lines 49-65
+  §4 2. The Five Bugs                           → lines 66-150
+  §5 3. Performance Analysis (With Caveats)     → lines 151-226
+  §6 4. Vision vs Reality Gap                   → lines 227-260
+  §7 5. Root Cause Analysis                     → lines 261-291
+  §8 6. Recommendations (Priority Ordered)      → lines 292-334
+  §9 7. What Might Actually Work                → lines 335-349
+  §10 8. Conclusion                              → lines 350-359
+  Total: 359 lines | Sections: 10
+-->
 
 **Date:** 2026-02-10 01:00 EST  
 **Analyst:** Helios (sub-agent)  

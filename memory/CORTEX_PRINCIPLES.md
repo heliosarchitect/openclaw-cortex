@@ -1,4 +1,14 @@
 # Cortex Memory System - Principles
+<!-- AI.TOC: Cortex Memory System - Principles — Read lines 1-20 for navigation.
+  §1 Core Principles                            → lines 7-47
+  §2 Architecture                               → lines 48-69
+  §3 Usage                                      → lines 70-121
+  §4 Security                                   → lines 122-141
+  §5 Lessons Learned                            → lines 142-157
+  §6 Maintenance                                → lines 158-202
+  §7 Version History                            → lines 203-210
+  Total: 210 lines | Sections: 7
+-->
 
 **Version:** 1.0  
 **Last Updated:** 2026-02-03  

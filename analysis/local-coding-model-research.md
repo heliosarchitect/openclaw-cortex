@@ -1,4 +1,16 @@
 # Local Coding Model Research: RTX 5090 Fleet Companion
+<!-- AI.TOC: Local Coding Model Research: RTX 5090 Fleet Companion — Read lines 1-20 for navigation.
+  §1 1. Candidate Comparison Table              → lines 10-31
+  §2 2. Detailed Analysis                       → lines 32-88
+  §3 3. Top Recommendation: Qwen2.5-Coder-7B-   → lines 89-111
+  §4 4. Runner-Up: Qwen2.5-Coder-14B-Instruct   → lines 112-119
+  §5 5. Suggested Modelfile Configurations      → lines 120-209
+  §6 6. Installation Commands                   → lines 210-230
+  §7 7. VRAM Budget Summary                     → lines 231-243
+  §8 8. Fleet Architecture: One Generalist vs   → lines 244-356
+  §9 9. Sources                                 → lines 357-368
+  Total: 368 lines | Sections: 9
+-->
 
 **Date:** 2026-02-10
 **Constraint:** Must fit alongside qwen2.5:32b (19GB) — max ~13GB VRAM

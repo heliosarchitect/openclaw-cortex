@@ -1,4 +1,18 @@
 # [Program Name] — Vision Document
+<!-- AI.TOC: [Program Name] — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-45
+  §3 2. Current State                           → lines 46-55
+  §4 3. Target State                            → lines 56-61
+  §5 4. Architecture                            → lines 62-71
+  §6 5. Service Level Targets                   → lines 72-83
+  §7 6. Tasks & Milestones                      → lines 84-96
+  §8 7. Risks & Blockers                        → lines 97-104
+  §9 8. Decision Log                            → lines 105-114
+  §10 9. Configuration Items                     → lines 115-124
+  §11 10. Definition of Done                     → lines 125-137
+  Total: 137 lines | Sections: 11
+-->
 
 > *One-line summary of what this is and why it exists.*
 

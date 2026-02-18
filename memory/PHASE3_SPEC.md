@@ -1,4 +1,20 @@
 # Phase 3: Atomic Knowledge & Deep Abstraction Layer
+<!-- AI.TOC: Phase 3: Atomic Knowledge & Deep Abstraction Layer — Read lines 1-20 for navigation.
+  §1 Core Insight                               → lines 10-19
+  §2 1. Atomic Knowledge Units                  → lines 20-79
+  §3 2. The Deep Abstraction Layer              → lines 80-119
+  §4 3. Field-Level Vector Embeddings (Local-   → lines 120-180
+  §5 4. Temporal Awareness (Enhanced)           → lines 181-221
+  §6 5. Storage Schema (SQLite - Local)         → lines 222-279
+  §7 6. Causal Chain Traversal (Local Algorit   → lines 280-332
+  §8 7. Integration with Phase 2                → lines 333-377
+  §9 8. The Abstraction Trigger                 → lines 378-400
+  §10 9. Implementation Phases                   → lines 401-441
+  §11 10. Success Metrics                        → lines 442-460
+  §12 11. The Crypto Example (Full)              → lines 461-500
+  §13 12. Open Questions                         → lines 501-514
+  Total: 514 lines | Sections: 13
+-->
 
 **Status**: SPECIFICATION (Updated with Atomic Knowledge breakthrough)
 **Created**: 2026-02-07

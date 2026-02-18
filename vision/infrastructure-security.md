@@ -1,4 +1,18 @@
 # LBF Infrastructure Security — Vision Document
+<!-- AI.TOC: LBF Infrastructure Security — Vision Document — Read lines 1-20 for navigation.
+  §1 Table of Contents                          → lines 17-31
+  §2 1. Purpose & Scope                         → lines 32-53
+  §3 2. Current State                           → lines 54-112
+  §4 3. Target State                            → lines 113-126
+  §5 4. Architecture                            → lines 127-172
+  §6 5. Service Level Targets                   → lines 173-186
+  §7 6. Tasks & Milestones                      → lines 187-216
+  §8 7. Risks & Blockers                        → lines 217-228
+  §9 8. Decision Log                            → lines 229-239
+  §10 9. Configuration Items                     → lines 240-256
+  §11 10. Definition of Done                     → lines 257-272
+  Total: 272 lines | Sections: 11
+-->
 
 > *Fleet-wide security hardening, monitoring, and compliance for all LBF servers.*
 

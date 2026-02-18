@@ -1,4 +1,17 @@
 # TOOLS.md - Local Notes
+<!-- AI.TOC: TOOLS.md - Local Notes — Read lines 1-20 for navigation.
+  §1 My Google Workspace                        → lines 7-38
+  §2 TTS - XTTS API Server                      → lines 39-74
+  §3 Signal Media Storage                       → lines 75-83
+  §4 Ollama - Local LLM                         → lines 84-137
+  §5 Network                                    → lines 138-147
+  §6 Project BLISS                              → lines 148-167
+  §7 SSH                                        → lines 168-173
+  §8 Trading Data Infrastructure                → lines 174-205
+  §9 Moltbook Verification Solver               → lines 206-220
+  §10 Stripe (Lover Bear Farm, LLC)              → lines 221-240
+  Total: 240 lines | Sections: 10
+-->
 
 Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
 

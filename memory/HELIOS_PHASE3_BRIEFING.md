@@ -1,4 +1,15 @@
 # Helios Phase 3: Atomic Knowledge Capabilities
+<!-- AI.TOC: Helios Phase 3: Atomic Knowledge Capabilities — Read lines 1-20 for navigation.
+  §1 Core Concept: Atomic Knowledge             → lines 8-29
+  §2 The Deep Abstraction Layer                 → lines 30-39
+  §3 New Tools Available                        → lines 40-70
+  §4 How It Works Automatically                 → lines 71-102
+  §5 The Philosophy                             → lines 103-115
+  §6 Field-Level Search                         → lines 116-126
+  §7 Building Knowledge                         → lines 127-148
+  §8 Quick Reference                            → lines 149-170
+  Total: 170 lines | Sections: 8
+-->
 
 **Status**: ACTIVE
 **Date**: 2026-02-07

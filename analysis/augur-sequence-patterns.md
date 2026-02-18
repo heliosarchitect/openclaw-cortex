@@ -1,4 +1,16 @@
 # AUGUR Sequence Pattern Analysis — Baseline-Adjusted
+<!-- AI.TOC: AUGUR Sequence Pattern Analysis — Baseline-Adjusted — Read lines 1-20 for navigation.
+  §1 ⚠️ Critical Methodology Note: Baseline B   → lines 11-25
+  §2 🏆 Tier 1: Validated Patterns with Strong   → lines 26-79
+  §3 🥈 Tier 2: Validated Patterns with Modera   → lines 80-111
+  §4 ❌ Patterns That FAILED Validation          → lines 112-127
+  §5 🔬 Regime Analysis                          → lines 128-149
+  §6 📊 Consecutive Flow Patterns: The Real Di   → lines 150-174
+  §7 🎯 Actionable Recommendations               → lines 175-210
+  §8 🔮 Next Steps                               → lines 211-220
+  §9 Methodology                                → lines 221-247
+  Total: 247 lines | Sections: 9
+-->
 
 **Date:** 2026-02-10 08:36 EST  
 **Product:** ETH-USD  

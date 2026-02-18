@@ -1,4 +1,18 @@
 # Per-Strategy Rolling EV Analysis
+<!-- AI.TOC: Per-Strategy Rolling EV Analysis — Read lines 1-20 for navigation.
+  §1 Summary Table                              → lines 9-21
+  §2 legacy_imbalance                           → lines 22-81
+  §3 spread_pct                                 → lines 82-131
+  §4 imbalance                                  → lines 132-169
+  §5 imbalance_ma                               → lines 170-206
+  §6 price_ret_30                               → lines 207-233
+  §7 volume_proxy                               → lines 234-260
+  §8 price_ret_60                               → lines 261-286
+  §9 spread_change                              → lines 287-292
+  §10 Key Findings                               → lines 293-306
+  §11 Per-Strategy EV Halt Validation            → lines 307-323
+  Total: 323 lines | Sections: 11
+-->
 
 **Generated:** 2026-02-11 22:01:34
 **Database:** paper_results.db

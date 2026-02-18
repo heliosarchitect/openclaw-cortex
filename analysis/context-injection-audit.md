@@ -1,4 +1,14 @@
 # OpenClaw Context Injection Audit
+<!-- AI.TOC: OpenClaw Context Injection Audit — Read lines 1-20 for navigation.
+  §1 1. Per-Turn Injection Breakdown            → lines 9-69
+  §2 2. Compaction Mechanism                    → lines 70-115
+  §3 3. Cortex Memory Injection Flow & Budget   → lines 116-152
+  §4 4. Workspace File Injection                → lines 153-199
+  §5 5. Specific Recommendations                → lines 200-282
+  §6 6. Summary Table: What Could Be Loaded O   → lines 283-302
+  §7 7. Architecture Diagram                    → lines 303-386
+  Total: 386 lines | Sections: 7
+-->
 
 **Date:** 2026-02-08  
 **Scope:** Full analysis of what gets injected per LLM turn, how compaction works, memory budgets, and optimization opportunities.  

@@ -1,42 +1,37 @@
-# Task Queue — Night Shift Build List
+# Task Queue — Helios Build Queue
 
 When nothing's broken, BUILD. Pull from here, don't cycle HEARTBEAT_OK.
 
-## Priority (do first)
-- [x] Wire LLM fleet models into actual workflows — codex-review + email-triager in ~/bin/ (18:35)
-- [ ] H0-5: Token budget tuning — analysis in progress (Nova)
-- [x] H0-6: Turn counter — ~/bin/turn-counter, 9/9 tests, docs written (18:32)
-- [x] brain.db: create systemd service for brain_api.py (port 8031) (11:07)
-- [x] brain.db: concurrent write stress test — 6/6 green, 222 ops/sec (11:10)
+## In Progress (v0.3.0 Sprint — 2026-02-14)
+- [🔄] WEMS v1.7.3 — Adding space weather + drought monitoring (nova-wems-features)
+- [🔄] brain.py test suite expansion — delete_stm tests, edge cases (nova-brain-tests)
+
+## Priority (do next)
+- [ ] **AUGUR V4**: Investigate 0 paper trades — scanner producing signals (6314) but executor not trading
+- [ ] **Ansible**: Complete fleet hardening audit (#6) — SSH keys done, Wazuh operational
+- [ ] **n8n Integration**: Connect OpenClaw events to n8n workflows (event-driven architecture)
+- [ ] **CHANGELOG Automation**: Generate from conventional commits (#7)
 
 ## Available (grab any)
-- [ ] Create cron output validator script — in progress (Nova)
-- [ ] Ansible: finish fleet hardening audit — in progress (Nova)
-- [ ] LCARS dashboard: add LLM fleet status panel
-- [ ] Write proper README for llm-fleet repo
-- [ ] Clean up augur-collector WAL files (shm/wal in git status)
-- [ ] Explore security-sentinel ClawHub skill for Wazuh integration
-- [ ] Moltbook: post eudaemon_0 supply chain reply (saved in memory/moltbook-pending-comment.md, suspension lifts ~15:00 EST Feb 12)
-- [ ] Fix Gitea workspace remote (needs repo creation + API token from Matthew)
-- [ ] brain.db: redirect cortex-bridge.ts daemon calls (/store, /search) to brain.db
-- [ ] AUGUR: collect 500+ V4 signals before considering live trading (currently 457)
-- [ ] AUGUR: consider 0 bps fee trial from Coinbase (current fees destroy gross edge)
+- [ ] Audit remaining stm.json references in loadSTMDirect, CLI stats command
+- [ ] Build Twilio integration (Matthew wanted call capability since psilocybin session)
+- [ ] WEMS: Submit to awesome-mcp-servers list (PR pending review)
+- [ ] Create OpenClaw skill for AUGUR trading management
+- [ ] Explore ClawHub for useful skills to install
+- [ ] LBF Operating Model — revenue projections, pricing strategy
 
-## Completed (today)
-- [x] brain_api.py — FastAPI REST server, 9 endpoints, port 8031 (10:47)
-- [x] working_memory + categories → brain.db, 75/75 tests (10:50)
-- [x] brain-cli Docker deployed to hpserver1 (10:47)
-- [x] V4 executor product+strategy filters (10:49)
-- [x] Nova: MCP tests 6/6, provenance_viz, brain_backup.py (10:23-10:29)
-- [x] EOD analysis pipeline + cron (10:24)
-- [x] Docker CLI image (brain-cli:latest, 198MB) (09:55)
-- [x] git-commit-ai — local LLM commit message generator (10:20)
-- [x] brain.db Phase 2-3: provenance, auto-extract, 75 tests green (08:00-10:00)
-- [x] brain.db Phase 1: schema, CLI, all managers redirected (07:52-08:15)
-- [x] AUGUR V4 blitz: scanner, regime, tracker, executor (07:00-07:50)
-- [x] Enhanced collector crypto 24/7 fix (07:39)
-- [x] Backup script + Google Drive (03:00)
-- [x] Analysis dir organized (03:32)
+## Completed (v0.3.0 Sprint)
+- [x] **CRITICAL**: Fixed cortex_dedupe, cortex_update, cortex_edit, cortex_move (stm.json → brain.db)
+- [x] **CRITICAL**: Fixed conversation-summarizer + self-reflection extensions (stm.json → brain.db)
+- [x] Pruned 334 duplicate memories, cleaned api_filter_test pollution
+- [x] GitHub release monitor — 9 repos, 4h polling
+- [x] Memory hygiene cron — daily 4AM dedup+prune
+- [x] Workspace cleanup — 50 files organized
+- [x] Pattern audit — 5 failure modes documented
+- [x] Cron output validator script
+- [x] Cron hygiene — disabled duplicate job, removed Sonnet overrides
+- [x] Vision document sync
+- [x] 9 GitHub issues filed, 6 closed
 
----
-*Rule: When you complete a task, move it to Completed with date. Add new tasks as they emerge.*
+## Completed (v0.2.0 and earlier) — archived
+See CHANGELOG.md for full history.

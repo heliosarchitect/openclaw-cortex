@@ -1,4 +1,11 @@
 # EV-Based Halt vs WR-Based Halt Backtest
+<!-- AI.TOC: EV-Based Halt vs WR-Based Halt Backtest — Read lines 1-20 for navigation.
+  §1 Strategy Overview                          → lines 11-23
+  §2 The Core Insight: Win Rate ≠ Profitabili   → lines 24-32
+  §3 Rolling Window Analysis                    → lines 33-144
+  §4 Key Findings                               → lines 145-187
+  Total: 187 lines | Sections: 4
+-->
 
 **Date**: 2026-02-11 21:51
 **Data**: 2207 trades from paper_results.db

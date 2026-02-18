@@ -1,4 +1,15 @@
 # BC/DR — Business Continuity & Disaster Recovery
+<!-- AI.TOC: BC/DR — Business Continuity & Disaster Recovery — Read lines 1-20 for navigation.
+  §1 What's Backed Up                           → lines 9-29
+  §2 Backup Schedule                            → lines 30-38
+  §3 Backup Destinations                        → lines 39-58
+  §4 RPO / RTO Targets                          → lines 59-71
+  §5 Restore Procedures                         → lines 72-138
+  §6 Monitoring                                 → lines 139-148
+  §7 Scripts Reference                          → lines 149-159
+  §8 Manual Recovery Contact                    → lines 160-165
+  Total: 165 lines | Sections: 8
+-->
 
 **System:** Helios (OpenClaw) + brain.db  
 **Last Updated:** 2026-02-12  

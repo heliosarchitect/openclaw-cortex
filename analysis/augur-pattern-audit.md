@@ -1,4 +1,15 @@
 # AUGUR Pattern Quality Audit
+<!-- AI.TOC: AUGUR Pattern Quality Audit — Read lines 1-20 for navigation.
+  §1 Executive Summary                          → lines 9-21
+  §2 1. Pattern Database Overview               → lines 22-64
+  §3 2. Paper Trading Results                   → lines 65-106
+  §4 3. Historical vs Live Win Rate Gap         → lines 107-159
+  §5 4. Root Cause Analysis                     → lines 160-261
+  §6 5. Specific Recommendations                → lines 262-295
+  §7 6. What's Actually Working                 → lines 296-308
+  §8 7. Architecture Diagram                    → lines 309-348
+  Total: 348 lines | Sections: 8
+-->
 
 **Date:** 2026-02-10 01:00 EST  
 **Auditor:** Helios  

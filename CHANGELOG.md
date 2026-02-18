@@ -9,9 +9,67 @@
 - **NO redundant monitoring checks** — If the same check returns the same result twice, stop checking and BUILD instead. Checked same 5 emails 4 times in one shift.
 - **NO fire-and-forget cron** — Every cron session must be audited for output. "Did it run?" ≠ "Did it produce results?" (NIGHT-001).
 
+### Model Constraints
+- **NO overriding sub-agent model** — Default = Opus per Matthew's directive. NEVER pass `model` param to `sessions_spawn` unless Matthew explicitly says otherwise.
+
 ### Safety Constraints
 - **NO deleting files without archiving** — Use `trash` or `mv` to archive, never `rm` on user data.
 - **NO public actions without confirmation** — Tweets, emails to external humans, public posts require Matthew's go-ahead unless pre-authorized.
+
+---
+
+## v0.3.0 - "Self-Improvement Sprint" (2026-02-14)
+
+### ⛔ New Constraints
+- **NO overriding sub-agent model** — violated during this sprint, caught and corrected
+
+### Critical Bug Fixes
+- **FIX**: `cortex_dedupe` merge/delete was reading empty `stm.json` instead of `brain.db` — fixed to use brain.db directly (#1, #9)
+- **FIX**: `cortex_update` silently failing — was writing to stale `stm.json` → now uses brain.db (#9)
+- **FIX**: `cortex_edit` silently failing — same root cause → fixed (#9)
+- **FIX**: `cortex_move` silently failing — same root cause → fixed (#9)
+- **FIX**: `conversation-summarizer` extension writing to stale stm.json → migrated to brain_api
+- **FIX**: `self-reflection` extension reading from stale stm.json → migrated to brain_api
+- **FIX**: `loadSTMDirect` returning empty data → now reads from brain.db
+
+### New Features
+- **NEW**: GitHub release monitor — polls 9 repos every 4h, replaces Releasebot dependency (#4)
+- **NEW**: Automated memory hygiene cron — daily dedup + prune at 4 AM EST (#3)
+- **NEW**: Workspace cleanup script — organizes loose files into analysis/, scripts/, reports/ dirs
+- **NEW**: brain.py `delete_stm()` and `delete_stm_batch()` methods
+- **NEW**: cortex-bridge `editSTM()`, `updateSTM()`, `deleteSTMBatch()` bridge methods
+- **NEW**: WEMS v1.7.3 — space weather alerts + drought monitor (283 tests, published to PyPI)
+- **NEW**: Brain API documentation (BRAIN_API.md)
+- **NEW**: Pre-commit hook for stm.json write prevention
+
+### Maintenance
+- **CLEAN**: Pruned 334 duplicate memories from STM (1,700+ → 1,370)
+- **CLEAN**: Removed `api_filter_test` category pollution (#2)
+- **CLEAN**: Organized 50 loose workspace files into proper directories
+- **AUDIT**: Pattern audit identifying 5 failure modes + 3 skill gaps
+- **DOCS**: Vision document sync with actual progress (#8)
+- **DOCS**: Cron output validator script (#5)
+
+### Key Commits (feature branch)
+- `f22cf50` — fix(cortex): dedup merge/delete now uses brain.db
+- `78f7ad7` — fix(cortex): migrate cortex_update/edit/move from stm.json
+- `0fd06e1` — fix(memory): clean pollution, prune 334 duplicates
+- `9a76bc8` — chore: organize 50 loose workspace files
+- `b0013b4` — feat: initialize v0.3.0 sprint plan
+
+### Issues Filed
+- #1 BUG: STM dedup tool broken (FIXED)
+- #2 BUG: api_filter_test pollution (FIXED)
+- #3 FEATURE: Automated memory hygiene cron (DONE)
+- #4 FEATURE: GitHub release monitoring (DONE)
+- #5 TASK: Cron output validator (IN PROGRESS)
+- #6 TASK: Ansible fleet hardening audit (DEFERRED)
+- #7 FEATURE: CHANGELOG automation (DEFERRED)
+- #8 TASK: Vision document status sync (IN PROGRESS)
+- #9 BUG: cortex mutation tools using stale stm.json (FIXED)
+
+### Lessons Learned
+Core lesson: The brain.db migration left 4 cortex tools silently broken because only the read path was updated. All memory mutations (update, edit, move, dedup) were no-ops for days. The consolidation engine (Python, direct DB access) worked correctly — the bug was in the TypeScript bridge layer that still referenced stm.json.
 
 ---
 

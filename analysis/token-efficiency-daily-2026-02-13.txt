@@ -1,0 +1,47 @@
+============================================================
+TOKEN EFFICIENCY DASHBOARD
+Generated: 2026-02-13 08:18:02 EST
+============================================================
+
+📊 CURRENT METRICS
+Total turns analyzed: 14,305
+Productive turns: 12,724 (88.9%)
+Heartbeat turns: 1,581 (11.1%)
+
+🔄 TOKEN FLOW
+Total input tokens: 1,132,598,375
+Total output tokens: 3,547,640
+Average input/turn: 79,175 tokens
+Average output/turn: 248 tokens
+
+📈 EFFICIENCY RATIOS
+Output:Input ratio: 0.313%
+Input tokens per output: 319:1
+Without heartbeats: 0.313%
+
+🎯 TARGETS
+❌ 0.5% ratio (+60% improvement needed)
+❌ 1.0% ratio (+219% improvement needed)
+❌ 2.0% ratio (+539% improvement needed)
+❌ 5.0% ratio (+1496% improvement needed)
+
+📅 DAILY BREAKDOWN
+2026-02-07: 1954 turns, 82,764 avg input, 0.282% ratio
+2026-02-08: 2072 turns, 79,727 avg input, 0.292% ratio
+2026-02-09: 1830 turns, 77,308 avg input, 0.300% ratio
+2026-02-10: 1883 turns, 80,559 avg input, 0.334% ratio
+2026-02-11: 2037 turns, 81,847 avg input, 0.310% ratio
+2026-02-12: 2169 turns, 77,982 avg input, 0.304% ratio
+2026-02-13: 1999 turns, 78,551 avg input, 0.349% ratio
+
+💡 TOP OPTIMIZATION OPPORTUNITIES
+🔴 HIGH: Avg input >70K tokens - Review context loading
+🔴 HIGH: <0.5% ratio - Implement turn batching
+
+📋 IMPLEMENTATION STATUS
+✅ Workspace files optimized (~5,200 tokens saved)
+✅ Cortex memory tuned (H0-5)
+🔶 Tool descriptions optimization (Phase 2)
+🔶 Context pruning adjustment (Phase 2)
+❌ Turn batching strategy (Phase 3)
+NOTE: This is demo data. Real tracking will begin once OpenClaw transcript logging is configured.

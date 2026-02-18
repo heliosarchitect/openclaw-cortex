@@ -1,4 +1,15 @@
 # Self-Improvement Session Guide
+<!-- AI.TOC: Self-Improvement Session Guide — Read lines 1-20 for navigation.
+  §1 Mission                                    → lines 9-11
+  §2 Required Reading (First 5 Minutes)         → lines 12-24
+  §3 Goals & Deliverables                       → lines 25-36
+  §4 Top 3 Failure Modes                        → lines 37-63
+  §5 Skill Gaps                                 → lines 64-106
+  §6 2026-02-11 04:00 — Self-Improvement Sess   → lines 107-123
+  §7 Success Criteria                           → lines 124-150
+  §8 Anti-Patterns to Avoid                     → lines 151-161
+  Total: 161 lines | Sections: 8
+-->
 **Scheduled**: 4:00 AM EST, Feb 11 2026  
 **Model**: Claude Opus 4  
 **Timeout**: 1 hour  

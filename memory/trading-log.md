@@ -1,4 +1,11 @@
 # Trading Log - Helios
+<!-- AI.TOC: Trading Log - Helios — Read lines 1-20 for navigation.
+  §1 2026-02-01: Took Control of Chad_Profit_   → lines 3-44
+  §2 Lessons from $30k → $2.5k                  → lines 45-53
+  §3 Critical Learning: post_only (2026-02-01   → lines 54-71
+  §4 Trade Executed: MON Exit (2026-02-01 20:   → lines 72-109
+  Total: 109 lines | Sections: 4
+-->
 
 ## 2026-02-01: Took Control of Chad_Profit_Bot
 

@@ -1,4 +1,13 @@
 # Bottleneck Tracking + Tool→Infrastructure Graduation
+<!-- AI.TOC: Bottleneck Tracking + Tool→Infrastructure Graduation — Read lines 1-20 for navigation.
+  §1 1. Problem                                 → lines 15-34
+  §2 2. Solution                                → lines 35-79
+  §3 3. Tool → Infrastructure Graduation Crit   → lines 80-90
+  §4 4. Current Inventory                       → lines 91-119
+  §5 5. Implementation Tasks                    → lines 120-129
+  §6 6. Decision Log                            → lines 130-141
+  Total: 141 lines | Sections: 6
+-->
 
 > *Make invisible dependencies visible. Turn fragile tools into managed infrastructure.*
 
