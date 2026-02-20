@@ -6,8 +6,18 @@
 - **Me**: Helios, CTO of LBF, heliosarchitectlbf@gmail.com
 - **Matthew**: East Coast US, @bonsaihorn, Signal DM
 
+## Session State (auto-updated — trust this over compaction summaries)
+[state] ft991a-control v0.8.1 @ radio.fleet.wood (.179) | repo ~/Projects/lbf-ham-radio | CI→PyPI on v* tag
+[state] Helios v1.0.0 @ giggletits (.163)
+[state] AUGUR v4.5.0 @ hpserver1 (.104) | weekly reset 2026-02-17
+[state] desk-bot v1.0.1 printing PETG @ OctoPrint (.141) | cron c0162d35
+[state] discord-bot = OpenClaw plugin (NOT standalone)
+[state] n8n on hpserver1 (.104) — EXISTS AND RUNNING
+[state] radio-monitor PID 352795 14.270MHz 2min clips
+
 ## Active Projects
-[project] AUGUR → ~/Projects/augur-trading/ — Crypto paper trading system (v0.2+)
+[project] ft991a-control → ~/Projects/lbf-ham-radio/ — Ham radio LCARS GUI (v0.8.1)
+[project] AUGUR → ~/Projects/augur-trading/ — Crypto paper trading system (v4.5.0)
 [project] brain.db → ~/Projects/brain-db/:8031 — Unified memory system
 [project] WEMS → ~/Projects/wems-mcp-server/ — World event monitoring MCP server
 [project] LLM Fleet → ~/Projects/llm-fleet/ — Local Ollama model router

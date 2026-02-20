@@ -6,24 +6,34 @@
       "label": "Sub-agent announce policy"
     },
     {
-      "content": "HELIOS_VISION.md exists (600+ lines). Phase 0: H0-1/2/3 done (audit, file trim, dedup). H0-4/5/6 remain (internalization, budget tuning, turn-counter). Workspace files trimmed: AGENTS 7.8K→1K, TOOLS 6.7K→1.2K, MEMORY 7.8K→1.2K. ~5,200 tokens/turn saved. Next: H0-4 requires OpenClaw source changes.",
-      "pinnedAt": "2026-02-09T09:41:52.460Z",
-      "label": "Helios H0 status"
-    },
-    {
-      "content": "NEVER pass model parameter to sessions_spawn. Default = Opus = correct per Matthew's directive. Only use different model if Matthew explicitly says to.",
-      "pinnedAt": "2026-02-14T16:37:47.932Z",
-      "label": "Sub-agent model rule"
-    },
-    {
-      "content": "DO NOT REPLY to Matthew (owner numbers) until after 9:30 PM EST on 2026-02-14. JH asked for quiet time on Valentine's Day. If Matthew messages, respond ONLY with NO_REPLY. This is a promise to his wife.",
-      "pinnedAt": "2026-02-15T01:26:17.072Z",
-      "label": "JH quiet period"
-    },
-    {
       "content": "PRESERVED ACROSS RESET (2026-02-15):\n1. AUGUR V5 validator building (sub-agent augur-v5-validator) — walk-forward validation, leading indicator filter, 50+ min trades\n2. Synapse = default coordination path for all inter-agent work\n3. AI docs template at ~/Projects/lbf-templates/project/ — always reference before writing\n4. Drone bridge app at ~/Projects/lbf-drone-autonomy/android-bridge/\n5. Pattern to break: flag problems → don't fix → suggest retreating instead of fixing actual approach\n6. Phon",
       "pinnedAt": "2026-02-15T15:45:28.836Z",
       "label": "Post-reset context from Matthew"
+    },
+    {
+      "content": "STOP being sloppy with context shifts. When Matthew changes topic, TRACK IT. Don't conflate projects. Verify before asserting (git tag, not memory). Update working memory pins on every version/state change. This is the #1 issue today — fix the habit, not just the symptoms.",
+      "pinnedAt": "2026-02-17T17:08:01.178Z",
+      "label": "Discipline: context tracking"
+    },
+    {
+      "content": "ALL sub-agent spawns must use silent: true. Sub-agents post results to Synapse. Main agent checks Synapse during heartbeats or when relevant. NEVER announce sub-agent results to Matthew's Signal.",
+      "pinnedAt": "2026-02-18T03:06:13.625Z",
+      "label": "Sub-agent comms rule"
+    },
+    {
+      "content": "Config default = anthropic/claude-sonnet-4-6 (for non-coding subagents: pipeline stages, research, monitoring, etc.). For CODING subagents, explicitly pass model=\"anthropic/claude-opus-4-6\". Pipeline hooks also use sonnet-4-6. Main session stays on Opus.",
+      "pinnedAt": "2026-02-18T17:29:02.388Z",
+      "label": "Sub-agent model rule"
+    },
+    {
+      "content": "Use emoji reactions as default acknowledgment instead of text replies to save context. REQUIRES BOTH: messageId (from inbound metadata message_id field) AND target=\"+18033169860\". Pick contextual emoji, not just 👍 every time. NEVER use 🍆.",
+      "pinnedAt": "2026-02-19T21:12:03.008Z",
+      "label": "Reaction policy"
+    },
+    {
+      "content": "AUGUR: v4.13.0 — DRY_RUN. Commits: 4214f6d→2594095→c00ee8e→523502d. Branch ev-halt-gate-layer. Now scanning BTC/ETH/SOL/XRP/DOGE + 15 others (20 total). 7,440 maker-fee signals loaded for liquid products. Limit orders for PREFER_LIMIT_PRODUCTS (0.05% maker vs 0.10% taker). 3-layer defense: tick-size (API) → tracker (26K real outcomes) → candle filters. Major signals fire rarely (extreme percentiles) but when they do, liquid markets + maker fees = viable. Cortex: v2.7.5. ft991a-control: v0.8.1.",
+      "pinnedAt": "2026-02-19T22:55:05.442Z",
+      "label": "Current project state"
     }
   ]
 }

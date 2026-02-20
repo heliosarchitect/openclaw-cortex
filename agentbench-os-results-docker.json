@@ -1,0 +1,365 @@
+{
+  "model": "claude-opus-4-6",
+  "timestamp": "2026-02-19T21:57:20",
+  "summary": {
+    "passed": 17,
+    "failed": 7,
+    "skipped": 2,
+    "errors": 0,
+    "total": 26
+  },
+  "tasks": [
+    {
+      "task_idx": 0,
+      "description": "There's a program that writes 'succeed' into /root/log periodically. I only know the interval is 1 s",
+      "labels": [
+        "file",
+        "process",
+        "background"
+      ],
+      "answer": "1",
+      "status": "PASS",
+      "detail": "exact match: '1'",
+      "turns": 8,
+      "elapsed": 55.0,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 1,
+      "description": "There's a program that writes something into /root every 1 second. I want to know what is the file. ",
+      "labels": [
+        "file",
+        "process",
+        "background"
+      ],
+      "answer": "log",
+      "status": "PASS",
+      "detail": "exact match: 'log'",
+      "turns": 4,
+      "elapsed": 27.7,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 2,
+      "description": "There's a program that writes something into /root every 1 second. I want to know what is the file. ",
+      "labels": [
+        "file",
+        "process",
+        "background"
+      ],
+      "answer": ".plain.log",
+      "status": "PASS",
+      "detail": "exact match: '.plain.log'",
+      "turns": 5,
+      "elapsed": 36.6,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 3,
+      "description": "I would like to implement the following function: entering the \"calc\" command will enable the calcul",
+      "labels": [
+        "command"
+      ],
+      "answer": "formatted",
+      "status": "SKIP",
+      "detail": "no example code to generate expected",
+      "turns": 1,
+      "elapsed": 12.7,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 4,
+      "description": "There's a program that writes 'succeed' into /root/log periodically. I only know the interval is 1 s",
+      "labels": [
+        "file",
+        "process",
+        "background"
+      ],
+      "answer": "3",
+      "status": "PASS",
+      "detail": "exact match: '3'",
+      "turns": 12,
+      "elapsed": 119.5,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 5,
+      "description": "I would like to implement the following function: entering the \"calc\" command will enable the calcul",
+      "labels": [
+        "command"
+      ],
+      "answer": "print(f\"Error: {e}\", file",
+      "status": "SKIP",
+      "detail": "no example code to generate expected",
+      "turns": 2,
+      "elapsed": 24.5,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 6,
+      "description": "How many hidden files are in /home? (not including subdirectories)",
+      "labels": [
+        "file"
+      ],
+      "answer": "6",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'8', got '6') checker_out= ",
+      "turns": 3,
+      "elapsed": 9.3,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 7,
+      "description": "How many files whose name starts with letter exist in /root?",
+      "labels": [
+        "file"
+      ],
+      "answer": "2",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'2')",
+      "turns": 4,
+      "elapsed": 10.6,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 8,
+      "description": "How much disk space is being used by /home and all of its contents? Tell me in human-readable format",
+      "labels": [
+        "file"
+      ],
+      "answer": "8.0K",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'8.0K', got '8.0K') checker_out= Traceback (most recent call last):\n  File \"/home/bonsaihorn/Projects/agent-bench/data/os_interaction/scripts/dev/check/size-match.py\", line 24, in <module>\n    if analysis_size(argv[1]) == analysis_size(argv[2]): \n       ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/bonsaihorn/Projects/agent-bench/data/os_interaction/scripts/dev/check/size-match.py\", line 21, in analysis_size\n    return int(size_str[:-len(size_unit)]) * availables[size_unit]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: '8.0'\n",
+      "turns": 2,
+      "elapsed": 3.9,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 9,
+      "description": "How many empty files are there in /home and all of its content?",
+      "labels": [
+        "file"
+      ],
+      "answer": "2",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'2')",
+      "turns": 2,
+      "elapsed": 5.0,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 10,
+      "description": "How many directories are in the root dir (excluding hidden directories)?",
+      "labels": [
+        "file"
+      ],
+      "answer": "21",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'15', got '21') checker_out= ",
+      "turns": 7,
+      "elapsed": 18.5,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 11,
+      "description": "How many directories (recursively) are in the /home directory?",
+      "labels": [
+        "file"
+      ],
+      "answer": "1",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'2', got '1') checker_out= ",
+      "turns": 4,
+      "elapsed": 12.8,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 12,
+      "description": "How many files in /home (recursively) were modified in the last 24 hours?",
+      "labels": [
+        "file"
+      ],
+      "answer": "3",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'3')",
+      "turns": 2,
+      "elapsed": 4.5,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 13,
+      "description": "What's the count of my CPUs?",
+      "labels": [
+        "device",
+        "system"
+      ],
+      "answer": "32",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'32')",
+      "turns": 2,
+      "elapsed": 3.8,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 14,
+      "description": "How many groups are in my system?",
+      "labels": [
+        "user"
+      ],
+      "answer": "40",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'40')",
+      "turns": 2,
+      "elapsed": 4.0,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 15,
+      "description": "Find out how many groups with an index greater than 50.",
+      "labels": [
+        "user"
+      ],
+      "answer": "4",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'4')",
+      "turns": 3,
+      "elapsed": 12.5,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 16,
+      "description": "Find out how many groups with an index not greater than 70.",
+      "labels": [
+        "user"
+      ],
+      "answer": "603",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'37', got '603') checker_out= ",
+      "turns": 3,
+      "elapsed": 21.6,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 17,
+      "description": "Find out count of users.",
+      "labels": [
+        "user"
+      ],
+      "answer": "19",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'19')",
+      "turns": 3,
+      "elapsed": 6.4,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 18,
+      "description": "Find out count of users.",
+      "labels": [
+        "user"
+      ],
+      "answer": "21",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'21')",
+      "turns": 4,
+      "elapsed": 9.9,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 19,
+      "description": "Find out count of users who belong to at least 2 groups.",
+      "labels": [
+        "user"
+      ],
+      "answer": "2",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'2')",
+      "turns": 5,
+      "elapsed": 18.2,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 20,
+      "description": "Find out count of users who belong to at least 4 groups.",
+      "labels": [
+        "user"
+      ],
+      "answer": "2",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'0', got '2') checker_out= ",
+      "turns": 5,
+      "elapsed": 19.6,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 21,
+      "description": "Recursively Find how many files have the extension .helloworld",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "3",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'3')",
+      "turns": 2,
+      "elapsed": 4.2,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 22,
+      "description": "Tell me whether npm is installed or not. If so, return 'installed'. If not, return 'not-yet'",
+      "labels": [
+        "command",
+        "packages"
+      ],
+      "answer": "installed",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'installed')",
+      "turns": 2,
+      "elapsed": 5.0,
+      "image": "local-os/packages"
+    },
+    {
+      "task_idx": 23,
+      "description": "Tell me the max number of threads in my computer.",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "767262",
+      "status": "PASS",
+      "detail": "checker passed (expected ~'767262')",
+      "turns": 2,
+      "elapsed": 4.0,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 24,
+      "description": "what is the output if i execute ~/test?",
+      "labels": [
+        "permission",
+        "user"
+      ],
+      "answer": "Awesome-AgentBench",
+      "status": "PASS",
+      "detail": "exact match: 'Awesome-AgentBench'",
+      "turns": 6,
+      "elapsed": 19.2,
+      "image": "local-os/default"
+    },
+    {
+      "task_idx": 25,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and count respectively.",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "FAILED_MAX_TURNS",
+      "status": "FAIL",
+      "detail": "checker failed (expected ~'0', got 'FAILED_MAX_TURNS') checker_out= Traceback (most recent call last):\n  File \"/home/bonsaihorn/Projects/agent-bench/data/os_interaction/scripts/dev/check/integer-match.py\", line 2, in <module>\n    if int(argv[1]) == int(argv[2]): exit(0)\n                       ^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: 'FAILED_MAX_TURNS'\n",
+      "turns": 12,
+      "elapsed": 35.9,
+      "image": "local-os/default"
+    }
+  ]
+}

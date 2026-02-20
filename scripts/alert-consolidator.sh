@@ -40,6 +40,14 @@ if [ -f "$ALERT_DIR/proactive-work-alert" ]; then
     alert_count=$((alert_count + 1))
 fi
 
+# Check for webhook failure alerts
+if [ -f "$ALERT_DIR/webhook-failure-alert" ]; then
+    webhook_alert=$(cat "$ALERT_DIR/webhook-failure-alert")
+    alerts="$alerts🔗 $webhook_alert\n"
+    rm "$ALERT_DIR/webhook-failure-alert"
+    alert_count=$((alert_count + 1))
+fi
+
 # If any alerts found, wake up with consolidated message
 if [ "$alert_count" -gt 0 ]; then
     echo -e "🔔 CONSOLIDATED ALERTS ($alert_count):\n$alerts"

@@ -145,6 +145,20 @@
         "blackout",
         "grid-down"
       ]
+    },
+    "process": {
+      "description": "Operational checklists, pre-flight procedures, and standard operating procedures. Queried BEFORE taking action on infrastructure, tools, or repeated tasks. Contains the HOW for things I've already learned.",
+      "keywords": [
+        "checklist",
+        "procedure",
+        "preflight",
+        "sop",
+        "workflow",
+        "before",
+        "steps",
+        "how-to",
+        "runbook"
+      ]
     }
   },
   "extensible": true,

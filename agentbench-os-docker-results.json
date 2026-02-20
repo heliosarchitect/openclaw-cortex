@@ -1,0 +1,1692 @@
+{
+  "model": "claude-opus-4-6",
+  "timestamp": "2026-02-19T21:11:47",
+  "summary": {
+    "passed": 12,
+    "failed": 115,
+    "skipped": 12,
+    "errors": 1,
+    "total": 140
+  },
+  "tasks": [
+    {
+      "id": "set1-stock-0",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "117",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248118, got=117)",
+      "turns": 2,
+      "elapsed": 17.5
+    },
+    {
+      "id": "set1-stock-1",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "10",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224882, got=10)",
+      "turns": 1,
+      "elapsed": 11.8
+    },
+    {
+      "id": "set1-stock-2",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224843465, got=0)",
+      "turns": 1,
+      "elapsed": 14.7
+    },
+    {
+      "id": "set1-stock-3",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "62",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224866, got=62)",
+      "turns": 2,
+      "elapsed": 17.4
+    },
+    {
+      "id": "set1-stock-4",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "15",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224823, got=15)",
+      "turns": 2,
+      "elapsed": 19.1
+    },
+    {
+      "id": "set1-stock-5",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "Bob",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248Alice, got=Bob)",
+      "turns": 2,
+      "elapsed": 21.3
+    },
+    {
+      "id": "set1-stock-6",
+      "set": 1,
+      "description": "Stock logs are shown in /usr/stock.log. The last two columns are stock index and",
+      "labels": [
+        "log",
+        "file"
+      ],
+      "answer": "CSCO",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224868, got=CSCO)",
+      "turns": 1,
+      "elapsed": 4.4
+    },
+    {
+      "id": "set2-environment-0",
+      "set": 2,
+      "description": "Tell me how many files can be executed in PATH.",
+      "labels": [
+        "environment"
+      ],
+      "answer": "4",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248555, got=4)",
+      "turns": 2,
+      "elapsed": 26.6
+    },
+    {
+      "id": "set2-environment-1",
+      "set": 2,
+      "description": "Tell me how many files can be executed directly no matter where my work dir is.",
+      "labels": [
+        "environment"
+      ],
+      "answer": "2",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248555, got=2)",
+      "turns": 1,
+      "elapsed": 14.3
+    },
+    {
+      "id": "set2-environment-2",
+      "set": 2,
+      "description": "I remember I had a directory for executables, and there was an executable echo-l",
+      "labels": [
+        "environment"
+      ],
+      "answer": "/folder1/folder2/folder3/folder4/folder5",
+      "status": "PASS",
+      "detail": "checker passed (expected\u2248/folder1/folder2/folder3/folder4/folder5)",
+      "turns": 3,
+      "elapsed": 28.2
+    },
+    {
+      "id": "set2-environment-3",
+      "set": 2,
+      "description": "I remember I had a directory for executables, and there was an executable echo-l",
+      "labels": [
+        "environment"
+      ],
+      "answer": "/usr/local/custom-bin/echo-love",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248/folder1/folder2/folder3/folder4/folder5/echo-love, got=/usr/local/custom-bin/echo-love)",
+      "turns": 1,
+      "elapsed": 2.3
+    },
+    {
+      "id": "set2-environment-4",
+      "set": 2,
+      "description": "I remember I had a directory for executables, and there was an executable echo-l",
+      "labels": [
+        "environment"
+      ],
+      "answer": "/home/user/.local/bin",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 4,
+      "elapsed": 53.9
+    },
+    {
+      "id": "set3-ac-0",
+      "set": 3,
+      "description": "Tell me the number of CPUs.",
+      "labels": [
+        "command",
+        "CPU",
+        "device",
+        "hardware",
+        "processor",
+        "system"
+      ],
+      "answer": "2",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224832, got=2)",
+      "turns": 1,
+      "elapsed": 2.2
+    },
+    {
+      "id": "set3-ac-1",
+      "set": 3,
+      "description": "How many groups are in this UNIX system?",
+      "labels": [
+        "command",
+        "system"
+      ],
+      "answer": "65",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224840, got=65)",
+      "turns": 1,
+      "elapsed": 2.2
+    },
+    {
+      "id": "set3-ac-2",
+      "set": 3,
+      "description": "Recursively Find how many files have the extension .tep",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22482, got=0)",
+      "turns": 1,
+      "elapsed": 3.1
+    },
+    {
+      "id": "set3-ac-3",
+      "set": 3,
+      "description": "Tell me whether npm is installed or not. If it is installed, return 'yes'. If it",
+      "labels": [
+        "command",
+        "packages"
+      ],
+      "answer": "no",
+      "status": "PASS",
+      "detail": "checker passed (expected\u2248no)",
+      "turns": 1,
+      "elapsed": 2.4
+    },
+    {
+      "id": "set3-ac-4",
+      "set": 3,
+      "description": "Tell me whether npm is installed or not. If it is installed, return 'yes'. If it",
+      "labels": [
+        "command",
+        "packages"
+      ],
+      "answer": "no",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248yes, got=no)",
+      "turns": 1,
+      "elapsed": 2.9
+    },
+    {
+      "id": "set3-ac-5",
+      "set": 3,
+      "description": "Tell me the max number of threads in Linux.",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "62938",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248767262, got=62938)",
+      "turns": 1,
+      "elapsed": 2.9
+    },
+    {
+      "id": "set4-N11-0",
+      "set": 4,
+      "description": "How many hidden files, which do not contain the character u, are in /usr? (not r",
+      "labels": [
+        "file"
+      ],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=0)",
+      "turns": 1,
+      "elapsed": 7.6
+    },
+    {
+      "id": "set4-N225-0",
+      "set": 4,
+      "description": "Get the name of most recent file in /usr. (not recursively)",
+      "labels": [
+        "file"
+      ],
+      "answer": "share",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224830.log, got=share)",
+      "turns": 1,
+      "elapsed": 5.6
+    },
+    {
+      "id": "set4-N37-0",
+      "set": 4,
+      "description": "What's the full path of a file \"TOOLS\"?",
+      "labels": [
+        "path",
+        "file"
+      ],
+      "answer": "/usr/share/doc/git-doc/TOOLS",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248/usr/TOOLS, got=/usr/share/doc/git-doc/TOOLS)",
+      "turns": 1,
+      "elapsed": 2.4
+    },
+    {
+      "id": "set4-N4-0",
+      "set": 4,
+      "description": "execute ~/test and get the output.",
+      "labels": [
+        "permission",
+        "user"
+      ],
+      "answer": "Hello, World!",
+      "status": "FAIL",
+      "detail": "expected 'love', got 'Hello, World!'",
+      "turns": 2,
+      "elapsed": 29.1
+    },
+    {
+      "id": "set4-N41-0",
+      "set": 4,
+      "description": "If a regular file named \"workspace\" exists in /working (recursively)? If so, out",
+      "labels": [
+        "file"
+      ],
+      "answer": "no",
+      "status": "PASS",
+      "detail": "exact match: 'no'",
+      "turns": 1,
+      "elapsed": 3.1
+    },
+    {
+      "id": "set4-N41-1",
+      "set": 4,
+      "description": "If a regular file named \"workspace\" exists in /working (recursively)? If so, out",
+      "labels": [
+        "file"
+      ],
+      "answer": "no",
+      "status": "PASS",
+      "detail": "exact match: 'no'",
+      "turns": 1,
+      "elapsed": 2.8
+    },
+    {
+      "id": "set4-N41-2",
+      "set": 4,
+      "description": "If a regular file named \"workspace\" exists in /working (recursively)? If so, out",
+      "labels": [
+        "file"
+      ],
+      "answer": "no",
+      "status": "FAIL",
+      "detail": "expected 'yes', got 'no'",
+      "turns": 1,
+      "elapsed": 2.7
+    },
+    {
+      "id": "set4-N41-3",
+      "set": 4,
+      "description": "If a regular file named \"workspace\" exists in /working (recursively)? If so, out",
+      "labels": [
+        "file"
+      ],
+      "answer": "no",
+      "status": "FAIL",
+      "detail": "expected 'yes', got 'no'",
+      "turns": 1,
+      "elapsed": 2.6
+    },
+    {
+      "id": "set4-Q09-0",
+      "set": 4,
+      "description": "What is the total number of files in the /var directory? (recursively)",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "452",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22481238, got=452)",
+      "turns": 1,
+      "elapsed": 1.9
+    },
+    {
+      "id": "set4-Q19-0",
+      "set": 4,
+      "description": "How many lines are there in /root/matrix.txt",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "10",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22483, got=10)",
+      "turns": 1,
+      "elapsed": 2.2
+    },
+    {
+      "id": "set4-Q30-0",
+      "set": 4,
+      "description": "How many default paths are looked for when I execute an executable on this compu",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "9",
+      "status": "PASS",
+      "detail": "checker passed (expected\u22489)",
+      "turns": 1,
+      "elapsed": 2.4
+    },
+    {
+      "id": "set4-Q30-1",
+      "set": 4,
+      "description": "How many default paths are looked for when I execute an executable on this compu",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "8",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22487, got=8)",
+      "turns": 1,
+      "elapsed": 5.8
+    },
+    {
+      "id": "set4-Q30-2",
+      "set": 4,
+      "description": "How many default paths are looked for when I execute an executable on this compu",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "6",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22487, got=6)",
+      "turns": 1,
+      "elapsed": 4.1
+    },
+    {
+      "id": "set4-Q30-3",
+      "set": 4,
+      "description": "How many paths are in $PATH? (Regardless of whether the path exists or not.)",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "9",
+      "status": "PASS",
+      "detail": "checker passed (expected\u22489)",
+      "turns": 1,
+      "elapsed": 2.1
+    },
+    {
+      "id": "set4-Q30-4",
+      "set": 4,
+      "description": "How many existing directories are in $PATH?",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "6",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22487, got=6)",
+      "turns": 1,
+      "elapsed": 2.7
+    },
+    {
+      "id": "set4-Q30-5",
+      "set": 4,
+      "description": "How many existing directories are in $PATH?",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "6",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22487, got=6)",
+      "turns": 1,
+      "elapsed": 2.8
+    },
+    {
+      "id": "set4-Q47-0",
+      "set": 4,
+      "description": "Move the file MyPersonalComputer.config to current directory. And tell me the pa",
+      "labels": [
+        "path",
+        "files"
+      ],
+      "answer": "/home/user1/os/linux/commands/MyPersonalComputer.config",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 2,
+      "elapsed": 18.5
+    },
+    {
+      "id": "set4-Q49-0",
+      "set": 4,
+      "description": "Test if variable var is an integer? If so, tell me \"yes\", otherwise tell me \"no\"",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "no",
+      "status": "PASS",
+      "detail": "exact match: 'no'",
+      "turns": 1,
+      "elapsed": 7.6
+    },
+    {
+      "id": "set4-Q49-1",
+      "set": 4,
+      "description": "Test if variable var is an integer? If so, tell me \"yes\", otherwise tell me \"no\"",
+      "labels": [
+        "command",
+        "variables"
+      ],
+      "answer": "no",
+      "status": "FAIL",
+      "detail": "expected 'yes', got 'no'",
+      "turns": 1,
+      "elapsed": 4.8
+    },
+    {
+      "id": "set5-new-0",
+      "set": 5,
+      "description": "I would like to implement the following function: entering the \"calc\" command wi",
+      "labels": [
+        "command"
+      ],
+      "answer": "The `calc` command has been implemented at `/usr/local/bin/calc`. It is a Python 3 recursive descent parser that evaluates mathematical expressions with support for `+`, `-`, `*`, `/`, parentheses, un",
+      "status": "SKIP",
+      "detail": "no expected value",
+      "turns": 3,
+      "elapsed": 34.0
+    },
+    {
+      "id": "set5-new-1",
+      "set": 5,
+      "description": "I would like to implement the following function: entering the \"count\" command w",
+      "labels": [
+        "command",
+        "file"
+      ],
+      "answer": "The `count` command has been implemented at `/usr/local/bin/count`. It uses `find <directory> -type f | wc -l` to recursively count only regular files (excluding symlinks, directories, and other speci",
+      "status": "SKIP",
+      "detail": "no expected value",
+      "turns": 1,
+      "elapsed": 13.2
+    },
+    {
+      "id": "set5-new-2",
+      "set": 5,
+      "description": "I would like to implement a command line tool called \"date-format\" that can form",
+      "labels": [
+        "command"
+      ],
+      "answer": "The `date-format` command line tool has been implemented at `/usr/local/bin/date-format`. It parses input dates in common formats and outputs them formatted according to the provided format string. Ru",
+      "status": "SKIP",
+      "detail": "no expected value",
+      "turns": 2,
+      "elapsed": 23.7
+    },
+    {
+      "id": "set5-new-3",
+      "set": 5,
+      "description": "How many hidden files are in /usr?",
+      "labels": [
+        "file"
+      ],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22482, got=0)",
+      "turns": 1,
+      "elapsed": 6.3
+    },
+    {
+      "id": "set5-new-4",
+      "set": 5,
+      "description": "How many files whose name starts with letter exist in /usr?",
+      "labels": [
+        "file"
+      ],
+      "answer": "loading...",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224819, got=loading...)",
+      "turns": 1,
+      "elapsed": 3.9
+    },
+    {
+      "id": "set5-new-5",
+      "set": 5,
+      "description": "How much disk space is being used by /usr and all of its contents? Tell me in hu",
+      "labels": [
+        "file"
+      ],
+      "answer": "505M",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248571M, got=505M)",
+      "turns": 1,
+      "elapsed": 2.4
+    },
+    {
+      "id": "set5-new-6",
+      "set": 5,
+      "description": "How many empty files are there in /usr and all of its content?",
+      "labels": [
+        "file"
+      ],
+      "answer": "org",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224847, got=org)",
+      "turns": 1,
+      "elapsed": 5.4
+    },
+    {
+      "id": "set5-new-7",
+      "status": "ERROR",
+      "detail": "'list' object has no attribute 'get'",
+      "elapsed": 0
+    },
+    {
+      "id": "set5-new-8",
+      "set": 5,
+      "description": "How many directories (recursively) are in the /usr directory?",
+      "labels": [
+        "file"
+      ],
+      "answer": "relative to the output, let me re-check",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22481865, got=relative to the output, let me re-check)",
+      "turns": 1,
+      "elapsed": 8.9
+    },
+    {
+      "id": "set5-new-9",
+      "set": 5,
+      "description": "How many files in /usr (recursively) were modified in the last 24 hours?",
+      "labels": [
+        "file"
+      ],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22481315, got=0)",
+      "turns": 1,
+      "elapsed": 2.3
+    },
+    {
+      "id": "set6-new-0",
+      "set": 6,
+      "description": "execute ~/test and get the output",
+      "labels": [
+        "permission",
+        "user"
+      ],
+      "answer": "the password is: CCC{}",
+      "status": "FAIL",
+      "detail": "expected 'a3b0c7', got 'the password is: CCC{}'",
+      "turns": 1,
+      "elapsed": 16.5
+    },
+    {
+      "id": "set6-new-1",
+      "set": 6,
+      "description": "What will be the output if I execute ~/test?",
+      "labels": [
+        "permission",
+        "user"
+      ],
+      "answer": "4",
+      "status": "FAIL",
+      "detail": "expected 'a3b0c7', got '4'",
+      "turns": 1,
+      "elapsed": 9.8
+    },
+    {
+      "id": "set6-new-2",
+      "set": 6,
+      "description": "make /testfile readable to jack, bill and tom, but not george",
+      "labels": [
+        "permission",
+        "user"
+      ],
+      "answer": "Set /testfile permissions using ACLs: chmod 600 /testfile with owner root:root, then setfacl -m u:jack:r,u:bill:r,u:tom:r,u:george:--- /testfile. This grants read access to jack, bill, and tom while e",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 1,
+      "elapsed": 14.8
+    },
+    {
+      "id": "set6-new-3",
+      "set": 6,
+      "description": "There's a vulnerability in the system (Hint: related to SUID). Find it and fix i",
+      "labels": [
+        "permission"
+      ],
+      "answer": "FAILED_MAX_TURNS",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 8,
+      "elapsed": 146.5
+    },
+    {
+      "id": "set6-new-4",
+      "set": 6,
+      "description": "set all files in ~/videos to be 660, and all directories(include ~/videos) to be",
+      "labels": [
+        "permission"
+      ],
+      "answer": "Done. Used `find ~/videos -type d -exec chmod 750 {} \\;` to set all directories (including ~/videos) to 750, and `find ~/videos -type f -exec chmod 660 {} \\;` to set all files to 660.",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 1,
+      "elapsed": 5.9
+    },
+    {
+      "id": "set6-new-5",
+      "set": 6,
+      "description": "ahh! Why can't I use sudo??? Is it because the WiFi I'm using? fix it!!!",
+      "labels": [
+        "permission"
+      ],
+      "answer": "The hostname was set to \"wifi\" but was not in /etc/hosts, causing sudo to fail on hostname resolution. Fixed by adding \"127.0.0.1 wifi\" to /etc/hosts.",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 1,
+      "elapsed": 13.0
+    },
+    {
+      "id": "set6-new-6",
+      "set": 6,
+      "description": "Why can't I use sudo? Help me fix it.",
+      "labels": [
+        "permission"
+      ],
+      "answer": "The sudo binary at /usr/bin/sudo was missing the SUID bit. The permissions were -rwxr-xr-x (0755) instead of the required -rwsr-xr-x (4755). Fixed by running: chmod u+s /usr/bin/sudo",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 1,
+      "elapsed": 11.4
+    },
+    {
+      "id": "set6-new-7",
+      "set": 6,
+      "description": "Suppose you have a directory called /data that contains sensitive files that sho",
+      "labels": [
+        "permission"
+      ],
+      "answer": "The following commands were executed to configure the /data directory:\n\n1. `groupadd dataaccess` - Create the \"dataaccess\" group\n2. `mkdir -p /data` - Create the /data directory\n3. `chown :dataaccess ",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 1,
+      "elapsed": 17.7
+    },
+    {
+      "id": "set6-new-8",
+      "set": 6,
+      "description": "Why can't I use sudo?? fix it.",
+      "labels": [
+        "permission"
+      ],
+      "answer": "The sudo binary (/usr/bin/sudo) had incorrect permissions (0644 instead of 4755). Fixed by running: chmod 4755 /usr/bin/sudo \u2014 this restores the setuid bit and executable permissions that sudo require",
+      "status": "SKIP",
+      "detail": "no checker found",
+      "turns": 1,
+      "elapsed": 10.0
+    },
+    {
+      "id": "set7-bootstrap-0",
+      "set": 7,
+      "description": "The problem is related to process management in the Linux operating system. You ",
+      "labels": [],
+      "answer": "#!/bin/bash\n# Count all active processes and display the count as an integer\nps -e --no-heading | wc -l",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224810, got=#!/bin/bash\n# Count all active processes and displ)",
+      "turns": 1,
+      "elapsed": 11.2
+    },
+    {
+      "id": "set7-bootstrap-1",
+      "set": 7,
+      "description": "In this problem, your task is to find the total count of processes that are curr",
+      "labels": [],
+      "answer": "2",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22480, got=2)",
+      "turns": 1,
+      "elapsed": 3.9
+    },
+    {
+      "id": "set7-bootstrap-2",
+      "set": 7,
+      "description": "As a student, you are required to calculate the total size of all files with a s",
+      "labels": [],
+      "answer": "12948",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224874, got=12948)",
+      "turns": 2,
+      "elapsed": 26.6
+    },
+    {
+      "id": "set7-bootstrap-3",
+      "set": 7,
+      "description": "Design a problem that challenges students to count the number of lines containin",
+      "labels": [],
+      "answer": "17",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22486, got=17)",
+      "turns": 5,
+      "elapsed": 73.2
+    },
+    {
+      "id": "set7-bootstrap-4",
+      "set": 7,
+      "description": "You are using a Linux operating system (Ubuntu), and your task is to find out th",
+      "labels": [],
+      "answer": "50",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22480, got=50)",
+      "turns": 1,
+      "elapsed": 20.3
+    },
+    {
+      "id": "set7-bootstrap-5",
+      "set": 7,
+      "description": "You are given a Linux file system with two directories named \"dir1\" and \"dir2\". ",
+      "labels": [],
+      "answer": "#!/bin/bash\n\n# Count the total number of lines in all .txt files in dir1 and dir2\ntotal=0\n\nfor dir in dir1 dir2; do\n    if [ -d \"$dir\" ]; then\n        for file in \"$dir\"/*.txt; do\n            if [ -f ",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224812, got=#!/bin/bash\n\n# Count the total number of lines in )",
+      "turns": 1,
+      "elapsed": 11.6
+    },
+    {
+      "id": "set7-bootstrap-6",
+      "set": 7,
+      "description": "You are given a task to monitor system usage in a Linux (Ubuntu) operating syste",
+      "labels": [],
+      "answer": "10",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224898, got=10)",
+      "turns": 1,
+      "elapsed": 13.6
+    },
+    {
+      "id": "set7-bootstrap-7",
+      "set": 7,
+      "description": "Your task is to calculate the total size of all files in a given directory, incl",
+      "labels": [],
+      "answer": "15065",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224894, got=15065)",
+      "turns": 1,
+      "elapsed": 3.4
+    },
+    {
+      "id": "set7-bootstrap-8",
+      "set": 7,
+      "description": "In this problem, the students should calculate the total number of files and dir",
+      "labels": [],
+      "answer": "7",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224888351, got=7)",
+      "turns": 1,
+      "elapsed": 14.5
+    },
+    {
+      "id": "set7-bootstrap-9",
+      "set": 7,
+      "description": "'In this experiment, you will be asked to find the number of lines for each type",
+      "labels": [],
+      "answer": "284 352 312",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248255462, got=284 352 312)",
+      "turns": 1,
+      "elapsed": 6.1
+    },
+    {
+      "id": "set7-bootstrap-10",
+      "set": 7,
+      "description": "\"In this problem, you are required to count the total number of lines and the to",
+      "labels": [],
+      "answer": "30",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224834, got=30)",
+      "turns": 2,
+      "elapsed": 20.4
+    },
+    {
+      "id": "set7-bootstrap-11",
+      "set": 7,
+      "description": "\"You have been given a task to analyze the file permissions of all the files in ",
+      "labels": [],
+      "answer": "3197",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22481965, got=3197)",
+      "turns": 1,
+      "elapsed": 7.3
+    },
+    {
+      "id": "set7-bootstrap-12",
+      "set": 7,
+      "description": "'In this problem, you are required to determine the total number of files and di",
+      "labels": [],
+      "answer": "54",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=54)",
+      "turns": 1,
+      "elapsed": 14.1
+    },
+    {
+      "id": "set7-bootstrap-13",
+      "set": 7,
+      "description": "You are given a folder named \"log_folder\" in your current working directory cont",
+      "labels": [],
+      "answer": "2",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=2)",
+      "turns": 1,
+      "elapsed": 11.6
+    },
+    {
+      "id": "set7-bootstrap-14",
+      "set": 7,
+      "description": "As a Linux user, you are asked to calculate the total line count of all the \".tx",
+      "labels": [],
+      "answer": "19",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=19)",
+      "turns": 4,
+      "elapsed": 44.4
+    },
+    {
+      "id": "set7-bootstrap-15",
+      "set": 7,
+      "description": "'You have been given the responsibility to manage a list of files with specific ",
+      "labels": [],
+      "answer": "Created the directory \"~/file_analysis\" and generated 100 text files named \"file-1.txt\" through \"file-100.txt\" inside it using:\n1. `mkdir -p ~/file_analysis`\n2. `for i in $(seq 1 100); do touch ~/file",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22482500, got=Created the directory \"~/file_analysis\" and genera)",
+      "turns": 1,
+      "elapsed": 5.1
+    },
+    {
+      "id": "set7-bootstrap-16",
+      "set": 7,
+      "description": "In this task, you need to find the total number of files and directories in a gi",
+      "labels": [],
+      "answer": "establis",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22483, got=establis)",
+      "turns": 1,
+      "elapsed": 7.2
+    },
+    {
+      "id": "set7-bootstrap-17",
+      "set": 7,
+      "description": "'As a student, you must calculate the total number of bytes used by all the \".tx",
+      "labels": [],
+      "answer": "16834",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224896, got=16834)",
+      "turns": 1,
+      "elapsed": 11.4
+    },
+    {
+      "id": "set7-bootstrap-18",
+      "set": 7,
+      "description": "As a Linux system administrator, you need to monitor the system regularly to ens",
+      "labels": [],
+      "answer": "echo $(( $(ps -e --no-headers -o pid,comm | grep -v '\\[.*\\]' | wc -l) + $(free | awk '/^Mem:/ {printf \"%.0f\", ($3/$2)*100}') + $(df / | awk 'NR==2 {gsub(/%/,\"\",$5); print $5}') ))",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248-70, got=echo $(( $(ps -e --no-headers -o pid,comm | grep -)",
+      "turns": 2,
+      "elapsed": 23.1
+    },
+    {
+      "id": "set7-bootstrap-19",
+      "set": 7,
+      "description": "'You have been provided with a directory named \"sample_files\" containing text fi",
+      "labels": [],
+      "answer": "3",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=3)",
+      "turns": 1,
+      "elapsed": 5.4
+    },
+    {
+      "id": "set7-bootstrap-20",
+      "set": 7,
+      "description": "You are given a directory named \"logs\" containing multiple log files. Each file ",
+      "labels": [],
+      "answer": "49",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224850, got=49)",
+      "turns": 1,
+      "elapsed": 9.1
+    },
+    {
+      "id": "set7-bootstrap-21",
+      "set": 7,
+      "description": "As a student, you are given a Linux directory named \"student_data\" containing mu",
+      "labels": [],
+      "answer": "233",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248259, got=233)",
+      "turns": 1,
+      "elapsed": 13.6
+    },
+    {
+      "id": "set7-bootstrap-22",
+      "set": 7,
+      "description": "In this problem, you are asked to calculate the total size (in kilobytes) of all",
+      "labels": [],
+      "answer": "8",
+      "status": "PASS",
+      "detail": "checker passed (expected\u22488)",
+      "turns": 1,
+      "elapsed": 6.1
+    },
+    {
+      "id": "set7-bootstrap-23",
+      "set": 7,
+      "description": "You are given a directory called \"reports\". Inside the directory \"reports\", ther",
+      "labels": [],
+      "answer": "53",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224890, got=53)",
+      "turns": 1,
+      "elapsed": 5.6
+    },
+    {
+      "id": "set7-bootstrap-24",
+      "set": 7,
+      "description": "'You are given a directory named \\'logs\\' in your Linux operating system, which ",
+      "labels": [],
+      "answer": "9",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224831, got=9)",
+      "turns": 1,
+      "elapsed": 17.3
+    },
+    {
+      "id": "set7-bootstrap-25",
+      "set": 7,
+      "description": "The objective of this problem is to make you familiar with the Linux file system",
+      "labels": [],
+      "answer": "The sum of the sizes (in bytes) of all files and directories inside 'test_directory' is calculated using:\n\n```bash\nfind test_directory -mindepth 1 \\( -type f -o -type d \\) -exec stat --format='%s' {} ",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22481232, got=The sum of the sizes (in bytes) of all files and d)",
+      "turns": 1,
+      "elapsed": 14.9
+    },
+    {
+      "id": "set7-bootstrap-26",
+      "set": 7,
+      "description": "As a student, you are tasked to retrieve the number of lines of code in Python f",
+      "labels": [],
+      "answer": "365",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22488, got=365)",
+      "turns": 1,
+      "elapsed": 4.7
+    },
+    {
+      "id": "set7-bootstrap-27",
+      "set": 7,
+      "description": "\"This problem is designed to test your ability to navigate and manipulate files ",
+      "labels": [],
+      "answer": "6",
+      "status": "PASS",
+      "detail": "checker passed (expected\u22486)",
+      "turns": 1,
+      "elapsed": 13.4
+    },
+    {
+      "id": "set7-bootstrap-28",
+      "set": 7,
+      "description": "'You are given a directory named `example_files` located at the root level conta",
+      "labels": [],
+      "answer": "25",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248117, got=25)",
+      "turns": 1,
+      "elapsed": 6.2
+    },
+    {
+      "id": "set7-bootstrap-29",
+      "set": 7,
+      "description": "As a student, you are given a task to determine the number of directories, subdi",
+      "labels": [],
+      "answer": "API_ERROR: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'prompt is too long: 2811160 tokens > 200000 maximum'}, 'request_id': 'req_011CYJVg4f1TDuFzGK5DwofB",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224888611, got=API_ERROR: Error code: 400 - {'type': 'error', 'er)",
+      "turns": 4,
+      "elapsed": 48.9
+    },
+    {
+      "id": "set7-bootstrap-30",
+      "set": 7,
+      "description": "'As a student, you are required to find the total number of lines containing the",
+      "labels": [],
+      "answer": "privatevoid",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22487, got=privatevoid)",
+      "turns": 1,
+      "elapsed": 12.9
+    },
+    {
+      "id": "set7-bootstrap-31",
+      "set": 7,
+      "description": "As a student, your task is to find out how many hidden directories are in your h",
+      "labels": [],
+      "answer": "1",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=1)",
+      "turns": 1,
+      "elapsed": 14.7
+    },
+    {
+      "id": "set7-bootstrap-32",
+      "set": 7,
+      "description": "You've been given a server's log file named `server.log` containing timestamps o",
+      "labels": [],
+      "answer": "3",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22482, got=3)",
+      "turns": 1,
+      "elapsed": 13.1
+    },
+    {
+      "id": "set7-bootstrap-33",
+      "set": 7,
+      "description": "As a student, you are requested to find the total number of files and directorie",
+      "labels": [],
+      "answer": "5",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224814, got=5)",
+      "turns": 1,
+      "elapsed": 3.8
+    },
+    {
+      "id": "set7-bootstrap-34",
+      "set": 7,
+      "description": "In this problem, you need to find the number of non-empty lines in a log file na",
+      "labels": [],
+      "answer": "27",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224846, got=27)",
+      "turns": 1,
+      "elapsed": 14.1
+    },
+    {
+      "id": "set7-bootstrap-35",
+      "set": 7,
+      "description": "As a student, you are given a directory located at ~/student_directory that cont",
+      "labels": [],
+      "answer": "35",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=35)",
+      "turns": 1,
+      "elapsed": 2.3
+    },
+    {
+      "id": "set7-bootstrap-36",
+      "set": 7,
+      "description": "\"You are given a folder named 'files' in your current working directory containi",
+      "labels": [],
+      "answer": "82",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22480, got=82)",
+      "turns": 1,
+      "elapsed": 7.3
+    },
+    {
+      "id": "set7-bootstrap-37",
+      "set": 7,
+      "description": "As a student, you are tasked with determining the number of directories and subd",
+      "labels": [],
+      "answer": "#!/bin/bash\nfind /var/log -type d | wc -l",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22482, got=#!/bin/bash\nfind /var/log -type d | wc -l)",
+      "turns": 1,
+      "elapsed": 9.2
+    },
+    {
+      "id": "set7-bootstrap-38",
+      "set": 7,
+      "description": "As a Linux system administrator, you need to monitor the disk usage of the `/hom",
+      "labels": [],
+      "answer": "6",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=6)",
+      "turns": 1,
+      "elapsed": 14.0
+    },
+    {
+      "id": "set7-bootstrap-39",
+      "set": 7,
+      "description": "'As a student, you are asked to find the total number of lines of code in all th",
+      "labels": [],
+      "answer": "3587",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22482257292, got=3587)",
+      "turns": 1,
+      "elapsed": 4.9
+    },
+    {
+      "id": "set7-bootstrap-40",
+      "set": 7,
+      "description": "\"A company stores their employee information in the form of text files in a fold",
+      "labels": [],
+      "answer": "135",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248230, got=135)",
+      "turns": 1,
+      "elapsed": 5.0
+    },
+    {
+      "id": "set7-bootstrap-41",
+      "set": 7,
+      "description": "As a student, you are required to find the total number of regular files and dir",
+      "labels": [],
+      "answer": "20",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22488, got=20)",
+      "turns": 1,
+      "elapsed": 10.6
+    },
+    {
+      "id": "set7-bootstrap-42",
+      "set": 7,
+      "description": "As a student, you need to determine the total occupied storage space by all the ",
+      "labels": [],
+      "answer": "6",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224820480, got=6)",
+      "turns": 1,
+      "elapsed": 13.8
+    },
+    {
+      "id": "set7-bootstrap-43",
+      "set": 7,
+      "description": "\"You need to calculate the number of files and directories in the current user's",
+      "labels": [],
+      "answer": "8",
+      "status": "PASS",
+      "detail": "checker passed (expected\u22488)",
+      "turns": 6,
+      "elapsed": 57.3
+    },
+    {
+      "id": "set7-bootstrap-44",
+      "set": 7,
+      "description": "As a student, you have been given the task of finding the total number of lines,",
+      "labels": [],
+      "answer": "3",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22487, got=3)",
+      "turns": 2,
+      "elapsed": 23.5
+    },
+    {
+      "id": "set7-bootstrap-45",
+      "set": 7,
+      "description": "As a student, you are requested to find out the total number of lines containing",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=0)",
+      "turns": 1,
+      "elapsed": 15.8
+    },
+    {
+      "id": "set7-bootstrap-46",
+      "set": 7,
+      "description": "The objective of this problem is to calculate the total number of occurrences of",
+      "labels": [],
+      "answer": "55",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=55)",
+      "turns": 1,
+      "elapsed": 3.8
+    },
+    {
+      "id": "set7-bootstrap-47",
+      "set": 7,
+      "description": "You are required to solve the following problem related to the Linux operating s",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248112, got=0)",
+      "turns": 1,
+      "elapsed": 13.0
+    },
+    {
+      "id": "set7-bootstrap-48",
+      "set": 7,
+      "description": "'As a student, you are to find the total number of lines containing the word \"Li",
+      "labels": [],
+      "answer": "8",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=8)",
+      "turns": 1,
+      "elapsed": 10.2
+    },
+    {
+      "id": "set7-bootstrap-49",
+      "set": 7,
+      "description": "In this problem, you will write a bash script that reads a text file containing ",
+      "labels": [],
+      "answer": "#!/bin/bash\n\n# Navigate to the files_list directory\ncd files_list || { echo \"Directory 'files_list' not found\"; exit 1; }\n\n# Check if two arguments are provided: the text file and the extension\nif [ $",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22483, got=#!/bin/bash\n\n# Navigate to the files_list director)",
+      "turns": 2,
+      "elapsed": 25.5
+    },
+    {
+      "id": "set7-bootstrap-50",
+      "set": 7,
+      "description": "'As a student, you are given a directory named \"test_directory\" that contains mu",
+      "labels": [],
+      "answer": "33",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=33)",
+      "turns": 1,
+      "elapsed": 7.5
+    },
+    {
+      "id": "set7-bootstrap-51",
+      "set": 7,
+      "description": "\"As a student, you are required to find the total amount of the specific file ty",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224835, got=0)",
+      "turns": 1,
+      "elapsed": 15.5
+    },
+    {
+      "id": "set7-bootstrap-52",
+      "set": 7,
+      "description": "As a student, you are asked to create a directory structure under your home dire",
+      "labels": [],
+      "answer": "13",
+      "status": "PASS",
+      "detail": "checker passed (expected\u224813)",
+      "turns": 1,
+      "elapsed": 4.1
+    },
+    {
+      "id": "set7-bootstrap-53",
+      "set": 7,
+      "description": "As a student, you are given a directory named `log_files` containing log files f",
+      "labels": [],
+      "answer": "4",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22483, got=4)",
+      "turns": 1,
+      "elapsed": 3.2
+    },
+    {
+      "id": "set7-bootstrap-54",
+      "set": 7,
+      "description": "As a student, you are given a directory located at `/tmp/experiment/` containing",
+      "labels": [],
+      "answer": "553",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224814, got=553)",
+      "turns": 1,
+      "elapsed": 3.7
+    },
+    {
+      "id": "set7-bootstrap-55",
+      "set": 7,
+      "description": "As a student learning Linux operating systems, you are tasked to create a simple",
+      "labels": [],
+      "answer": "10",
+      "status": "PASS",
+      "detail": "checker passed (expected\u224810)",
+      "turns": 1,
+      "elapsed": 6.9
+    },
+    {
+      "id": "set7-bootstrap-56",
+      "set": 7,
+      "description": "\"As a Linux student, you are tasked to count the total number of characters, wor",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248166, got=0)",
+      "turns": 1,
+      "elapsed": 12.6
+    },
+    {
+      "id": "set7-bootstrap-57",
+      "set": 7,
+      "description": "'As an expert in the Linux operating system, you have been given a directory nam",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224812304438, got=0)",
+      "turns": 1,
+      "elapsed": 16.3
+    },
+    {
+      "id": "set7-bootstrap-58",
+      "set": 7,
+      "description": "As a student, you need to find out the total number of unique file types (based ",
+      "labels": [],
+      "answer": "14",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=14)",
+      "turns": 1,
+      "elapsed": 10.7
+    },
+    {
+      "id": "set7-bootstrap-59",
+      "set": 7,
+      "description": "You are given a Linux (Ubuntu) operating system. Your task is to find the total ",
+      "labels": [],
+      "answer": "loading...",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248133, got=loading...)",
+      "turns": 1,
+      "elapsed": 10.1
+    },
+    {
+      "id": "set7-bootstrap-60",
+      "set": 7,
+      "description": "As a Linux user, you are required to find the total number of lines that contain",
+      "labels": [],
+      "answer": "5",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22480, got=5)",
+      "turns": 5,
+      "elapsed": 73.6
+    },
+    {
+      "id": "set7-bootstrap-61",
+      "set": 7,
+      "description": "'You are given a directory named \"files\" within your current working directory, ",
+      "labels": [],
+      "answer": "4994",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248100, got=4994)",
+      "turns": 1,
+      "elapsed": 11.2
+    },
+    {
+      "id": "set7-bootstrap-62",
+      "set": 7,
+      "description": "As a student, your task is to find the total number of non-empty directories ins",
+      "labels": [],
+      "answer": "62",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224837, got=62)",
+      "turns": 1,
+      "elapsed": 2.3
+    },
+    {
+      "id": "set7-bootstrap-63",
+      "set": 7,
+      "description": "As a Linux system administrator, you are tasked with demonstrating your ability ",
+      "labels": [],
+      "answer": "3",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22486, got=3)",
+      "turns": 1,
+      "elapsed": 4.8
+    },
+    {
+      "id": "set7-bootstrap-64",
+      "set": 7,
+      "description": "As a student, you are required to calculate the total number of lines in all the",
+      "labels": [],
+      "answer": "587",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224820, got=587)",
+      "turns": 1,
+      "elapsed": 3.6
+    },
+    {
+      "id": "set7-bootstrap-65",
+      "set": 7,
+      "description": "\"As a student, you will explore and analyze the Linux (Ubuntu) operating system'",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22486, got=0)",
+      "turns": 1,
+      "elapsed": 12.8
+    },
+    {
+      "id": "set7-bootstrap-66",
+      "set": 7,
+      "description": "As a student, your goal is to find the total number of occurrences of a given wo",
+      "labels": [],
+      "answer": "55",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22486, got=55)",
+      "turns": 1,
+      "elapsed": 5.8
+    },
+    {
+      "id": "set7-bootstrap-67",
+      "set": 7,
+      "description": "As a Linux (Ubuntu) user, your task is to create a script that counts the total ",
+      "labels": [],
+      "answer": "The script has been created at `/home/count_storage.sh`:\n\n```bash\n#!/bin/bash\n\n# Count total storage used by all regular files in /var/log directory in kilobytes\ntotal_kb=$(find /var/log -type f -exec",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248460, got=The script has been created at `/home/count_storag)",
+      "turns": 1,
+      "elapsed": 8.6
+    },
+    {
+      "id": "set7-bootstrap-68",
+      "set": 7,
+      "description": "As a Linux student, you are tasked with calculating the total size of all `.txt`",
+      "labels": [],
+      "answer": "10",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22480, got=10)",
+      "turns": 1,
+      "elapsed": 6.2
+    },
+    {
+      "id": "set7-bootstrap-69",
+      "set": 7,
+      "description": "'In this problem, you are required to find the total number of files and directo",
+      "labels": [],
+      "answer": "find ~/testDir -mindepth 1 | wc -l",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224812, got=find ~/testDir -mindepth 1 | wc -l)",
+      "turns": 1,
+      "elapsed": 9.7
+    },
+    {
+      "id": "set7-bootstrap-70",
+      "set": 7,
+      "description": "As a Linux system administrator, you are required to find out the total number o",
+      "labels": [],
+      "answer": "7",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22485, got=7)",
+      "turns": 1,
+      "elapsed": 4.4
+    },
+    {
+      "id": "set7-bootstrap-71",
+      "set": 7,
+      "description": "'As a student, you are tasked to calculate the total size of files with a specif",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224883, got=0)",
+      "turns": 1,
+      "elapsed": 10.4
+    },
+    {
+      "id": "set7-bootstrap-72",
+      "set": 7,
+      "description": "\"As a student, you are required to calculate the total size of all regular files",
+      "labels": [],
+      "answer": "Here is the bash script `solution.sh` that calculates the total size of regular files in `sample_directory`:\n\n```bash\n#!/bin/bash\n\ntotal=0\nfor file in sample_directory/*; do\n    if [ -f \"$file\" ]; the",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248101, got=Here is the bash script `solution.sh` that calcula)",
+      "turns": 1,
+      "elapsed": 11.8
+    },
+    {
+      "id": "set7-bootstrap-73",
+      "set": 7,
+      "description": "'In this task, you are required to calculate the total number of lines of code (",
+      "labels": [],
+      "answer": "137",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=137)",
+      "turns": 2,
+      "elapsed": 21.6
+    },
+    {
+      "id": "set7-bootstrap-74",
+      "set": 7,
+      "description": "As a student, your task is to determine the total number of files and directorie",
+      "labels": [],
+      "answer": "2refresh",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224899, got=2refresh)",
+      "turns": 1,
+      "elapsed": 4.5
+    },
+    {
+      "id": "set7-bootstrap-75",
+      "set": 7,
+      "description": "As a student, you are asked to create a simple system analytics tool that will d",
+      "labels": [],
+      "answer": "97",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22486, got=97)",
+      "turns": 1,
+      "elapsed": 6.3
+    },
+    {
+      "id": "set7-bootstrap-76",
+      "set": 7,
+      "description": "\"You have just joined a Linux system administration team, and one of the tasks a",
+      "labels": [],
+      "answer": "76",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224869, got=76)",
+      "turns": 1,
+      "elapsed": 12.9
+    },
+    {
+      "id": "set7-bootstrap-77",
+      "set": 7,
+      "description": "'For this problem, you need to determine the total number of lines, words, and c",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u2248200, got=0)",
+      "turns": 1,
+      "elapsed": 13.6
+    },
+    {
+      "id": "set7-bootstrap-78",
+      "set": 7,
+      "description": "'As a student using the Linux operating system (Ubuntu), your task is to count t",
+      "labels": [],
+      "answer": "27",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u224811, got=27)",
+      "turns": 1,
+      "elapsed": 5.5
+    },
+    {
+      "id": "set7-bootstrap-79",
+      "set": 7,
+      "description": "As a student, you have been given a directory called \"logs\" containing multiple ",
+      "labels": [],
+      "answer": "0",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=0)",
+      "turns": 1,
+      "elapsed": 14.9
+    },
+    {
+      "id": "set7-bootstrap-80",
+      "set": 7,
+      "description": "In this problem, you need to find the total number of lines containing the word ",
+      "labels": [],
+      "answer": "broken pipe",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=broken pipe)",
+      "turns": 1,
+      "elapsed": 4.5
+    },
+    {
+      "id": "set7-bootstrap-81",
+      "set": 7,
+      "description": "As a student, your task is to find the total number of files and directories in ",
+      "labels": [],
+      "answer": "7",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22484, got=7)",
+      "turns": 1,
+      "elapsed": 4.4
+    },
+    {
+      "id": "set7-bootstrap-82",
+      "set": 7,
+      "description": "As a student, you have been assigned a task to analyze the files in a directory ",
+      "labels": [],
+      "answer": "127",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22486, got=127)",
+      "turns": 1,
+      "elapsed": 2.9
+    },
+    {
+      "id": "set7-bootstrap-83",
+      "set": 7,
+      "description": "\"You are given a directory named 'log_files' which contains multiple log files. ",
+      "labels": [],
+      "answer": "15",
+      "status": "FAIL",
+      "detail": "checker failed (expected\u22480, got=15)",
+      "turns": 5,
+      "elapsed": 54.8
+    }
+  ]
+}

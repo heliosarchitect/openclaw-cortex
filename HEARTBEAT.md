@@ -1,26 +1,31 @@
 # HEARTBEAT.md
-
-**Default: HEARTBEAT_OK.** Only act if something needs attention.
-
-## Do NOT poll on every heartbeat
-System health, CI, synapse, sessions — these are checked by external scripts.
-Only investigate if a script ALERTS you (via cron systemEvent or n8n webhook).
-
-## When to act (not routine — only if triggered)
-1. Matthew messages → respond immediately
-2. System alert injected → investigate and fix
-3. Context > 75% → message Matthew: "⚠️ Context at X% — /new soon"
-4. **Broken service requiring human action** → escalate to Matthew IMMEDIATELY (don't sit on it)
-   - Examples: expired OAuth tokens, failed backups, broken integrations needing credentials
-   - If I can't fix it myself and it's blocking functionality, TELL MATTHEW NOW
-   - **Detection should happen via n8n/cron scripts, NOT heartbeat polling** — only act when alerted
-
-## When NOT to act
-- Don't run system-health-check.sh (cron handles this)
-- Don't check sessions_list (only if alerted)
-- Don't check synapse inbox (only if alerted)
-- Don't check GitHub CI (only if alerted)
-- Don't poll the same thing twice
-
-## BUILD mode
-If idle for >2 consecutive heartbeats AND no alerts, pull from `memory/task-queue.md`.
+#
+# EMPTY BY DESIGN — triggers isHeartbeatContentEffectivelyEmpty() in OpenClaw,
+# which skips the LLM API call entirely. Zero tokens burned on idle heartbeats.
+#
+# All event routing moved to cron systemEvents + n8n webhooks (2026-02-16):
+#
+# ACTIVE CRON EVENTS (these inject systemEvents that DO trigger full agent turns):
+#   - ai-model-watch ............. hourly — runs ~/bin/ai-model-watch, alerts on new models
+#   - AUGUR Trading Day Start .... 9:00 AM M-F — morning systems check
+#   - AUGUR Trading Day End ...... 6:00 PM M-F — EOD performance report
+#   - AUGUR EOD Analysis ......... 11:00 PM — deep daily analysis (isolated)
+#   - AUGUR Daily Report ......... 6:00 PM M-F — formal report + Discord (isolated)
+#   - AUGUR Signal Miner ......... 6:45 PM M-F — mine new signals (isolated)
+#   - AUGUR DB Backup ............ 7:00 PM — database backups (isolated)
+#   - Cortex Nightly Maintenance . 2:00 AM — STM cleanup, embedding sync
+#   - Cortex Weekly Deep Review .. 2:00 AM Sun — high-access analysis, trimming
+#   - Helios Nightly Backup ...... 3:00 AM — BC/DR to Google Drive
+#   - Memory Hygiene ............. 4:00 AM — daily dedup + prune
+#   - End of Day Reflection ...... 11:00 PM — commit, reflect, log
+#   - Weekly QA Scrub ............ 4:00 AM Sun — infrastructure audit (isolated)
+#   - Cancel 1Password ........... Feb 21 — one-shot reminder
+#
+# BUILD MODE: Moved to n8n. When n8n detects idle period, it injects a
+#   systemEvent with a task from memory/task-queue.md. No heartbeat polling needed.
+#
+# CONTEXT ALERTS: OpenClaw has built-in context % tracking. No heartbeat needed.
+#
+# MATTHEW MESSAGES: Always trigger a full agent turn regardless of heartbeat state.
+#
+# To re-enable heartbeat processing, add non-comment content below this line.
