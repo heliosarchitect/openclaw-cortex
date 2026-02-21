@@ -8,6 +8,12 @@ This repository contains the complete workspace for **Helios**, an autonomous AI
 > **Agent:** Helios  
 > **Remote:** [heliosarchitect/openclaw-cortex](https://github.com/heliosarchitect/openclaw-cortex)
 
+## First-time contributor? Start here
+
+- **5-minute run path:** [`docs/QUICKSTART.md`](./docs/QUICKSTART.md)
+- **Repo boundaries (core vs artifacts):** [`docs/REPO_MAP.md`](./docs/REPO_MAP.md)
+- **Protocol reference:** [`docs/SYNAPSE_V2.md`](./docs/SYNAPSE_V2.md)
+
 ## 🧠 What is Helios?
 
 Helios is an advanced AI agent built on OpenClaw that:
